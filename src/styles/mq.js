@@ -1,18 +1,13 @@
-// src/styles/mq.js
+/**
+ * 반응형 미디어 쿼리 기준이 되는 브레이크포인트(px)
+ */
+const breakpoints = { sm: 480, md: 768, lg: 1024 };
 
-const breakpoints = {
-  sm: 599, // mobile
-  md: 1023, // tablet
-  lg: 1439, // laptop
-  xl: 2559, // below 32-inch class displays
-};
-
-// 사용법: ${mq.md` color: red; `}
+/**
+ * 브레이크포인트를 기반으로 max-width 미디어 쿼리 문자열을 생성한 객체
+ * 예: mq.md -> "@media (max-width: 768px)"
+ */
 export const mq = Object.entries(breakpoints).reduce((acc, [label, value]) => {
-  acc[label] = (segments, ...args) => {
-    // 템플릿 리터럴 처리를 위해 스타일 내용을 합칩니다.
-    const style = segments.reduce((res, str, i) => res + str + (args[i] || ""), "");
-    return `@media (max-width: ${value}px) { ${style} }`;
-  };
+  acc[label] = `@media (max-width: ${value}px)`;
   return acc;
 }, {});
