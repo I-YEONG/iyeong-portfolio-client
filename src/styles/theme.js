@@ -40,6 +40,56 @@ export const fonts = {
   captionSm_L: { fontSize: "8px", fontWeight: "300" },
 };
 
+export const flex = {
+  // 중앙 정렬
+  center: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  lowCenter: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  colCenter: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+
+  // 비트윈
+  between: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  lowBetween: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  colBetween: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+
+  // 어라운드
+  around: {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
+  lowAround: {
+    display: "flex",
+    justifyContent: "space-around",
+  },
+  colAround: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
+};
+
 export const colors = {
   text: "#333333",
 
@@ -49,6 +99,8 @@ export const colors = {
   black400: "#B7BBCF",
   black200: "#DDDFE9",
   black100: "#EFF0F5",
+
+  lightLine: "#DDDFEA",
 
   green: "#16B48F",
   orange: "#FF9919",
@@ -61,6 +113,4 @@ export const colors = {
   blueBG: "#20A9EE29",
 };
 
-
-
-export const theme = { fonts, colors };
+export const theme = { fonts, colors, flex };

@@ -45,3 +45,24 @@ export const fonts =
   (variant) =>
   ({ theme }) =>
     theme.fonts[variant];
+
+/**
+ * @typedef {'center'|'lowCenter'|'colCenter'
+ *   |'between'|'lowBetween'|'colBetween'
+ *   |'around'|'lowAround'|'colAround'
+ * } FlexKey
+ */
+
+/**
+ * theme에서 flex 스타일을 가져오는 헬퍼 함수
+ * @param {FlexKey} variant - 가져올 flex 스타일 키 (자동완성 지원)
+ * @returns {(props: {theme: {flex: object}}) => object} theme 객체를 받아 해당 flex 스타일을 반환하는 함수
+ *
+ * 사용 예시:
+ *   ${flex('center')}
+ *   ${flex('between')}
+ */
+export const flex =
+  (variant) =>
+  ({ theme }) =>
+    theme.flex[variant];
