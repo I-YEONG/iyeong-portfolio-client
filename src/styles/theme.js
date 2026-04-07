@@ -100,6 +100,8 @@ export const colors = {
   black200: "#DDDFE9",
   black100: "#EFF0F5",
 
+  darkBG: "#090809",
+  darkLine: "#2A2B2B",
   lightLine: "#DDDFEA",
 
   green: "#16B48F",

@@ -1,126 +1,158 @@
 import { css } from "@emotion/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { theme } from "@/styles/theme";
-import logo from "@/assets/portfolio/icon/logo.svg";
-import download from "@/assets/portfolio/icon/download.svg";
-import git from "@/assets/portfolio/skill/github.svg";
-import { useEffect, useMemo, useState } from "react";
+import LogoIcon from "@/assets/portfolio/icon/logo.svg?react";
+import DownloadIcon from "@/assets/portfolio/icon/download.svg?react";
+import GitIcon from "@/assets/portfolio/skill/github.svg?react";
+import { useEffect, useState } from "react";
 
-const Header = ({ themeCode }) => {
+const NAV_ITEMS = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Projects", path: "/projects" },
+];
+
+const Header = ({ themeCode = "light" }) => {
   const nav = useNavigate();
-
   const [scrolled, setScrolled] = useState(false);
 
-  const navItems = useMemo(
-    () => [
-      { label: "Home", path: "/" },
-      { label: "About", path: "/about" },
-      { label: "Projects", path: "/projects" },
-    ],
-    [],
-  );
-
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 0);
+    const onScroll = () => {
+      // 불필요한 상태 업데이트를 막기 위해 조건 추가
+      const isScrolled = window.scrollY > 160;
+      if (scrolled !== isScrolled) setScrolled(isScrolled);
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [scrolled]);
 
   return (
-    <header className={scrolled ? "sticky" : ""} css={[...themeStyles[themeCode], cssData]}>
-      <section>
-        <div className="logo" onClick={() => nav("/")}>
-          <img src={logo} alt="LOGO" />
+    <header css={headerCss(scrolled, themeCode)}>
+      <section css={sectionCss(scrolled)}>
+        <div css={logoCss} onClick={() => nav("/")}>
+          <LogoIcon style={{ width: "100%", height: "auto" }} />
         </div>
+
         {/* Nav */}
-        <nav>
-          {navItems.map((item) => (
-            <p key={item.path} onClick={() => nav(item.path)}>
+        <nav css={navCss}>
+          {NAV_ITEMS.map((item) => (
+            <Link key={item.path} to={item.path} css={navItemCss}>
               {item.label}
-            </p>
+            </Link>
           ))}
         </nav>
+
         {/* ICON */}
-        <div className="icon">
+        <div css={iconCss}>
           {/* FIXME: 이력서 or 기술이력서 PDF 다운로드 */}
           <a download href="/">
-            <img src={download} alt="download" />
+            <DownloadIcon style={{ width: 18, height: 18 }} />
           </a>
           <a href="https://github.com/iyeonggyu0" target="_blank" rel="noreferrer">
-            <img src={git} alt="git" />
+            <GitIcon style={{ width: 18, height: 18 }} />
           </a>
         </div>
       </section>
     </header>
   );
 };
+
 export default Header;
 
-const themeStyles = {
-  light: [
-    theme.fonts.captionXl_B,
-    {
+const headerCss = (isScrolled, themeCode) =>
+  css({
+    position: "sticky",
+    zIndex: 100,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    margin: "0px auto",
+    // top: "12px",
+    // paddingBottom: "12px",
+    top: 0,
+    padding: "12px 0",
+    minHeight: "80px",
+
+    borderBottomStyle: "solid",
+    borderBottomWidth: isScrolled ? 0 : 1,
+
+    "& svg": {
+      width: "18px",
+      height: "18px",
+      cursor: "pointer",
+      padding: "8px",
+      boxSizing: "content-box",
+    },
+
+    // 테마 분기
+    ...(themeCode === "light" && {
+      ...theme.fonts.captionXl_B, // 기존 테마 폰트 병합
       backgroundColor: "#fff",
       color: theme.colors.text,
-    },
-  ],
-};
+      borderBottomColor: theme.colors.lightLine,
+      transition: isScrolled
+        ? "background-color 0.3s, border-bottom-width 0.3s, border-bottom-color 0.3s"
+        : "background-color 0.3s 1s, border-bottom-width 0.3s 1s, border-bottom-color 0.3s 1s",
+    }),
 
-const cssData = css({
-  position: "sticky",
-  top: 0,
-  zIndex: 100,
-  display: "flex",
-  width: "100%",
-  maxWidth: "100%",
-  margin: "0 auto",
-  justifyContent: "center",
-  alignItems: "center",
-  borderBottom: `1px solid ${theme.colors.lightLine}`,
-  transition: "all 0.9s cubic-bezier(0.4, 1.1, 0.6, 1)",
+    ...(themeCode === "dark" && {
+      ...theme.fonts.captionXl_B, // 기존 테마 폰트 병합
+      backgroundColor: isScrolled ? "#fff" : theme.colors.darkBG,
+      color: isScrolled ? theme.colors.text : "#fff",
+      borderBottomColor: theme.colors.darkLine,
+      transition: isScrolled
+        ? "background-color 0.3s, border-bottom-width 0s, border-bottom-color 0s, color 0.3s"
+        : "background-color 0.3s 1s, border-bottom-width 0.3s 1s, border-bottom-color 0.3s 1s, color 0.3s 1s",
+    }),
+  });
 
-  // 스크롤
-  "&.sticky": {
-    top: "12px",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    borderRadius: "999px",
-    border: `1px solid ${theme.colors.lightLine}`,
-  },
-
-  "&.sticky > section": {
-    width: "90%",
-    height: "72px",
-  },
-
-  // 중앙
-  "& > section": {
+const sectionCss = (isScrolled) =>
+  css({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "80%",
-    height: "80px",
-    maxWidth: "1460px",
-    padding: "16px 0",
-  },
+    width: isScrolled ? "90%" : "80%",
+    padding: "12px 46px",
+    borderRadius: "999px",
+    transition: isScrolled
+      ? "box-shadow 0.3s, max-width 0.9s cubic-bezier(0.4, 1.1, 0.6, 1), border-radius 0.9s cubic-bezier(0.4, 1.1, 0.6, 1), width 0.9s cubic-bezier(0.4, 1.1, 0.6, 1)"
+      : "box-shadow 0.3s 1s, max-width 0.9s cubic-bezier(0.4, 1.1, 0.6, 1), border-radius 0.9s cubic-bezier(0.4, 1.1, 0.6, 1), width 0.9s cubic-bezier(0.4, 1.1, 0.6, 1)",
 
-  "& nav": {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "4vw",
-  },
+    // scrolled
+    maxWidth: isScrolled ? "1200px" : "1460px",
+    height: "68px",
+    boxShadow: isScrolled ? "0 8px 25px -8px rgba(0,0,0,0.15)" : "none",
+  });
 
-  "& nav p": {
-    cursor: "pointer",
-    padding: "8px 12px",
-  },
+const navCss = css({
+  display: "flex",
+  justifyContent: "space-between",
+  gap: "3vw",
+});
 
-  // 로고
-  "& .logo": [theme.flex.center, { width: "16%", minWidth: "80px", maxWidth: "180px", cursor: "pointer" }],
+const navItemCss = css({
+  cursor: "pointer",
+  padding: "8px 12px",
+});
 
-  // 아이콘
-  "& .icon": [theme.flex.center, { gap: "16px", justifyContent: "flex-end", width: "16%", minWidth: "80px", maxWidth: "180px" }],
-  "& .icon img": {
+const logoCss = css({
+  ...theme.flex.center,
+  width: "16%",
+  minWidth: "80px",
+  maxWidth: "180px",
+  cursor: "pointer",
+});
+
+const iconCss = css({
+  ...theme.flex.center,
+  gap: "16px",
+  justifyContent: "flex-end",
+  width: "16%",
+  minWidth: "80px",
+  maxWidth: "180px",
+
+  "& img": {
     width: "18px",
     height: "18px",
     cursor: "pointer",

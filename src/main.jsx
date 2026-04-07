@@ -8,6 +8,8 @@ import App from "./App.jsx";
 import { globalStyles } from "./styles/global";
 import { theme } from "./styles/theme";
 
+import { ReactLenis } from "@studio-freight/react-lenis";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -27,7 +29,15 @@ createRoot(document.getElementById("root")).render(
         <ThemeProvider theme={theme}>
           <Global styles={globalStyles} />
           <BrowserRouter>
-            <App />
+            <ReactLenis
+              root
+              options={{
+                lerp: 0.1, // 부드러움 정도
+                duration: 1.2, // 스크롤이 멈추기까지의 시간
+                smoothWheel: true,
+              }}>
+              <App />
+            </ReactLenis>
           </BrowserRouter>
         </ThemeProvider>
       </JotaiProvider>
