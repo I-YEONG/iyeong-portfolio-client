@@ -20,7 +20,7 @@ src/
 │   └── Button/
 │       ├── Button.jsx
 │       ├── Button.styles.js
-│       └── index.js     # Barrel 패턴 적용
+│   └── index.js     # Barrel 패턴 적용
 │
 ├── features/
 │   └── projects/

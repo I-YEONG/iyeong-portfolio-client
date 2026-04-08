@@ -1,10 +1,12 @@
-import Header from "@/layouts/Header/Header";
+import { HomeHero } from "@/features/portfolio/home/components";
+import { Header } from "@/layouts";
 
 const PortfolioHome = () => {
   return (
     <main>
       <Header themeCode="dark" />
-      <div css={{ height: "200vh" }}></div>
+      <HomeHero />
+      <div css={{ height: "100vh", backgroundColor: "gray" }}></div>
     </main>
   );
 };

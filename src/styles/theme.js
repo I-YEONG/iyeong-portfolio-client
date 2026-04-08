@@ -1,13 +1,13 @@
 export const fonts = {
   // 기본은 600~700
-  titleXLg: { fontSize: "64px", fontWeight: "700" },
-  titleLg: { fontSize: "56px", fontWeight: "700" },
+  titleXLg: { fontSize: "64px", fontWeight: "600" },
+  titleLg: { fontSize: "56px", fontWeight: "600" },
   titleMd: { fontSize: "36px", fontWeight: "600" },
   titleSm: { fontSize: "32px", fontWeight: "600" },
 
   //title_B는 900~800으로 굵게,
-  titleXLg_B: { fontSize: "64px", fontWeight: "900" },
-  titleLg_B: { fontSize: "56px", fontWeight: "900" },
+  titleXLg_B: { fontSize: "64px", fontWeight: "800" },
+  titleLg_B: { fontSize: "56px", fontWeight: "800" },
   titleMd_B: { fontSize: "36px", fontWeight: "800" },
   titleSm_B: { fontSize: "32px", fontWeight: "800" },
 
@@ -19,9 +19,9 @@ export const fonts = {
   textLg_B: { fontSize: "20px", fontWeight: "700" },
   textMd_B: { fontSize: "16px", fontWeight: "700" },
 
-  testXLg_L: { fontSize: "24px", fontWeight: "300" },
-  textLg_L: { fontSize: "20px", fontWeight: "300" },
-  textMd_L: { fontSize: "16px", fontWeight: "300" },
+  testXLg_L: { fontSize: "24px", fontWeight: "200" },
+  textLg_L: { fontSize: "20px", fontWeight: "200" },
+  textMd_L: { fontSize: "16px", fontWeight: "200" },
 
   // 캡션(8~14px)
   captionXl: { fontSize: "14px", fontWeight: "500" },
@@ -34,10 +34,10 @@ export const fonts = {
   captionMd_B: { fontSize: "10px", fontWeight: "700" },
   captionSm_B: { fontSize: "8px", fontWeight: "700" },
 
-  captionXl_L: { fontSize: "14px", fontWeight: "300" },
-  captionLg_L: { fontSize: "12px", fontWeight: "300" },
-  captionMd_L: { fontSize: "10px", fontWeight: "300" },
-  captionSm_L: { fontSize: "8px", fontWeight: "300" },
+  captionXl_L: { fontSize: "14px", fontWeight: "200" },
+  captionLg_L: { fontSize: "12px", fontWeight: "200" },
+  captionMd_L: { fontSize: "10px", fontWeight: "200" },
+  captionSm_L: { fontSize: "8px", fontWeight: "200" },
 };
 
 export const flex = {
@@ -47,7 +47,7 @@ export const flex = {
     justifyContent: "center",
     alignItems: "center",
   },
-  lowCenter: {
+  rowCenter: {
     display: "flex",
     justifyContent: "center",
   },
@@ -63,7 +63,7 @@ export const flex = {
     justifyContent: "space-between",
     alignItems: "center",
   },
-  lowBetween: {
+  rowBetween: {
     display: "flex",
     justifyContent: "space-between",
   },
@@ -79,7 +79,7 @@ export const flex = {
     justifyContent: "space-around",
     alignItems: "center",
   },
-  lowAround: {
+  rowAround: {
     display: "flex",
     justifyContent: "space-around",
   },
