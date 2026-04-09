@@ -34,10 +34,10 @@ export const fonts = {
   captionMd_B: { fontSize: "10px", fontWeight: "700" },
   captionSm_B: { fontSize: "8px", fontWeight: "700" },
 
-  captionXl_L: { fontSize: "14px", fontWeight: "200" },
-  captionLg_L: { fontSize: "12px", fontWeight: "200" },
-  captionMd_L: { fontSize: "10px", fontWeight: "200" },
-  captionSm_L: { fontSize: "8px", fontWeight: "200" },
+  captionXl_L: { fontSize: "14px", fontWeight: "300" },
+  captionLg_L: { fontSize: "12px", fontWeight: "300" },
+  captionMd_L: { fontSize: "10px", fontWeight: "300" },
+  captionSm_L: { fontSize: "8px", fontWeight: "300" },
 };
 
 export const flex = {

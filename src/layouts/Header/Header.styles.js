@@ -53,6 +53,10 @@ export const headerCss = (isScrolled, themeCode) =>
       padding: "8px 12px",
       ...theme.fonts.captionLg_B,
     },
+
+    [mq.UHD]: {
+      borderBottomWidth: isScrolled ? 0 : 2,
+    },
   });
 
 export const sectionCss = (isScrolled) =>
