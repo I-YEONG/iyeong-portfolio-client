@@ -48,13 +48,13 @@ export const headerCss = (isScrolled, themeCode) =>
     }),
 
     // media query
-    [mq.mobile]: {
+    [mq("mobile")]: {
       width: "100%",
       padding: "8px 12px",
       ...theme.fonts.captionLg_B,
     },
 
-    [mq.UHD]: {
+    [mq("UHD")]: {
       borderBottomWidth: isScrolled ? 0 : 2,
     },
   });
@@ -78,7 +78,7 @@ export const sectionCss = (isScrolled) =>
     boxShadow: isScrolled ? "0 8px 25px -8px rgba(0,0,0,0.15)" : "none",
 
     // media query
-    [mq.mobile]: {
+    [mq("mobile")]: {
       width: "100%",
       padding: "12px 24px",
       gap: "32px",
@@ -90,7 +90,7 @@ export const navCss = css({
   justifyContent: "space-between",
   gap: "3vw",
 
-  [mq.mobile]: {
+  [mq("mobile")]: {
     gap: "16px",
   },
 });
@@ -99,7 +99,7 @@ export const navItemCss = css({
   cursor: "pointer",
   padding: "8px 12px",
 
-  [mq.mobile]: {
+  [mq("mobile")]: {
     padding: "8px 0px",
   },
 });
@@ -111,7 +111,7 @@ export const logoCss = css({
   maxWidth: "180px",
   cursor: "pointer",
 
-  [mq.mobile]: {
+  [mq("mobile")]: {
     width: "46%",
   },
 });

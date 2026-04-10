@@ -2,13 +2,18 @@
  * 반응형 미디어 쿼리 기준이 되는 브레이크포인트(px)
  */
 // pc, tablet, mobile 명칭으로 변경
-const breakpoints = { QHD: 2560, UHD: 3840, pc: 1200, tablet: 1024, mobile: 768 };
+const breakpoints = { QHD: 2560, UHD: 3800, pc: 1200, tablet: 1024, mobile: 768 };
 
 /**
- * 브레이크포인트를 기반으로 max-width 미디어 쿼리 문자열을 생성한 객체
- * 예: mq.md -> "@media (max-width: 768px)"
+ * 브레이크포인트를 기반으로 미디어 쿼리 문자열을 생성
+ * - QHD/UHD: min-width
+ * - pc/tablet/mobile: max-width
+ * 예: mq("mobile") -> "@media (max-width: 768px)"
  */
-export const mq = Object.entries(breakpoints).reduce((acc, [label, value]) => {
-  acc[label] = `@media (max-width: ${value}px)`;
-  return acc;
-}, {});
+const minWidthLabels = new Set(["QHD", "UHD"]);
+
+export const mq = (label) => {
+  const value = breakpoints[label];
+  if (!value) return "";
+  return minWidthLabels.has(label) ? `@media (min-width: ${value}px)` : `@media (max-width: ${value}px)`;
+};

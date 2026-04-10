@@ -1,7 +1,4 @@
-// features/portfolio/home/api/getProfile.js
-// import axios from 'axios';
-
-export const getProfile = async () => {
+export const getOverview = async () => {
   // 실제 환경: const response = await axios.get('/api/v1/profile');
   // return response.data;
 

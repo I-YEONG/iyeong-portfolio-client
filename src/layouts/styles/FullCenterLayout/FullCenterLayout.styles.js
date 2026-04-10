@@ -7,6 +7,7 @@ export const fullCenterLayoutCss = () =>
     // 레이아웃
     width: "100%",
     minHeight: "10vh",
+    position: "relative",
 
     ...theme.flex.colCenter,
     gap: "min(4vh, 48px)",
@@ -29,12 +30,6 @@ export const fullCenterLayoutCss = () =>
       },
     },
 
-    [mq.UHD]: {
-      "& .title-box .sub-title": {
-        ...theme.fonts.captionXl,
-      },
-    },
-
     // 콘텐츠
     "& .content": {
       width: "100%",
@@ -45,26 +40,23 @@ export const fullCenterLayoutCss = () =>
       "& .content-center": {
         width: "90%",
         margin: "0 auto",
+        maxWidth: "1280px",
 
         borderRight: `1px solid ${theme.colors.lightLine}`,
         borderLeft: `1px solid ${theme.colors.lightLine}`,
       },
 
-      [mq.UHD]: {
+      // 반응형
+      [mq("UHD")]: {
+        "& .title-box .sub-title": {
+          ...theme.fonts.captionXl,
+        },
+
         borderTop: `2px solid ${theme.colors.lightLine}`,
         borderBottom: `2px solid ${theme.colors.lightLine}`,
 
         "& .content-center": {
-          borderRight: `2px solid ${theme.colors.lightLine}`,
-          borderLeft: `2px solid ${theme.colors.lightLine}`,
-        },
-      },
-
-      // 반응형
-      [mq.UHD]: {
-        "& .content-center": {
           maxWidth: "1680px",
-
           borderRight: `2px solid ${theme.colors.lightLine}`,
           borderLeft: `2px solid ${theme.colors.lightLine}`,
         },

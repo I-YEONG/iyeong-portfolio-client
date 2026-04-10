@@ -24,7 +24,7 @@ export const homeHeroContent = css({
     marginTop: "24px",
   },
 
-  [mq.mobile]: {
+  [mq("mobile")]: {
     gap: "26px",
 
     "& .title": {
@@ -40,7 +40,7 @@ export const homeHeroContent = css({
     },
   },
 
-  [mq.UHD]: {
+  [mq("UHD")]: {
     "& .title-sub": {
       ...theme.fonts.textMd,
     },
@@ -69,7 +69,7 @@ export const homeHero = css({
   },
 
   // 반응형
-  [mq.mobile]: {
+  [mq("mobile")]: {
     height: "calc(100vh - 85px)",
   },
 });
