@@ -69,6 +69,7 @@ export const homeOverviewCss = () =>
     "& .swiper .item .sub-title": {
       ...theme.fonts.captionXl,
       textAlign: "center",
+      color: theme.colors.black600,
     },
 
     // Responsive
@@ -76,20 +77,15 @@ export const homeOverviewCss = () =>
       // Swiper 페이지네이션
       "& .swiper .swiper-pagination": {
         display: "block",
-        bottom: "-18px",
+        bottom: "18px",
       },
 
       "& .swiper-pagination-bullet-active-main": {
         backgroundColor: theme.colors.green,
       },
 
-      "& .swiper": {
-        overflow: "visible",
-      },
-
       "& .swiperDiv": {
         flex: 1,
-        overflow: "visible",
       },
 
       "& .swiperDiv .swiper .item": {

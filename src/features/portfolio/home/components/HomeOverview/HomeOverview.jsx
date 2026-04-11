@@ -129,7 +129,7 @@ const HomeOverview = () => {
               <br />
               보러가기
             </p>
-            <div>
+            <div onClick={() => nav("/about")}>
               <Button
                 cssObj={{
                   border: `1px solid ${theme.colors.darkBG}`,

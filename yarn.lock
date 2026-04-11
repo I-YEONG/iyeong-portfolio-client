@@ -567,6 +567,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gsap/react@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@gsap/react@npm:2.1.2"
+  peerDependencies:
+    gsap: ^3.12.5
+    react: ">=17"
+  checksum: 10c0/d0285391cfd7cef8125e6ddf81a063121bdb92ddf633d76c6144d8b93e3b7f7d837ec75f1fda8fd33d7efac0ad4c1aad89647e81446e9363012ada7db9f67daf
+  languageName: node
+  linkType: hard
+
 "@humanfs/core@npm:^0.19.1":
   version: 0.19.1
   resolution: "@humanfs/core@npm:0.19.1"
@@ -1343,6 +1353,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.1"
     "@eslint/js": "npm:^9.39.4"
+    "@gsap/react": "npm:^2.1.2"
     "@studio-freight/react-lenis": "npm:^0.0.47"
     "@tanstack/react-query": "npm:^5.95.2"
     "@types/react": "npm:^19.2.14"
@@ -1358,7 +1369,6 @@ __metadata:
     lenis: "npm:^1.3.21"
     lucide-react: "npm:1.3.0"
     react: "npm:^19.2.4"
-    react-countup: "npm:^6.5.3"
     react-dom: "npm:^19.2.4"
     react-helmet-async: "npm:^3.0.0"
     react-responsive: "npm:^10.0.1"
@@ -1458,13 +1468,6 @@ __metadata:
     typescript:
       optional: true
   checksum: 10c0/0382a9ed13208f8bfc22ca2f62b364855207dffdb73dc26e150ade78c3093f1cf56172df2dd460c8caf2afa91c0ed4ec8a88c62f8f9cd1cf423d26506aa8797a
-  languageName: node
-  linkType: hard
-
-"countup.js@npm:^2.8.0":
-  version: 2.10.0
-  resolution: "countup.js@npm:2.10.0"
-  checksum: 10c0/71d6f7f9f2812b9f2fa1a40fedf6294c85607a4640b758c045243268ca121a2890bd433f42f6f775a7458acc6e7598cc050911e931a8d337787587681460223f
   languageName: node
   linkType: hard
 
@@ -2914,17 +2917,6 @@ __metadata:
   version: 2.3.1
   resolution: "punycode@npm:2.3.1"
   checksum: 10c0/14f76a8206bc3464f794fb2e3d3cc665ae416c01893ad7a02b23766eb07159144ee612ad67af5e84fa4479ccfe67678c4feb126b0485651b302babf66f04f9e9
-  languageName: node
-  linkType: hard
-
-"react-countup@npm:^6.5.3":
-  version: 6.5.3
-  resolution: "react-countup@npm:6.5.3"
-  dependencies:
-    countup.js: "npm:^2.8.0"
-  peerDependencies:
-    react: ">= 16.3.0"
-  checksum: 10c0/d18beba2a7dc5f2dce346d47c90e76570f862a7f49acb7ad73028acfd584f691c84dde3b1c8743181d158636a20a7b9201ad8c6c8b4d310ff02ca68eaccf997f
   languageName: node
   linkType: hard
 
