@@ -4,12 +4,14 @@ import { mq } from "@/styles/mq";
 
 export const homeOverviewCss = () =>
   css({
+    // Layout
     width: "100%",
     height: "360px",
     ...theme.flex.rowBetween,
     flexWrap: "nowrap",
     position: "relative",
 
+    // Swiper
     "& > .swiperDiv": {
       flex: "3 1 0%",
       minWidth: 0,
@@ -18,42 +20,76 @@ export const homeOverviewCss = () =>
       "& .swiper": {
         width: "100.1%",
         height: "100%",
+
         [mq("UHD")]: {
           width: "100.3%",
         },
       },
     },
 
+    "& .swiper .swiper-pagination": {
+      display: "none",
+    },
+
     "& .swiper .item": {
       width: "100%",
       height: "100%",
-      borderRight: `1px solid ${theme.colors.lightLine}`,
-
       ...theme.flex.colCenter,
       alignItems: "center",
       gap: "26px",
+
+      borderRight: `1px solid ${theme.colors.lightLine}`,
 
       [mq("UHD")]: {
         borderRightWidth: "2px",
       },
     },
 
+    // Fixed block
     "& > .fixed-block": {
       flex: "1 1 0%",
       minWidth: 0,
       borderLeft: `1px solid ${theme.colors.lightLine}`,
       backgroundColor: "#fff",
-
       ...theme.flex.colCenter,
+      alignItems: "center",
+      textAlign: "center",
+      gap: "26px",
 
       [mq("UHD")]: {
         borderLeftWidth: "2px",
       },
     },
 
+    // Typography
+    "& .swiper .item .title, & .fixed-block .title": {
+      ...theme.fonts.textLg_B,
+    },
+
+    "& .swiper .item .sub-title": {
+      ...theme.fonts.captionXl,
+      textAlign: "center",
+    },
+
+    // Responsive
     [mq("mobile")]: {
+      // Swiper 페이지네이션
+      "& .swiper .swiper-pagination": {
+        display: "block",
+        bottom: "-18px",
+      },
+
+      "& .swiper-pagination-bullet-active-main": {
+        backgroundColor: theme.colors.green,
+      },
+
+      "& .swiper": {
+        overflow: "visible",
+      },
+
       "& .swiperDiv": {
         flex: 1,
+        overflow: "visible",
       },
 
       "& .swiperDiv .swiper .item": {
@@ -63,14 +99,5 @@ export const homeOverviewCss = () =>
       "& .fixed-block": {
         display: "none",
       },
-    },
-
-    "& .swiper .item .title": {
-      ...theme.fonts.textLg_B,
-    },
-
-    "& .swiper .item .sub-title": {
-      ...theme.fonts.captionXl,
-      textAlign: "center",
     },
   });

@@ -20,6 +20,17 @@ export default Button;
 
 const buttonCss = (cssObj) =>
   css({
+    ...theme.flex.rowBetween,
+
+    // 공통 스타일
+    transition: "all 0.5s",
+    cursor: "pointer",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
+    padding: "16px 32px",
+    gap: "12px",
+
     ...(cssObj || {
       // 기본 스타일
       border: "1px solid #fff",
@@ -31,14 +42,4 @@ const buttonCss = (cssObj) =>
         backgroundColor: "rgba(255, 255, 255, 0.2)",
       },
     }),
-    ...theme.flex.rowBetween,
-
-    // 공통 스타일
-    transition: "all 0.5s",
-    cursor: "pointer",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
-    padding: "16px 32px",
-    gap: "12px",
   });

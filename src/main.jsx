@@ -23,24 +23,22 @@ const queryClient = new QueryClient({
 });
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <JotaiProvider>
-        <ThemeProvider theme={theme}>
-          <Global styles={globalStyles} />
-          <BrowserRouter>
-            <ReactLenis
-              root
-              options={{
-                lerp: 0.1, // 부드러움 정도
-                duration: 1.2, // 스크롤이 멈추기까지의 시간
-                smoothWheel: true,
-              }}>
-              <App />
-            </ReactLenis>
-          </BrowserRouter>
-        </ThemeProvider>
-      </JotaiProvider>
-    </QueryClientProvider>
-  </StrictMode>,
+  <QueryClientProvider client={queryClient}>
+    <JotaiProvider>
+      <ThemeProvider theme={theme}>
+        <Global styles={globalStyles} />
+        <BrowserRouter>
+          <ReactLenis
+            root
+            options={{
+              lerp: 0.1, // 부드러움 정도
+              duration: 1.2, // 스크롤이 멈추기까지의 시간
+              smoothWheel: true,
+            }}>
+            <App />
+          </ReactLenis>
+        </BrowserRouter>
+      </ThemeProvider>
+    </JotaiProvider>
+  </QueryClientProvider>,
 );
