@@ -109,6 +109,7 @@ export const colors = {
   lightLine: "#DDDFEA",
 
   green: "#16B48F",
+  deepGreen: "#448262",
   orange: "#FF9919",
   red: "#e84a69",
   blue: "#20A9EE",

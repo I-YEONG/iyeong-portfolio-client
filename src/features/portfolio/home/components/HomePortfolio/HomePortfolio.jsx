@@ -8,6 +8,10 @@ import { useGSAP } from "@gsap/react";
 import { Button, StackList } from "@/components";
 
 import UserIcon from "@/assets/portfolio/icon/user.svg?react";
+import HomePage_1 from "@/assets/portfolio/banner/homePage-1.svg?react";
+import HomePage_2 from "@/assets/portfolio/banner/homePage-2.svg?react";
+import iphone_pc from "@/assets/portfolio/banner/pc_phone.png";
+import careerhi from "@/assets/portfolio/banner/careerhi.png";
 import { theme } from "@/styles/theme";
 
 const HomePortfolio = () => {
@@ -25,6 +29,7 @@ const HomePortfolio = () => {
       // 1, 2번 배너: 내부 reveal-item(텍스트/라벨) 순차 등장 애니메이션
       bannerStages.forEach((stage) => {
         if (stage.classList.contains("banner-3")) return; // 3번 배너는 별도 처리
+        const isBanner2 = stage.classList.contains("banner-2");
 
         const items = stage.querySelectorAll(".reveal-item");
         if (!items.length) return;
@@ -34,7 +39,7 @@ const HomePortfolio = () => {
           scrollTrigger: {
             trigger: stage,
             start: "top-=30% top",
-            end: "bottom+=80% top",
+            end: isBanner2 ? "bottom+=220% top" : "bottom+=140% top",
             scrub: true,
             invalidateOnRefresh: true,
           },
@@ -61,8 +66,13 @@ const HomePortfolio = () => {
             stagger: 0.14,
             ease: "none",
           },
-          "+=1.5",
+          isBanner2 ? "+=2.1" : "+=1.5",
         );
+
+        // banner-2는 마지막 reveal 후에도 한 템포 유지
+        if (isBanner2) {
+          timeline.to({}, { duration: 3.6 });
+        }
       });
 
       // 3번 배너: 텍스트 reveal + 하단 패널 슬라이드업(200vh)
@@ -73,6 +83,9 @@ const HomePortfolio = () => {
 
         // 3번 배너 텍스트 reveal 애니메이션
         if (thirdItems.length) {
+          // 첫 노출 시 이미 보였다가 다시 사라지는 플리커 방지
+          gsap.set(thirdItems, { autoAlpha: 0, y: 120 });
+
           gsap
             .timeline({
               scrollTrigger: {
@@ -83,17 +96,13 @@ const HomePortfolio = () => {
                 invalidateOnRefresh: true,
               },
             })
-            .fromTo(
-              thirdItems,
-              { autoAlpha: 0, y: 120 },
-              {
-                autoAlpha: 1,
-                y: 0,
-                duration: 0.9,
-                stagger: 0.18,
-                ease: "none",
-              },
-            )
+            .to(thirdItems, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.9,
+              stagger: 0.18,
+              ease: "none",
+            })
             .to(
               thirdItems,
               {
@@ -114,13 +123,16 @@ const HomePortfolio = () => {
             { xPercent: -50, yPercent: 0, autoAlpha: 1 }, // 시작: sticky 하단 밖
             {
               xPercent: -50,
-              yPercent: -170, // 끝: sticky 상단 밖
+              // 끝: 패널이 충분히 올라오도록 이동량 확대
+              yPercent: -135,
               autoAlpha: 1,
               ease: "none",
               scrollTrigger: {
                 trigger: thirdStage,
-                start: "top top",
-                end: "bottom+=35% top",
+                // 등장 시점을 늦춰서 초반에는 배너 텍스트에 집중
+                start: "top+=28% top",
+                // sticky가 풀리기 전에 패널 애니메이션이 확실히 완료되도록 앞당김
+                end: "bottom-=20% top",
                 scrub: true,
                 invalidateOnRefresh: true,
               },
@@ -185,15 +197,42 @@ const HomePortfolio = () => {
         {/* 베너 2: 사용자 흐름/경험 설계 */}
         <section className="banner-stage banner-2">
           <div className="banner-sticky">
-            <div className="banner-bg" />
+            <div className="banner-bg">
+              <div className="pointBg">{/* 포인트 컬러1 */}</div>
+              <HomePage_1 className="reveal-item iconBg iconBg-1" />
+              <HomePage_2 className="reveal-item iconBg iconBg-2" />
+            </div>
             <div className="banner-content">
-              <span className="banner-label reveal-item">02 DESIGN</span>
-              <h3 className="reveal-item">사용자 흐름을 설계하고 경험을 정교화합니다</h3>
-              <p className="reveal-item">
-                핵심 시나리오를 프로토타입으로 검증하며
+              {/* 배경 레이어 (sticky) */}
+              <div className="images-box">
+                {/* 화면 */}
+                <img className="reveal-item image image-1" src={iphone_pc} />
+              </div>
+              <p className="reveal-item sub-title">UnivNotice Site</p>
+              <div className="reveal-item title">
+                생활속 불편함에서 서비스로,
                 <br />
-                클릭 한 번의 맥락까지 디테일하게 다듬습니다.
-              </p>
+                대학교 홈페이지 공지 알림 서비스
+              </div>
+              <div className="reveal-item caption">
+                중요한 공지를 놓쳐서 '나를 위한 맞춤형 알림'이 간절했던 제 경험을 담아
+                <br />
+                필요한 공지를 절대 놓치지 않게 돕는, 앱 기반 푸시 알림 서비스를 개발했습니다.
+              </div>
+              <div className="reveal-item icon-box">
+                {/* ICON */}
+                <div className="user-box">
+                  <UserIcon />1
+                </div>
+                <StackList list={["PLAYSTORE", "REACT", "SEQUELIZE", "VERCEL", "RAILWAY"]} />
+              </div>
+              <div className="reveal-item button-box">
+                <Button
+                  buttonType="right"
+                  cssObj={{ border: `2px solid ${theme.colors.blue}`, borderRadius: "8px", ...theme.fonts.textMd_B, color: theme.colors.blue }}>
+                  프로젝트 보기
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -202,16 +241,38 @@ const HomePortfolio = () => {
           <div className="banner-sticky">
             <div className="banner-bg" />
             <div className="banner-content">
-              <span className="banner-label reveal-item">03 BUILD</span>
-              <h3 className="reveal-item">아이디어를 실제 제품으로 구현합니다</h3>
-              <p className="reveal-item">
-                디자인 시스템과 코드 품질을 함께 관리해
+              <p className="reveal-item sub-title">career-hi Site</p>
+              <div className="reveal-item title">
+                막연한 준비에서
                 <br />
-                운영 가능한 결과물로 완성합니다.
-              </p>
+                데이터 기반의
+                <br />
+                전략적인 성장을 위하여
+              </div>
+              <div className="reveal-item caption">
+                나의 포트폴리오와 역량이 상위 몇 퍼센트인지 확인하며
+                <br />
+                '진짜 필요한 기술'에 집중할 수 있도록 돕습니다.
+              </div>
+              <div className="reveal-item icon-box">
+                {/* ICON */}
+                <div className="user-box">
+                  <UserIcon />5
+                </div>
+                <StackList list={["REACT", "SPRINGBOOT", "VERCEL", "AWS"]} />
+              </div>
+              <div className="reveal-item button-box">
+                <Button
+                  buttonType="right"
+                  cssObj={{ border: `2px solid ${theme.colors.deepGreen}`, borderRadius: "8px", ...theme.fonts.textMd_B, color: theme.colors.deepGreen }}>
+                  프로젝트 보기
+                </Button>
+              </div>
             </div>
             {/* 하단에서 상단으로 올라오는 성과 박스 (slide-up-panel) */}
-            <div className="slide-up-panel"></div>
+            <div className="slide-up-panel">
+              <img src={careerhi} />
+            </div>
           </div>
         </section>
       </section>
