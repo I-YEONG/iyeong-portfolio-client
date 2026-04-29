@@ -13,10 +13,13 @@ import HomePage_2 from "@/assets/portfolio/banner/homePage-2.svg?react";
 import iphone_pc from "@/assets/portfolio/banner/pc_phone.png";
 import careerhi from "@/assets/portfolio/banner/careerhi.png";
 import { theme } from "@/styles/theme";
+import { useMedia } from "@/hooks/useMedia";
 
 const HomePortfolio = () => {
   // 전체 섹션을 참조 (GSAP 스코프용)
   const sectionRef = useRef(null);
+
+  const { isPc } = useMedia();
 
   // GSAP 애니메이션 등록 (컴포넌트 마운트 시)
   useGSAP(
@@ -120,12 +123,12 @@ const HomePortfolio = () => {
         if (slidePanel) {
           gsap.fromTo(
             slidePanel,
-            { xPercent: -50, yPercent: 0, autoAlpha: 1 }, // 시작: sticky 하단 밖
+            { xPercent: -50, yPercent: 0, autoAlpha: 0.1 }, // 시작: sticky 하단 밖
             {
               xPercent: -50,
               // 끝: 패널이 충분히 올라오도록 이동량 확대
               yPercent: -135,
-              autoAlpha: 1,
+              autoAlpha: isPc ? 1 : 0.8,
               ease: "none",
               scrollTrigger: {
                 trigger: thirdStage,
@@ -174,7 +177,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 여러 프로젝트를 단순히 복사한 것이 아니라, 성능 / 클린코드를 목표로 리팩토링하는 과정을 통해
-                <br />
+                <br className="notMobile" />
                 구식의 코드를 최신 구성으로 바꾸고 성능을 높일 수 있도록 노력한 프로젝트
               </div>
               <div className="reveal-item icon-box">
@@ -199,15 +202,17 @@ const HomePortfolio = () => {
           <div className="banner-sticky">
             <div className="banner-bg">
               <div className="pointBg">{/* 포인트 컬러1 */}</div>
-              <HomePage_1 className="reveal-item iconBg iconBg-1" />
+              {isPc && <HomePage_1 className="reveal-item iconBg iconBg-1" />}
               <HomePage_2 className="reveal-item iconBg iconBg-2" />
             </div>
             <div className="banner-content">
               {/* 배경 레이어 (sticky) */}
-              <div className="images-box">
-                {/* 화면 */}
-                <img className="reveal-item image image-1" src={iphone_pc} />
-              </div>
+              {isPc && (
+                <div className="images-box">
+                  {/* 화면 */}
+                  <img className="reveal-item image image-1" src={iphone_pc} />
+                </div>
+              )}
               <p className="reveal-item sub-title">UnivNotice Site</p>
               <div className="reveal-item title">
                 생활속 불편함에서 서비스로,
@@ -216,7 +221,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 중요한 공지를 놓쳐서 '나를 위한 맞춤형 알림'이 간절했던 제 경험을 담아
-                <br />
+                <br className="notMobile" />
                 필요한 공지를 절대 놓치지 않게 돕는, 앱 기반 푸시 알림 서비스를 개발했습니다.
               </div>
               <div className="reveal-item icon-box">
@@ -251,7 +256,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 나의 포트폴리오와 역량이 상위 몇 퍼센트인지 확인하며
-                <br />
+                <br className="notMobile" />
                 '진짜 필요한 기술'에 집중할 수 있도록 돕습니다.
               </div>
               <div className="reveal-item icon-box">

@@ -1,5 +1,6 @@
 // Emotion의 css 함수와 테마, 미디어쿼리 유틸 import
 import { css } from "@emotion/react";
+import { mq } from "@/styles/mq";
 import { theme } from "@/styles/theme";
 
 /**
@@ -38,6 +39,10 @@ const titleLayoutCss = () =>
     "& .title": {
       ...theme.fonts.titleMd_B,
       lineHeight: "1.4",
+
+      [mq("mobile")]: {
+        ...theme.fonts.titleSm_B,
+      },
     },
 
     // 서브 타이틀 스타일

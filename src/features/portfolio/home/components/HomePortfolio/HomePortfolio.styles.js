@@ -51,6 +51,14 @@ const driftIconRight = keyframes`
   }
 `;
 
+const subTitleBase = {
+  ...theme.fonts.textLg_B,
+
+  [mq("mobile")]: {
+    ...theme.fonts.captionXl_B,
+  },
+};
+
 // 공통 레이아웃: 전체 섹션과 배너 스택의 기본 구조
 const layoutCss = () => ({
   display: "flex",
@@ -90,6 +98,59 @@ const layoutCss = () => ({
   },
 });
 
+const bannerContentBase = {
+  ...theme.flex.colCenter,
+  gap: "24px",
+  width: "100%",
+  maxWidth: "1280px",
+
+  "& .notMobile": {
+    [mq("mobile")]: {
+      display: "none",
+    },
+  },
+
+  "& .title": {
+    ...theme.fonts.titleMd_B,
+    lineHeight: 1.3,
+
+    [mq("mobile")]: {
+      ...theme.fonts.textLg_B,
+    },
+  },
+
+  "& .caption": {
+    ...theme.fonts.captionXl,
+
+    [mq("mobile")]: {
+      ...theme.fonts.captionLg,
+    },
+  },
+
+  "& .icon-box": {
+    gap: "32px",
+    display: "flex",
+    color: theme.colors.gray400,
+    fill: theme.colors.gray400,
+
+    "& .user-box": {
+      display: "flex",
+      ...theme.fonts.captionXl_B,
+      alignItems: "center",
+      gap: "6px",
+    },
+  },
+
+  "& .button-box": {
+    width: "20%",
+    marginTop: "3vh",
+
+    [mq("mobile")]: {
+      width: "70%",
+    },
+  },
+};
+
 // 배너 1 전용 스타일
 export const banner1Css = () => ({
   ".banner-1": {
@@ -97,45 +158,25 @@ export const banner1Css = () => ({
   },
 
   "& .banner-1 .banner-content": {
-    ...theme.flex.colCenter,
-    gap: "24px",
+    ...bannerContentBase,
     textAlign: "center",
-    width: "100%",
-    maxWidth: "1280px",
-
-    "& .title": {
-      ...theme.fonts.titleMd_B,
-      lineHeight: 1.3,
-    },
 
     "& .sub-title": {
-      ...theme.fonts.textLg_B,
+      ...subTitleBase,
       color: theme.colors.orange,
     },
+  },
 
-    "& .caption": {
-      ...theme.fonts.captionXl,
-    },
+  "& .banner-1 .icon-box": {
+    ...theme.flex.rowCenter,
+  },
 
-    "& .icon-box": {
-      gap: "32px",
-      ...theme.flex.rowCenter,
-      color: theme.colors.gray400,
-      fill: theme.colors.gray400,
+  "& .banner-1 .icon-box .user-box": {
+    ...theme.flex.rowCenter,
+  },
 
-      "& .user-box": {
-        ...theme.flex.rowCenter,
-        ...theme.fonts.captionXl_B,
-        alignItems: "center",
-        gap: "6px",
-      },
-    },
-
-    "& .button-box": {
-      width: "20%",
-      margin: "0 auto",
-      marginTop: "3vh",
-    },
+  "& .banner-1 .button-box": {
+    margin: "0 auto",
   },
 
   ".banner-1 .banner-bg": {
@@ -150,47 +191,19 @@ export const banner2Css = () => ({
   },
 
   "& .banner-2 .banner-content": {
-    ...theme.flex.colCenter,
+    ...bannerContentBase,
     justifyContent: "flex-start",
-    width: "100%",
-    maxWidth: "1280px",
-    gap: "24px",
     textAlign: "start",
     marginBottom: "10vh",
 
-    "& .title": {
-      ...theme.fonts.titleMd_B,
-      lineHeight: 1.3,
-    },
-
     "& .sub-title": {
-      ...theme.fonts.textLg_B,
+      ...subTitleBase,
       color: theme.colors.blue,
     },
+  },
 
-    "& .caption": {
-      ...theme.fonts.captionXl,
-    },
-
-    "& .icon-box": {
-      gap: "32px",
-      width: "fit",
-      display: "flex",
-      color: theme.colors.gray400,
-      fill: theme.colors.gray400,
-
-      "& .user-box": {
-        display: "flex",
-        ...theme.fonts.captionXl_B,
-        alignItems: "center",
-        gap: "6px",
-      },
-    },
-
-    "& .button-box": {
-      width: "20%",
-      marginTop: "3vh",
-    },
+  "& .banner-2 .icon-box": {
+    width: "fit",
   },
 
   ".banner-2 .banner-bg": {
@@ -264,48 +277,21 @@ export const banner3Css = () => ({
   },
 
   "& .banner-3 .banner-content": {
-    ...theme.flex.colCenter,
+    ...bannerContentBase,
     alignItems: "flex-end",
-    width: "100%",
-    maxWidth: "1280px",
-    gap: "24px",
     textAlign: "end",
     marginBottom: "10vh",
-
-    "& .title": {
-      ...theme.fonts.titleMd_B,
-      lineHeight: 1.3,
-    },
+    zIndex: 2, // 배경보다 위에 있도록 z-index 조정
 
     "& .sub-title": {
-      ...theme.fonts.textLg_B,
+      ...subTitleBase,
       color: theme.colors.deepGreen,
     },
+  },
 
-    "& .caption": {
-      ...theme.fonts.captionXl,
-    },
-
-    "& .icon-box": {
-      gap: "32px",
-      width: "fit",
-      display: "flex",
-      color: theme.colors.gray400,
-      fill: theme.colors.gray400,
-      justifyContent: "flex-end",
-
-      "& .user-box": {
-        display: "flex",
-        ...theme.fonts.captionXl_B,
-        alignItems: "center",
-        gap: "6px",
-      },
-    },
-
-    "& .button-box": {
-      width: "20%",
-      marginTop: "3vh",
-    },
+  "& .banner-3 .icon-box": {
+    width: "fit",
+    justifyContent: "flex-end",
   },
 
   // 200vh 패널: GSAP에서 yPercent로 아래->위 이동시키는 대상
@@ -320,7 +306,7 @@ export const banner3Css = () => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    opacity: 1,
+    opacity: "1",
   },
 });
 

@@ -1,4 +1,4 @@
-import { HomeHero, HomeOverview, HomePortfolio } from "@/features/portfolio/home/components";
+import { HomeHero, HomeOverview, HomePortfolio, HomeStack, HomeVision } from "@/features/portfolio/home/components";
 import { Header } from "@/layouts";
 
 const PortfolioHome = () => {
@@ -9,6 +9,8 @@ const PortfolioHome = () => {
         <HomeHero />
         <HomeOverview />
         <HomePortfolio />
+        <HomeStack />
+        <HomeVision />
         <div css={{ height: "100vh", backgroundColor: "gray" }}></div>
       </div>
     </main>

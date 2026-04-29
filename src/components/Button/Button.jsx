@@ -2,6 +2,7 @@ import RightArrow from "@/assets/portfolio/icon/right.svg?react";
 
 import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
+import { mq } from "@/styles/mq";
 
 const Button = ({ cssObj, buttonType = "none", children }) => {
   return (
@@ -42,4 +43,9 @@ const buttonCss = (cssObj) =>
         backgroundColor: "rgba(255, 255, 255, 0.2)",
       },
     }),
+
+    [mq("mobile")]: {
+      padding: "12px 24px",
+      ...theme.fonts.captionXl_B,
+    },
   });

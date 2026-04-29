@@ -10,7 +10,7 @@ const breakpoints = { QHD: 2560, UHD: 3800, pc: 1200, tablet: 1024, mobile: 768 
  * - pc/tablet/mobile: max-width
  * 예: mq("mobile") -> "@media (max-width: 768px)"
  */
-const minWidthLabels = new Set(["QHD", "UHD"]);
+const minWidthLabels = new Set(["QHD", "UHD", "pc"]);
 
 export const mq = (label) => {
   const value = breakpoints[label];
