@@ -56,6 +56,7 @@ export const homeHeroCss = css({
   position: "relative",
   overflow: "hidden",
   backgroundColor: "rgba(0,0,0,0.5)",
+  borderTop: `1px solid ${theme.colors.darkLine}`,
 
   "& video": {
     position: "absolute",

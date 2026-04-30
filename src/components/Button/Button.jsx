@@ -1,4 +1,9 @@
-import RightArrow from "@/assets/portfolio/icon/right.svg?react";
+import RightArrowIcon from "@/assets/portfolio/icon/right.svg?react";
+import DownloadIcon from "@/assets/portfolio/icon/download.svg?react";
+import GitIcon from "@/assets/portfolio/skill/github.svg?react";
+import EmailIcon from "@/assets/portfolio/icon/email.svg?react";
+import PdfIcon from "@/assets/portfolio/icon/pdf.svg?react";
+import GotoIcon from "@/assets/portfolio/icon/goto.svg?react";
 
 import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
@@ -8,12 +13,12 @@ const Button = ({ cssObj, buttonType = "none", children }) => {
   return (
     <div css={buttonCss(cssObj)}>
       <span>{children}</span>
-      {buttonType === "right" && <RightArrow />}
-      {buttonType === "link" && <RightArrow />}
-      {buttonType === "goto" && <RightArrow />}
-      {buttonType === "email" && <RightArrow />}
-      {buttonType === "pdf" && <RightArrow />}
-      {buttonType === "git" && <RightArrow />}
+      {buttonType === "right" && <RightArrowIcon className="icon" />}
+      {buttonType === "goto" && <GotoIcon className="icon" />}
+      {buttonType === "email" && <EmailIcon className="icon" />}
+      {buttonType === "pdf" && <PdfIcon className="icon" />}
+      {buttonType === "git" && <GitIcon />}
+      {buttonType === "download" && <DownloadIcon className="icon" />}
     </div>
   );
 };

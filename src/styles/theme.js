@@ -15,9 +15,9 @@ export const fonts = {
   titleMd_B: { fontSize: "36px", fontWeight: "800" },
   titleSm_B: { fontSize: "32px", fontWeight: "800" },
 
-  testXLg: { fontSize: "24px", fontWeight: "500" },
-  textLg: { fontSize: "20px", fontWeight: "500" },
-  textMd: { fontSize: "16px", fontWeight: "500" },
+  testXLg: { fontSize: "24px", fontWeight: "400" },
+  textLg: { fontSize: "20px", fontWeight: "400" },
+  textMd: { fontSize: "16px", fontWeight: "400" },
 
   testXLg_B: { fontSize: "24px", fontWeight: "700" },
   textLg_B: { fontSize: "20px", fontWeight: "700" },
@@ -28,10 +28,10 @@ export const fonts = {
   textMd_L: { fontSize: "16px", fontWeight: "200" },
 
   // 캡션(8~14px)
-  captionXl: { fontSize: "14px", fontWeight: "500" },
-  captionLg: { fontSize: "12px", fontWeight: "500" },
-  captionMd: { fontSize: "10px", fontWeight: "500" },
-  captionSm: { fontSize: "8px", fontWeight: "500" },
+  captionXl: { fontSize: "14px", fontWeight: "400" },
+  captionLg: { fontSize: "12px", fontWeight: "400" },
+  captionMd: { fontSize: "10px", fontWeight: "400" },
+  captionSm: { fontSize: "8px", fontWeight: "400" },
 
   captionXl_B: { fontSize: "14px", fontWeight: "700" },
   captionLg_B: { fontSize: "12px", fontWeight: "700" },

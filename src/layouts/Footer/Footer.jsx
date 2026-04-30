@@ -7,6 +7,8 @@ import { useMedia } from "@/hooks/useMedia";
 
 const Footer = () => {
   const { isTablet } = useMedia();
+  const email = import.meta.env.VITE_EMAIL;
+  const githubUrl = import.meta.env.VITE_GITHUB_URL;
 
   return (
     <footer css={footerCss}>
@@ -17,7 +19,7 @@ const Footer = () => {
             <span>다음 결과를 만들어 가고 싶습니다 :&gt;</span>
           </p>
           {isTablet && <div className="line"></div>}
-          {isTablet && <a href="mailto:iyeongyu0@syuin.ac.kr">메일 발송하기</a>}
+          {isTablet && <a href={`mailto:${email}`}>메일 발송하기</a>}
         </div>
       </section>
       <section className="footer">
@@ -28,7 +30,7 @@ const Footer = () => {
             <a download href="/">
               <DownloadIcon style={{ width: 18, height: 18 }} />
             </a>
-            <a href="https://github.com/iyeonggyu0" target="_blank" rel="noreferrer">
+            <a href={githubUrl} target="_blank" rel="noreferrer">
               <GitIcon style={{ width: 18, height: 18 }} />
             </a>
           </div>
@@ -44,7 +46,7 @@ const Footer = () => {
             {/* 세번째 줄 */}
             <p>
               <span className="gray">Email</span>
-              <span>iyeongyu0@syuin.ac.kr</span>
+              <span>{email}</span>
             </p>
           </div>
           {/* 오른쪽 */}
