@@ -30,7 +30,7 @@ import RAILWAY from "@/assets/portfolio/skill/railway.svg?react";
 import VERCEL from "@/assets/portfolio/skill/vercel.svg?react";
 import AWS from "@/assets/portfolio/skill/aws.svg?react";
 import { useMedia } from "@/hooks/useMedia";
-import { HomeStackCss } from "./HomeStack.styles";
+import { homeStackCss } from "./HomeStack.styles";
 
 const ICONS = {
   REACT,
@@ -54,7 +54,7 @@ const list = Object.keys(ICONS);
 const HomeStack = () => {
   const { isPc } = useMedia();
   return (
-    <section css={HomeStackCss}>
+    <section css={homeStackCss}>
       <>
         <Swiper
           slidesPerView={isPc ? 10 : 3}

@@ -1,5 +1,5 @@
 import { HomeHero, HomeOverview, HomePortfolio, HomeStack, HomeVision } from "@/features/portfolio/home/components";
-import { Header } from "@/layouts";
+import { Footer, Header } from "@/layouts";
 
 const PortfolioHome = () => {
   return (
@@ -11,7 +11,7 @@ const PortfolioHome = () => {
         <HomePortfolio />
         <HomeStack />
         <HomeVision />
-        <div css={{ height: "100vh", backgroundColor: "gray" }}></div>
+        <Footer />
       </div>
     </main>
   );

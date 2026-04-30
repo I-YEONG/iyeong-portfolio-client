@@ -24,10 +24,8 @@ export const homeVisionCss = () =>
       display: "flex",
       flexWrap: "nowrap",
 
-      [mq("pc")]: {
-        borderTop: `1px solid ${theme.colors.lightLine}`,
-        borderBottom: `1px solid ${theme.colors.lightLine}`,
-      },
+      borderTop: `1px solid ${theme.colors.lightLine}`,
+      borderBottom: `1px solid ${theme.colors.lightLine}`,
 
       // 반응형
       [mq("mobile")]: {
@@ -37,7 +35,7 @@ export const homeVisionCss = () =>
       "& > div": {
         ...theme.flex.colBetween,
         flex: 1,
-        padding: "24px 32px",
+        padding: "32px 38px",
         gap: "8px 0",
 
         [mq("mobile")]: {
