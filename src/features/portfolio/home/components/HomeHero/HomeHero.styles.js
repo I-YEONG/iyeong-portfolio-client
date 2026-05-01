@@ -50,7 +50,7 @@ export const homeHeroContentCss = css({
 export const homeHeroCss = css({
   ...theme.flex.center,
   width: "100%",
-  height: "calc(100vh - 93px)",
+  height: "calc(100vh - 90px)",
   color: "#fff",
   textAlign: "center",
   position: "relative",

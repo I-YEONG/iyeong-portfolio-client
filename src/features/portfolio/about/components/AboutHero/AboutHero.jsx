@@ -39,7 +39,7 @@ const AboutHero = () => {
               <span>구직 중</span>
             </div>
           </div>
-          <a download href="/" className="button">
+          <a download href="/" className="button cursor-reactive is-green is-big">
             <Button
               cssObj={{
                 border: `1px solid ${theme.colors.lightLine}`,

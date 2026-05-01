@@ -11,7 +11,7 @@ const HomeHero = () => {
   const nav = useNavigate();
 
   return (
-    <section css={homeHeroCss}>
+    <section css={homeHeroCss} className="cursor-reactive is-white">
       <div css={homeHeroContentCss}>
         {/* 타이틀 */}
         <p className="title">

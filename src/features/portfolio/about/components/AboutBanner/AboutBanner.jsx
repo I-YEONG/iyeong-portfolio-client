@@ -11,7 +11,7 @@ const AboutBanner = () => {
   const githubUrl = import.meta.env.VITE_GITHUB_URL;
 
   return (
-    <section css={aboutBannerCss}>
+    <section css={aboutBannerCss} className="cursor-reactive is-white">
       <div className="content">
         <div className="title-box">
           <div className="title">
@@ -30,7 +30,7 @@ const AboutBanner = () => {
           </div>
         </div>
         <div className="button-box">
-          <a href={`mailto:${email}`}>
+          <a href={`mailto:${email}`} className="cursor-reactive is-green">
             <Button buttonType="email" cssObj={{ border: `1px solid #fff`, borderRadius: "0px", color: theme.colors.darkBG, backgroundColor: "white" }}>
               Email
             </Button>

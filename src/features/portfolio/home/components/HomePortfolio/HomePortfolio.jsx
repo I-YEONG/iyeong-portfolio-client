@@ -187,7 +187,7 @@ const HomePortfolio = () => {
                 </div>
                 <StackList list={["REACT", "SPRINGBOOT", "VERCEL", "AWS", "DOCKER"]} />
               </div>
-              <div className="reveal-item button-box">
+              <div className="reveal-item button-box cursor-reactive is-green">
                 <Button
                   buttonType="right"
                   cssObj={{ border: `2px solid ${theme.colors.green}`, borderRadius: "8px", ...theme.fonts.textMd_B, color: theme.colors.green }}>
@@ -231,7 +231,7 @@ const HomePortfolio = () => {
                 </div>
                 <StackList list={["PLAYSTORE", "REACT", "SEQUELIZE", "VERCEL", "RAILWAY"]} />
               </div>
-              <div className="reveal-item button-box">
+              <div className="reveal-item button-box cursor-reactive is-blue">
                 <Button
                   buttonType="right"
                   cssObj={{ border: `2px solid ${theme.colors.blue}`, borderRadius: "8px", ...theme.fonts.textMd_B, color: theme.colors.blue }}>
@@ -266,7 +266,7 @@ const HomePortfolio = () => {
                 </div>
                 <StackList list={["REACT", "SPRINGBOOT", "VERCEL", "AWS"]} />
               </div>
-              <div className="reveal-item button-box">
+              <div className="reveal-item button-box cursor-reactive is-green">
                 <Button
                   buttonType="right"
                   cssObj={{ border: `2px solid ${theme.colors.deepGreen}`, borderRadius: "8px", ...theme.fonts.textMd_B, color: theme.colors.deepGreen }}>

@@ -61,6 +61,13 @@ export const homeOverviewCss = () =>
       },
     },
 
+    // Loading
+    "& > .loading-wrap": {
+      width: "100%",
+      height: "100%",
+      ...theme.flex.center,
+    },
+
     // Typography
     "& .swiper .item .title, & .fixed-block .title": {
       ...theme.fonts.textLg_B,
