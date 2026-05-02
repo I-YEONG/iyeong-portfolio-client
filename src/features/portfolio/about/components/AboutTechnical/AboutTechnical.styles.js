@@ -10,6 +10,10 @@ export const aboutTechnicalCss = css({
     ...theme.flex.center,
   },
 
+  "& .swiper-navigation-icon": {
+    display: "none",
+  },
+
   // Layout
   width: "100%",
   height: "360px",
@@ -18,7 +22,7 @@ export const aboutTechnicalCss = css({
   position: "relative",
 
   // Swiper
-  "& > .swiperDiv": {
+  "& > .swiper-div": {
     flex: "0 0 75%",
     width: "75%",
     minWidth: 0,
@@ -32,6 +36,11 @@ export const aboutTechnicalCss = css({
         width: "100.3%",
       },
     },
+
+    [mq("mobile")]: {
+      flex: 1,
+      width: "100%",
+    },
   },
 
   "& .swiper .swiper-pagination": {
@@ -39,30 +48,43 @@ export const aboutTechnicalCss = css({
   },
 
   "& .swiper .item": {
+    ...theme.flex.rowBetween,
     width: "100%",
     height: "100%",
-    ...theme.flex.colCenter,
     alignItems: "center",
-    gap: "26px",
     [mq("UHD")]: {
       borderRightWidth: "2px",
+    },
+
+    // 기술 스택 박스
+    "& .technical-box": {
+      width: "33.3333%",
     },
   },
 
   // Fixed block
   "& > .fixed-block": {
+    ...theme.flex.colCenter,
+    ...theme.fonts.captionXl,
     flex: "0 0 25%",
     width: "25%",
     minWidth: 0,
     borderRight: `1px solid ${theme.colors.lightLine}`,
     backgroundColor: "#fff",
-    ...theme.flex.colCenter,
     alignItems: "center",
     textAlign: "center",
     gap: "26px",
 
+    [mq("mobile")]: {
+      display: "none",
+    },
+
     [mq("UHD")]: {
       borderLeftWidth: "2px",
+    },
+
+    "& .title": {
+      ...theme.fonts.textLg_B,
     },
   },
 });

@@ -46,7 +46,7 @@ const HomeOverview = () => {
         )}
         {!isOverviewLoading && (
           <>
-            <div className="swiperDiv">
+            <div className="swiper-div">
               <Swiper
                 slidesPerView={isPc ? 3 : 1}
                 autoplay={{

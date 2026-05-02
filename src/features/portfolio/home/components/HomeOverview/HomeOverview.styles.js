@@ -12,7 +12,7 @@ export const homeOverviewCss = () =>
     position: "relative",
 
     // Swiper
-    "& > .swiperDiv": {
+    "& > .swiper-div": {
       flex: "3 1 0%",
       minWidth: 0,
       overflow: "hidden",
@@ -91,11 +91,11 @@ export const homeOverviewCss = () =>
         backgroundColor: theme.colors.green,
       },
 
-      "& .swiperDiv": {
+      "& .swiper-div": {
         flex: 1,
       },
 
-      "& .swiperDiv .swiper .item": {
+      "& .swiper-div .swiper .item": {
         borderRight: "none",
       },
 

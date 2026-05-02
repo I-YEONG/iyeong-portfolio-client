@@ -83,7 +83,7 @@ export const footerCss = css({
     // 푸터 콘텐츠 두번째 줄
     "& .row-2": {
       alignItems: "end",
-      "& > div:first-child": {
+      "& > div:first-of-type": {
         width: "20%",
         "& > p": {
           ...theme.flex.rowBetween,
@@ -97,7 +97,7 @@ export const footerCss = css({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "space-between",
-        "& > div:first-child": {
+        "& > div:first-of-type": {
           width: "100%",
           marginBottom: "8px",
         },

@@ -177,7 +177,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 여러 프로젝트를 단순히 복사한 것이 아니라, 성능 / 클린코드를 목표로 리팩토링하는 과정을 통해
-                <br className="notMobile" />
+                <br className="not-mobile" />
                 구식의 코드를 최신 구성으로 바꾸고 성능을 높일 수 있도록 노력한 프로젝트
               </div>
               <div className="reveal-item icon-box">
@@ -201,9 +201,9 @@ const HomePortfolio = () => {
         <section className="banner-stage banner-2">
           <div className="banner-sticky">
             <div className="banner-bg">
-              <div className="pointBg">{/* 포인트 컬러1 */}</div>
-              {isPc && <HomePage_1 className="reveal-item iconBg iconBg-1" />}
-              <HomePage_2 className="reveal-item iconBg iconBg-2" />
+              <div className="point-bg">{/* 포인트 컬러1 */}</div>
+              {isPc && <HomePage_1 className="reveal-item icon-bg icon-bg-1" />}
+              <HomePage_2 className="reveal-item icon-bg icon-bg-2" />
             </div>
             <div className="banner-content">
               {/* 배경 레이어 (sticky) */}
@@ -221,7 +221,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 중요한 공지를 놓쳐서 '나를 위한 맞춤형 알림'이 간절했던 제 경험을 담아
-                <br className="notMobile" />
+                <br className="not-mobile" />
                 필요한 공지를 절대 놓치지 않게 돕는, 앱 기반 푸시 알림 서비스를 개발했습니다.
               </div>
               <div className="reveal-item icon-box">
@@ -256,7 +256,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 나의 포트폴리오와 역량이 상위 몇 퍼센트인지 확인하며
-                <br className="notMobile" />
+                <br className="not-mobile" />
                 '진짜 필요한 기술'에 집중할 수 있도록 돕습니다.
               </div>
               <div className="reveal-item icon-box">

@@ -1,72 +1,176 @@
 import { FullCenterLayout } from "@/layouts";
 import { aboutTechnicalCss } from "./AboutTechnical.styles";
-import { useMedia } from "@/hooks/useMedia";
-import { useNavigate } from "react-router-dom";
-import { useOverviewQuery } from "../../hooks/useOverview";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
 
 import { Button, Loading } from "@/components";
 
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { theme } from "@/styles/theme";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useStackQuery } from "../../hooks/useStack";
+import { stackMockupData } from "@/mockup/stackMockupData";
+import TechnicalBox from "../TechnicalBox/TechnicalBox";
+import { useMedia } from "@/hooks/useMedia";
 
 const AboutTechnical = () => {
   const { isPc } = useMedia();
-  const nav = useNavigate();
+  const swiperRef = useRef(null);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   // const { data: overview, isLoading: isOverviewLoading, isError: isOverviewError } = useOverviewQuery();
 
+  // const { data: stack, isLoading: isStackLoading, isError: isStackError } = useStackQuery();
+
+  //FIXME: 개발 후 api로 수정
+  const stack = stackMockupData;
+
+  const stackList = useMemo(() => {
+    if (!Array.isArray(stack)) return [];
+
+    const front = stack.filter((item) => item.category === "front");
+    const back = stack.filter((item) => item.category === "back");
+    const ops = stack.filter((item) => item.category === "ops");
+    const etc = stack.filter((item) => item.category === "etc");
+
+    return { front: front, back: back, ops: ops, etc: etc };
+  }, [stack]);
+
+  console.log(stackList);
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper || !prevRef.current || !nextRef.current) return;
+    swiper.params.navigation.prevEl = prevRef.current;
+    swiper.params.navigation.nextEl = nextRef.current;
+    swiper.navigation.init();
+    swiper.navigation.update();
+  }, []);
+
+  const [pageIndex, setPageIndex] = useState(0);
+
   return (
     <section>
-      <FullCenterLayout title="Technical Proficiency" subTitle={<p>중학교 2학년부터 지금까지, 공부해온 스택의 숙련도를 한눈에 확인 해 보세요.</p>}>
-        {/* {isOverviewLoading && (
+      <FullCenterLayout
+        title="Technical Proficiency"
+        subTitle={
+          <p>
+            중학교 2학년부터 지금까지, 공부해온 스택의 숙련도를
+            <br />
+            한눈에 확인 해 보세요.
+          </p>
+        }>
+        <section css={aboutTechnicalCss}>
+          {pageIndex === 0 && (
+            <div className="fixed-block">
+              <p className="title">Main Stack</p>
+              <p>
+                현재 중점적으로 사용하거나
+                <br />
+                공부중인 기술과 라이브러리입니다.
+              </p>
+              <div ref={nextRef} className="swiper-button-next">
+                <Button
+                  cssObj={{
+                    border: `1px solid ${theme.colors.darkBG}`,
+                    padding: "6px 16px",
+                    "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
+                  }}>
+                  nextPage
+                </Button>
+              </div>
+            </div>
+          )}
+          {pageIndex === 1 && (
+            <div className="fixed-block">
+              <p className="title">Secondary Stack</p>
+              <p>
+                접해보고 공부해본
+                <br />
+                기술과 라이브러리입니다.
+              </p>
+              <div ref={prevRef} className="swiper-button-prev">
+                <Button
+                  cssObj={{
+                    border: `1px solid ${theme.colors.darkBG}`,
+                    padding: "6px 16px",
+                    "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
+                  }}>
+                  prevPage
+                </Button>
+              </div>
+            </div>
+          )}
+          <div className="swiper-div">
+            {/* {isStackLoading && (
           <div className="loading-wrap">
             <Loading />
           </div>
         )}
-        {!isOverviewLoading && ( */}
-        <section css={aboutTechnicalCss}>
-          <div className="fixed-block">
-            <p className="title">
-              자세한 내용
-              <br />
-              보러가기
-            </p>
-            <div onClick={() => nav("/about")}>
-              <Button
-                cssObj={{
-                  border: `1px solid ${theme.colors.darkBG}`,
-                  borderRadius: "4px",
-                  padding: "6px 16px",
-                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
-                }}>
-                Explore More
-              </Button>
-            </div>
-          </div>
-          <div className="swiperDiv">
+        {!isStackLoading && ( */}
             <Swiper
               slidesPerView={1}
-              autoplay={{
-                delay: 2800,
-                disableOnInteraction: false,
-              }}
+              autoplay={
+                !isPc && {
+                  delay: 2800,
+                  disableOnInteraction: false,
+                }
+              }
+              loop={true}
               pagination={{
                 dynamicBullets: true,
               }}
-              loop={true}
-              modules={[Pagination]}
+              modules={[Pagination, Navigation, Autoplay]}
+              navigation={true}
+              onSlideChange={(swiper) => {
+                setPageIndex(swiper.realIndex);
+              }}
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
               className="swiper">
-              {/* 수상 */}
-              <SwiperSlide className="item">1</SwiperSlide>
-              <SwiperSlide className="item">2</SwiperSlide>
+              {isPc && (
+                <SwiperSlide className="item">
+                  <div className="technical-box">
+                    <TechnicalBox title="FrontEnd" data={stackList.front} color={theme.colors.green} />
+                  </div>
+                  <div className="technical-box">
+                    <TechnicalBox title="BackEnd" data={stackList.back} color={theme.colors.orange} />
+                  </div>
+                  <div className="technical-box">
+                    <TechnicalBox title="Operations" data={stackList.ops} color={theme.colors.blue} />
+                  </div>
+                </SwiperSlide>
+              )}
+
+              {/* 모바일 */}
+              {!isPc && (
+                <SwiperSlide className="item">
+                  <TechnicalBox title="FrontEnd" data={stackList.front} color={theme.colors.green} />
+                </SwiperSlide>
+              )}
+              {!isPc && (
+                <SwiperSlide className="item">
+                  <TechnicalBox title="BackEnd" data={stackList.back} color={theme.colors.orange} />
+                </SwiperSlide>
+              )}
+              {!isPc && (
+                <SwiperSlide className="item">
+                  <TechnicalBox title="Operations" data={stackList.ops} color={theme.colors.blue} />
+                </SwiperSlide>
+              )}
+
+              {/* 기타 */}
+              <SwiperSlide className="item">
+                <TechnicalBox title="etc" data={stackList.etc} color={theme.colors.black600} />
+              </SwiperSlide>
             </Swiper>
+            {/* } */}
           </div>
         </section>
-        {/* )} */}
       </FullCenterLayout>
     </section>
   );
