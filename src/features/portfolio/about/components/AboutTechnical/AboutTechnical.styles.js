@@ -29,11 +29,11 @@ export const aboutTechnicalCss = css({
     overflow: "hidden",
 
     "& .swiper": {
-      width: "100.1%",
+      width: "100.5%",
       height: "100%",
 
       [mq("UHD")]: {
-        width: "100.3%",
+        width: "100.8%",
       },
     },
 
@@ -59,6 +59,7 @@ export const aboutTechnicalCss = css({
     // 기술 스택 박스
     "& .technical-box": {
       width: "33.3333%",
+      height: "100%",
     },
   },
 

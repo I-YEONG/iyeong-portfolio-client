@@ -10,6 +10,10 @@ export const aboutBannerCss = css({
   position: "relative",
   overflow: "hidden",
 
+  [mq("mobile")]: {
+    height: "400px",
+  },
+
   "--grid-x": "0px",
   "--grid-y": "0px",
 
@@ -30,6 +34,15 @@ export const aboutBannerCss = css({
       "& .title": {
         ...theme.fonts.titleSm_B,
         lineHeight: "1.4",
+        [mq("mobile")]: {
+          ...theme.fonts.testXLg_B,
+        },
+      },
+
+      "& .sub-title": {
+        [mq("mobile")]: {
+          ...theme.fonts.captionXl,
+        },
       },
     },
 

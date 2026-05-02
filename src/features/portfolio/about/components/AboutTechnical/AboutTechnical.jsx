@@ -41,15 +41,6 @@ const AboutTechnical = () => {
 
   console.log(stackList);
 
-  useEffect(() => {
-    const swiper = swiperRef.current;
-    if (!swiper || !prevRef.current || !nextRef.current) return;
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
-    swiper.navigation.init();
-    swiper.navigation.update();
-  }, []);
-
   const [pageIndex, setPageIndex] = useState(0);
 
   return (
@@ -64,46 +55,44 @@ const AboutTechnical = () => {
           </p>
         }>
         <section css={aboutTechnicalCss}>
-          {pageIndex === 0 && (
-            <div className="fixed-block">
-              <p className="title">Main Stack</p>
-              <p>
-                현재 중점적으로 사용하거나
-                <br />
-                공부중인 기술과 라이브러리입니다.
-              </p>
-              <div ref={nextRef} className="swiper-button-next">
-                <Button
-                  cssObj={{
-                    border: `1px solid ${theme.colors.darkBG}`,
-                    padding: "6px 16px",
-                    "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
-                  }}>
-                  nextPage
-                </Button>
-              </div>
+          <div className="fixed-block">
+            <p className="title">{pageIndex === 0 ? "Main Stack" : "Secondary Stack"}</p>
+            <p>
+              {pageIndex === 0 ? (
+                <>
+                  현재 중점적으로 사용하거나
+                  <br />
+                  공부중인 기술과 라이브러리입니다.
+                </>
+              ) : (
+                <>
+                  접해보고 공부해본
+                  <br />
+                  기술과 라이브러리입니다.
+                </>
+              )}
+            </p>
+            <div ref={nextRef} className="swiper-button-next" style={{ display: pageIndex === 0 ? "block" : "none" }}>
+              <Button
+                cssObj={{
+                  border: `1px solid ${theme.colors.darkBG}`,
+                  padding: "6px 16px",
+                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
+                }}>
+                nextPage
+              </Button>
             </div>
-          )}
-          {pageIndex === 1 && (
-            <div className="fixed-block">
-              <p className="title">Secondary Stack</p>
-              <p>
-                접해보고 공부해본
-                <br />
-                기술과 라이브러리입니다.
-              </p>
-              <div ref={prevRef} className="swiper-button-prev">
-                <Button
-                  cssObj={{
-                    border: `1px solid ${theme.colors.darkBG}`,
-                    padding: "6px 16px",
-                    "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
-                  }}>
-                  prevPage
-                </Button>
-              </div>
+            <div ref={prevRef} className="swiper-button-prev" style={{ display: pageIndex === 1 ? "block" : "none" }}>
+              <Button
+                cssObj={{
+                  border: `1px solid ${theme.colors.darkBG}`,
+                  padding: "6px 16px",
+                  "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
+                }}>
+                prevPage
+              </Button>
             </div>
-          )}
+          </div>
           <div className="swiper-div">
             {/* {isStackLoading && (
           <div className="loading-wrap">
@@ -127,6 +116,10 @@ const AboutTechnical = () => {
               navigation={true}
               onSlideChange={(swiper) => {
                 setPageIndex(swiper.realIndex);
+              }}
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
               }}
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
