@@ -1,4 +1,4 @@
-import { AboutBanner, AboutHero, AboutTechnical } from "@/features/portfolio/about/components";
+import { AboutBanner, AboutCertifications, AboutExp, AboutHero, AboutTechnical } from "@/features/portfolio/about/components";
 import { Footer, Header } from "@/layouts";
 
 const PortfolioAbout = () => {
@@ -9,7 +9,8 @@ const PortfolioAbout = () => {
         <AboutHero />
         <AboutBanner />
         <AboutTechnical />
-        <section css={{ backgroundColor: "#e8e8e8", minHeight: "100vh" }}></section>
+        <AboutCertifications />
+        <AboutExp />
         <Footer />
       </div>
     </main>
