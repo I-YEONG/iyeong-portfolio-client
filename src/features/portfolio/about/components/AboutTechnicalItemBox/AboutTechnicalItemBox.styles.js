@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 import { mq } from "@/styles/mq";
 
-export const technicalBoxCss = (color, pagination) =>
+export const aboutTechnicalItemBoxCss = (color, pagination) =>
   css({
     ...theme.flex.colBetween,
     width: "100%",
@@ -32,15 +32,23 @@ export const technicalBoxCss = (color, pagination) =>
       flexWrap: "wrap",
       alignContent: "flex-start",
 
+      overflowY: "auto",
+
       "& > div": {
         ...theme.flex.colCenter,
-        width: `${pagination ? "33.333%" : "100%"}`,
-        flex: `0 0 ${pagination ? "33.333%" : "100%"}`,
-        borderRight: `${pagination ? `1px solid ${theme.colors.lightLine}` : "none"}`,
+        width: pagination ? "33.333%" : "100%",
+        flex: pagination ? "0 0 33.333%" : "0 0 100%",
+        borderRight: pagination ? `1px solid ${theme.colors.lightLine}` : "none",
         borderBottom: `1px solid ${theme.colors.lightLine}`,
         height: "calc(100% / 5)",
         padding: "0 22px",
         position: "relative",
+
+        [mq("mobile")]: {
+          width: "100%",
+          flex: "0 0 100%",
+          borderRight: "none",
+        },
       },
 
       "& .item-title-box": {

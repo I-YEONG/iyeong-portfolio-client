@@ -23,6 +23,11 @@ export const aboutHeroCss = css({
       inset: 0,
       backgroundSize: "92px 92px",
       backgroundImage: `repeating-linear-gradient(0deg, rgb(221, 223, 234) 0 1px, transparent 1px 92px), repeating-linear-gradient(90deg, rgb(221, 223, 234) 0 1px, transparent 1px 92px)`,
+
+      [mq("mobile")]: {
+        backgroundSize: "36px 36px",
+        backgroundImage: `repeating-linear-gradient(0deg, rgb(221, 223, 234) 0 1px, transparent 1px 36px), repeating-linear-gradient(90deg, rgb(221, 223, 234) 0 1px, transparent 1px 36px)`,
+      },
     },
 
     "&::after": {
@@ -68,6 +73,10 @@ export const aboutHeroCss = css({
       ...theme.flex.colCenter,
       gap: "26px",
 
+      [mq("mobile")]: {
+        width: "70%",
+      },
+
       "& .title": {
         ...theme.fonts.testXLg_B,
       },
@@ -97,6 +106,10 @@ export const aboutHeroCss = css({
         width: "50%",
         maxWidth: "240px",
         marginTop: "12px",
+        [mq("mobile")]: {
+          maxWidth: "100%",
+          width: "100%",
+        },
       },
     },
   },

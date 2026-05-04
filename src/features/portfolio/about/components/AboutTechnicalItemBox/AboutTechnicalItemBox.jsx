@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { technicalBoxCss, aboutTechnicalItemCss } from "./TechnicalBox.styles";
+import { aboutTechnicalItemBoxCss, aboutTechnicalItemCss } from "./AboutTechnicalItemBox.styles";
 import { theme } from "@/styles/theme";
 
-const TechnicalBox = ({ data, title, color }) => {
-  console.log(data);
-
+const AboutTechnicalItemBox = ({ data = [], title, color }) => {
   const [pagination, setPagination] = useState(data.length > 5 ? true : false);
-  console.log(pagination);
+
+  console.log(data.length, pagination);
 
   return (
-    <div css={technicalBoxCss(color, pagination)}>
+    <div css={aboutTechnicalItemBoxCss(color, pagination)}>
       {/* titleBox */}
       <div className="title-box">
         <p className="title">{title}</p>
@@ -40,4 +39,4 @@ const TechnicalBox = ({ data, title, color }) => {
     </div>
   );
 };
-export default TechnicalBox;
+export default AboutTechnicalItemBox;

@@ -9,11 +9,11 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { theme } from "@/styles/theme";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useStackQuery } from "../../hooks/useStack";
-import { stackMockupData } from "@/mockup/stackMockupData";
-import TechnicalBox from "../TechnicalBox/TechnicalBox";
+import { useMemo, useRef, useState } from "react";
+// import { stackMockupData } from "@/mockup/stackMockupData";
+import AboutTechnicalItemBox from "../AboutTechnicalItemBox/AboutTechnicalItemBox";
 import { useMedia } from "@/hooks/useMedia";
+import { useStackQuery } from "../../hooks/useStack";
 
 const AboutTechnical = () => {
   const { isPc } = useMedia();
@@ -21,15 +21,15 @@ const AboutTechnical = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  // const { data: overview, isLoading: isOverviewLoading, isError: isOverviewError } = useOverviewQuery();
+  const { data: stack, isLoading: isStackLoading, isError: isStackError } = useStackQuery();
 
-  // const { data: stack, isLoading: isStackLoading, isError: isStackError } = useStackQuery();
-
-  //FIXME: 개발 후 api로 수정
-  const stack = stackMockupData;
+  // 개발 후 api로 수정
+  // const stack = stackMockupData;
 
   const stackList = useMemo(() => {
-    if (!Array.isArray(stack)) return [];
+    if (!Array.isArray(stack)) {
+      return { front: [], back: [], ops: [], etc: [] };
+    }
 
     const front = stack.filter((item) => item.category === "front");
     const back = stack.filter((item) => item.category === "back");
@@ -38,8 +38,6 @@ const AboutTechnical = () => {
 
     return { front: front, back: back, ops: ops, etc: etc };
   }, [stack]);
-
-  console.log(stackList);
 
   const [pageIndex, setPageIndex] = useState(0);
 
@@ -95,11 +93,11 @@ const AboutTechnical = () => {
           </div>
           <div className="swiper-div">
             {/* {isStackLoading && (
-          <div className="loading-wrap">
-            <Loading />
-          </div>
-        )}
-        {!isStackLoading && ( */}
+              <div className="loading-wrap">
+                <Loading />
+              </div>
+            )}
+            {!isStackLoading && ( */}
             <Swiper
               slidesPerView={1}
               autoplay={
@@ -128,13 +126,13 @@ const AboutTechnical = () => {
               {isPc && (
                 <SwiperSlide className="item">
                   <div className="technical-box">
-                    <TechnicalBox title="FrontEnd" data={stackList.front} color={theme.colors.green} />
+                    <AboutTechnicalItemBox title="FrontEnd" data={stackList.front} color={theme.colors.green} />
                   </div>
                   <div className="technical-box">
-                    <TechnicalBox title="BackEnd" data={stackList.back} color={theme.colors.orange} />
+                    <AboutTechnicalItemBox title="BackEnd" data={stackList.back} color={theme.colors.orange} />
                   </div>
                   <div className="technical-box">
-                    <TechnicalBox title="Operations" data={stackList.ops} color={theme.colors.blue} />
+                    <AboutTechnicalItemBox title="Operations" data={stackList.ops} color={theme.colors.blue} />
                   </div>
                 </SwiperSlide>
               )}
@@ -142,26 +140,26 @@ const AboutTechnical = () => {
               {/* 모바일 */}
               {!isPc && (
                 <SwiperSlide className="item">
-                  <TechnicalBox title="FrontEnd" data={stackList.front} color={theme.colors.green} />
+                  <AboutTechnicalItemBox title="FrontEnd" data={stackList.front} color={theme.colors.green} />
                 </SwiperSlide>
               )}
               {!isPc && (
                 <SwiperSlide className="item">
-                  <TechnicalBox title="BackEnd" data={stackList.back} color={theme.colors.orange} />
+                  <AboutTechnicalItemBox title="BackEnd" data={stackList.back} color={theme.colors.orange} />
                 </SwiperSlide>
               )}
               {!isPc && (
                 <SwiperSlide className="item">
-                  <TechnicalBox title="Operations" data={stackList.ops} color={theme.colors.blue} />
+                  <AboutTechnicalItemBox title="Operations" data={stackList.ops} color={theme.colors.blue} />
                 </SwiperSlide>
               )}
 
               {/* 기타 */}
               <SwiperSlide className="item">
-                <TechnicalBox title="etc" data={stackList.etc} color={theme.colors.black600} />
+                <AboutTechnicalItemBox title="etc" data={stackList.etc} color={theme.colors.black600} />
               </SwiperSlide>
             </Swiper>
-            {/* } */}
+            {/* )} */}
           </div>
         </section>
       </FullCenterLayout>
