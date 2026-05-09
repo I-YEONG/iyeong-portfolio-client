@@ -1,18 +1,19 @@
-// src/styles/mq.js
+/**
+ * 반응형 미디어 쿼리 기준이 되는 브레이크포인트(px)
+ */
+// pc, tablet, mobile 명칭으로 변경
+const breakpoints = { QHD: 2560, UHD: 3800, pc: 1200, tablet: 1024, mobile: 768 };
 
-const breakpoints = {
-  sm: 599, // mobile
-  md: 1023, // tablet
-  lg: 1439, // laptop
-  xl: 2559, // below 32-inch class displays
+/**
+ * 브레이크포인트를 기반으로 미디어 쿼리 문자열을 생성
+ * - QHD/UHD: min-width
+ * - pc/tablet/mobile: max-width
+ * 예: mq("mobile") -> "@media (max-width: 768px)"
+ */
+const minWidthLabels = new Set(["QHD", "UHD"]);
+
+export const mq = (label) => {
+  const value = breakpoints[label];
+  if (!value) return "";
+  return minWidthLabels.has(label) ? `@media (min-width: ${value}px)` : `@media (max-width: ${value}px)`;
 };
-
-// 사용법: ${mq.md` color: red; `}
-export const mq = Object.entries(breakpoints).reduce((acc, [label, value]) => {
-  acc[label] = (segments, ...args) => {
-    // 템플릿 리터럴 처리를 위해 스타일 내용을 합칩니다.
-    const style = segments.reduce((res, str, i) => res + str + (args[i] || ""), "");
-    return `@media (max-width: ${value}px) { ${style} }`;
-  };
-  return acc;
-}, {});

@@ -1,4 +1,4 @@
-# 📂 포트폴리오 아키텍처 (최종안)
+# 📂 포트폴리오 아키텍처
 
 백엔드 연동을 고려하여 정적 데이터 폴더를 제외하고, 
 렌더링 최적화를 위해 전역 상태 관리는 Atom 패턴을 채택했습니다.
@@ -20,7 +20,7 @@ src/
 │   └── Button/
 │       ├── Button.jsx
 │       ├── Button.styles.js
-│       └── index.js     # Barrel 패턴 적용
+│   └── index.js     # Barrel 패턴 적용
 │
 ├── features/
 │   └── projects/

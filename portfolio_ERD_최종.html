@@ -1,0 +1,4125 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portfolio 통합 설계 문서</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f5f4f0;
+        color: #1a1a1a;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .page {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 24px 20px;
+      }
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .subtitle {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 22px;
+      }
+
+      /* NAV */
+      .nav {
+        display: flex;
+        gap: 4px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+        border-bottom: 2px solid #e0ddd6;
+        padding-bottom: 8px;
+      }
+      .nb {
+        padding: 7px 18px;
+        border-radius: 8px 8px 0 0;
+        font-size: 13px;
+        font-weight: 500;
+        border: none;
+        background: #e8e6e0;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .nb.active {
+        background: #222;
+        color: #fff;
+      }
+      .nb:hover:not(.active) {
+        background: #d0cec8;
+      }
+      .section {
+        display: none;
+      }
+      .section.active {
+        display: block;
+      }
+
+      /* CARDS */
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #e0ddd6;
+        padding: 20px 24px;
+        margin-bottom: 16px;
+      }
+      .card-title {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      /* COMPARE TABLE */
+      .ctable {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12.5px;
+      }
+      .ctable th {
+        background: #f0efec;
+        padding: 8px 12px;
+        text-align: left;
+        font-weight: 600;
+        color: #444;
+        border-bottom: 2px solid #e0ddd6;
+      }
+      .ctable td {
+        padding: 7px 12px;
+        border-bottom: 1px solid #f0efec;
+        vertical-align: top;
+      }
+      .ctable tr:last-child td {
+        border-bottom: none;
+      }
+      .ctable tr:hover td {
+        background: #fafaf8;
+      }
+      .tag-bad {
+        display: inline-block;
+        background: #fee2e2;
+        color: #991b1b;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .tag-ok {
+        display: inline-block;
+        background: #d1fae5;
+        color: #065f46;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .tag-warn {
+        display: inline-block;
+        background: #fef3c7;
+        color: #92400e;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      .tag-info {
+        display: inline-block;
+        background: #dbeafe;
+        color: #1e40af;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      /* CODE BLOCKS */
+      pre {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 14px 16px;
+        border-radius: 8px;
+        font-size: 12px;
+        overflow-x: auto;
+        line-height: 1.6;
+        margin: 10px 0;
+      }
+      code {
+        background: #f0efec;
+        color: #c0392b;
+        padding: 1px 5px;
+        border-radius: 3px;
+        font-size: 12px;
+      }
+
+      /* SECTIONS */
+      .section-title {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e0ddd6;
+      }
+      .sub-title {
+        font-size: 14px;
+        font-weight: 700;
+        margin: 18px 0 8px;
+        color: #333;
+      }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 99px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-right: 4px;
+        margin-bottom: 2px;
+      }
+
+      /* FLOW DIAGRAM */
+      .flow {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin: 12px 0;
+      }
+      .flow-box {
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .flow-arrow {
+        font-size: 16px;
+        color: #aaa;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 700px) {
+        .grid2,
+        .grid3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* DIFF */
+      .diff-block {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #e0ddd6;
+        margin: 10px 0;
+      }
+      .diff-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .diff-label {
+        padding: 6px 14px;
+        font-size: 11px;
+        font-weight: 700;
+        text-align: center;
+      }
+      .diff-label.before {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .diff-label.after {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .diff-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .diff-col {
+        padding: 12px 14px;
+        font-size: 12px;
+        background: #fff;
+        font-family: monospace;
+        line-height: 1.7;
+        border-right: 1px solid #eee;
+      }
+      .diff-col.after {
+        border-right: none;
+        background: #f8fffe;
+      }
+      .line-del {
+        color: #dc2626;
+        background: #fff1f0;
+      }
+      .line-add {
+        color: #059669;
+        background: #f0fff8;
+      }
+
+      /* OPTIMIZATIONS */
+      .opt-item {
+        border-left: 4px solid;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+        border-radius: 0 8px 8px 0;
+        background: #fff;
+      }
+      .perf-bar {
+        height: 10px;
+        border-radius: 99px;
+        margin: 4px 0;
+      }
+
+      .alert {
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 12.5px;
+        margin: 10px 0;
+        border: 1px solid;
+      }
+      .alert-warn {
+        background: #fffbeb;
+        border-color: #fcd34d;
+        color: #78350f;
+      }
+      .alert-ok {
+        background: #ecfdf5;
+        border-color: #6ee7b7;
+        color: #065f46;
+      }
+      .alert-err {
+        background: #fef2f2;
+        border-color: #fca5a5;
+        color: #991b1b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>🔧 Portfolio 통합 설계 문서</h1>
+      <p class="subtitle">개별 로그인 제거 · RDB 호환성 검증 · 최적화 내역 · 통합 공통 인증 설계</p>
+
+      <div class="nav">
+        <button class="nb active" onclick="sw(this, 'auth')">🔐 공통 인증 통합</button>
+        <button class="nb" onclick="sw(this, 'rdb')">🗄 RDB 호환성 검증</button>
+        <button class="nb" onclick="sw(this, 'opt')">⚡ 최적화 내역</button>
+        <button class="nb" onclick="sw(this, 'api')">📡 통합 후 API 명세</button>
+        <button class="nb" onclick="sw(this, 'erd')">📊 ERD</button>
+        <button class="nb" onclick="sw(this, 'tables')">🗂 테이블 설명</button>
+      </div>
+
+      <!-- ═══════════════ 공통 인증 통합 ═══════════════ -->
+      <div id="sec-auth" class="section active">
+        <div class="section-title">🔐 공통 인증 통합 — 개별 로그인 제거</div>
+
+        <div class="card">
+          <div class="card-title">기존 인증 방식 비교</div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>프로젝트</th>
+                <th>인증 방식</th>
+                <th>JWT Subject</th>
+                <th>필터 방식</th>
+                <th>문제점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>ganzithon</b></td>
+                <td>Spring Security + JWT</td>
+                <td><code>userId</code> (Long)</td>
+                <td>OncePerRequestFilter, UserRepository 직접 조회</td>
+                <td><span class="tag-bad">문제</span> DB 조회가 매 요청마다 발생. User 엔티티가 common에 없음</td>
+              </tr>
+              <tr>
+                <td><b>career-hi</b></td>
+                <td>Spring Security + JWT (Access+Refresh)</td>
+                <td><code>email</code></td>
+                <td>GenericFilterBean, Authentication 객체 생성</td>
+                <td><span class="tag-warn">주의</span> Refresh Token을 DB에 저장하지만 통합 시 테이블 충돌 가능</td>
+              </tr>
+              <tr>
+                <td><b>ESC</b></td>
+                <td>Passport.js + Session</td>
+                <td>세션 기반</td>
+                <td>express-session + passport serialize</td>
+                <td><span class="tag-bad">문제</span> JWT 기반 통합과 완전히 다른 방식. 포트폴리오로 Spring Boot 전환 시 제거 대상</td>
+              </tr>
+              <tr>
+                <td><b>univNotice</b></td>
+                <td>JWT (httpOnly Cookie)</td>
+                <td><code>userId</code></td>
+                <td>자체 jwtUtil, Cookie 기반</td>
+                <td><span class="tag-bad">문제</span> 학번/폰번호 기반 회원가입 — 공통 USERS 테이블과 구조 충돌. 별도 처리 필요</td>
+              </tr>
+              <tr>
+                <td><b>domo</b></td>
+                <td>없음 (인증 불필요)</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="tag-ok">OK</span> 인증 없이 동작하는 API만 존재. 그대로 유지</td>
+              </tr>
+              <tr>
+                <td><b>portfolio</b></td>
+                <td>없음 (Supabase 독립)</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="tag-ok">OK</span> Supabase에서 직접 값 관리. 인증 불필요</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-title">통합 인증 설계 — common 모듈</div>
+
+          <div class="sub-title">목표 구조</div>
+          <div class="flow">
+            <div class="flow-box" style="background: #7f77dd22; color: #7f77dd; border: 1.5px solid #7f77dd88">Client</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box" style="background: #1d9e7522; color: #1d9e75; border: 1.5px solid #1d9e7588">POST /api/auth/login</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box" style="background: #185fa522; color: #185fa5; border: 1.5px solid #185fa588">common AuthService</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box" style="background: #ba751722; color: #ba7517; border: 1.5px solid #ba751788">USERS 테이블 (공통)</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-box" style="background: #d85a3022; color: #d85a30; border: 1.5px solid #d85a3088">JWT (email subject)</div>
+          </div>
+
+          <div class="sub-title">통합 후 USERS 테이블 (확장)</div>
+          <pre>
+CREATE TABLE users (
+  id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+  username      VARCHAR(50)  NOT NULL UNIQUE,   -- 로그인 ID
+  email         VARCHAR(100) NOT NULL UNIQUE,   -- career-hi 호환
+  password_hash VARCHAR(255) NOT NULL,
+  role          VARCHAR(20)  NOT NULL DEFAULT 'USER',  -- ADMIN/USER
+  -- univNotice용 추가 컬럼 (null 허용 — 서비스 미사용 시 null)
+  school_id     INT NULL,
+  department_id INT NULL,
+  phone_hash    VARCHAR(255) NULL,              -- univNotice 로그인용
+  student_id_hash VARCHAR(255) NULL,
+  marketing_agreed BOOLEAN DEFAULT FALSE,       -- career-hi 호환
+  created_at    DATETIME NOT NULL DEFAULT NOW(),
+  updated_at    DATETIME NOT NULL DEFAULT NOW() ON UPDATE NOW()
+);</pre
+          >
+
+          <div class="alert alert-warn">
+            ⚠️ univNotice는 학번+폰번호 기반 인증 구조로, 표준 username/password 로그인과 완전히 다릅니다. 포트폴리오 데모 환경에서는 <b>공통 계정 1개</b>만
+            사용하므로, univNotice 전용 인증 로직을 common에 통합할 필요 없이 해당 필드만 USERS에 추가해두면 됩니다.
+          </div>
+
+          <div class="sub-title">삭제할 인증 코드 목록</div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>모듈</th>
+                <th>삭제 대상 클래스/파일</th>
+                <th>이유</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ganzithon</td>
+                <td>
+                  <code>auth/controller/AuthController.java</code><br /><code>auth/service/AuthService.java</code><br /><code>auth/jwt/JwtUtil.java</code
+                  ><br /><code>auth/entity/User.java</code>
+                </td>
+                <td>common의 AuthService/JwtProvider로 대체</td>
+              </tr>
+              <tr>
+                <td>career-hi</td>
+                <td>
+                  <code>domain/auth/controller/AuthController.java</code><br /><code>domain/auth/service/AuthService.java</code><br /><code
+                    >global/jwt/JwtTokenProvider.java</code
+                  ><br /><code>domain/user/entity/User.java</code>
+                </td>
+                <td>common의 AuthService/JwtProvider로 대체. VerificationCode 테이블은 common으로 이동</td>
+              </tr>
+              <tr>
+                <td>ESC</td>
+                <td><code>server/routes/user.js</code> 중 login/logout/signup 라우트<br /><code>server/passport/</code> 전체</td>
+                <td>Spring Boot 전환 시 common JWT로 대체. Node 유지 시 별도 미들웨어 교체</td>
+              </tr>
+              <tr>
+                <td>univNotice</td>
+                <td><code>routes/signup.js</code> 전체<br /><code>routes/user.js</code> 중 /login, /logout, /certification<br /><code>passport/</code> 전체</td>
+                <td>공통 계정 사용으로 회원가입 불필요. 인증은 common JWT 토큰 검증으로 교체</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="sub-title">통합 common AuthController (설계안)</div>
+          <pre>
+// common/auth/AuthController.java
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    // POST /api/auth/login  — 모든 모듈 공통
+    @PostMapping("/login")
+    public ResponseEntity&lt;TokenResponse&gt; login(@RequestBody LoginRequest req) { ... }
+
+    // POST /api/auth/logout
+    @PostMapping("/logout")
+    public ResponseEntity&lt;Void&gt; logout(@RequestHeader("Authorization") String token) { ... }
+
+    // GET /api/auth/me
+    @GetMapping("/me")
+    public ResponseEntity&lt;UserResponse&gt; me(@AuthenticationPrincipal UserDetails user) { ... }
+}
+
+// career-hi SMS 인증은 common으로 이동
+// POST /api/auth/verify/send
+// POST /api/auth/verify/check</pre
+          >
+
+          <div class="sub-title">통합 JWT 필터 설계 (common)</div>
+          <div class="diff-block">
+            <div class="diff-header">
+              <div class="diff-label before">❌ ganzithon: 매 요청마다 DB 조회</div>
+              <div class="diff-label after">✅ 통합: DB 조회 없이 토큰에서 추출</div>
+            </div>
+            <div class="diff-body">
+              <div class="diff-col">
+                <span class="line-del">// UserRepository를 Filter에서 직접 주입</span>
+                <span class="line-del">@RequiredArgsConstructor</span>
+                <span class="line-del">public class JwtAuthFilter {</span>
+                <span class="line-del"> private final UserRepository userRepo;</span>
+                <span class="line-del"> // 매 요청마다 SELECT * FROM users</span>
+                <span class="line-del"> // WHERE id = ? 실행됨</span>
+                <span class="line-del"> User user = userRepo.findById(id)</span>
+                <span class="line-del"> .orElse(null);</span>
+                <span class="line-del">}</span>
+              </div>
+              <div class="diff-col after">
+                <span class="line-add">// 토큰 클레임에서 직접 추출</span>
+                <span class="line-add">public class JwtAuthFilter {</span>
+                <span class="line-add"> // DB 조회 없음</span>
+                <span class="line-add"> Claims claims = jwtProvider</span>
+                <span class="line-add"> .parseClaims(token);</span>
+                <span class="line-add"> // email + role만 꺼내서</span>
+                <span class="line-add"> // Authentication 생성</span>
+                <span class="line-add"> Long userId = claims.get("userId");</span>
+                <span class="line-add"> String email = claims.getSubject();</span>
+                <span class="line-add">}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub-title">통합 JWT Payload 설계</div>
+          <pre>{
+  "sub": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4c393f293e0c29342d213c2029622f2321">[email&#160;protected]</a>",   // email (career-hi 호환)
+  "userId": 1,                  // Long (ganzithon 호환)
+  "username": "admin",          // 표시용
+  "role": "USER",               // 권한
+  "iat": 1720000000,
+  "exp": 1720003600             // 1시간
+}</pre>
+        </div>
+      </div>
+      <!-- /sec-auth -->
+
+      <!-- ═══════════════ RDB 호환성 ═══════════════ -->
+      <div id="sec-rdb" class="section">
+        <div class="section-title">🗄 RDB 호환성 검증 — 통합 시 문제점 & 해결</div>
+
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #185fa5"></div>
+            ganzithon — 문제 없음 ✅
+          </div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>테이블</th>
+                <th>충돌 여부</th>
+                <th>조치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>users</td>
+                <td><span class="tag-warn">통합 필요</span></td>
+                <td>ganzithon User 엔티티(userId, name, email, nickname, password) → common USERS로 교체. nickname 컬럼 추가 필요</td>
+              </tr>
+              <tr>
+                <td>report</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>user_id FK만 common USERS로 바꾸면 그대로 동작</td>
+              </tr>
+              <tr>
+                <td>report_analysis</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>report_id FK 유지, 변경 없음</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-warn">
+            ⚠️ ganzithon의 JwtUtil.generateToken()은 subject에 <b>userId(숫자 문자열)</b>를 사용합니다. 통합 JWT는 subject를 email로 변경하므로,
+            ReportController의 <code>@AuthenticationPrincipal User user</code> → <code>@AuthenticationPrincipal UserDetails userDetails</code>로 수정이
+            필요합니다.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #888780"></div>
+            career-hi — 부분 수정 필요 ⚠️
+          </div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>테이블</th>
+                <th>충돌 여부</th>
+                <th>조치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>users</td>
+                <td><span class="tag-warn">통합 필요</span></td>
+                <td>career-hi User(id, name, email, password, phoneNumber, marketingAgreed) → common USERS에 phone/marketing 컬럼 추가로 흡수 가능</td>
+              </tr>
+              <tr>
+                <td>profiles</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>user_id FK → common USERS 참조로 교체. 나머지 컬럼 변경 없음</td>
+              </tr>
+              <tr>
+                <td>profile_sub_roles<br />profile_certificates<br />profile_coding_languages<br />profile_language_tests<br />profile_awards</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>@ElementCollection 테이블들. profile_id FK만 유지하면 그대로 동작</td>
+              </tr>
+              <tr>
+                <td>reports (career-hi)</td>
+                <td><span class="tag-bad">이름 충돌</span></td>
+                <td>
+                  ganzithon도 <code>report</code> 테이블 사용. 테이블명을 <code>gz_report</code> / <code>ch_report</code>로 분리 필요. @Table(name="ch_report")
+                  어노테이션 추가
+                </td>
+              </tr>
+              <tr>
+                <td>market_job_postings</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>user_id 없는 독립 테이블. 변경 없음</td>
+              </tr>
+              <tr>
+                <td>market_skill_stats</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>독립 통계 테이블. 변경 없음</td>
+              </tr>
+              <tr>
+                <td>verification_codes</td>
+                <td><span class="tag-warn">이동</span></td>
+                <td>common 모듈로 이동. 인증번호 발송 API도 common/auth에 통합</td>
+              </tr>
+              <tr>
+                <td>refresh_tokens</td>
+                <td><span class="tag-warn">이동</span></td>
+                <td>common 모듈로 이동. email 기준으로 관리</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #ba7517"></div>
+            univNotice — 구조 충돌 있음, 별도 처리 필요 ⚠️
+          </div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>테이블</th>
+                <th>충돌 여부</th>
+                <th>조치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>user (univNotice)</td>
+                <td><span class="tag-bad">충돌</span></td>
+                <td>
+                  univNotice는 student_id/phone 기반. 포트폴리오 데모에서는 공통 계정 사용 → univNotice의 user_id는 common USERS.id를 참조하도록 변경.
+                  student_id/phone_hash 컬럼을 common USERS에 nullable로 추가
+                </td>
+              </tr>
+              <tr>
+                <td>school, department</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>univNotice 전용 테이블. 그대로 유지</td>
+              </tr>
+              <tr>
+                <td>crawl_url, notice</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>변경 없음</td>
+              </tr>
+              <tr>
+                <td>keyword</td>
+                <td><span class="tag-warn">FK 변경</span></td>
+                <td>user_id → common USERS.id 참조로 변경</td>
+              </tr>
+              <tr>
+                <td>device</td>
+                <td><span class="tag-warn">FK 변경</span></td>
+                <td>user_id → common USERS.id 참조로 변경</td>
+              </tr>
+              <tr>
+                <td>qr_session</td>
+                <td><span class="tag-warn">FK 변경</span></td>
+                <td>user_id → common USERS.id 참조로 변경</td>
+              </tr>
+              <tr>
+                <td>phone_verification</td>
+                <td><span class="tag-warn">이동 or 통합</span></td>
+                <td>career-hi의 verification_codes와 동일한 역할. 하나로 통합 가능 (type 컬럼으로 SIGNUP/LOGIN 구분)</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-err">
+            🚨 univNotice는 Node.js + Sequelize 프로젝트입니다. Spring Boot 모노레포에 통합하려면 Node 서버를 Spring Boot로 포팅하거나, API Gateway 패턴으로
+            별도 서버를 유지해야 합니다. 포트폴리오 구조상 <b>Spring Boot 포팅 권장</b>.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #d85a30"></div>
+            ESC — 대규모 이관 필요 ⚠️
+          </div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>이슈</th>
+                <th>내용</th>
+                <th>조치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>세션 기반 인증</td>
+                <td>Passport.js + express-session 사용</td>
+                <td>Spring Boot 전환 시 JWT 기반으로 전면 교체. ESC_PAYMENT/SHOPPING_BAG의 userEmail FK를 user_id(bigint)로 변경</td>
+              </tr>
+              <tr>
+                <td>이메일 PK 패턴</td>
+                <td>User의 PK가 id지만 FK에서 email을 사용하는 패턴 혼재<br />예: <code>ShoppingBag.userEmail</code>, <code>Payment.userEmail</code></td>
+                <td>모든 FK를 <code>user_id BIGINT</code>로 통일. 인덱스 효율이 email보다 bigint가 훨씬 우수</td>
+              </tr>
+              <tr>
+                <td>Node.js → Spring Boot</td>
+                <td>Sequelize ORM → JPA</td>
+                <td>models/*.js → JPA Entity 클래스로 변환. 관계 어노테이션 추가</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-ok">
+            ✅ ESC의 테이블 구조(Product, Review, Payment, CancelPayment 등)는 RDB 설계 자체는 우수합니다. FK를 user_id bigint로 통일하는 것만으로 common
+            USERS와 연결 가능합니다.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #d4537e"></div>
+            domo — 가장 깔끔함 ✅
+          </div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>테이블</th>
+                <th>상태</th>
+                <th>조치</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>dm_place (CSV 데이터)</td>
+                <td><span class="tag-ok">OK</span></td>
+                <td>user 의존 없음. 독립적으로 동작. 변경 없음</td>
+              </tr>
+              <tr>
+                <td>dm_itinerary</td>
+                <td><span class="tag-info">신규</span></td>
+                <td>기존 코드에 없던 테이블. ERD 설계대로 추가 필요. user_id FK → common USERS 참조</td>
+              </tr>
+              <tr>
+                <td>dm_itinerary_place</td>
+                <td><span class="tag-info">신규</span></td>
+                <td>동일. 신규 추가</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-warn">
+            ⚠️ 기존 domo 코드에는 일정 저장 기능이 없습니다 (점수 계산만 존재). DM_ITINERARY 테이블은 ERD 확장 설계로, 실제 구현 시 신규 개발이 필요합니다.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">테이블명 충돌 해결 — 전체 정리</div>
+          <table class="ctable">
+            <thead>
+              <tr>
+                <th>원래 테이블명</th>
+                <th>프로젝트</th>
+                <th>충돌</th>
+                <th>변경 후</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>users</code></td>
+                <td>ganzithon, career-hi</td>
+                <td>✅ 통합</td>
+                <td><code>users</code> (common 단일 테이블)</td>
+              </tr>
+              <tr>
+                <td><code>report</code></td>
+                <td>ganzithon</td>
+                <td>🚨 career-hi도 <code>reports</code> 사용</td>
+                <td><code>gz_report</code></td>
+              </tr>
+              <tr>
+                <td><code>reports</code></td>
+                <td>career-hi</td>
+                <td>🚨 위와 동일</td>
+                <td><code>ch_report</code></td>
+              </tr>
+              <tr>
+                <td><code>report_analysis</code></td>
+                <td>ganzithon</td>
+                <td>—</td>
+                <td><code>gz_report_analysis</code></td>
+              </tr>
+              <tr>
+                <td><code>user</code> (단수)</td>
+                <td>univNotice</td>
+                <td>🚨 common은 <code>users</code></td>
+                <td>삭제 후 common <code>users</code>로 통합</td>
+              </tr>
+              <tr>
+                <td><code>phone_verification</code></td>
+                <td>univNotice</td>
+                <td>유사 역할 중복</td>
+                <td><code>verification_codes</code> (career-hi 것으로 통합, type 컬럼 추가)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- /sec-rdb -->
+
+      <!-- ═══════════════ 최적화 ═══════════════ -->
+      <div id="sec-opt" class="section">
+        <div class="section-title">⚡ 프로젝트별 최적화 내역</div>
+
+        <!-- GANZITHON -->
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #185fa5"></div>
+            ganzithon 최적화
+          </div>
+
+          <div class="sub-title">① JWT 필터 — 매 요청마다 DB 조회 제거</div>
+          <div class="opt-item" style="border-color: #185fa5">
+            <b>문제:</b> <code>JwtAuthenticationFilter</code>가 <code>UserRepository.findById()</code>를 매 요청마다 실행<br />
+            <b>개선:</b> JWT 클레임에 userId + email + role을 담아 DB 조회 없이 인증 처리<br />
+            <b>효과:</b> 인증 처리당 SELECT 1회 제거 → 초당 100 요청 기준 100 QPS 감소
+            <div class="perf-bar" style="background: linear-gradient(to right, #185fa5 70%, #e0e0e0 70%)"></div>
+            <small style="color: #666">DB 조회 감소율: ~100% (인증 요청 기준)</small>
+          </div>
+
+          <div class="sub-title">② ReportController — @AuthenticationPrincipal 타입 불일치 수정</div>
+          <div class="opt-item" style="border-color: #185fa5">
+            <b>문제:</b> <code>@AuthenticationPrincipal User user</code> — ganzithon 전용 User 엔티티에 의존<br />
+            <b>개선:</b> <code>@AuthenticationPrincipal UserDetails userDetails</code>로 변경, email로 userId 조회 분리<br />
+            <b>효과:</b> common User 엔티티로 교체 후에도 동일하게 동작
+          </div>
+
+          <div class="sub-title">③ ReportApi 인터페이스 — 불필요한 추상화 제거</div>
+          <div class="opt-item" style="border-color: #185fa5">
+            <b>문제:</b> <code>ReportApi</code> 인터페이스 → <code>ReportController</code> 구현 구조가 과도한 추상화<br />
+            <b>개선:</b> 단일 모듈에서 인터페이스 분리는 불필요. Controller에 직접 Swagger 어노테이션 통합<br />
+            <b>효과:</b> 코드 경로 단순화, IDE 네비게이션 개선
+          </div>
+        </div>
+
+        <!-- CAREER-HI -->
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #888780"></div>
+            career-hi 최적화
+          </div>
+
+          <div class="sub-title">① 테이블명 충돌 수정 — @Table(name) 명시</div>
+          <div class="opt-item" style="border-color: #888780">
+            <b>문제:</b> <code>Report.java</code>의 @Table이 없거나 <code>"reports"</code> — ganzithon과 충돌<br />
+            <b>개선:</b> <code>@Table(name = "ch_report")</code> 명시적 지정<br />
+            <b>효과:</b> 통합 DB에서 테이블 충돌 방지
+          </div>
+
+          <div class="sub-title">② Profile 스펙 — @ElementCollection → 별도 테이블로 정규화</div>
+          <div class="diff-block">
+            <div class="diff-header">
+              <div class="diff-label before">❌ 기존: @ElementCollection 4개 컬렉션</div>
+              <div class="diff-label after">✅ 개선: CH_PROFILE_SPEC 단일 테이블</div>
+            </div>
+            <div class="diff-body">
+              <div class="diff-col">
+                <span class="line-del">// 4개의 별도 조인 테이블 생성됨</span>
+                <span class="line-del">@ElementCollection</span>
+                <span class="line-del">List&lt;String&gt; certificates;</span>
+                <span class="line-del">@ElementCollection</span>
+                <span class="line-del">List&lt;String&gt; codingLanguages;</span>
+                <span class="line-del">@ElementCollection</span>
+                <span class="line-del">List&lt;LanguageTest&gt; languageTests;</span>
+                <span class="line-del">@ElementCollection</span>
+                <span class="line-del">List&lt;Award&gt; awards;</span>
+                <span class="line-del">// 조회 시 4번의 SELECT 발생</span>
+              </div>
+              <div class="diff-col after">
+                <span class="line-add">// 단일 테이블로 통합</span>
+                <span class="line-add">@OneToMany(mappedBy="profile")</span>
+                <span class="line-add">List&lt;ProfileSpec&gt; specs;</span>
+                <span class="line-add">// spec_type ENUM으로 구분:</span>
+                <span class="line-add">// CERTIFICATE / CODING_LANG</span>
+                <span class="line-add">// LANGUAGE_TEST / AWARD</span>
+                <span class="line-add">// 조회 시 JOIN 1번으로 처리</span>
+                <span class="line-add">// 타입별 필터링도 WHERE 1줄</span>
+              </div>
+            </div>
+          </div>
+          <div class="perf-bar" style="background: linear-gradient(to right, #888780 60%, #e0e0e0 60%)"></div>
+          <small style="color: #666">프로필 조회 쿼리 수: 5회 → 1회 (80% 감소)</small>
+
+          <div class="sub-title">③ AI 분석 결과 저장 — aiAnalysisJson(TEXT) 구조 개선</div>
+          <div class="opt-item" style="border-color: #888780">
+            <b>문제:</b> <code>ai_analysis_json TEXT</code>에 전체 JSON을 통째로 저장 — 부분 조회/업데이트 불가, 타입 안전성 없음<br />
+            <b>개선안:</b> 핵심 필드(match_rate, growth_points, strengths)를 컬럼으로 분리하고, 원본 JSON은 별도 컬럼 유지<br />
+            <b>효과:</b> match_rate 기준 정렬/필터 가능, 리포트 목록 조회 시 JSON 파싱 불필요
+          </div>
+        </div>
+
+        <!-- UNIVNOTICE -->
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #ba7517"></div>
+            univNotice 최적화
+          </div>
+
+          <div class="sub-title">① 인증번호 조회 — find_phone 후보군 방식 최적화 유지</div>
+          <div class="opt-item" style="border-color: #ba7517">
+            <b>기존 방식 (잘 설계됨):</b> 번호 뒷 4자리(<code>find_phone</code>)로 후보를 좁힌 후 bcrypt 비교<br />
+            <b>이유:</b> 폰번호를 bcrypt로 해시했기 때문에 direct WHERE 불가능 — 뒷 4자리 인덱스로 O(n) → O(1) 근사<br />
+            <b>통합 시 유지:</b> 이 패턴은 common의 PhoneVerification 테이블에 그대로 적용
+            <div class="alert alert-ok">
+              ✅ univNotice의 find_phone / find_student_id 패턴은 암호화된 개인정보를 효율적으로 검색하는 좋은 설계입니다. 통합 후에도 동일하게 유지합니다.
+            </div>
+          </div>
+
+          <div class="sub-title">② 공지 조회 — N+1 문제 해결</div>
+          <div class="opt-item" style="border-color: #ba7517">
+            <b>문제:</b> <code>CrawlUrl.findAll</code>에서 <code>include: [Notice, Category, Keyword]</code> 3중 중첩 — <code>separate: true</code>로 N+1을 일부
+            해결했지만 여전히 쿼리 3~4회 발생<br />
+            <b>개선:</b> Spring Boot JPA 전환 시 <code>@EntityGraph</code>로 한 번의 LEFT JOIN FETCH로 처리<br />
+            <b>효과:</b> 공지 목록 조회 쿼리 수 3~4회 → 1회
+            <div class="perf-bar" style="background: linear-gradient(to right, #ba7517 75%, #e0e0e0 75%)"></div>
+            <small style="color: #666">쿼리 수 감소: ~75%</small>
+          </div>
+
+          <div class="sub-title">③ 인증번호 만료 레코드 — 자동 정리</div>
+          <div class="opt-item" style="border-color: #ba7517">
+            <b>문제:</b> PhoneVerification 테이블에 만료된 레코드가 계속 누적됨<br />
+            <b>개선:</b> Spring Scheduler로 매 1시간마다 <code>DELETE FROM verification_codes WHERE expires_at &lt; NOW()</code> 실행<br />
+            <b>효과:</b> 테이블 크기 제어, find_phone 후보군 조회 성능 유지
+          </div>
+        </div>
+
+        <!-- ESC -->
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #d85a30"></div>
+            ESC 최적화
+          </div>
+
+          <div class="sub-title">① email FK → user_id(bigint) FK 통일</div>
+          <div class="opt-item" style="border-color: #d85a30">
+            <b>문제:</b> ShoppingBag, Payment, CancelPayment 등이 <code>userEmail VARCHAR</code>를 FK로 사용<br />
+            <b>개선:</b> 모든 FK를 <code>user_id BIGINT</code>로 변경<br />
+            <b>효과:</b> VARCHAR 비교 → BIGINT 비교 (인덱스 탐색 ~3배 빠름), JOIN 비용 감소
+            <div class="perf-bar" style="background: linear-gradient(to right, #d85a30 65%, #e0e0e0 65%)"></div>
+            <small style="color: #666">인덱스 탐색 효율: VARCHAR(50) 대비 BIGINT PK 기준 약 3배 향상</small>
+          </div>
+
+          <div class="sub-title">② 상품 조회 — 복수 Include 최적화</div>
+          <div class="opt-item" style="border-color: #d85a30">
+            <b>문제:</b> <code>Product.findOne</code>에 include 6개 (Tag, Discount, Img, Option, OptionProperty, Review) — 다중 LEFT JOIN + N+1<br />
+            <b>개선:</b> JPA 전환 시 <code>@BatchSize(size=100)</code> + <code>@EntityGraph</code> 조합으로 처리<br />
+            <code>fetch = FetchType.LAZY</code> + 배치 로딩으로 N+1 제거
+          </div>
+
+          <div class="sub-title">③ 결제 조회 — purchaseProductInformation(JSON) 파싱 제거</div>
+          <div class="opt-item" style="border-color: #d85a30">
+            <b>문제:</b> <code>Payment.purchaseProductInformation</code>을 JSON으로 저장 후 JS에서 파싱해 productId 추출 → 별도 Product 조회<br />
+            <b>개선:</b> ESC_PAYMENT_ITEM 테이블을 별도로 두어 정규화 (payment_id, product_id, quantity, options)<br />
+            <b>효과:</b> JSON 파싱 제거, 상품별 주문 내역 쿼리 가능, 인덱스 활용 가능
+          </div>
+
+          <div class="sub-title">④ grade(별점) 업데이트 — 매 조회마다 재계산 제거</div>
+          <div class="opt-item" style="border-color: #d85a30">
+            <b>문제:</b> 상품 상세 조회 시 모든 리뷰의 평균을 계산하고 grade 불일치 시 UPDATE 실행<br />
+            <b>개선:</b> 리뷰 작성/수정/삭제 시에만 <code>UPDATE products SET grade = ? WHERE id = ?</code> 실행<br />
+            <b>효과:</b> 조회 요청에서 UPDATE 제거 → 읽기 트랜잭션 유지 가능
+          </div>
+        </div>
+
+        <!-- DOMO -->
+        <div class="card">
+          <div class="card-title">
+            <div class="dot" style="background: #d4537e"></div>
+            domo 최적화
+          </div>
+
+          <div class="sub-title">① 중복 ScoreService 호출 제거 (핵심 버그 수정)</div>
+          <div class="diff-block">
+            <div class="diff-header">
+              <div class="diff-label before">❌ 기존: 의미 없는 중복 계산</div>
+              <div class="diff-label after">✅ 수정: 한 번만 계산</div>
+            </div>
+            <div class="diff-body">
+              <div class="diff-col">
+                <span class="line-del">int benefitScore = scoreService</span>
+                <span class="line-del"> .averageBenefitScore(ordered);</span>
+                <span class="line-del">int popularScore = scoreService</span>
+                <span class="line-del"> .averagePopularScore(ordered);</span>
+                <span class="line-del">int totalScore = scoreService</span>
+                <span class="line-del"> .routeTotalScore(...);</span>
+                <span class="line-del">// 아래 if는 항상 같은 결과</span>
+                <span class="line-del">if (req.isIncludePlaceScores()) {</span>
+                <span class="line-del"> benefitScore = scoreService // 재계산</span>
+                <span class="line-del"> .averageBenefitScore(ordered);</span>
+                <span class="line-del">}</span>
+              </div>
+              <div class="diff-col after">
+                <span class="line-add">int benefitScore = scoreService</span>
+                <span class="line-add"> .averageBenefitScore(ordered);</span>
+                <span class="line-add">int popularScore = scoreService</span>
+                <span class="line-add"> .averagePopularScore(ordered);</span>
+                <span class="line-add">int totalScore = scoreService</span>
+                <span class="line-add"> .routeTotalScore(...);</span>
+                <span class="line-add">// if 블록 완전 제거</span>
+                <span class="line-add">// includePlaceScores는 응답 필드</span>
+                <span class="line-add">// 포함 여부만 제어하도록 수정</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub-title">② 중복 PlaceRowMapper 제거</div>
+          <div class="opt-item" style="border-color: #d4537e">
+            <b>문제:</b> <code>repository/PlaceRepository.java</code>와 <code>service/PlaceRowMapper.java</code>에 동일한 매핑 클래스 2개 존재<br />
+            <b>개선:</b> <code>service/PlaceRowMapper.java</code> 삭제, <code>repository</code> 내부 <code>private static class</code>만 유지<br />
+            <b>효과:</b> 코드 중복 제거, 유지보수 혼란 방지
+          </div>
+
+          <div class="sub-title">③ PopularityService — int 나눗셈 버그 수정</div>
+          <div class="opt-item" style="border-color: #d4537e">
+            <b>문제:</b> <code>int discountBonus = ... / 100 * 30;</code> → Java int 나눗셈으로 항상 0 반환<br />
+            <b>수정:</b> 첫 번째 줄(버그 있는 코드) 삭제, 두 번째 줄(올바른 코드) 단독 유지<br />
+            <code>discountBonus = (int) Math.round(discountPercent * 0.30);</code>
+          </div>
+        </div>
+      </div>
+      <!-- /sec-opt -->
+
+      <!-- ═══════════════ 통합 후 API 명세 ═══════════════ -->
+      <div id="sec-api" class="section">
+        <div class="section-title">📡 통합 API 명세 — 전체 모듈</div>
+
+        <style>
+          .api-nav {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+          }
+          .api-tab {
+            padding: 5px 14px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1.5px solid transparent;
+            cursor: pointer;
+            transition: all 0.15s;
+            background: #f0efec;
+            color: #555;
+          }
+          .api-tab.on {
+            color: #fff;
+          }
+          .api-section {
+            display: none;
+          }
+          .api-section.on {
+            display: block;
+          }
+          .method {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            min-width: 46px;
+            text-align: center;
+          }
+          .m-get {
+            background: #dbeafe;
+            color: #1e40af;
+          }
+          .m-post {
+            background: #d1fae5;
+            color: #065f46;
+          }
+          .m-put {
+            background: #fef3c7;
+            color: #92400e;
+          }
+          .m-patch {
+            background: #ede9fe;
+            color: #5b21b6;
+          }
+          .m-del {
+            background: #fee2e2;
+            color: #991b1b;
+          }
+          .auth-badge {
+            display: inline-block;
+            background: #f0efec;
+            color: #444;
+            font-size: 10px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            white-space: nowrap;
+          }
+          .ctable code {
+            font-size: 11px;
+          }
+          .api-group {
+            margin-bottom: 20px;
+          }
+          .api-group-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin: 16px 0 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e8e6e0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .compatibility-block {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 12px;
+            margin: 10px 0;
+          }
+          .compat-ok {
+            color: #059669;
+            font-weight: 700;
+          }
+          .compat-warn {
+            color: #d97706;
+            font-weight: 700;
+          }
+          .compat-err {
+            color: #dc2626;
+            font-weight: 700;
+          }
+        </style>
+
+        <div class="api-nav" id="api-nav"></div>
+
+        <!-- ─── 공통 인증 ─── -->
+        <div id="api-common" class="api-section on">
+          <div class="card">
+            <div class="card-title" style="color: #7f77dd">🔐 common — 공통 인증 API</div>
+
+            <div class="compatibility-block">
+              <b>🛠 호환성 해결 사항</b><br />
+              ① ganzithon JWT subject가 <code>userId(숫자)</code> → 통합 후 <code>email</code>로 변경 → <code>@AuthenticationPrincipal User user</code>를
+              <code>UserDetails</code>로 교체<br />
+              ② career-hi RefreshToken 테이블과 univNotice PhoneVerification 테이블을 공통 모듈로 이동, <code>type</code> 컬럼으로 용도 구분<br />
+              ③ ESC의 Passport 세션 기반 인증 → JWT로 전면 교체, userEmail FK → user_id(bigint)로 변경
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #7f77dd22; color: #7f77dd; padding: 2px 8px; border-radius: 4px; font-size: 11px">POST</span> 인증 기본 흐름
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/auth/signup</code></td>
+                    <td>회원가입 (포트폴리오 데모용 계정 생성)</td>
+                    <td>—</td>
+                    <td><code>{ "username":"admin", "email":"…", "password":"…" }</code></td>
+                    <td><code>{ "userId":1, "username":"admin", "email":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/auth/login</code></td>
+                    <td>로그인 (전 모듈 공통)</td>
+                    <td>—</td>
+                    <td><code>{ "username":"admin", "password":"…" }</code></td>
+                    <td><code>{ "accessToken":"eyJ…", "refreshToken":"eyJ…", "userId":1, "email":"…", "role":"USER" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/auth/logout</code></td>
+                    <td>로그아웃 — RefreshToken 무효화</td>
+                    <td>🔒 Bearer</td>
+                    <td>— (Authorization 헤더)</td>
+                    <td><code>{ "message":"로그아웃 되었습니다." }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/auth/refresh</code></td>
+                    <td>AccessToken 재발급</td>
+                    <td>—</td>
+                    <td><code>{ "refreshToken":"eyJ…" }</code></td>
+                    <td><code>{ "accessToken":"eyJ…", "refreshToken":"eyJ…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/auth/me</code></td>
+                    <td>현재 로그인 사용자 정보 조회</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "userId":1, "username":"admin", "email":"…", "role":"USER" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #7f77dd22; color: #7f77dd; padding: 2px 8px; border-radius: 4px; font-size: 11px">SMS 인증</span> 전화번호 인증
+                (career-hi / univNotice 통합)
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/auth/verify/send</code></td>
+                    <td>SMS 인증번호 발송 — <code>type</code>으로 SIGNUP/LOGIN 구분, 1분 쿨타임 적용</td>
+                    <td>—</td>
+                    <td><code>{ "phone":"010-0000-0000", "type":"SIGNUP" }</code><br /><small>type: SIGNUP | LOGIN | DELETE</small></td>
+                    <td><code>{ "expirySeconds":300 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/auth/verify/check</code></td>
+                    <td>인증번호 확인 — bcrypt 해시 비교, find_phone(뒤 4자리) narrowing 유지</td>
+                    <td>—</td>
+                    <td><code>{ "phone":"010-…", "code":"123456", "type":"SIGNUP" }</code></td>
+                    <td><code>{ "verified":true }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #7f77dd22; color: #7f77dd; padding: 2px 8px; border-radius: 4px; font-size: 11px">공통</span> Health Check
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/health</code></td>
+                    <td>서버 상태 확인 (career-hi 기존 엔드포인트 유지)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>"Server is Up and Running!"</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="sub-title">통합 JWT Payload (공통 규격)</div>
+            <pre>
+{ "sub": "user@example.com",  // email (career-hi 호환)
+  "userId": 1,                  // Long (ganzithon 호환)
+  "username": "admin",
+  "role": "USER",               // USER | ADMIN
+  "iat": 1720000000,
+  "exp": 1720003600             // accessToken: 1h / refreshToken: 7d }</pre
+            >
+          </div>
+
+          <div class="card">
+            <div class="card-title">제거되는 각 모듈의 기존 인증 엔드포인트</div>
+            <table class="ctable">
+              <thead>
+                <tr>
+                  <th>모듈</th>
+                  <th>제거 엔드포인트</th>
+                  <th>대체 (common)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>ganzithon</b></td>
+                  <td>
+                    <code>POST /auth/signup</code><br /><code>POST /auth/login</code><br /><code>POST /auth/logout</code><br /><code>DELETE /auth/delete</code>
+                  </td>
+                  <td rowspan="4" style="text-align: center; vertical-align: middle; font-weight: 600; color: #7f77dd">/api/auth/*</td>
+                </tr>
+                <tr>
+                  <td><b>career-hi</b></td>
+                  <td>
+                    <code>POST /api/v1/auth/signup</code><br /><code>POST /api/v1/auth/login</code><br /><code>POST /api/v1/auth/logout</code><br /><code
+                      >POST /api/v1/auth/verify/send</code
+                    ><br /><code>POST /api/v1/auth/verify/check</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>ESC (Node)</b></td>
+                  <td>
+                    <code>POST /api/user</code> (회원가입)<br /><code>POST /api/user/login</code><br /><code>POST /api/user/logout</code><br /><code
+                      >POST /api/user/sendEmail</code
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>univNotice (Node)</b></td>
+                  <td>
+                    <code>POST /sign-up</code><br /><code>POST /sign-up/certification</code><br /><code>POST /user/login</code><br /><code
+                      >POST /user/logout</code
+                    ><br /><code>POST /user/certification</code><br /><code>DELETE /user</code>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- /api-common -->
+
+        <!-- ─── ganzithon ─── -->
+        <div id="api-gz" class="api-section">
+          <div class="card">
+            <div class="card-title" style="color: #185fa5">🗺 ganzithon — 제보/지도 API</div>
+
+            <div class="compatibility-block">
+              <b>🛠 호환성 해결 사항</b><br />
+              <span class="compat-err">수정 필요</span> ReportController의 <code>@AuthenticationPrincipal User user</code> →
+              <code>UserDetails userDetails</code>로 교체, <code>userDetails.getUsername()</code>(email)으로 userId 조회<br />
+              <span class="compat-err">수정 필요</span> <code>@Table</code> 없는 Report 엔티티 → <code>@Table(name="gz_report")</code> 명시 (career-hi와 충돌
+              방지)<br />
+              <span class="compat-warn">확인 필요</span> MyPageController의 <code>@RequestParam Long userId</code> → JWT 토큰에서 추출하도록 변경 (보안 강화)
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #185fa522; color: #185fa5; padding: 2px 8px; border-radius: 4px; font-size: 11px">Report</span> 사고 제보 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 220px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body / Params</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/report</code></td>
+                    <td>사고 제보 생성. AI 분석(RAG) 비동기 실행</td>
+                    <td>🔒 Bearer</td>
+                    <td>
+                      <code
+                        >{ "title":"…", "description":"…", "imageUrl":"…", "roadAddress":"…", "latitude":37.5, "longitude":127.0, "sourceType":"USER" }</code
+                      >
+                    </td>
+                    <td><code>{ "id":1, "title":"…", "status":"PENDING", "createdAt":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/report/{id}</code></td>
+                    <td>제보 상세 + AI 분석 결과 조회. RAG 실패 시 fallback 요약 반환</td>
+                    <td>—</td>
+                    <td>— (path: id)</td>
+                    <td>
+                      <code
+                        >{ "id":1, "title":"…", "aiAnalysis":{ "summaryText":"…", "severityLevel":"HIGH", "ragEnabled":true, "confidenceScore":0.92 } }</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/report/{id}</code></td>
+                    <td>제보 수정</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "title":"…", "description":"…", "imageUrl":"…" }</code></td>
+                    <td><code>{ "id":1, "title":"…", "updatedAt":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/report/{id}</code></td>
+                    <td>제보 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>— (path: id)</td>
+                    <td><code>{ "message":"삭제되었습니다." }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #185fa522; color: #185fa5; padding: 2px 8px; border-radius: 4px; font-size: 11px">Map</span> 지도 마커 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 220px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Params</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/map/markers</code></td>
+                    <td>반경 내 마커 목록 조회. 필터로 SOURCE_TYPE 구분</td>
+                    <td>—</td>
+                    <td><code>?filters=USER,PUBLIC&lat=37.5&lng=127.0&radius=1000</code></td>
+                    <td><code>[{ "id":1, "title":"…", "lat":37.5, "lng":127.0, "sourceType":"USER", "status":"APPROVED" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/map/markers/public/{id}</code></td>
+                    <td>공공 데이터 마커 상세 조회</td>
+                    <td>—</td>
+                    <td>— (path: id)</td>
+                    <td><code>{ "id":1, "name":"…", "address":"…", "category":"…", "lat":37.5, "lng":127.0 }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #185fa522; color: #185fa5; padding: 2px 8px; border-radius: 4px; font-size: 11px">MyPage</span> 마이페이지 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 220px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/mypage/profile</code></td>
+                    <td>프로필(이름, 닉네임) 수정. userId는 JWT에서 추출 (기존 @RequestParam 제거)</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "name":"…", "nickname":"…" }</code></td>
+                    <td><code>{ "userId":1, "name":"…", "nickname":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/mypage/reports</code></td>
+                    <td>내 제보 목록 조회. JWT에서 userId 추출</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "title":"…", "status":"APPROVED", "createdAt":"…" }]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #185fa522; color: #185fa5; padding: 2px 8px; border-radius: 4px; font-size: 11px">File</span> S3 이미지 업로드
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 220px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/image/upload</code></td>
+                    <td>이미지 S3 업로드 (multipart/form-data)</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>file: MultipartFile</code></td>
+                    <td><code>{ "url":"https://s3.amazonaws.com/…" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /api-gz -->
+
+        <!-- ─── career-hi ─── -->
+        <div id="api-career" class="api-section">
+          <div class="card">
+            <div class="card-title" style="color: #888780">💼 career-hi — 프로필 / AI 리포트 / 채용공고 API</div>
+
+            <div class="compatibility-block">
+              <b>🛠 호환성 해결 사항</b><br />
+              <span class="compat-err">수정 필요</span> Report 엔티티에 <code>@Table(name="ch_report")</code> 추가 (ganzithon의 <code>gz_report</code>와 충돌
+              방지)<br />
+              <span class="compat-err">수정 필요</span> <code>@ElementCollection</code> 4개(certificate, codingLanguage, languageTest, award) →
+              <code>CH_PROFILE_SPEC</code> 단일 테이블로 정규화. 프로필 조회 쿼리 5회 → 1회<br />
+              <span class="compat-warn">확인 필요</span> auth/ 패키지 전체 삭제 후 <code>/api/v1/auth/**</code> → <code>/api/auth/**</code>로 permitAll 경로
+              변경
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #88878022; color: #888780; padding: 2px 8px; border-radius: 4px; font-size: 11px">Profile</span> 내 프로필 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/v1/users/me/profile</code></td>
+                    <td>프로필 최초 생성</td>
+                    <td>🔒 Bearer</td>
+                    <td>
+                      <code
+                        >{ "name":"…", "academicStatus":"ENROLLED", "schoolName":"…", "major":"…", "targetJob":"…", "certificates":["정보처리기사"],
+                        "codingLanguages":["Java","Python"], "languageTests":[{"name":"TOEIC","score":850}], "awards":[{"title":"…","grade":"…"}] }</code
+                      >
+                    </td>
+                    <td><code>{ "message":"프로필 정보가 저장되었습니다." }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/users/me/profile</code></td>
+                    <td>내 프로필 조회 (CH_PROFILE + CH_PROFILE_SPEC JOIN)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td>
+                      <code
+                        >{ "name":"…", "academicStatus":"…", "targetJob":"…", "specs":{ "certificates":[…], "codingLanguages":[…], "languageTests":[…],
+                        "awards":[…] } }</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-patch">PATCH</span></td>
+                    <td><code>/api/v1/users/me/profile</code></td>
+                    <td>프로필 부분 수정 (입력된 필드만 업데이트)</td>
+                    <td>🔒 Bearer</td>
+                    <td>위 POST와 동일 구조, 변경할 필드만 포함</td>
+                    <td><code>{ "message":"프로필 정보가 수정되었습니다." }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #88878022; color: #888780; padding: 2px 8px; border-radius: 4px; font-size: 11px">Report</span> AI 역량 분석 리포트 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request / Params</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/v1/reports/analyze</code></td>
+                    <td>AI 역량 분석 리포트 생성. 프로필 + 채용공고 기반 GPT 분석</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "reportId":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/reports/{reportId}</code></td>
+                    <td>리포트 상세 조회 (match_rate, growthPoints, strengths 등)</td>
+                    <td>🔒 Bearer</td>
+                    <td>— (path: reportId)</td>
+                    <td><code>{ "id":1, "targetJob":"…", "matchRate":78, "analysisJson":{ "growthPoints":[…], "strengths":[…] }, "createdAt":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/reports</code></td>
+                    <td>내 리포트 목록 (페이지네이션)</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>?page=1&size=10</code></td>
+                    <td><code>{ "total":5, "items":[{ "id":1, "targetJob":"…", "matchRate":78, "createdAt":"…" }] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/v1/reports/{reportId}</code></td>
+                    <td>리포트 삭제 (본인 소유 검증)</td>
+                    <td>🔒 Bearer</td>
+                    <td>— (path: reportId)</td>
+                    <td><code>{ "message":"리포트가 성공적으로 삭제되었습니다." }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #88878022; color: #888780; padding: 2px 8px; border-radius: 4px; font-size: 11px">User</span> 사용자 정보 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/users/me</code></td>
+                    <td>현재 사용자 기본 정보 조회 (email, name, marketingAgreed)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "userId":1, "email":"…", "name":"…", "marketingAgreed":false }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #88878022; color: #888780; padding: 2px 8px; border-radius: 4px; font-size: 11px">Market</span> 채용공고 / 기술 통계
+                API (인증 불필요, 공개)
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Params</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/market/jobs</code></td>
+                    <td>채용공고 목록 조회 (CH_MARKET_JOB_POST)</td>
+                    <td>—</td>
+                    <td><code>?category=백엔드&page=1&size=20</code></td>
+                    <td>
+                      <code
+                        >{ "total":150, "items":[{ "id":1, "companyName":"…", "jobTitle":"…", "jobCategory":"…", "requiredSkills":["Java","Spring"],
+                        "postedAt":"…" }] }</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/market/jobs/{id}</code></td>
+                    <td>채용공고 상세 조회</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>{ "id":1, "companyName":"…", "requiredSkills":[…], "preferredSkills":[…], "sourceUrl":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/v1/market/skills</code></td>
+                    <td>직군별 기술 수요 통계 (CH_MARKET_SKILL_STAT)</td>
+                    <td>—</td>
+                    <td><code>?category=백엔드&limit=10</code></td>
+                    <td><code>[{ "skillName":"Java", "demandCount":320, "statDate":"2025-03-01" }]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #88878022; color: #888780; padding: 2px 8px; border-radius: 4px; font-size: 11px">File</span> 파일 업로드 (포트폴리오
+                PDF 등)
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/v1/files/upload</code></td>
+                    <td>파일 업로드 (multipart/form-data). 로컬 또는 S3 저장</td>
+                    <td>—</td>
+                    <td><code>file: MultipartFile</code></td>
+                    <td><code>{ "fileUrl":"https://…/filename.pdf", "fileName":"…" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /api-career -->
+
+        <!-- ─── univNotice ─── -->
+        <div id="api-univ" class="api-section">
+          <div class="card">
+            <div class="card-title" style="color: #ba7517">🔔 univNotice — 공지 / 키워드 / 디바이스 / QR 로그인 API</div>
+
+            <div class="compatibility-block">
+              <b>🛠 호환성 해결 사항</b><br />
+              <span class="compat-err">수정 필요</span> <code>UN_USER(학번+폰)</code> 테이블 폐기 → common <code>USERS</code>로 통합.
+              <code>school_id / department_id / phone_hash / student_id_hash / find_phone / find_student_id</code> 컬럼을 USERS에 nullable로 추가<br />
+              <span class="compat-err">수정 필요</span> <code>UN_KEYWORD</code>, <code>UN_NOTICE_KEYWORD_MATCH</code>, <code>UN_DEVICE</code>,
+              <code>UN_QR_SESSION</code>의 user_id FK → common USERS.id 참조로 변경<br />
+              <span class="compat-warn">확인 필요</span> Node.js → Spring Boot 포팅 시 bcrypt find_phone/find_student_id narrowing 패턴 유지 (좋은 설계, 그대로
+              사용)<br />
+              <span class="compat-ok">유지</span> <code>PhoneVerification</code>은 common의 <code>verification_codes</code>로 통합 (type=LOGIN/SIGNUP 컬럼 추가)
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #ba751722; color: #ba7517; padding: 2px 8px; border-radius: 4px; font-size: 11px">Notice</span> 공지 조회 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Params / Body</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/notices</code></td>
+                    <td>내 학교/학과 공지 목록 조회 (카테고리별, 최신 45건). 사용자의 키워드 매칭 여부 포함</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td>
+                      <code
+                        >{ "data":[{ "id":1, "category":"학과공지", "notices":[{ "title":"…", "originalUrl":"…", "publishedAt":"…", "matchedKeyword":true }] }]
+                        }</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/schools</code></td>
+                    <td>학교 목록 조회 (회원가입/마이페이지용)</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "name":"한국대학교" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/schools/{schoolId}/departments</code></td>
+                    <td>학과 목록 조회</td>
+                    <td>—</td>
+                    <td>— (path: schoolId)</td>
+                    <td><code>[{ "id":1, "name":"컴퓨터공학과" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/schools/{schoolId}/departments/{deptId}/categories</code></td>
+                    <td>카테고리(CrawlUrl) 목록 조회 — 학교 전체 + 학과 카테고리 병합 반환</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "category":"학과공지" }, { "id":2, "category":"장학공지" }]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #ba751722; color: #ba7517; padding: 2px 8px; border-radius: 4px; font-size: 11px">MyPage</span> 마이페이지 — 기기 /
+                카테고리 / 키워드 설정 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body / Params</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/mypage/info</code></td>
+                    <td>내 정보 조회 (학교, 학과, 이름 마스킹)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "name":"홍*동", "phone":"****1234", "school":{ "id":1, "name":"…" }, "department":{ "id":1, "name":"…" } }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/mypage/devices</code></td>
+                    <td>등록 기기 목록 조회</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "name":"Galaxy S24", "isActive":true, "createdAt":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/mypage/devices</code></td>
+                    <td>기기 등록 (FCM 토큰 암호화 저장)</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "name":"Galaxy S24", "fcmToken":"…", "isActive":true, "isAndroid":true }</code></td>
+                    <td><code>{ "deviceId":1, "refreshToken":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/univ/mypage/devices/{deviceId}</code></td>
+                    <td>기기 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"기기 삭제 완료", "devices":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/univ/mypage/devices/toggle</code></td>
+                    <td>기기 알림 활성화 토글</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "id":1, "isActive":false }</code></td>
+                    <td><code>{ "devices":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/mypage/categories</code></td>
+                    <td>내 카테고리 구독 설정 조회 (키워드 포함)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td>
+                      <code
+                        >{ "categories":[{ "id":1, "category":"학과공지", "isEnabled":true, "keywords":[{ "id":1, "keyword":"장학금", "isEnabled":true }] }]
+                        }</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/univ/mypage/categories</code></td>
+                    <td>카테고리 구독 ON/OFF</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "id":1, "value":true }</code></td>
+                    <td><code>{ "categories":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/mypage/keywords</code></td>
+                    <td>키워드 추가</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "categoryId":1, "keyword":["장학금","공모전"] }</code></td>
+                    <td><code>{ "categories":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/univ/mypage/keywords/{keywordId}</code></td>
+                    <td>키워드 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "categories":[…] }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #ba751722; color: #ba7517; padding: 2px 8px; border-radius: 4px; font-size: 11px">Token</span> 토큰 갱신 / QR 로그인
+                API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/token/refresh</code></td>
+                    <td>디바이스 리프레시 토큰으로 AccessToken 갱신 (device_id + refresh_token 일치 검증)</td>
+                    <td>—</td>
+                    <td><code>{ "deviceId":1, "refreshToken":"…" }</code></td>
+                    <td><code>{ "refreshToken":"…" }</code> + accessToken 쿠키</td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/qr/create</code></td>
+                    <td>QR 로그인 6자리 코드 발급 (웹에서 요청, 3분 유효)</td>
+                    <td>🔒 Bearer (웹)</td>
+                    <td>—</td>
+                    <td><code>{ "code":"AbCd12", "expiresAt":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/qr/check</code></td>
+                    <td>QR 로그인 상태 폴링 (웹에서 확인)</td>
+                    <td>🔒 Bearer (웹)</td>
+                    <td>—</td>
+                    <td><code>{ "status":"waiting" }</code> / <code>"used"</code> / <code>"expired"</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/qr/login</code></td>
+                    <td>QR 코드로 앱 로그인 (앱에서 요청, 기기 등록 포함)</td>
+                    <td>—</td>
+                    <td><code>{ "code":"AbCd12", "fcmToken":"…", "deviceName":"Galaxy S24", "deviceId":null }</code></td>
+                    <td><code>{ "deviceId":1, "refreshToken":"…" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #ba751722; color: #ba7517; padding: 2px 8px; border-radius: 4px; font-size: 11px">Admin</span> 관리자 API (🔒 ADMIN
+                role 필요)
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request / Params</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/admin/schools</code></td>
+                    <td>학교 목록 조회</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/admin/schools</code></td>
+                    <td>학교 추가</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "schoolName":"…" }</code></td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/univ/admin/schools/{schoolId}</code></td>
+                    <td>학교 삭제 (연쇄삭제 포함)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/admin/schools/{schoolId}/departments</code></td>
+                    <td>학과 목록</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/admin/schools/{schoolId}/departments</code></td>
+                    <td>학과 추가</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "departmentName":"…" }</code></td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/univ/admin/departments/{deptId}</code></td>
+                    <td>학과 삭제</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/admin/schools/{schoolId}/categories</code></td>
+                    <td>크롤링 카테고리 목록</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>?departmentId=1</code> (optional)</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/admin/categories</code></td>
+                    <td>크롤링 카테고리 추가</td>
+                    <td>🔒 ADMIN</td>
+                    <td>
+                      <code
+                        >{ "schoolId":1, "departmentId":null, "url":"…", "category":"학과공지", "listSelector":"…", "rowSelector":"…", "titleSelector":"…",
+                        "dateSelector":"…", "dateFormat":"yyyy.MM.dd" }</code
+                      >
+                    </td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/univ/admin/categories</code></td>
+                    <td>크롤링 카테고리 수정</td>
+                    <td>🔒 ADMIN</td>
+                    <td>위와 동일 + <code>id</code></td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/univ/admin/categories/{categoryId}</code></td>
+                    <td>크롤링 카테고리 삭제</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/admin/crawling/test/{crawlUrlId}</code></td>
+                    <td>단일 URL 크롤링 테스트 실행</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "success":true, "count":15, "data":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/admin/notifications/send</code></td>
+                    <td>수동 푸시 알림 발송 (전체/학교/학과/특정 유저)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "targetType":"school", "schoolId":1, "title":"…", "body":"…", "link":"…" }</code></td>
+                    <td><code>{ "summary":{ "counts":{ "android":{ "success":10 }, "ios":{ "success":3 } } } }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/admin/logs/system</code></td>
+                    <td>시스템 로그 조회 (최신 300건)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "logs":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/admin/logs/crawling</code></td>
+                    <td>크롤링 로그 조회</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "logs":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/univ/admin/academic-calendar/{schoolId}</code></td>
+                    <td>학사일정 조회 (학교 전체)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>?departmentId=1</code> (optional)</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/univ/admin/academic-calendar</code></td>
+                    <td>학사일정 추가</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "schoolId":1, "title":"…", "startDate":"2025-03-02", "endDate":"2025-03-02", "type":false }</code></td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/univ/admin/academic-calendar</code></td>
+                    <td>학사일정 수정</td>
+                    <td>🔒 ADMIN</td>
+                    <td>위와 동일 + <code>id</code></td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/univ/admin/academic-calendar/{calendarId}</code></td>
+                    <td>학사일정 삭제</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "rows":[…] }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /api-univ -->
+
+        <!-- ─── ESC ─── -->
+        <div id="api-esc" class="api-section">
+          <div class="card">
+            <div class="card-title" style="color: #d85a30">🛍 ESC — 이커머스 API (상품 / 결제 / 커뮤니티)</div>
+
+            <div class="compatibility-block">
+              <b>🛠 호환성 해결 사항</b><br />
+              <span class="compat-err">수정 필요</span> <code>ShoppingBag.userEmail</code>, <code>Payment.userEmail</code>,
+              <code>CancelPayment.userEmail</code> 등 모든 email FK → <code>user_id BIGINT</code>로 통일. 엔드포인트 파라미터도 <code>:email</code> →
+              <code>:userId</code> 또는 JWT 추출로 변경<br />
+              <span class="compat-err">수정 필요</span> Passport.js 세션 인증 → common JWT Bearer 인증으로 교체<br />
+              <span class="compat-warn">확인 필요</span> <code>Payment.purchaseProductInformation(JSON)</code> → <code>ESC_PAYMENT_ITEM</code> 별도 테이블로
+              정규화 권장 (현재 구조 유지 가능하나 쿼리 불가)<br />
+              <span class="compat-warn">확인 필요</span> 상품 상세 조회 시 <code>grade</code> 매 요청마다 재계산 + UPDATE → 리뷰 변경 이벤트 시에만 업데이트로
+              변경
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d85a3022; color: #d85a30; padding: 2px 8px; border-radius: 4px; font-size: 11px">Product</span> 상품 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request / Params</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products</code></td>
+                    <td>상품 목록 조회 (필터/정렬)</td>
+                    <td>—</td>
+                    <td><code>?filter=ROOM&sort=recent</code></td>
+                    <td><code>[{ "id":1, "name":"…", "price":50000, "grade":4.5, "type":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/best</code></td>
+                    <td>베스트 상품 목록</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "name":"…", "grade":4.8 }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/{productId}</code></td>
+                    <td>상품 상세 (이미지, 옵션, 리뷰 포함). <code>reviewSort</code>: recent/like</td>
+                    <td>—</td>
+                    <td><code>?reviewSort=recent</code></td>
+                    <td><code>{ "id":1, "name":"…", "price":50000, "grade":4.5, "images":[…], "options":[…], "reviews":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products</code></td>
+                    <td>상품 생성 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>상품 전체 데이터 (name, type, price, options, images 등)</td>
+                    <td><code>{ "id":1, "name":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/products</code></td>
+                    <td>상품 수정 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>위와 동일 + <code>id</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/products/{productId}</code></td>
+                    <td>상품 삭제 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/products/inventory</code></td>
+                    <td>재고 수량 수정 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "id":1, "inventoryQuantity":100 }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/products/discounts/{id}</code></td>
+                    <td>할인 정보 삭제 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/estimate</code></td>
+                    <td>견적 데이터 조회</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>[…]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d85a3022; color: #d85a30; padding: 2px 8px; border-radius: 4px; font-size: 11px">Review</span> 리뷰 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/{productId}/reviews</code></td>
+                    <td>리뷰 목록 (정렬: recent/like)</td>
+                    <td>—</td>
+                    <td><code>?sort=recent</code></td>
+                    <td><code>[{ "id":1, "grade":5, "content":"…", "reviewLike":10 }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products/reviews</code></td>
+                    <td>리뷰 작성 (주문 검증 후 grade 업데이트)</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "productId":1, "grade":5, "content":"…" }</code></td>
+                    <td><code>{ "id":1, "grade":5 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/products/reviews</code></td>
+                    <td>리뷰 수정</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "id":1, "grade":4, "content":"…" }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/products/reviews/{reviewId}</code></td>
+                    <td>리뷰 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products/reviews/like</code></td>
+                    <td>리뷰 좋아요 토글</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "reviewId":1, "type":"add" }</code></td>
+                    <td><code>{ "reviewLike":11 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/{productId}/reviews/check</code></td>
+                    <td>내 리뷰 작성 여부 확인 (재구매 검증)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "canReview":true, "hasReviewed":false }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/products/grade</code></td>
+                    <td>상품 평점 강제 업데이트 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "productId":1 }</code></td>
+                    <td><code>{ "grade":4.5 }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d85a3022; color: #d85a30; padding: 2px 8px; border-radius: 4px; font-size: 11px">Inquiry</span> 상품 문의 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/{productId}/inquiries</code></td>
+                    <td>상품 문의 목록 (type: ALL/MY)</td>
+                    <td>—</td>
+                    <td><code>?inquiryType=ALL</code></td>
+                    <td><code>[{ "id":1, "title":"…", "secret":false }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products/inquiries</code></td>
+                    <td>상품 문의 등록</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "productId":1, "inquiryType":"PRODUCT", "secret":false, "title":"…", "content":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/products/inquiries</code></td>
+                    <td>문의 수정</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "id":1, "title":"…", "content":"…" }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/products/inquiries/{id}</code></td>
+                    <td>문의 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products/inquiries/answers</code></td>
+                    <td>문의 답변 등록 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "inquiryId":1, "content":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/products/inquiries/answers</code></td>
+                    <td>답변 수정</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "id":1, "content":"…" }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/products/inquiries/answers/{id}</code></td>
+                    <td>답변 삭제</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d85a3022; color: #d85a30; padding: 2px 8px; border-radius: 4px; font-size: 11px">Cart / Payment</span> 장바구니 / 결제
+                API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/cart</code></td>
+                    <td>장바구니 조회 (JWT에서 userId 추출 — 기존 :email 파라미터 제거)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "productId":1, "quantity":2, "options":{…} }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/cart</code></td>
+                    <td>장바구니 상품 추가</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "productId":1, "quantity":1, "options":{…} }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/cart</code></td>
+                    <td>장바구니 수량 수정</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "id":1, "quantity":3 }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/cart/{id}/{productId}</code></td>
+                    <td>장바구니 항목 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/payments</code></td>
+                    <td>결제 생성 (purchaseProductInformation: JSON)</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "amount":50000, "purchaseInfo":{…} }</code></td>
+                    <td><code>{ "id":1, "deliveryStatus":"PREPARING" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/payments/me</code></td>
+                    <td>내 결제 내역 조회 (JWT userId 사용 — 기존 :email 제거)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "amount":50000, "deliveryStatus":"PREPARING", "createdAt":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/payments/{id}/delivery-completed</code></td>
+                    <td>배송 완료 처리</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "deliveryStatus":"DELIVERED" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/payments/{id}/confirmed</code></td>
+                    <td>구매 확정</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "deliveryStatus":"CONFIRMED" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/payments/cancel</code></td>
+                    <td>결제 취소 신청</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "paymentId":1, "cancelType":"SIMPLE" }</code></td>
+                    <td><code>{ "id":1, "processStep":"REQUESTED" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/payments/cancel/me</code></td>
+                    <td>내 취소 내역 (JWT userId 사용)</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "cancelType":"SIMPLE", "processStep":"COMPLETED" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/admin/payments</code></td>
+                    <td>전체 결제 목록 (Admin, 정렬 기준 선택)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>?sort=recent</code></td>
+                    <td><code>[…]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/admin/payments</code></td>
+                    <td>결제 상태 수정 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "id":1, "deliveryStatus":"SHIPPING", "invoiceNumber":123456 }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/admin/payments/cancel</code></td>
+                    <td>취소 요청 목록 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>?sort=recent</code></td>
+                    <td><code>[…]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-put">PUT</span></td>
+                    <td><code>/api/esc/admin/payments/cancel</code></td>
+                    <td>취소 처리 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "id":1, "processStep":"COMPLETED", "clearStep":true }</code></td>
+                    <td><code>{ "message":"처리 완료" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d85a3022; color: #d85a30; padding: 2px 8px; border-radius: 4px; font-size: 11px">Community</span> 커뮤니티 / 서비스
+                문의 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/community/posts</code></td>
+                    <td>커뮤니티 게시글 목록 (정렬)</td>
+                    <td>—</td>
+                    <td><code>?sort=recent</code></td>
+                    <td><code>[{ "id":1, "title":"…", "content":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/community/posts/{postId}</code></td>
+                    <td>게시글 상세 + 댓글</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>{ "id":1, "title":"…", "comments":[…] }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/community/posts</code></td>
+                    <td>게시글 작성</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "title":"…", "content":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-patch">PATCH</span></td>
+                    <td><code>/api/esc/community/posts/{postId}</code></td>
+                    <td>게시글 수정</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "title":"…", "content":"…" }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/community/posts/{postId}</code></td>
+                    <td>게시글 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/community/posts/like</code></td>
+                    <td>게시글 좋아요</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "postId":1 }</code></td>
+                    <td><code>{ "likeId":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/community/posts/like/{likeId}</code></td>
+                    <td>게시글 좋아요 취소</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"취소 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/community/comments</code></td>
+                    <td>댓글 작성</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "postId":1, "content":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/community/posts/{postId}/comments</code></td>
+                    <td>댓글 목록 (정렬)</td>
+                    <td>—</td>
+                    <td><code>?sort=recent</code></td>
+                    <td><code>[{ "id":1, "content":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-patch">PATCH</span></td>
+                    <td><code>/api/esc/community/comments/{commentId}</code></td>
+                    <td>댓글 수정</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "content":"…" }</code></td>
+                    <td><code>{ "message":"수정 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/community/comments/like</code></td>
+                    <td>댓글 좋아요</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "commentId":1 }</code></td>
+                    <td><code>{ "likeId":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/community/comments/like/{likeId}</code></td>
+                    <td>댓글 좋아요 취소</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"취소 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/service/inquiries</code></td>
+                    <td>서비스 문의 목록</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "inquiryType":"DELIVERY", "title":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/service/inquiries</code></td>
+                    <td>서비스 문의 등록</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "inquiryType":"DELIVERY", "secret":false, "title":"…", "content":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/service/inquiries/{inquiryId}</code></td>
+                    <td>서비스 문의 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/service/inquiries/answers</code></td>
+                    <td>서비스 문의 답변 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td><code>{ "inquiryId":1, "content":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/service/inquiries/answers/{inquiryId}</code></td>
+                    <td>답변 삭제 (Admin)</td>
+                    <td>🔒 ADMIN</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d85a3022; color: #d85a30; padding: 2px 8px; border-radius: 4px; font-size: 11px">Tag</span> 상품 태그 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products/tags</code></td>
+                    <td>태그 추가</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "productId":1, "tag":"인테리어", "productType":"ROOM" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/esc/products/tags/{id}</code></td>
+                    <td>태그 삭제</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/esc/products/tags/exclude</code></td>
+                    <td>제외 태그 등록</td>
+                    <td>🔒 Bearer</td>
+                    <td><code>{ "tag":"…", "productType":"…" }</code></td>
+                    <td><code>{ "id":1 }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/esc/products/tags/exclude</code></td>
+                    <td>제외 태그 목록 조회</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "tag":"…" }]</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /api-esc -->
+
+        <!-- ─── domo ─── -->
+        <div id="api-domo" class="api-section">
+          <div class="card">
+            <div class="card-title" style="color: #d4537e">🗺 domo — 여행지 추천 / 일정 점수 API</div>
+
+            <div class="compatibility-block">
+              <b>🛠 호환성 해결 사항</b><br />
+              <span class="compat-ok">수정 없음</span> domo는 인증 없이 동작하는 공개 API만 존재. 통합 후에도 그대로 유지<br />
+              <span class="compat-err">버그 수정</span> <code>ItineraryController</code>의 중복 <code>scoreService</code> 호출 (includePlaceScores 조건부 재계산
+              블록 제거)<br />
+              <span class="compat-err">버그 수정</span> <code>PlaceRepository</code>와 <code>PlaceRowMapper</code> 중복 —
+              <code>service/PlaceRowMapper.java</code> 삭제, repository 내부로 통합<br />
+              <span class="compat-warn">신규 개발</span> <code>DM_ITINERARY</code> 테이블 및 일정 저장 API는 ERD 설계에만 존재, 실제 구현 필요
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d4537e22; color: #d4537e; padding: 2px 8px; border-radius: 4px; font-size: 11px">Place</span> 여행지(장소) 조회 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Params</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/places</code></td>
+                    <td>장소 목록 조회 (시도/시군구 필터, 점수 계산 후 정렬). sort: total(기본)/benefit/popular/distance</td>
+                    <td>—</td>
+                    <td><code>?sido=경기도&sigungu=화성시&sort=benefit&userLat=37.2&userLng=127.1&limit=100&offset=0</code></td>
+                    <td>
+                      <code
+                        >[{ "name":"…", "category":"카페", "lat":37.2, "lng":127.1, "discountPercent":20, "benefitScore":85, "popularScore":70, "totalScore":78,
+                        "distance":1.2 }]</code
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d4537e22; color: #d4537e; padding: 2px 8px; border-radius: 4px; font-size: 11px">Itinerary</span> 일정 점수 계산 API
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response 요약</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/itinerary/score</code></td>
+                    <td>
+                      방문할 장소 목록으로 경로 점수 계산. 거리 점수(distanceScore) + 혜택 점수(benefitScore) + 인기도 점수(popularScore) → 종합 점수. 중복 계산
+                      버그 수정 적용
+                    </td>
+                    <td>—</td>
+                    <td><code>{ "placeIds":["uuid1","uuid2","uuid3"], "legsKm":[1.2, 0.8], "includePlaceScores":true }</code></td>
+                    <td>
+                      <code
+                        >{ "routeKm":2.0, "distanceScore":80, "benefitScore":75, "popularScore":65, "totalScore":74, "places":[{ "name":"…", "benefitScore":85
+                        }] }</code
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="api-group">
+              <div class="api-group-title">
+                <span style="background: #d4537e22; color: #d4537e; padding: 2px 8px; border-radius: 4px; font-size: 11px">Itinerary Save</span> 일정 저장 API
+                (신규 개발 필요)
+              </div>
+              <table class="ctable">
+                <thead>
+                  <tr>
+                    <th style="width: 80px">Method</th>
+                    <th style="width: 230px">Path</th>
+                    <th>설명</th>
+                    <th>Auth</th>
+                    <th>Request Body</th>
+                    <th>Response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="method m-post">POST</span></td>
+                    <td><code>/api/itinerary</code></td>
+                    <td>일정 저장 (DM_ITINERARY + DM_ITINERARY_PLACE 생성) — 신규 구현 필요</td>
+                    <td>🔒 Bearer (선택)</td>
+                    <td><code>{ "title":"경기도 당일치기", "region":"경기도", "placeIds":["uuid1","uuid2"], "scores":[80,75] }</code></td>
+                    <td><code>{ "id":1, "title":"…", "createdAt":"…" }</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-get">GET</span></td>
+                    <td><code>/api/itinerary/me</code></td>
+                    <td>내 저장 일정 목록 — 신규 구현 필요</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>[{ "id":1, "title":"…", "region":"…", "createdAt":"…" }]</code></td>
+                  </tr>
+                  <tr>
+                    <td><span class="method m-del">DELETE</span></td>
+                    <td><code>/api/itinerary/{id}</code></td>
+                    <td>일정 삭제 — 신규 구현 필요</td>
+                    <td>🔒 Bearer</td>
+                    <td>—</td>
+                    <td><code>{ "message":"삭제 완료" }</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- /api-domo -->
+
+        <!-- ─── Security Summary ─── -->
+        <div id="api-security" class="api-section">
+          <div class="card">
+            <div class="card-title">🔒 모듈별 Security 설정 — permitAll 경로 정리</div>
+            <table class="ctable">
+              <thead>
+                <tr>
+                  <th>모듈</th>
+                  <th>permitAll (인증 불필요)</th>
+                  <th>authenticated (JWT 필수)</th>
+                  <th>hasRole(ADMIN)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>common</b></td>
+                  <td><code>/api/auth/login</code><br /><code>/api/auth/refresh</code><br /><code>/api/auth/verify/**</code><br /><code>/api/health</code></td>
+                  <td><code>/api/auth/logout</code><br /><code>/api/auth/me</code></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><b>ganzithon</b></td>
+                  <td><code>/api/map/**</code><br /><code>/api/report/{id}</code> (GET 단건)</td>
+                  <td><code>/api/report</code> (POST/PUT/DELETE)<br /><code>/api/mypage/**</code><br /><code>/api/image/upload</code></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><b>career-hi</b></td>
+                  <td><code>/api/v1/market/**</code><br /><code>/api/v1/files/upload</code></td>
+                  <td><code>/api/v1/users/me/**</code><br /><code>/api/v1/reports/**</code></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><b>univNotice</b></td>
+                  <td><code>/api/univ/schools/**</code> (GET)<br /><code>/api/univ/qr/login</code><br /><code>/api/univ/token/refresh</code></td>
+                  <td>
+                    <code>/api/univ/notices</code><br /><code>/api/univ/mypage/**</code><br /><code>/api/univ/qr/create</code><br /><code
+                      >/api/univ/qr/check</code
+                    >
+                  </td>
+                  <td><code>/api/univ/admin/**</code></td>
+                </tr>
+                <tr>
+                  <td><b>ESC</b></td>
+                  <td>
+                    <code>/api/esc/products/**</code> (GET)<br /><code>/api/esc/community/**</code> (GET)<br /><code>/api/esc/service/inquiries</code> (GET)
+                  </td>
+                  <td>
+                    <code>/api/esc/cart/**</code><br /><code>/api/esc/payments/**</code><br /><code>/api/esc/community/posts/**</code> (CUD)<br /><code
+                      >/api/esc/service/inquiries/**</code
+                    >
+                    (CUD)
+                  </td>
+                  <td><code>/api/esc/admin/**</code><br /><code>/api/esc/products</code> (POST/PUT/DELETE)</td>
+                </tr>
+                <tr>
+                  <td><b>domo</b></td>
+                  <td><code>/api/places</code><br /><code>/api/itinerary/score</code></td>
+                  <td><code>/api/itinerary</code> (저장 — 선택적)<br /><code>/api/itinerary/me</code></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><b>portfolio</b></td>
+                  <td>전체 공개 (Supabase 독립)</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Spring Boot 모노레포 모듈 구조 (최종 설계안)</div>
+            <pre>
+portfolio-backend/
+├── common/                     ← 공통 모듈
+│   ├── entity/User.java        ← 통합 USERS 테이블 (school_id, phone_hash 등 nullable 추가)
+│   ├── auth/
+│   │   ├── AuthController.java    ← signup/login/logout/refresh/verify
+│   │   ├── AuthService.java
+│   │   ├── JwtTokenProvider.java  ← email subject + userId claim 포함
+│   │   ├── JwtAuthFilter.java     ← DB 조회 없이 클레임에서 직접 추출
+│   │   └── VerificationCode.java  ← phone_verification + type 컬럼(SIGNUP/LOGIN/DELETE)
+│   └── config/SecurityConfig.java
+│
+├── portfolio/               ← Supabase 독립, 인증 불필요
+├── univnotice/              ← Node → Spring Boot 포팅, admin API 포함
+│   └── ※ UN_USER 폐기 → common USERS 참조
+├── esc/                     ← Node → Spring Boot 포팅
+│   └── ※ userEmail FK 전체 → user_id(bigint) 변경
+├── ganzithon/               ← @Table(name="gz_report") 추가
+│   └── ※ @AuthenticationPrincipal User → UserDetails 교체
+├── domo/                    ← 버그 수정 + itinerary 저장 신규 개발
+└── career-hi/               ← @Table(name="ch_report"), CH_PROFILE_SPEC 정규화</pre
+            >
+          </div>
+        </div>
+        <!-- /api-security -->
+
+        <script>
+          (function () {
+            var tabs = [
+              { id: "api-common", label: "🔐 공통 인증", color: "#7F77DD" },
+              { id: "api-gz", label: "🗺 ganzithon", color: "#185FA5" },
+              { id: "api-career", label: "💼 career-hi", color: "#888780" },
+              { id: "api-univ", label: "🔔 univNotice", color: "#BA7517" },
+              { id: "api-esc", label: "🛍 ESC", color: "#D85A30" },
+              { id: "api-domo", label: "🗺 domo", color: "#D4537E" },
+              { id: "api-security", label: "🔒 Security 설정", color: "#444" },
+            ];
+            var nav = document.getElementById("api-nav");
+            if (!nav) return;
+            tabs.forEach(function (t, i) {
+              var btn = document.createElement("button");
+              btn.className = "api-tab" + (i === 0 ? " on" : "");
+              btn.style.borderColor = t.color;
+              if (i === 0) {
+                btn.style.background = t.color;
+                btn.style.color = "#fff";
+              }
+              btn.textContent = t.label;
+              btn.onclick = function () {
+                document.querySelectorAll(".api-tab").forEach(function (b) {
+                  b.className = "api-tab";
+                  b.style.background = "#f0efec";
+                  b.style.color = "#555";
+                });
+                btn.className = "api-tab on";
+                btn.style.background = t.color;
+                btn.style.color = "#fff";
+                document.querySelectorAll(".api-section").forEach(function (s) {
+                  s.classList.remove("on");
+                });
+                var el = document.getElementById(t.id);
+                if (el) el.classList.add("on");
+              };
+              nav.appendChild(btn);
+            });
+          })();
+        </script>
+      </div>
+      <!-- /sec-api -->
+
+      <!-- ═══════════════ ERD ═══════════════ -->
+      <div id="sec-erd" class="section">
+        <div class="section-title">📊 ERD — 모듈별 테이블 관계도</div>
+        <div class="mod-tabs" id="erd-mod-tabs"></div>
+        <div class="erd-ctrl">
+          <button class="zbtn" onclick="zoomChart(-0.2)">−</button>
+          <span id="zpct">100%</span>
+          <button class="zbtn" onclick="zoomChart(0.2)">+</button>
+          <button class="zbtn" onclick="resetZoom()" style="font-size: 12px; padding: 3px 9px">초기화</button>
+        </div>
+        <div id="erd-wrap"><p style="color: #888; padding: 20px; font-size: 13px">로딩 중...</p></div>
+      </div>
+
+      <!-- ═══════════════ TABLE DESCRIPTIONS ═══════════════ -->
+      <div id="sec-tables" class="section">
+        <div class="section-title">🗂 테이블 설명 — 역할 및 컬럼 상세</div>
+        <div class="mod-tabs" id="tbl-mod-tabs"></div>
+        <div class="tbl-grid" id="tbl-grid"></div>
+      </div>
+    </div>
+    <!-- /page -->
+
+    <style>
+      .mod-tabs {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 14px;
+      }
+      .mod-tab {
+        padding: 3px 12px;
+        border-radius: 99px;
+        font-size: 11px;
+        font-weight: 600;
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        background: #fff;
+        transition: all 0.15s;
+      }
+      .erd-ctrl {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+      }
+      .zbtn {
+        padding: 3px 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .zbtn:hover {
+        background: #eee;
+      }
+      #zpct {
+        font-size: 12px;
+        color: #666;
+        min-width: 42px;
+        text-align: center;
+      }
+      #erd-wrap {
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #ddd;
+        overflow: auto;
+        padding: 24px;
+        min-height: 420px;
+      }
+      #erd-wrap svg {
+        display: block;
+        transform-origin: top left;
+      }
+      .tbl-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 14px;
+        margin-top: 4px;
+      }
+      .tbl-card {
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid #e0ddd6;
+        overflow: hidden;
+      }
+      .tbl-card-head {
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        border-bottom: 1px solid #e8e6e0;
+      }
+      .tbl-card-head .ttag {
+        font-size: 10px;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-radius: 99px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .tbl-card-head .tdesc {
+        font-size: 11px;
+        font-weight: 400;
+        color: #666;
+        margin-top: 3px;
+      }
+      .col-list {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 11.5px;
+      }
+      .col-list th {
+        background: #f5f4f0;
+        padding: 5px 10px;
+        text-align: left;
+        font-weight: 600;
+        color: #555;
+        border-bottom: 1px solid #eee;
+      }
+      .col-list td {
+        padding: 4px 10px;
+        border-bottom: 1px solid #f0efec;
+        vertical-align: top;
+      }
+      .col-list tr:last-child td {
+        border-bottom: none;
+      }
+      .badge-pk {
+        background: #fef3c7;
+        color: #92400e;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+      .badge-fk {
+        background: #dbeafe;
+        color: #1e40af;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 1px 5px;
+        border-radius: 3px;
+      }
+      .ctype {
+        color: #888;
+        font-size: 10px;
+      }
+    </style>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+      function sw(btn, sec) {
+        document.querySelectorAll(".nb").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".section").forEach((s) => s.classList.remove("active"));
+        var el = document.getElementById("sec-" + sec);
+        el.classList.add("active");
+        // ERD 탭 첫 진입 시 렌더링
+        if (sec === "erd" && window._mermaid && !window._erdInitialized) {
+          window._erdInitialized = true;
+          renderErd("all");
+        }
+      }
+
+      /* ── MODS ── */
+      var MODS = [
+        { key: "common", label: "common", color: "#7F77DD" },
+        { key: "portfolio", label: "portfolio", color: "#1D9E75" },
+        { key: "univ", label: "univNotice", color: "#BA7517" },
+        { key: "esc", label: "ESC", color: "#D85A30" },
+        { key: "gz", label: "ganzithon", color: "#185FA5" },
+        { key: "domo", label: "domo", color: "#D4537E" },
+        { key: "career", label: "career-hi", color: "#888780" },
+      ];
+
+      /* ── MERMAID DIAGRAMS ── */
+      var D = {};
+      D.common = `erDiagram
+  USERS{bigint id PK varchar username varchar password_hash varchar role datetime created_at}`;
+      D.portfolio = `erDiagram
+  PF_STACK{bigint id PK varchar name varchar category varchar expertise int proficiency}
+  PF_CERTIFICATION{bigint id PK varchar name varchar organization Boolean status date acquired_date varchar logo_url}
+  PF_EXPERIENCE{bigint id PK varchar title varchar type text detail date start_date date end_date varchar note}
+  PF_PROJECT{bigint id PK varchar name varchar sub_title text description varchar status varchar url varchar git_url varchar pdf_url varchar domain int team_size date start_date date end_date varchar submit_contest}
+  PF_PROJECT_STACK{bigint id PK bigint project_id FK varchar stack_name}
+  PF_PROJECT_TAG{bigint id PK bigint project_id FK varchar tag}
+  PF_PROJECT_IMAGE{bigint id PK bigint project_id FK varchar image_url boolean is_main int sort_order}
+  PF_PROJECT_DETAIL{bigint id PK bigint project_id FK text intention text planning text stack_desc text team_roles varchar result_image_url text feel}
+  PF_PROJECT||--o{PF_PROJECT_STACK:has
+  PF_PROJECT||--o{PF_PROJECT_TAG:has
+  PF_PROJECT||--o{PF_PROJECT_IMAGE:has
+  PF_PROJECT||--||PF_PROJECT_DETAIL:has`;
+      D.univ = `erDiagram
+  USERS{bigint id PK varchar username}
+  UN_SCHOOL{int id PK varchar name}
+  UN_DEPARTMENT{int id PK int school_id FK varchar name}
+  UN_CRAWL_URL{int id PK int school_id FK int department_id FK text url varchar type varchar category}
+  UN_NOTICE{int id PK int school_id FK int department_id FK int crawl_url_id FK varchar title text original_url varchar author datetime published_at boolean attachments}
+  UN_KEYWORD{int id PK int user_id FK int category_id FK varchar keyword boolean is_enabled}
+  UN_NOTICE_KEYWORD_MATCH{int notice_id FK int keyword_id FK int user_id FK}
+  USERS||--o{UN_KEYWORD:owns
+  USERS||--o{UN_NOTICE_KEYWORD_MATCH:tracks
+  UN_SCHOOL||--o{UN_DEPARTMENT:has
+  UN_SCHOOL||--o{UN_CRAWL_URL:has
+  UN_SCHOOL||--o{UN_NOTICE:has
+  UN_DEPARTMENT||--o{UN_CRAWL_URL:has
+  UN_DEPARTMENT||--o{UN_NOTICE:has
+  UN_CRAWL_URL||--o{UN_NOTICE:generates
+  UN_NOTICE||--o{UN_NOTICE_KEYWORD_MATCH:matched
+  UN_KEYWORD||--o{UN_NOTICE_KEYWORD_MATCH:matched`;
+      D.esc = `erDiagram
+  USERS{bigint id PK varchar username}
+  ESC_PRODUCT{int id PK varchar name varchar type int price int grade int sale int inventory_quantity}
+  ESC_PRODUCT_IMG{int id PK int product_id FK varchar img varchar type}
+  ESC_PRODUCT_TAG{int id PK int product_id FK varchar tag varchar product_type}
+  ESC_PRODUCT_OPTION{int id PK int product_id FK varchar option_name boolean essential}
+  ESC_OPTION_PROPERTY{int id PK int option_id FK int product_id FK varchar property int amount}
+  ESC_PRODUCT_DISCOUNT{int id PK int product_id FK int discount_amount int period_year int period_month int period_date}
+  ESC_REVIEW{int id PK int product_id FK int user_id FK int grade int review_like text content}
+  ESC_PRODUCT_INQUIRY{int id PK int product_id FK int user_id FK varchar inquiry_type boolean secret varchar title text content}
+  ESC_PRODUCT_ANSWER{int id PK int inquiry_id FK int user_id FK text content}
+  ESC_SHOPPING_BAG{int id PK int user_id FK int product_id FK int quantity json options}
+  ESC_PAYMENT{int id PK int user_id FK int amount varchar delivery_status int invoice_number json purchase_info}
+  ESC_CANCEL_PAYMENT{int id PK int user_id FK int payment_id FK varchar cancel_type varchar process_step boolean clear_step}
+  ESC_COMMUNITY_POST{int id PK int user_id FK varchar title text content}
+  ESC_COMMUNITY_COMMENT{int id PK int post_id FK int user_id FK text content}
+  ESC_SERVICE_INQUIRY{int id PK int user_id FK varchar inquiry_type boolean secret varchar title text content}
+  ESC_SERVICE_ANSWER{int id PK int inquiry_id FK int user_id FK text content}
+  USERS||--o{ESC_REVIEW:writes
+  USERS||--o{ESC_PRODUCT_INQUIRY:asks
+  USERS||--o{ESC_PRODUCT_ANSWER:answers
+  USERS||--o{ESC_SHOPPING_BAG:has
+  USERS||--o{ESC_PAYMENT:pays
+  USERS||--o{ESC_CANCEL_PAYMENT:cancels
+  USERS||--o{ESC_COMMUNITY_POST:posts
+  USERS||--o{ESC_COMMUNITY_COMMENT:comments
+  USERS||--o{ESC_SERVICE_INQUIRY:inquires
+  USERS||--o{ESC_SERVICE_ANSWER:answers
+  ESC_PRODUCT||--o{ESC_PRODUCT_IMG:has
+  ESC_PRODUCT||--o{ESC_PRODUCT_TAG:has
+  ESC_PRODUCT||--o{ESC_PRODUCT_OPTION:has
+  ESC_PRODUCT||--o{ESC_PRODUCT_DISCOUNT:has
+  ESC_PRODUCT||--o{ESC_REVIEW:has
+  ESC_PRODUCT||--o{ESC_PRODUCT_INQUIRY:has
+  ESC_PRODUCT||--o{ESC_SHOPPING_BAG:in
+  ESC_PRODUCT_OPTION||--o{ESC_OPTION_PROPERTY:has
+  ESC_PRODUCT_INQUIRY||--o|ESC_PRODUCT_ANSWER:answered
+  ESC_PAYMENT||--o{ESC_CANCEL_PAYMENT:cancelled
+  ESC_COMMUNITY_POST||--o{ESC_COMMUNITY_COMMENT:has
+  ESC_SERVICE_INQUIRY||--o|ESC_SERVICE_ANSWER:answered`;
+      D.gz = `erDiagram
+  USERS{bigint id PK varchar username}
+  GZ_REPORT{bigint id PK bigint user_id FK varchar title text description varchar image_url varchar road_address varchar lot_address double latitude double longitude varchar source_type varchar status datetime created_at datetime updated_at}
+  GZ_REPORT_ANALYSIS{bigint id PK bigint report_id FK text summary_text varchar severity_level varchar ai_model_version decimal confidence_score varchar status boolean rag_enabled text retrieved_sources int context_count datetime generated_at}
+  USERS||--o{GZ_REPORT:reports
+  GZ_REPORT||--||GZ_REPORT_ANALYSIS:analyzed`;
+      D.domo = `erDiagram
+  USERS{bigint id PK varchar username}
+  DM_PLACE{bigint id PK varchar name varchar category varchar address double lat double lng varchar sido varchar sigungu int discount_percent int popularity}
+  DM_ITINERARY{bigint id PK bigint user_id FK varchar title varchar region datetime created_at}
+  DM_ITINERARY_PLACE{bigint id PK bigint itinerary_id FK bigint place_id FK int sort_order int total_score}
+  USERS||--o{DM_ITINERARY:plans
+  DM_ITINERARY||--o{DM_ITINERARY_PLACE:includes
+  DM_PLACE||--o{DM_ITINERARY_PLACE:in`;
+      D.career = `erDiagram
+  USERS{bigint id PK varchar username}
+  CH_PROFILE{bigint id PK bigint user_id FK varchar name varchar academic_status varchar school_name varchar major varchar education_level varchar school_type varchar target_job varchar portfolio_url varchar portfolio_file_url}
+  CH_PROFILE_SPEC{bigint id PK bigint profile_id FK varchar spec_type varchar value}
+  CH_REPORT{bigint id PK bigint user_id FK varchar target_job int match_rate text ai_analysis_json date created_at}
+  CH_MARKET_JOB_POST{bigint id PK varchar company_name varchar job_title varchar job_category text required_skills text preferred_skills varchar source_url date posted_at datetime crawled_at}
+  CH_MARKET_SKILL_STAT{bigint id PK varchar job_category varchar skill_name int demand_count date stat_date}
+  USERS||--||CH_PROFILE:has
+  CH_PROFILE||--o{CH_PROFILE_SPEC:has
+  USERS||--o{CH_REPORT:generates`;
+      D.all =
+        "erDiagram\n" +
+        "USERS{bigint id PK varchar username varchar password_hash varchar role datetime created_at}\n" +
+        "PF_STACK{bigint id PK varchar name varchar category varchar expertise int proficiency}\n" +
+        "PF_CERTIFICATION{bigint id PK varchar name varchar organization varchar status date acquired_date}\n" +
+        "PF_EXPERIENCE{bigint id PK varchar title varchar type text detail date start_date date end_date}\n" +
+        "PF_PROJECT{bigint id PK varchar name varchar sub_title text description varchar status varchar url varchar git_url int team_size date start_date date end_date}\n" +
+        "PF_PROJECT_STACK{bigint id PK bigint project_id FK varchar stack_name}\n" +
+        "PF_PROJECT_TAG{bigint id PK bigint project_id FK varchar tag}\n" +
+        "PF_PROJECT_IMAGE{bigint id PK bigint project_id FK varchar image_url boolean is_main}\n" +
+        "PF_PROJECT_DETAIL{bigint id PK bigint project_id FK text intention text planning text team_roles text feel}\n" +
+        "UN_SCHOOL{int id PK varchar name}\n" +
+        "UN_DEPARTMENT{int id PK int school_id FK varchar name}\n" +
+        "UN_CRAWL_URL{int id PK int school_id FK int department_id FK text url varchar category}\n" +
+        "UN_NOTICE{int id PK int school_id FK int department_id FK int crawl_url_id FK varchar title datetime published_at}\n" +
+        "UN_KEYWORD{int id PK int user_id FK varchar keyword boolean is_enabled}\n" +
+        "UN_NOTICE_KEYWORD_MATCH{int notice_id FK int keyword_id FK int user_id FK}\n" +
+        "ESC_PRODUCT{int id PK varchar name varchar type int price int grade}\n" +
+        "ESC_PRODUCT_IMG{int id PK int product_id FK varchar img varchar type}\n" +
+        "ESC_PRODUCT_OPTION{int id PK int product_id FK varchar option_name}\n" +
+        "ESC_OPTION_PROPERTY{int id PK int option_id FK varchar property int amount}\n" +
+        "ESC_PRODUCT_DISCOUNT{int id PK int product_id FK int discount_amount}\n" +
+        "ESC_REVIEW{int id PK int product_id FK int user_id FK int grade text content}\n" +
+        "ESC_PRODUCT_INQUIRY{int id PK int product_id FK int user_id FK text content}\n" +
+        "ESC_PRODUCT_ANSWER{int id PK int inquiry_id FK text content}\n" +
+        "ESC_SHOPPING_BAG{int id PK int user_id FK int product_id FK int quantity}\n" +
+        "ESC_PAYMENT{int id PK int user_id FK int amount varchar delivery_status}\n" +
+        "ESC_CANCEL_PAYMENT{int id PK int user_id FK int payment_id FK varchar cancel_type}\n" +
+        "ESC_COMMUNITY_POST{int id PK int user_id FK varchar title}\n" +
+        "ESC_COMMUNITY_COMMENT{int id PK int post_id FK int user_id FK text content}\n" +
+        "ESC_SERVICE_INQUIRY{int id PK int user_id FK varchar inquiry_type text content}\n" +
+        "ESC_SERVICE_ANSWER{int id PK int inquiry_id FK text content}\n" +
+        "GZ_REPORT{bigint id PK bigint user_id FK varchar title varchar source_type varchar status}\n" +
+        "GZ_REPORT_ANALYSIS{bigint id PK bigint report_id FK text summary_text varchar severity_level decimal confidence_score}\n" +
+        "DM_PLACE{bigint id PK varchar name varchar category double lat double lng int discount_percent}\n" +
+        "DM_ITINERARY{bigint id PK bigint user_id FK varchar title varchar region}\n" +
+        "DM_ITINERARY_PLACE{bigint id PK bigint itinerary_id FK bigint place_id FK int sort_order}\n" +
+        "CH_PROFILE{bigint id PK bigint user_id FK varchar name varchar academic_status varchar target_job}\n" +
+        "CH_PROFILE_SPEC{bigint id PK bigint profile_id FK varchar spec_type varchar value}\n" +
+        "CH_REPORT{bigint id PK bigint user_id FK varchar target_job int match_rate}\n" +
+        "CH_MARKET_JOB_POST{bigint id PK varchar company_name varchar job_title varchar job_category}\n" +
+        "CH_MARKET_SKILL_STAT{bigint id PK varchar job_category varchar skill_name int demand_count}\n" +
+        "PF_PROJECT||--o{PF_PROJECT_STACK:has\n" +
+        "PF_PROJECT||--o{PF_PROJECT_TAG:has\n" +
+        "PF_PROJECT||--o{PF_PROJECT_IMAGE:has\n" +
+        "PF_PROJECT||--||PF_PROJECT_DETAIL:has\n" +
+        "USERS||--o{UN_KEYWORD:owns\n" +
+        "UN_SCHOOL||--o{UN_DEPARTMENT:has\n" +
+        "UN_SCHOOL||--o{UN_NOTICE:has\n" +
+        "UN_CRAWL_URL||--o{UN_NOTICE:generates\n" +
+        "UN_NOTICE||--o{UN_NOTICE_KEYWORD_MATCH:matched\n" +
+        "UN_KEYWORD||--o{UN_NOTICE_KEYWORD_MATCH:matched\n" +
+        "USERS||--o{ESC_REVIEW:writes\n" +
+        "USERS||--o{ESC_SHOPPING_BAG:has\n" +
+        "USERS||--o{ESC_PAYMENT:pays\n" +
+        "USERS||--o{ESC_COMMUNITY_POST:posts\n" +
+        "ESC_PRODUCT||--o{ESC_PRODUCT_IMG:has\n" +
+        "ESC_PRODUCT||--o{ESC_PRODUCT_OPTION:has\n" +
+        "ESC_PRODUCT||--o{ESC_REVIEW:has\n" +
+        "ESC_PRODUCT_OPTION||--o{ESC_OPTION_PROPERTY:has\n" +
+        "ESC_PRODUCT_INQUIRY||--o|ESC_PRODUCT_ANSWER:answered\n" +
+        "ESC_PAYMENT||--o{ESC_CANCEL_PAYMENT:cancelled\n" +
+        "ESC_COMMUNITY_POST||--o{ESC_COMMUNITY_COMMENT:has\n" +
+        "ESC_SERVICE_INQUIRY||--o|ESC_SERVICE_ANSWER:answered\n" +
+        "USERS||--o{GZ_REPORT:reports\n" +
+        "GZ_REPORT||--||GZ_REPORT_ANALYSIS:analyzed\n" +
+        "USERS||--o{DM_ITINERARY:plans\n" +
+        "DM_ITINERARY||--o{DM_ITINERARY_PLACE:includes\n" +
+        "DM_PLACE||--o{DM_ITINERARY_PLACE:in\n" +
+        "USERS||--||CH_PROFILE:has\n" +
+        "CH_PROFILE||--o{CH_PROFILE_SPEC:has\n" +
+        "USERS||--o{CH_REPORT:generates";
+
+      /* ── TABLE META ── */
+      var TABLES = {
+        common: [
+          {
+            id: "USERS",
+            mod: "common",
+            color: "#7F77DD",
+            desc: "모든 모듈이 공유하는 공통 사용자 테이블. 공통 계정 하나로 전체 서비스 접근.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "자동 증가 기본키" },
+              { n: "username", t: "varchar", d: "로그인용 사용자명" },
+              { n: "password_hash", t: "varchar", d: "bcrypt 단방향 해시된 비밀번호" },
+              { n: "role", t: "varchar", d: "권한 구분 (ADMIN / USER)" },
+              { n: "created_at", t: "datetime", d: "계정 생성 일시" },
+            ],
+          },
+        ],
+        portfolio: [
+          {
+            id: "PF_STACK",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "기술 스택 목록. category로 front/back/ops/etc 분류.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "name", t: "varchar", d: "기술명" },
+              { n: "category", t: "varchar", d: "분류: front/back/ops/etc" },
+              { n: "expertise", t: "varchar", d: "숙련도: Core/Expert/Basic" },
+              { n: "proficiency", t: "int", d: "숙련도 0~100" },
+            ],
+          },
+          {
+            id: "PF_CERTIFICATION",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "보유 자격증 목록.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "name", t: "varchar", d: "자격증명" },
+              { n: "organization", t: "varchar", d: "발행 기관" },
+              { n: "status", t: "Boolean", d: "취득/준비중" },
+              { n: "acquired_date", t: "date", d: "취득일" },
+              { n: "logo_url", t: "varchar", d: "로고 이미지 URL" },
+            ],
+          },
+          {
+            id: "PF_EXPERIENCE",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "경력/경험. 해커톤, 인턴, 프로젝트 등.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "title", t: "varchar", d: "경험 타이틀" },
+              { n: "type", t: "varchar", d: "해커톤/대회/프로젝트/인턴/서비스운영" },
+              { n: "detail", t: "text", d: "상세 설명" },
+              { n: "start_date", t: "date", d: "시작일" },
+              { n: "end_date", t: "date", d: "종료일" },
+              { n: "note", t: "varchar", d: "비고" },
+            ],
+          },
+          {
+            id: "PF_PROJECT",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "포트폴리오 메인 프로젝트 테이블.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "name", t: "varchar", d: "프로젝트명" },
+              { n: "sub_title", t: "varchar", d: "서브타이틀" },
+              { n: "description", t: "text", d: "한 줄 설명" },
+              { n: "status", t: "varchar", d: "제작완료/제작중/기획단계" },
+              { n: "url/git_url/pdf_url", t: "varchar", d: "링크 3종" },
+              { n: "domain", t: "varchar", d: "배포 도메인" },
+              { n: "team_size", t: "int", d: "팀원 수" },
+              { n: "start_date/end_date", t: "date", d: "개발 기간" },
+              { n: "submit_contest", t: "varchar", d: "제출 대회명" },
+            ],
+          },
+          {
+            id: "PF_PROJECT_STACK",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "프로젝트별 기술 스택 (1:N).",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "project_id", FK: true, t: "bigint", d: "PF_PROJECT 참조" },
+              { n: "stack_name", t: "varchar", d: "사용 기술명" },
+            ],
+          },
+          {
+            id: "PF_PROJECT_TAG",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "프로젝트 태그 (FULL/FRONT/BACK/DEVOPS 등).",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "project_id", FK: true, t: "bigint", d: "PF_PROJECT 참조" },
+              { n: "tag", t: "varchar", d: "태그값" },
+            ],
+          },
+          {
+            id: "PF_PROJECT_IMAGE",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "프로젝트 이미지. is_main으로 메인 구분.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "project_id", FK: true, t: "bigint", d: "PF_PROJECT 참조" },
+              { n: "image_url", t: "varchar", d: "이미지 URL" },
+              { n: "is_main", t: "boolean", d: "메인 이미지 여부" },
+              { n: "sort_order", t: "int", d: "정렬 순서" },
+            ],
+          },
+          {
+            id: "PF_PROJECT_DETAIL",
+            mod: "portfolio",
+            color: "#1D9E75",
+            desc: "프로젝트 상세 콘텐츠 (1:1).",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "project_id", FK: true, t: "bigint", d: "PF_PROJECT 참조(unique)" },
+              { n: "intention", t: "text", d: "기획 의도" },
+              { n: "planning", t: "text", d: "기획 내용" },
+              { n: "stack_desc", t: "text", d: "기술 스택 설명" },
+              { n: "team_roles", t: "text", d: "팀원 역할 분담" },
+              { n: "result_image_url", t: "varchar", d: "결과물 이미지" },
+              { n: "feel", t: "text", d: "느낀 점/배운 점" },
+            ],
+          },
+        ],
+        univ: [
+          {
+            id: "UN_SCHOOL",
+            mod: "univ",
+            color: "#BA7517",
+            desc: "등록된 학교 목록.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "name", t: "varchar", d: "학교명 (unique)" },
+            ],
+          },
+          {
+            id: "UN_DEPARTMENT",
+            mod: "univ",
+            color: "#BA7517",
+            desc: "학과 목록. school에 종속.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "school_id", FK: true, t: "int", d: "UN_SCHOOL 참조" },
+              { n: "name", t: "varchar", d: "학과명" },
+            ],
+          },
+          {
+            id: "UN_CRAWL_URL",
+            mod: "univ",
+            color: "#BA7517",
+            desc: "크롤링 대상 URL. department_id null = 학교 공통.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "school_id", FK: true, t: "int", d: "UN_SCHOOL 참조" },
+              { n: "department_id", FK: true, t: "int", d: "null = 학교 공통" },
+              { n: "url", t: "text", d: "크롤링 대상 URL" },
+              { n: "category", t: "varchar", d: "공지 분류명" },
+              { n: "type", t: "varchar", d: "크롤러 타입" },
+            ],
+          },
+          {
+            id: "UN_NOTICE",
+            mod: "univ",
+            color: "#BA7517",
+            desc: "크롤링으로 수집된 공지사항.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "school_id", FK: true, t: "int", d: "UN_SCHOOL 참조" },
+              { n: "department_id", FK: true, t: "int", d: "UN_DEPARTMENT 참조" },
+              { n: "crawl_url_id", FK: true, t: "int", d: "UN_CRAWL_URL 참조" },
+              { n: "title", t: "varchar(500)", d: "공지 제목" },
+              { n: "original_url", t: "text", d: "원본 공지 URL" },
+              { n: "author", t: "varchar", d: "작성자" },
+              { n: "published_at", t: "datetime", d: "원본 게시일" },
+              { n: "attachments", t: "boolean", d: "첨부파일 여부" },
+            ],
+          },
+          {
+            id: "UN_KEYWORD",
+            mod: "univ",
+            color: "#BA7517",
+            desc: "사용자 알림 키워드. category_id로 분류 연결.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "category_id", t: "int", d: "Category 참조" },
+              { n: "keyword", t: "varchar", d: "알림 키워드" },
+              { n: "is_enabled", t: "boolean", d: "활성화 여부" },
+            ],
+          },
+          {
+            id: "UN_NOTICE_KEYWORD_MATCH",
+            mod: "univ",
+            color: "#BA7517",
+            desc: "공지↔키워드 매칭 결과 기록.",
+            cols: [
+              { n: "notice_id", FK: true, t: "int", d: "UN_NOTICE 참조" },
+              { n: "keyword_id", FK: true, t: "int", d: "UN_KEYWORD 참조" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+            ],
+          },
+        ],
+        esc: [
+          {
+            id: "ESC_PRODUCT",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "판매 상품. 키보드 부품/완제품 쇼핑몰.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "name", t: "varchar(200)", d: "상품명" },
+              { n: "type", t: "varchar", d: "KEYBOARD/CASE/PCB/SWITCHES 등" },
+              { n: "price", t: "int", d: "정가" },
+              { n: "grade", t: "int", d: "평균 별점 (리뷰 평균, 자동 갱신)" },
+              { n: "sale", t: "int", d: "누적 판매 수" },
+              { n: "inventory_quantity", t: "int", d: "현재 재고" },
+            ],
+          },
+          {
+            id: "ESC_PRODUCT_IMG",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "상품 이미지. type으로 main/assist/detailedImg 구분.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "img", t: "varchar", d: "이미지 경로" },
+              { n: "type", t: "varchar", d: "main/assist/detailedImg" },
+            ],
+          },
+          {
+            id: "ESC_PRODUCT_TAG",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "상품 태그. 필터링에 사용.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "tag", t: "varchar", d: "태그값" },
+              { n: "product_type", t: "varchar", d: "상품 유형 (ex 태그용)" },
+            ],
+          },
+          {
+            id: "ESC_PRODUCT_OPTION",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "상품 옵션 그룹 (색상, 스위치 등).",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "option_name", t: "varchar", d: "옵션 그룹명" },
+              { n: "essential", t: "boolean", d: "필수 선택 여부" },
+            ],
+          },
+          {
+            id: "ESC_OPTION_PROPERTY",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "옵션 세부 속성 + 재고.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "option_id", FK: true, t: "int", d: "ESC_PRODUCT_OPTION 참조" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "property", t: "varchar", d: "속성값" },
+              { n: "amount", t: "int", d: "해당 속성 재고" },
+            ],
+          },
+          {
+            id: "ESC_PRODUCT_DISCOUNT",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "할인 정보.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "discount_amount", t: "int", d: "할인 금액" },
+              { n: "period_year/month/date", t: "int", d: "할인 종료 기간" },
+            ],
+          },
+          {
+            id: "ESC_REVIEW",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "상품 리뷰.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "grade", t: "int", d: "별점 1~5" },
+              { n: "review_like", t: "int", d: "도움됐어요 수" },
+              { n: "content", t: "text", d: "리뷰 내용" },
+            ],
+          },
+          {
+            id: "ESC_PRODUCT_INQUIRY",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "상품 문의.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "inquiry_type", t: "varchar", d: "문의 유형" },
+              { n: "secret", t: "boolean", d: "비밀글 여부" },
+              { n: "title", t: "varchar", d: "제목" },
+              { n: "content", t: "text", d: "내용" },
+            ],
+          },
+          {
+            id: "ESC_PRODUCT_ANSWER",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "상품 문의 답변 (1:1).",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "inquiry_id", FK: true, t: "int", d: "ESC_PRODUCT_INQUIRY 참조" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "content", t: "text", d: "답변 내용" },
+            ],
+          },
+          {
+            id: "ESC_SHOPPING_BAG",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "장바구니.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "product_id", FK: true, t: "int", d: "ESC_PRODUCT 참조" },
+              { n: "quantity", t: "int", d: "수량" },
+              { n: "options", t: "json", d: "선택 옵션 배열" },
+            ],
+          },
+          {
+            id: "ESC_PAYMENT",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "결제 내역.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "amount", t: "int", d: "실결제 금액" },
+              { n: "delivery_status", t: "varchar", d: "주문접수/준비중/배송중/배송완료/구매확정" },
+              { n: "invoice_number", t: "int", d: "송장번호" },
+              { n: "purchase_info", t: "json", d: "구매 상품 상세" },
+            ],
+          },
+          {
+            id: "ESC_CANCEL_PAYMENT",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "취소/환불/교환 내역.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "payment_id", FK: true, t: "int", d: "ESC_PAYMENT 참조" },
+              { n: "cancel_type", t: "varchar", d: "취소/반품/교환" },
+              { n: "process_step", t: "varchar", d: "접수/회수중/환불완료" },
+              { n: "clear_step", t: "boolean", d: "처리 완료 여부" },
+            ],
+          },
+          {
+            id: "ESC_COMMUNITY_POST",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "커뮤니티 게시글.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "title", t: "varchar(100)", d: "제목" },
+              { n: "content", t: "text", d: "본문" },
+            ],
+          },
+          {
+            id: "ESC_COMMUNITY_COMMENT",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "커뮤니티 댓글.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "post_id", FK: true, t: "int", d: "ESC_COMMUNITY_POST 참조" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "content", t: "text", d: "댓글 내용" },
+            ],
+          },
+          {
+            id: "ESC_SERVICE_INQUIRY",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "고객센터 서비스 문의.",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "inquiry_type", t: "varchar", d: "문의 유형" },
+              { n: "secret", t: "boolean", d: "비밀글" },
+              { n: "title", t: "varchar", d: "제목" },
+              { n: "content", t: "text", d: "내용" },
+            ],
+          },
+          {
+            id: "ESC_SERVICE_ANSWER",
+            mod: "esc",
+            color: "#D85A30",
+            desc: "서비스 문의 답변 (1:1).",
+            cols: [
+              { n: "id", PK: true, t: "int", d: "기본키" },
+              { n: "inquiry_id", FK: true, t: "int", d: "ESC_SERVICE_INQUIRY 참조" },
+              { n: "user_id", FK: true, t: "int", d: "USERS 참조" },
+              { n: "content", t: "text", d: "답변 내용" },
+            ],
+          },
+        ],
+        gz: [
+          {
+            id: "GZ_REPORT",
+            mod: "gz",
+            color: "#185FA5",
+            desc: "안전 위험 제보. 사진+위치와 함께 신고.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "user_id", FK: true, t: "bigint", d: "USERS 참조" },
+              { n: "title", t: "varchar(120)", d: "제보 제목" },
+              { n: "description", t: "text", d: "상세 설명" },
+              { n: "image_url", t: "varchar", d: "증거 이미지 (S3)" },
+              { n: "road_address", t: "varchar", d: "도로명 주소" },
+              { n: "latitude/longitude", t: "double", d: "GPS 좌표" },
+              { n: "source_type", t: "enum", d: "USER(직접제보)/PUBLIC(공공데이터)" },
+              { n: "status", t: "enum", d: "PENDING/COMPLETED" },
+            ],
+          },
+          {
+            id: "GZ_REPORT_ANALYSIS",
+            mod: "gz",
+            color: "#185FA5",
+            desc: "AI 분석 결과. RAG 기반 유사 사례 참조.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "report_id", FK: true, t: "bigint", d: "GZ_REPORT 참조 (1:1)" },
+              { n: "summary_text", t: "text", d: "AI 분석 요약" },
+              { n: "severity_level", t: "enum", d: "안전/주의/위험" },
+              { n: "ai_model_version", t: "varchar", d: "사용 AI 모델 버전" },
+              { n: "confidence_score", t: "decimal", d: "분석 신뢰도 0~1" },
+              { n: "rag_enabled", t: "boolean", d: "RAG 사용 여부" },
+              { n: "retrieved_sources", t: "text", d: "참조 유사 사례 ID (JSON)" },
+              { n: "context_count", t: "int", d: "참조 문서 수" },
+            ],
+          },
+        ],
+        domo: [
+          {
+            id: "DM_PLACE",
+            mod: "domo",
+            color: "#D4537E",
+            desc: "경기/인천 청년 혜택 장소 데이터. CSV 적재. 유저 비의존.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "name", t: "varchar", d: "장소명" },
+              { n: "category", t: "varchar", d: "관광/음식점/카페" },
+              { n: "address", t: "varchar", d: "주소" },
+              { n: "lat/lng", t: "double", d: "GPS 좌표" },
+              { n: "sido/sigungu", t: "varchar", d: "지역 필터용" },
+              { n: "discount_percent", t: "int", d: "할인율 0~100" },
+              { n: "popularity", t: "int", d: "인기도 점수 (카테고리+할인+밀집도)" },
+            ],
+          },
+          {
+            id: "DM_ITINERARY",
+            mod: "domo",
+            color: "#D4537E",
+            desc: "사용자가 저장한 여행 일정.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "user_id", FK: true, t: "bigint", d: "USERS 참조" },
+              { n: "title", t: "varchar", d: "일정 이름" },
+              { n: "region", t: "varchar", d: "여행 지역" },
+              { n: "created_at", t: "datetime", d: "저장 일시" },
+            ],
+          },
+          {
+            id: "DM_ITINERARY_PLACE",
+            mod: "domo",
+            color: "#D4537E",
+            desc: "일정 내 장소 목록. 순서+점수 포함.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "itinerary_id", FK: true, t: "bigint", d: "DM_ITINERARY 참조" },
+              { n: "place_id", FK: true, t: "bigint", d: "DM_PLACE 참조" },
+              { n: "sort_order", t: "int", d: "방문 순서" },
+              { n: "total_score", t: "int", d: "거리+혜택+인기 종합 점수" },
+            ],
+          },
+        ],
+        career: [
+          {
+            id: "CH_PROFILE",
+            mod: "career",
+            color: "#888780",
+            desc: "취업 준비생 프로필.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "user_id", FK: true, t: "bigint", d: "USERS 참조 (1:1)" },
+              { n: "name", t: "varchar", d: "이름" },
+              { n: "academic_status", t: "enum", d: "재학중/휴학중/졸업/졸업예정" },
+              { n: "school_name", t: "varchar", d: "학교명" },
+              { n: "major", t: "varchar", d: "전공" },
+              { n: "target_job", t: "enum", d: "목표 직군" },
+              { n: "portfolio_url", t: "varchar", d: "포트폴리오 링크" },
+            ],
+          },
+          {
+            id: "CH_PROFILE_SPEC",
+            mod: "career",
+            color: "#888780",
+            desc: "스펙 항목. spec_type으로 구분.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "profile_id", FK: true, t: "bigint", d: "CH_PROFILE 참조" },
+              { n: "spec_type", t: "enum", d: "certificate/coding_lang/language_test/award" },
+              { n: "value", t: "varchar", d: "항목값" },
+            ],
+          },
+          {
+            id: "CH_REPORT",
+            mod: "career",
+            color: "#888780",
+            desc: "AI 직무 매칭 분석 리포트.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "user_id", FK: true, t: "bigint", d: "USERS 참조" },
+              { n: "target_job", t: "varchar", d: "분석 대상 직군" },
+              { n: "match_rate", t: "int", d: "JD 매칭률 0~100" },
+              { n: "ai_analysis_json", t: "text", d: "AI 분석 전체 JSON" },
+              { n: "created_at", t: "date", d: "생성일" },
+            ],
+          },
+          {
+            id: "CH_MARKET_JOB_POST",
+            mod: "career",
+            color: "#888780",
+            desc: "크롤링된 채용공고. 유저 비의존 마켓 데이터.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "company_name", t: "varchar", d: "회사명" },
+              { n: "job_title", t: "varchar", d: "공고 제목" },
+              { n: "job_category", t: "varchar", d: "직군 분류" },
+              { n: "required_skills", t: "text", d: "필수 기술 스택" },
+              { n: "source_url", t: "varchar", d: "원본 공고 URL" },
+              { n: "posted_at", t: "date", d: "공고 게시일" },
+              { n: "crawled_at", t: "datetime", d: "크롤링 수집 일시" },
+            ],
+          },
+          {
+            id: "CH_MARKET_SKILL_STAT",
+            mod: "career",
+            color: "#888780",
+            desc: "직군별 기술 수요 통계.",
+            cols: [
+              { n: "id", PK: true, t: "bigint", d: "기본키" },
+              { n: "job_category", t: "varchar", d: "직군" },
+              { n: "skill_name", t: "varchar", d: "기술명" },
+              { n: "demand_count", t: "int", d: "공고 내 등장 횟수" },
+              { n: "stat_date", t: "date", d: "통계 기준일" },
+            ],
+          },
+        ],
+      };
+
+      /* ── ERD 탭 초기화 ── */
+      var erdScale = 1;
+      (function buildErdTabs() {
+        var el = document.getElementById("erd-mod-tabs");
+        if (!el) return;
+        var allBtn = document.createElement("button");
+        allBtn.className = "mod-tab";
+        allBtn.textContent = "전체";
+        allBtn.style.cssText = "background:#222;color:#fff;border-color:#222";
+        allBtn.onclick = function () {
+          setErdTab(this, "all", "#222");
+        };
+        el.appendChild(allBtn);
+        MODS.forEach(function (m) {
+          var btn = document.createElement("button");
+          btn.className = "mod-tab";
+          btn.textContent = m.label;
+          btn.style.cssText = "background:" + m.color + ";color:#fff;border-color:" + m.color;
+          btn.onclick = function () {
+            setErdTab(this, m.key, m.color);
+          };
+          el.appendChild(btn);
+        });
+      })();
+
+      function setErdTab(btn, mod) {
+        document.querySelectorAll("#erd-mod-tabs .mod-tab").forEach(function (b) {
+          b.style.opacity = "0.45";
+        });
+        btn.style.opacity = "1";
+        renderErd(mod);
+      }
+
+      function zoomChart(d) {
+        erdScale = Math.max(0.25, Math.min(3.5, erdScale + d));
+        applySvgScale();
+      }
+      function resetZoom() {
+        erdScale = 1;
+        applySvgScale();
+      }
+      function applySvgScale() {
+        var svg = document.querySelector("#erd-wrap svg");
+        if (svg) svg.style.transform = "scale(" + erdScale + ")";
+        document.getElementById("zpct").textContent = Math.round(erdScale * 100) + "%";
+      }
+      function renderErd(mod) {
+        var wrap = document.getElementById("erd-wrap");
+        wrap.innerHTML = '<p style="color:#888;padding:20px;font-size:13px">렌더링 중...</p>';
+        erdScale = 1;
+        document.getElementById("zpct").textContent = "100%";
+        var id = "erd-" + mod + "-" + Date.now();
+        window._mermaid
+          .render(id, D[mod])
+          .then(function (r) {
+            wrap.innerHTML = r.svg;
+            var s = wrap.querySelector("svg");
+            if (s) {
+              s.style.transformOrigin = "top left";
+              s.style.display = "block";
+            }
+          })
+          .catch(function (e) {
+            wrap.innerHTML = '<p style="color:red;padding:20px;font-size:13px">오류: ' + e.message + "</p>";
+          });
+      }
+
+      /* ── 테이블 설명 탭 초기화 ── */
+      (function buildTblTabs() {
+        var el = document.getElementById("tbl-mod-tabs");
+        if (!el) return;
+        var allBtn = document.createElement("button");
+        allBtn.className = "mod-tab";
+        allBtn.textContent = "전체";
+        allBtn.style.cssText = "background:#222;color:#fff;border-color:#222";
+        allBtn.onclick = function () {
+          setTblTab(this, "all");
+        };
+        el.appendChild(allBtn);
+        MODS.forEach(function (m) {
+          var btn = document.createElement("button");
+          btn.className = "mod-tab";
+          btn.textContent = m.label;
+          btn.style.cssText = "background:" + m.color + ";color:#fff;border-color:" + m.color;
+          btn.onclick = function () {
+            setTblTab(this, m.key);
+          };
+          el.appendChild(btn);
+        });
+        renderTables("all");
+      })();
+
+      function setTblTab(btn, mod) {
+        document.querySelectorAll("#tbl-mod-tabs .mod-tab").forEach(function (b) {
+          b.style.opacity = "0.45";
+        });
+        btn.style.opacity = "1";
+        renderTables(mod);
+      }
+      function renderTables(mod) {
+        var grid = document.getElementById("tbl-grid");
+        grid.innerHTML = "";
+        Object.keys(TABLES).forEach(function (mkey) {
+          if (mod !== "all" && mkey !== mod) return;
+          TABLES[mkey].forEach(function (t) {
+            var modInfo = MODS.find(function (m) {
+              return m.key === mkey;
+            }) || { label: mkey };
+            var colsHtml = t.cols
+              .map(function (c) {
+                var badge = c.PK ? '<span class="badge-pk">PK</span>' : c.FK ? '<span class="badge-fk">FK</span>' : "";
+                return "<tr><td>" + badge + "</td><td><b>" + c.n + '</b></td><td class="ctype">' + c.t + "</td><td>" + c.d + "</td></tr>";
+              })
+              .join("");
+            var card = document.createElement("div");
+            card.className = "tbl-card";
+            card.style.borderTop = "3px solid " + t.color;
+            card.innerHTML =
+              '<div class="tbl-card-head" style="background:' +
+              t.color +
+              '18">' +
+              '<span style="color:' +
+              t.color +
+              '">' +
+              t.id +
+              "</span>" +
+              '<span class="ttag" style="background:' +
+              t.color +
+              "22;color:" +
+              t.color +
+              '">' +
+              modInfo.label +
+              "</span>" +
+              '<div class="tdesc">' +
+              t.desc +
+              "</div></div>" +
+              '<table class="col-list"><thead><tr><th style="width:28px"></th><th>컬럼</th><th>타입</th><th>설명</th></tr></thead><tbody>' +
+              colsHtml +
+              "</tbody></table>";
+            grid.appendChild(card);
+          });
+        });
+      }
+    </script>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: false, theme: "default" });
+      window._mermaid = mermaid;
+    </script>
+  </body>
+</html>
