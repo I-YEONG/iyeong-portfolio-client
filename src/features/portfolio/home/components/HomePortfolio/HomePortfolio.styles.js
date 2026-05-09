@@ -104,7 +104,7 @@ const bannerContentBase = {
   width: "100%",
   maxWidth: "1280px",
 
-  "& .notMobile": {
+  "& .not-mobile": {
     [mq("mobile")]: {
       display: "none",
     },
@@ -210,14 +210,14 @@ export const banner2Css = () => ({
     backgroundColor: "#f3f3f3",
   },
 
-  ".banner-2 .banner-bg .pointBg": {
+  ".banner-2 .banner-bg .point-bg": {
     position: "absolute",
     filter: "blur(100px)",
     borderRadius: "200px",
     pointerEvents: "none",
   },
 
-  ".banner-2 .banner-bg .pointBg-1": {
+  ".banner-2 .banner-bg .point-bg-1": {
     width: "200px",
     height: "200px",
     left: "200px",
@@ -226,7 +226,7 @@ export const banner2Css = () => ({
     animation: `${driftLeft} 18s ease-in-out infinite`,
   },
 
-  ".banner-2 .banner-bg .pointBg-2": {
+  ".banner-2 .banner-bg .point-bg-2": {
     width: "280px",
     height: "280px",
     right: "10%",
@@ -235,18 +235,18 @@ export const banner2Css = () => ({
     animation: `${driftRight} 20s ease-in-out infinite 1s`,
   },
 
-  ".banner-2 .banner-bg .iconBg": {
+  ".banner-2 .banner-bg .icon-bg": {
     position: "absolute",
     opacity: 0.65,
   },
 
-  ".banner-2 .banner-bg .iconBg-1": {
+  ".banner-2 .banner-bg .icon-bg-1": {
     top: "20%",
     right: "0px",
     transformOrigin: "center",
     animation: `${driftIconLeft} 22s ease-in-out infinite`,
   },
-  ".banner-2 .banner-bg .iconBg-2": {
+  ".banner-2 .banner-bg .icon-bg-2": {
     bottom: "20%",
     animation: `${driftIconRight} 24s ease-in-out infinite 1.2s`,
   },

@@ -12,7 +12,7 @@ export const homeVisionCss = () =>
     ...theme.flex.colCenter,
     gap: "min(4vh, 48px)",
 
-    "& .notMobile": {
+    "& .not-mobile": {
       [mq("mobile")]: {
         display: "none",
       },

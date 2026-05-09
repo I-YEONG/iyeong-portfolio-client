@@ -50,12 +50,13 @@ export const homeHeroContentCss = css({
 export const homeHeroCss = css({
   ...theme.flex.center,
   width: "100%",
-  height: "calc(100vh - 93px)",
+  height: "calc(100vh - 90px)",
   color: "#fff",
   textAlign: "center",
   position: "relative",
   overflow: "hidden",
   backgroundColor: "rgba(0,0,0,0.5)",
+  borderTop: `1px solid ${theme.colors.darkLine}`,
 
   "& video": {
     position: "absolute",

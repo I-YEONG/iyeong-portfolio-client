@@ -16,6 +16,7 @@ export const globalStyles = css({
   body: {
     minHeight: "100%",
     fontFamily: "'Gothic A1', 'Pretendard', -apple-system, sans-serif",
+    fontWeight: 400,
     color: "#333333",
     lineHeight: 1.5,
     WebkitFontSmoothing: "antialiased",

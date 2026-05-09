@@ -18,6 +18,7 @@ const NAV_ITEMS = [
 const Header = ({ themeCode = "light" }) => {
   const nav = useNavigate();
   const { isTablet } = useMedia();
+  const githubUrl = import.meta.env.VITE_GITHUB_URL;
 
   const [scrolled, setScrolled] = useState(false);
 
@@ -54,7 +55,7 @@ const Header = ({ themeCode = "light" }) => {
             <a download href="/">
               <DownloadIcon style={{ width: 18, height: 18 }} />
             </a>
-            <a href="https://github.com/iyeonggyu0" target="_blank" rel="noreferrer">
+            <a href={githubUrl} target="_blank" rel="noreferrer">
               <GitIcon style={{ width: 18, height: 18 }} />
             </a>
           </div>

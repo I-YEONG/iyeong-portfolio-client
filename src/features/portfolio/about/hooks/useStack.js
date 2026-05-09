@@ -1,14 +1,14 @@
-import { getOverview } from "../api/overviewApi";
+import { getStack } from "../api/stackApi";
 
 // eslint-disable-next-line no-unused-vars
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
-const QUERY_KEY = ["overview"];
+const QUERY_KEY = ["stacks"];
 
 // 오버뷰 조회 훅
-export const useOverviewQuery = () => {
+export const useStackQuery = () => {
   return useQuery({
     queryKey: QUERY_KEY,
-    queryFn: getOverview,
+    queryFn: getStack,
   });
 };

@@ -15,9 +15,6 @@ export const headerCss = (isScrolled, themeCode) =>
     padding: "12px 0",
     minHeight: "80px",
 
-    borderBottomStyle: "solid",
-    borderBottomWidth: isScrolled ? 0 : 1,
-
     "& svg": {
       width: "18px",
       height: "18px",
@@ -31,20 +28,14 @@ export const headerCss = (isScrolled, themeCode) =>
       ...theme.fonts.captionXl_B, // 기존 테마 폰트 병합
       backgroundColor: isScrolled ? "none" : "#fff",
       color: theme.colors.text,
-      borderBottomColor: theme.colors.lightLine,
-      transition: isScrolled
-        ? "background-color 0.3s, border-bottom-width 0.3s, border-bottom-color 0.3s"
-        : "background-color 0.3s 1s, border-bottom-width 0.3s 1s, border-bottom-color 0.3s 1s",
+      transition: isScrolled ? "background-color 0.3s" : "background-color 0.3s 1s",
     }),
 
     ...(themeCode === "dark" && {
       ...theme.fonts.captionXl_B, // 기존 테마 폰트 병합
       backgroundColor: isScrolled ? "none" : theme.colors.darkBG,
       color: isScrolled ? theme.colors.text : "#fff",
-      borderBottomColor: theme.colors.darkLine,
-      transition: isScrolled
-        ? "background-color 0.3s, border-bottom-width 0s, border-bottom-color 0s, color 0.3s"
-        : "background-color 0.1s , border-bottom-width 0.3s 1.04s, border-bottom-color 0.3s 1s, color 0.1s",
+      transition: isScrolled ? "background-color 0.3s, color 0.3s" : "background-color 0.1s, color 0.1s",
     }),
 
     // media query
@@ -52,10 +43,6 @@ export const headerCss = (isScrolled, themeCode) =>
       width: "100%",
       padding: "8px 12px",
       ...theme.fonts.captionLg_B,
-    },
-
-    [mq("UHD")]: {
-      borderBottomWidth: isScrolled ? 0 : 2,
     },
   });
 

@@ -37,11 +37,11 @@ const titleLayoutCss = () =>
 
     // 메인 타이틀 스타일
     "& .title": {
-      ...theme.fonts.titleMd_B,
+      ...theme.fonts.titleSm_B,
       lineHeight: "1.4",
 
       [mq("mobile")]: {
-        ...theme.fonts.titleSm_B,
+        ...theme.fonts.testXLg_B,
       },
     },
 

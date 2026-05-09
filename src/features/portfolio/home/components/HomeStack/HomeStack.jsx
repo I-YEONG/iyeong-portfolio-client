@@ -65,7 +65,7 @@ const HomeStack = () => {
           }}
           speed={1000}
           modules={[Autoplay]}
-          className="mySwiper">
+          className="my-swiper">
           {list.map((icon) => {
             const Icon = ICONS[icon];
             return <SwiperSlide key={icon}>{Icon ? <Icon key={icon} className={`icon`} /> : null}</SwiperSlide>;
