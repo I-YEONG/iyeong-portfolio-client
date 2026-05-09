@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 import { mq } from "@/styles/mq";
 
-export const homeHeroContent = css({
+export const homeHeroContentCss = css({
   ...theme.flex.colCenter,
   position: "relative",
   gap: "32px",
@@ -47,7 +47,7 @@ export const homeHeroContent = css({
   },
 });
 
-export const homeHero = css({
+export const homeHeroCss = css({
   ...theme.flex.center,
   width: "100%",
   height: "calc(100vh - 93px)",

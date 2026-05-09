@@ -1,14 +1,17 @@
-import { HomeHero, HomeOverview } from "@/features/portfolio/home/components";
-import { Header } from "@/layouts";
+import { HomeHero, HomeOverview, HomePortfolio, HomeStack, HomeVision } from "@/features/portfolio/home/components";
+import { Footer, Header } from "@/layouts";
 
 const PortfolioHome = () => {
   return (
     <main>
       <Header themeCode="dark" />
-      <div css={{ display: "flex", flexDirection: "column", gap: "min(10vh, 120px)" }}>
+      <div css={{ display: "flex", flexDirection: "column", gap: "10vh" }}>
         <HomeHero />
         <HomeOverview />
-        <div css={{ height: "100vh", backgroundColor: "gray" }}></div>
+        <HomePortfolio />
+        <HomeStack />
+        <HomeVision />
+        <Footer />
       </div>
     </main>
   );

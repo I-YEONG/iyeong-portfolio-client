@@ -12,24 +12,6 @@ export const fullCenterLayoutCss = () =>
     ...theme.flex.colCenter,
     gap: "min(4vh, 48px)",
 
-    // 타이틀
-    "& .title-box": {
-      ...theme.flex.colCenter,
-      gap: "12px",
-      margin: "0 auto",
-      textAlign: "center",
-
-      "& .title": {
-        ...theme.fonts.titleMd_B,
-        lineHeight: "1.4",
-      },
-
-      "& .sub-title": {
-        ...theme.fonts.captionXl_L,
-        // lineHeight: "1.4",
-      },
-    },
-
     // 콘텐츠
     "& .content": {
       width: "100%",

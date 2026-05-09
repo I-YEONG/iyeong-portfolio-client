@@ -5,14 +5,14 @@ import HomeVideo from "@/assets/portfolio/HomeVideo.mp4";
 import { Button } from "@/components";
 
 // 스타일
-import { homeHero, homeHeroContent } from "./HomeHero.styles";
+import { homeHeroCss, homeHeroContentCss } from "./HomeHero.styles";
 
 const HomeHero = () => {
   const nav = useNavigate();
 
   return (
-    <section css={homeHero}>
-      <div css={homeHeroContent}>
+    <section css={homeHeroCss}>
+      <div css={homeHeroContentCss}>
         {/* 타이틀 */}
         <p className="title">
           불편함을 발견하고,
