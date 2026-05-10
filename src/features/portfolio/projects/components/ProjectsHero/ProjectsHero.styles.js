@@ -112,10 +112,10 @@ export const projectsHero = css({
       },
 
       "& .button": {
-        width: "50%",
+        width: "100%",
         maxWidth: "240px",
         marginTop: "12px",
-        [mq("mobile")]: {
+        [mq("tablet")]: {
           maxWidth: "100%",
           width: "100%",
         },
