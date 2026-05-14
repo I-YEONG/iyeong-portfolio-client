@@ -6,9 +6,12 @@ import { Button } from "@/components";
 import { projectsListCss } from "./ProjectsList.styles";
 import { useMedia } from "@/hooks/useMedia";
 import ProjectsListHeader from "../ProjectsListHeader/ProjectsListHeader";
+import { useGetProjectListQuery } from "../../hooks/useGetProjects";
 
 const ProjectsList = () => {
   const { isPc } = useMedia();
+
+  const { projectsList, isProjectLoading: isProjectsListLoading, isProjectError: isProjectsListError } = useGetProjectListQuery();
 
   return (
     <section css={projectsListCss}>
