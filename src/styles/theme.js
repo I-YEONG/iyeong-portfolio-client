@@ -15,15 +15,15 @@ export const fonts = {
   titleMd_B: { fontSize: "36px", fontWeight: "800" },
   titleSm_B: { fontSize: "32px", fontWeight: "800" },
 
-  testXLg: { fontSize: "24px", fontWeight: "400" },
+  textXLg: { fontSize: "24px", fontWeight: "400" },
   textLg: { fontSize: "20px", fontWeight: "400" },
   textMd: { fontSize: "16px", fontWeight: "400" },
 
-  testXLg_B: { fontSize: "24px", fontWeight: "700" },
+  textXLg_B: { fontSize: "24px", fontWeight: "700" },
   textLg_B: { fontSize: "20px", fontWeight: "700" },
   textMd_B: { fontSize: "16px", fontWeight: "700" },
 
-  testXLg_L: { fontSize: "24px", fontWeight: "200" },
+  textXLg_L: { fontSize: "24px", fontWeight: "200" },
   textLg_L: { fontSize: "20px", fontWeight: "200" },
   textMd_L: { fontSize: "16px", fontWeight: "200" },
 
