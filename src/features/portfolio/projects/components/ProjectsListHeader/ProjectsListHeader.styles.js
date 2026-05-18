@@ -12,7 +12,8 @@ export const projectsListHeaderCss = css({
 
   // 중간 박스
   "& > div": {
-    ...theme.flex.rowBetween,
+    display: "flex",
+    justifyContent: "end",
     width: "90%",
     margin: "0 auto",
     maxWidth: "1280px",
