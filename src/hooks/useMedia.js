@@ -14,7 +14,7 @@ export const useMedia = () => {
   });
 
   const isMobile = useMediaQuery({
-    query: "(max-width:768px)",
+    query: "(max-width:767px)",
   });
 
   return { isPc, isTablet, isMobile };

@@ -15,5 +15,9 @@ const minWidthLabels = new Set(["QHD", "UHD", "pc"]);
 export const mq = (label) => {
   const value = breakpoints[label];
   if (!value) return "";
+  // 모바일만 768px 미만으로 동작하도록 변경
+  if (label === "mobile") {
+    return `@media (max-width: 767px)`;
+  }
   return minWidthLabels.has(label) ? `@media (min-width: ${value}px)` : `@media (max-width: ${value}px)`;
 };

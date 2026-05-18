@@ -6,7 +6,7 @@ export const projectsListCss = css({
   "& .content-box": {
     width: "100%",
     margin: "0 auto",
-    borderTop: `1px solid ${theme.colors.lightLine}`,
+    // borderTop: `1px solid ${theme.colors.lightLine}`,
     borderBottom: `1px solid ${theme.colors.lightLine}`,
   },
 

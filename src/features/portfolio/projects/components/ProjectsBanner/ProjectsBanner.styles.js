@@ -3,20 +3,33 @@ import { theme } from "@/styles/theme";
 import { mq } from "@/styles/mq";
 
 export const projectsBannerCss = css({
-  "& .content-center": {
-    padding: "24px",
+  ...theme.flex.rowBetween,
+  width: "100%",
+  maxHeight: "460px",
+  "& .content": {},
 
-    [mq("mobile")]: {
-      padding: "20px 16px",
+  // 이미지
+  "& .img-box": {
+    position: "relative",
+    maxWidth: "50%",
+    flex: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    "& > img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      display: "block",
     },
   },
 
-  "& .title": {
-    ...theme.fonts.textLg_B,
-  },
+  [mq("mobile")]: {
+    flexDirection: "column",
 
-  "& .subtitle": {
-    ...theme.fonts.captionLg,
-    color: theme.colors.black600,
+    "& .img-box": {
+      maxWidth: "100%",
+    },
   },
 });
