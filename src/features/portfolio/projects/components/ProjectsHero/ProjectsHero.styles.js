@@ -86,7 +86,7 @@ export const projectsHero = css({
       },
 
       "& .title": {
-        ...theme.fonts.testXLg_B,
+        ...theme.fonts.textXLg_B,
         color: theme.colors.green,
       },
 

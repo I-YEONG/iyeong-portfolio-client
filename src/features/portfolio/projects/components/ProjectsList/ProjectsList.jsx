@@ -8,6 +8,7 @@ import ProjectsListHeader from "../ProjectsListHeader/ProjectsListHeader";
 import { useGetProjectListQuery } from "../../hooks/useGetProjects";
 import ProjectsBanner from "../ProjectsBanner/ProjectsBanner";
 import { PROJECT_SORT, projectsSortAtom } from "@/atoms/projectsListAtoms";
+import ProjectsBox from "../ProjectsBox/ProjectsBox";
 
 const ProjectsList = () => {
   const { data: projectsList, isLoading: isProjectsListLoading } = useGetProjectListQuery();
@@ -59,10 +60,7 @@ const ProjectsList = () => {
             <section className="content-box">
               <div className="content-center project-row">
                 {row.map((project) => (
-                  <div key={project.id} className="project-card">
-                    <p className="project-title">{project.name}</p>
-                    {project.subTitle && <p className="project-subtitle">{project.subTitle}</p>}
-                  </div>
+                  <ProjectsBox key={project.id} data={project} />
                 ))}
               </div>
             </section>

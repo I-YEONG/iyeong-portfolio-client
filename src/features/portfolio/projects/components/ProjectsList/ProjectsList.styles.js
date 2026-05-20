@@ -22,6 +22,7 @@ export const projectsListCss = css({
   "& .gap-box": {
     width: "100%",
     margin: "0 auto",
+    borderBottom: `1px solid ${theme.colors.lightLine}`,
 
     "& > div": {
       width: "90%",
@@ -40,32 +41,9 @@ export const projectsListCss = css({
 
   "& .project-row": {
     display: "flex",
-    gap: "24px",
-    padding: "24px",
 
     [mq("mobile")]: {
       flexDirection: "column",
-      padding: "20px 16px",
     },
-  },
-
-  "& .project-card": {
-    flex: 1,
-    padding: "16px",
-    borderRight: `1px solid ${theme.colors.lightLine}`,
-
-    "&:last-of-type": {
-      borderRight: "none",
-    },
-  },
-
-  "& .project-title": {
-    ...theme.fonts.textMd_B,
-  },
-
-  "& .project-subtitle": {
-    marginTop: "6px",
-    ...theme.fonts.captionLg,
-    color: theme.colors.black600,
   },
 });

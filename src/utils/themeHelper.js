@@ -23,9 +23,9 @@ export const colors =
 /**
  * @typedef {'titleXLg'|'titleLg'|'titleMd'|'titleSm'
  *   |'titleXLg_B'|'titleLg_B'|'titleMd_B'|'titleSm_B'
- *   |'testXLg'|'textLg'|'textMd'
- *   |'testXLg_B'|'textLg_B'|'textMd_B'
- *   |'testXLg_L'|'textLg_L'|'textMd_L'
+ *   |'textXLg'|'textLg'|'textMd'
+ *   |'textXLg_B'|'textLg_B'|'textMd_B'
+ *   |'textXLg_L'|'textLg_L'|'textMd_L'
  *   |'captionXl'|'captionLg'|'captionMd'|'captionSm'
  *   |'captionXl_B'|'captionLg_B'|'captionMd_B'|'captionSm_B'
  *   |'captionXl_L'|'captionLg_L'|'captionMd_L'|'captionSm_L'
@@ -49,7 +49,7 @@ export const fonts =
 /**
  * @typedef {'center'|'lowCenter'|'colCenter'
  *   |'between'|'lowBetween'|'colBetween'
- *   |'around'|'lowAround'|'colAround'
+ *   |'around'|'lowAround'|'colAround' | 'rowCenter'|'rowBetween'|'rowAround'|
  * } FlexKey
  */
 

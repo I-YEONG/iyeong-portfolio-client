@@ -24,7 +24,7 @@ const queryClient = new QueryClient({
   },
 });
 
-function LenisProvider({ children }) {
+export function LenisProvider({ children }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -43,8 +43,46 @@ function LenisProvider({ children }) {
     gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
+    let refreshQueued = false;
+    const refreshLenis = () => {
+      if (refreshQueued) return;
+      refreshQueued = true;
+      requestAnimationFrame(() => {
+        refreshQueued = false;
+        lenis.resize();
+        ScrollTrigger.refresh();
+      });
+    };
+
+    const handleCustomResize = () => {
+      refreshLenis();
+    };
+
+    const handleImageLoad = (event) => {
+      if (event.target?.tagName === "IMG") {
+        refreshLenis();
+      }
+    };
+
+    const observer = new MutationObserver(() => {
+      refreshLenis();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    window.addEventListener("lenis:resize", handleCustomResize);
+    window.addEventListener("load", refreshLenis);
+    document.addEventListener("load", handleImageLoad, true);
+
     return () => {
       gsap.ticker.remove(updateLenis);
+      observer.disconnect();
+      window.removeEventListener("lenis:resize", handleCustomResize);
+      window.removeEventListener("load", refreshLenis);
+      document.removeEventListener("load", handleImageLoad, true);
       lenis.destroy();
     };
   }, []);
