@@ -5,8 +5,7 @@ import { mq } from "@/styles/mq";
 export const projectsBannerCss = css({
   ...theme.flex.rowBetween,
   width: "100%",
-  height: "460px",
-  maxHeight: "460px",
+  minHeight: "460px",
 
   // 콘텐츠
   "& .content": {

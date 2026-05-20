@@ -12,9 +12,9 @@ const ProjectsBox = ({ data }) => {
   const formatDate = useFormatDate();
 
   return (
-    <section css={projectsBoxCss} className="projectCard">
+    <Link css={projectsBoxCss} className="cursor-reactive is-green projectCard" to={`/projects/${data.id}`}>
       {/* 프로젝트 카드 */}
-      <div className="img-box cursor-reactive is-green">
+      <div className="img-box">
         {/* 이미지 */}
         {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
       </div>
@@ -31,14 +31,14 @@ const ProjectsBox = ({ data }) => {
           {/* TAG */}
           <Tags tagList={data.tags} className="tags" />
         </div>
-        <p className="title">{data.title}</p>
+        <p className="title">{data.name}</p>
         <p className="description">{data.description}</p>
-        <Link className="goto">
+        <p className="goto ">
           프로젝트 상세보기
           <GOTO />
-        </Link>
+        </p>
       </div>
-    </section>
+    </Link>
   );
 };
 export default ProjectsBox;

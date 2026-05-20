@@ -45,13 +45,13 @@ export const fonts = {
 };
 
 export const flex = {
-  flexEnd: {
+  rowEnd: {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
   },
 
-  flexStart: {
+  rowStart: {
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",

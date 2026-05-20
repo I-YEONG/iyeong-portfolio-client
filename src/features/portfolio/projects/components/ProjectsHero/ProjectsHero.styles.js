@@ -93,7 +93,7 @@ export const projectsHero = css({
       "& .state": {
         "& p": {
           ...theme.fonts.captionLg,
-          color: theme.colors.black600,
+          color: theme.colors.black200,
         },
         "& > div": {
           ...theme.fonts.captionXl_B,

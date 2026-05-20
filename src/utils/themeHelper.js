@@ -1,8 +1,9 @@
 /**
  * @typedef {'text'
  *   |'black900'|'black800'|'black600'|'black400'|'black200'|'black100'
- *   |'green'|'orange'|'red'|'blue'
- *   |'greenBG'|'orangeBG'|'redBG'|'blueBG'
+ *   |'green'|'deepGreen'|'orange'|'red'|'blue'
+ *   |'deepGreenBG'|'greenBG'|'orangeBG'|'redBG'|'blueBG'
+ *   |'darkBG'|'darkLine'|'lightLine'
  * } ColorKey
  */
 
@@ -49,7 +50,9 @@ export const fonts =
 /**
  * @typedef {'center'|'lowCenter'|'colCenter'
  *   |'between'|'lowBetween'|'colBetween'
- *   |'around'|'lowAround'|'colAround' | 'rowCenter'|'rowBetween'|'rowAround'|
+ *   |'around'|'lowAround'|'colAround'
+ *   |'rowCenter'|'rowBetween'|'rowAround'
+ *   |'flexEnd'|'flexStart'|'colStart'|'colEnd'
  * } FlexKey
  */
 
