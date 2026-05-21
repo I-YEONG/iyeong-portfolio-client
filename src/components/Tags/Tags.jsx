@@ -20,25 +20,30 @@ const tagsCss = (tag) =>
   css({
     padding: "4px 6px",
     ...theme.fonts.captionMd,
-    ...(tag === "FULL" || tag === "FRONT"
+    ...(tag === "FULL"
       ? {
-          color: theme.colors.green,
-          backgroundColor: theme.colors.greenBG,
+          color: theme.colors.orange,
+          backgroundColor: theme.colors.orangeBG,
         }
-      : tag === "BACK"
+      : tag === "FRONT"
         ? {
-            color: theme.colors.orange,
-            backgroundColor: theme.colors.orangeBG,
+            color: theme.colors.green,
+            backgroundColor: theme.colors.greenBG,
           }
-        : tag === "DEVOPS"
+        : tag === "BACK"
           ? {
-              color: theme.colors.blue,
-              backgroundColor: theme.colors.blueBG,
+              color: theme.colors.green,
+              backgroundColor: theme.colors.greenBG,
             }
-          : tag === "TEAM_LEADER"
+          : tag === "DEVOPS"
             ? {
-                color: theme.colors.deepGreen,
-                backgroundColor: theme.colors.deepGreenBG,
+                color: theme.colors.blue,
+                backgroundColor: theme.colors.blueBG,
               }
-            : {}),
+            : tag === "TEAM_LEADER"
+              ? {
+                  color: theme.colors.deepGreen,
+                  backgroundColor: theme.colors.deepGreenBG,
+                }
+              : {}),
   });

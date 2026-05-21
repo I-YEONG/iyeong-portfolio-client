@@ -3,7 +3,7 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 
 // 페이지 임포트
 import { MouseFollower } from "@/components";
-import { PortfolioAbout, PortfolioHome, PortfolioProjects } from "@/pages";
+import { NotFound, PortfolioAbout, PortfolioHome, PortfolioProjectDetail, PortfolioProjects } from "@/pages";
 
 function App() {
   useScrollToTop();
@@ -11,10 +11,16 @@ function App() {
   return (
     <>
       <MouseFollower />
+      {/* portfolio */}
       <Routes>
         <Route path="/" element={<PortfolioHome />} />
         <Route path="/about" element={<PortfolioAbout />} />
         <Route path="/projects" element={<PortfolioProjects />} />
+        <Route path="/projects/:id" element={<PortfolioProjectDetail />} />
+
+        {/* common */}
+        {/* 404 Not Found */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
