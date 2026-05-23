@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
 import { mq } from "@/styles/mq";
 
-export const projectHeroCss = () =>
+export const projectDetailHeroCss = () =>
   css({
     // 레이아웃
     width: "100%",
@@ -22,7 +22,7 @@ export const projectHeroCss = () =>
 
       "& .info-box": {
         ...theme.flex.colCenter,
-        width: "25%",
+        width: "20%",
         height: "100%",
         borderLeft: `1px solid ${theme.colors.lightLine}`,
 
@@ -38,27 +38,67 @@ export const projectHeroCss = () =>
               color: theme.colors.black600,
               marginBottom: "4px",
             },
+
+            "& p:last-child": {
+              ...theme.fonts.textMd,
+              fontWeight: "500",
+            },
+          },
+
+          [mq("mobile")]: {
+            "& .status-box": {
+              borderBottom: "none",
+            },
           },
         },
       },
 
       "& .title-box": {
         ...theme.flex.colCenter,
-        gpa: "16px",
+        gap: "26px",
+        marginLeft: "2rem",
+
+        "& .path": {
+          ...theme.fonts.captionXl,
+          fontWeight: "500",
+          color: theme.colors.orange,
+          letterSpacing: "0.25rem",
+        },
+
+        "& .title": {
+          ...theme.fonts.titleXLg,
+        },
+        "& .description": {
+          ...theme.fonts.textLg,
+        },
+
         "& .button-box": {
           ...theme.flex.rowStart,
           gap: "12px",
         },
       },
     },
-  });
 
-export const projectInfoDomainCss = (domain) =>
-  css({
-    color: domain === "null" ? theme.colors.orange : theme.colors.green,
-  });
+    [mq("mobile")]: {
+      height: "fit-content",
 
-export const projectInfoStatusCss = (status) =>
-  css({
-    color: status === "기획" ? theme.colors.black600 : status === "제작_중" ? theme.colors.orange : theme.colors.green,
+      "& .content-center": {
+        ...theme.flex.colCenter,
+
+        "& .info-box": {
+          width: "100%",
+          border: "none",
+          marginTop: "24px",
+        },
+
+        "& .title-box": {
+          margin: "0 12px",
+          padding: "42px 0",
+
+          "& .button-box": {
+            flexWrap: "wrap",
+          },
+        },
+      },
+    },
   });

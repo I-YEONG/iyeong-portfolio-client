@@ -4,6 +4,7 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 // 페이지 임포트
 import { MouseFollower } from "@/components";
 import { NotFound, PortfolioAbout, PortfolioHome, PortfolioProjectDetail, PortfolioProjects } from "@/pages";
+import ImageModal from "./components/ImageModal/ImageModal";
 
 function App() {
   useScrollToTop();
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <MouseFollower />
+      <ImageModal />
       {/* portfolio */}
       <Routes>
         <Route path="/" element={<PortfolioHome />} />

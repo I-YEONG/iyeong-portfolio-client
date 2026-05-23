@@ -1,4 +1,4 @@
-import { getProjectDetailApi } from "../api/projectApi";
+import { getProjectDetailApi } from "../../projectDetail/api/projectApi";
 
 // eslint-disable-next-line no-unused-vars
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
