@@ -71,6 +71,7 @@ const PortfolioProjectDetail = () => {
                     <p>{projectDetail.submitContest}</p>
                   </div>
                 )}
+                {/* TODO: */}
                 {/* 도메인 */}
                 <div className="domain-box">
                   <p>도메인</p>
