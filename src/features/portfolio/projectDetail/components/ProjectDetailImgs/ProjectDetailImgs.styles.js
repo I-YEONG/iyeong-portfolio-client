@@ -20,6 +20,17 @@ export const projectDetailImgsCss = css({
     marginBottom: "2rem",
   },
 
+  "& .mySwiper .swiper-wrapper": {
+    alignItems: "flex-start",
+  },
+
+  "& .mySwiper .swiper-slide": {
+    width: "fit-content",
+    height: "100%",
+    display: "flex",
+    alignItems: "flex-start",
+  },
+
   "& .content-center": {
     position: "relative",
     ...theme.flex.rowBetween,
@@ -33,9 +44,9 @@ export const projectDetailImgsCss = css({
     borderLeft: `1px solid ${theme.colors.lightLine}`,
 
     "& .image-item": {
-      width: "100%",
+      width: "auto",
       height: "100%",
-      objectFit: "cover",
+      objectFit: "contain",
       display: "block",
     },
   },

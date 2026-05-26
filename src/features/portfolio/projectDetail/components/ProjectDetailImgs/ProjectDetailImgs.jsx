@@ -29,8 +29,9 @@ const ProjectDetailImgs = ({ data }) => {
           <div className="content-center">
             <p className="explanation">클릭 시 크게 볼 수 있습니다.</p>
             <Swiper
-              slidesPerView={isPc ? 3 : 1}
-              spaceBetween={30}
+              slidesPerView={isPc ? "auto" : 1}
+              spaceBetween={32}
+              centeredSlides={false}
               pagination={{
                 clickable: true,
               }}

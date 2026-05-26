@@ -3,10 +3,11 @@ import { theme } from "@/styles/theme";
 import useFormatDate from "@/hooks/useFormatDate";
 import Tags from "@/components/Tags/Tags";
 import { useNavigate } from "react-router-dom";
-import { projectDetailHeroCss } from "./ProjectDetailHero.styles";
+import { projectDetailHeroCss, projectDetailHeroInfoDomainCss, projectDetailHeroInfoStatusCss } from "./ProjectDetailHero.styles";
 
 const ProjectDetailHero = ({ data }) => {
   const nav = useNavigate();
+  const formatDate = useFormatDate();
   return (
     <div>
       {!data && <Loading />}
@@ -19,7 +20,7 @@ const ProjectDetailHero = ({ data }) => {
               <p className="title">{data.name}</p>
               <p className="description">{data.description}</p>
               <div className="button-box">
-                <div onClick={() => nav(`${data.url}`)}>
+                <div onClick={() => nav(`${data.url}`)} className="cursor-reactive is-green">
                   <Button buttonType="goto" cssObj={{ ...theme.fonts.captionXl, width: "fit-content", backgroundColor: theme.colors.green, color: "white" }}>
                     페이지 바로가기
                   </Button>
@@ -60,6 +61,53 @@ const ProjectDetailHero = ({ data }) => {
                 </a>
               </div>
             </div>
+            {data && (
+              <div className="info-box">
+                {/* data box */}
+                <div className="data-box">
+                  {/* 기간 */}
+                  <div>
+                    <p>기간</p>
+                    <p>
+                      {formatDate(data.startDate)} ~ {formatDate(data.endDate)}
+                    </p>
+                  </div>
+                  {/* 역할 */}
+                  <div className="tags-box">
+                    <p>역할</p>
+                    <div>
+                      <Tags tagList={data.tags} className="tags" />
+                    </div>
+                  </div>
+                  {/* team */}
+                  <div className="team-size-box">
+                    <p>팀원</p>
+                    <p>{data.teamSize}인</p>
+                  </div>
+                  {/* 제출 */}
+                  {data.submitContest && (
+                    <div className="submit-contest-box">
+                      <p>제출</p>
+                      <p>{data.submitContest}</p>
+                    </div>
+                  )}
+
+                  {/* 도메인 */}
+                  <div className="domain-box">
+                    <p>도메인</p>
+                    <p css={projectDetailHeroInfoDomainCss(data.domain)}>{data.domain === "null" ? "도메인 없음" : data.domain}</p>
+                  </div>
+                  {/* 상태 */}
+                  <div className="status-box">
+                    <p>상태</p>
+                    <div css={projectDetailHeroInfoStatusCss(data.status)}>
+                      <div></div>
+                      <span>{data.status?.replaceAll("_", " ")}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
       )}

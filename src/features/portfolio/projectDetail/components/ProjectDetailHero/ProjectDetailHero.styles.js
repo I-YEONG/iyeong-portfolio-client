@@ -102,3 +102,23 @@ export const projectDetailHeroCss = () =>
       },
     },
   });
+
+export const projectDetailHeroInfoDomainCss = (domain) =>
+  css({
+    color: domain === "null" ? theme.colors.orange : theme.colors.green,
+  });
+
+export const projectDetailHeroInfoStatusCss = (status) =>
+  css({
+    ...theme.flex.rowStart,
+    gap: "6px",
+
+    color: status === "기획" ? theme.colors.black600 : status === "제작_중" ? theme.colors.orange : theme.colors.green,
+
+    "& div": {
+      width: "12px",
+      height: "12px",
+      borderRadius: "50%",
+      backgroundColor: status === "기획" ? theme.colors.black600 : status === "제작_중" ? theme.colors.orange : theme.colors.green,
+    },
+  });
