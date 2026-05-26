@@ -18,49 +18,51 @@ const ProjectsBanner = ({ project }) => {
 
   return (
     <section className="content-box">
-      <div className="content-center" css={projectsBannerCss}>
-        {!isTablet && !isPc && (
-          <div className="img-box cursor-reactive is-green">
-            {/* 이미지 */}
-            {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
-          </div>
-        )}
+      <div className="content-center">
+        <Link css={projectsBannerCss} className="cursor-reactive is-orange" to={`/projects/${project.id}`}>
+          {!isTablet && !isPc && (
+            <div className="img-box cursor-reactive is-green">
+              {/* 이미지 */}
+              {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
+            </div>
+          )}
 
-        <div className="content">
-          {/* 콘텐츠 */}
-          <div className="date-box">
-            {/* Date */}
-            {project.endDate !== "2099-12-30" && (
-              <span className="date">
-                {formatDate(project.startDate)} ~ {formatDate(project.endDate)}
-              </span>
-            )}
-            {project.endDate === "2099-12-30" && (
-              <span className="date" style={{ color: theme.colors.green }}>
-                제작 중
-              </span>
-            )}
-            {/* TAG */}
-            <Tags tagList={project.tags} className="tags" />
+          <div className="content">
+            {/* 콘텐츠 */}
+            <div className="date-box">
+              {/* Date */}
+              {project.endDate !== "2099-12-30" && (
+                <span className="date">
+                  {formatDate(project.startDate)} ~ {formatDate(project.endDate)}
+                </span>
+              )}
+              {project.endDate === "2099-12-30" && (
+                <span className="date" style={{ color: theme.colors.green }}>
+                  제작 중
+                </span>
+              )}
+              {/* TAG */}
+              <Tags tagList={project.tags} className="tags" />
+            </div>
+            <div className="title-box">
+              <p className="title">{project.name}</p>
+              <p className="sub-title">{project.subTitle}</p>
+              <div className="description">{project.description}</div>
+            </div>
+            <StackListColor list={project.stacks} />
+            <p className="goto">
+              프로젝트 상세보기
+              <GOTO />
+            </p>
           </div>
-          <div className="title-box">
-            <p className="title">{project.name}</p>
-            <p className="sub-title">{project.subTitle}</p>
-            <div className="description">{project.description}</div>
-          </div>
-          <StackListColor list={project.stacks} />
-          <Link className="goto cursor-reactive is-orange" to={`/projects/${project.id}`}>
-            프로젝트 상세보기
-            <GOTO />
-          </Link>
-        </div>
 
-        {(isTablet || isPc) && (
-          <div className="img-box cursor-reactive is-green">
-            {/* 이미지 */}
-            {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
-          </div>
-        )}
+          {(isTablet || isPc) && (
+            <div className="img-box cursor-reactive is-green">
+              {/* 이미지 */}
+              {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
+            </div>
+          )}
+        </Link>
       </div>
     </section>
   );

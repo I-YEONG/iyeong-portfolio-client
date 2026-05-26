@@ -63,7 +63,7 @@ export const projectsHero = css({
       marginBottom: "5vh",
       color: theme.colors.green,
 
-      "& .patch": {
+      "& .path": {
         ...theme.fonts.captionXl,
         color: theme.colors.orange,
         marginLeft: "10%",
