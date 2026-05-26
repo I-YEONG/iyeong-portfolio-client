@@ -5,6 +5,9 @@ export const globalStyles = css({
     boxSizing: "border-box",
     margin: 0,
     padding: 0,
+    WebkitFontSmoothing: "antialiased",
+    MozOsxFontSmoothing: "grayscale",
+    fontFamily: '"Pretendard", "Gothic A1", "-apple-system", "sans-serif"',
   },
 
   html: {
@@ -15,12 +18,9 @@ export const globalStyles = css({
 
   body: {
     minHeight: "100%",
-    fontFamily: "'Gothic A1', 'Pretendard', -apple-system, sans-serif",
     fontWeight: 400,
     color: "#333333",
     lineHeight: 1.5,
-    WebkitFontSmoothing: "antialiased",
-    MozOsxFontSmoothing: "grayscale",
   },
 
   a: {

@@ -66,3 +66,4 @@ src/
 - 각 컴포넌트 폴더 내부에는 `index.js`를 두어 외부에서 깔끔하게 불러올 수 있도록 캡슐화합니다.
 - **index.js 내용:** `export { default } from './Button';`
 - **사용 시:** `import { Button } from '@/components/Button';`
+- 

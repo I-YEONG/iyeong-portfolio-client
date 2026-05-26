@@ -13,7 +13,7 @@ const ProjectsHero = () => {
     <section css={projectsHero} className="cursor-reactive is-white">
       <section className="content">
         <div className="title-box">
-          <p className="patch">Home / Projects</p>
+          <p className="path">Home / Projects</p>
           <p className="projects">Projects</p>
           <p className="list">List</p>
         </div>

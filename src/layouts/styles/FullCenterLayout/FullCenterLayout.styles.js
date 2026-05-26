@@ -27,21 +27,5 @@ export const fullCenterLayoutCss = () =>
         borderRight: `1px solid ${theme.colors.lightLine}`,
         borderLeft: `1px solid ${theme.colors.lightLine}`,
       },
-
-      // 반응형
-      [mq("UHD")]: {
-        "& .title-box .sub-title": {
-          ...theme.fonts.captionXl,
-        },
-
-        borderTop: `2px solid ${theme.colors.lightLine}`,
-        borderBottom: `2px solid ${theme.colors.lightLine}`,
-
-        "& .content-center": {
-          maxWidth: "1680px",
-          borderRight: `2px solid ${theme.colors.lightLine}`,
-          borderLeft: `2px solid ${theme.colors.lightLine}`,
-        },
-      },
     },
   });

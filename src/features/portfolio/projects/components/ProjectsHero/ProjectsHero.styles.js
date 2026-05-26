@@ -63,7 +63,7 @@ export const projectsHero = css({
       marginBottom: "5vh",
       color: theme.colors.green,
 
-      "& .patch": {
+      "& .path": {
         ...theme.fonts.captionXl,
         color: theme.colors.orange,
         marginLeft: "10%",
@@ -86,14 +86,14 @@ export const projectsHero = css({
       },
 
       "& .title": {
-        ...theme.fonts.testXLg_B,
+        ...theme.fonts.textXLg_B,
         color: theme.colors.green,
       },
 
       "& .state": {
         "& p": {
           ...theme.fonts.captionLg,
-          color: theme.colors.black600,
+          color: theme.colors.black200,
         },
         "& > div": {
           ...theme.fonts.captionXl_B,
@@ -112,10 +112,10 @@ export const projectsHero = css({
       },
 
       "& .button": {
-        width: "50%",
+        width: "100%",
         maxWidth: "240px",
         marginTop: "12px",
-        [mq("mobile")]: {
+        [mq("tablet")]: {
           maxWidth: "100%",
           width: "100%",
         },
