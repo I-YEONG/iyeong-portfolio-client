@@ -31,6 +31,7 @@ const ICONS = {
   VUE,
   SEQUELIZE,
   SPRINGBOOT,
+  SPRING_BOOT: SPRINGBOOT,
   POSTMAN,
   POSTGRES,
   MYSQL,
@@ -42,13 +43,36 @@ const ICONS = {
   AWS,
 };
 
+const ORDER_WEIGHT = {
+  // front
+  REACT: 1,
+  NEXT: 2,
+  VUE: 3,
+  // back
+  SEQUELIZE: 10,
+  SPRINGBOOT: 11,
+  SPRING_BOOT: 11,
+  POSTMAN: 12,
+  POSTGRES: 13,
+  MYSQL: 14,
+  // deploy/infra
+  DOCKER: 20,
+  GITHUB: 21,
+  PLAYSTORE: 22,
+  RAILWAY: 23,
+  VERCEL: 24,
+  AWS: 25,
+};
+
 const StackList = ({ list = [] }) => {
   return (
     <div css={{ display: "flex", gap: "12px", alignItems: "center" }}>
-      {list.map((name) => {
-        const Icon = ICONS[name];
-        return Icon ? <Icon key={name} className={`icon`} /> : null;
-      })}
+      {[...list]
+        .sort((a, b) => (ORDER_WEIGHT[a] ?? 999) - (ORDER_WEIGHT[b] ?? 999))
+        .map((name) => {
+          const Icon = ICONS[name];
+          return Icon ? <Icon key={name} className={`icon`} /> : null;
+        })}
     </div>
   );
 };

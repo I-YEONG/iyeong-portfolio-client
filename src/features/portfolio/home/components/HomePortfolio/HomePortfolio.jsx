@@ -54,8 +54,8 @@ const HomePortfolio = () => {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 1,
-            stagger: 0.22,
+            duration: 0.5,
+            stagger: 0.08,
             ease: "none",
           },
         );
@@ -65,16 +65,16 @@ const HomePortfolio = () => {
           {
             autoAlpha: 0.15,
             y: -35,
-            duration: 1,
-            stagger: 0.14,
+            duration: 0.5,
+            stagger: 0.06,
             ease: "none",
           },
-          isBanner2 ? "+=2.1" : "+=1.5",
+          isBanner2 ? "+=0.8" : "+=0.6",
         );
 
         // banner-2는 마지막 reveal 후에도 한 템포 유지
         if (isBanner2) {
-          timeline.to({}, { duration: 3.6 });
+          timeline.to({}, { duration: 1.6 });
         }
       });
 
@@ -102,8 +102,8 @@ const HomePortfolio = () => {
             .to(thirdItems, {
               autoAlpha: 1,
               y: 0,
-              duration: 0.9,
-              stagger: 0.18,
+              duration: 0.5,
+              stagger: 0.08,
               ease: "none",
             })
             .to(
@@ -111,11 +111,11 @@ const HomePortfolio = () => {
               {
                 autoAlpha: 0.2,
                 y: -25,
-                duration: 0.8,
-                stagger: 0.12,
+                duration: 0.45,
+                stagger: 0.06,
                 ease: "none",
               },
-              "+=0.1",
+              "+=0.03",
             );
         }
 

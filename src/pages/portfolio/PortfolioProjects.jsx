@@ -1,5 +1,5 @@
-import { ProjectsHero } from "@/features/portfolio/projects/components";
-import { Footer, Header } from "@/layouts";
+import { ProjectList, ProjectsHero } from "@/features/portfolio/projects/components";
+import { Footer, FullCenterLayout, Header } from "@/layouts";
 
 const PortfolioProjects = () => {
   return (
@@ -7,7 +7,7 @@ const PortfolioProjects = () => {
       <Header themeCode="dark" />
       <div css={{ display: "flex", flexDirection: "column", gap: "10vh" }}>
         <ProjectsHero />
-        <div css={{ width: "100%", height: "80vh", backgroundColor: "gray" }}></div>
+        <ProjectList />
         <Footer />
       </div>
     </main>

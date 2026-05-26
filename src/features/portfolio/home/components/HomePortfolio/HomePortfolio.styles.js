@@ -72,7 +72,7 @@ const layoutCss = () => ({
   },
 
   ".banner-stage": {
-    height: "215vh",
+    height: "172vh",
     width: "100%",
     position: "relative",
   },
@@ -154,7 +154,7 @@ const bannerContentBase = {
 // 배너 1 전용 스타일
 export const banner1Css = () => ({
   ".banner-1": {
-    height: "300vh",
+    height: "230vh",
   },
 
   "& .banner-1 .banner-content": {
@@ -187,7 +187,7 @@ export const banner1Css = () => ({
 // 배너 2 전용 스타일
 export const banner2Css = () => ({
   ".banner-2": {
-    height: "360vh",
+    height: "270vh",
   },
 
   "& .banner-2 .banner-content": {
@@ -272,7 +272,7 @@ export const banner2Css = () => ({
 // 배너 3 전용 스타일
 export const banner3Css = () => ({
   ".banner-3": {
-    height: "430vh",
+    height: "330vh",
     backgroundColor: "#F6F8FB",
   },
 
@@ -314,16 +314,16 @@ export const banner3Css = () => ({
 const responsiveCss = () => ({
   [mq("tablet")]: {
     ".banner-1": {
-      height: "225vh",
+      height: "182vh",
     },
     ".banner-stage": {
-      height: "195vh",
+      height: "158vh",
     },
     ".banner-2": {
-      height: "260vh",
+      height: "210vh",
     },
     ".banner-3": {
-      height: "360vh",
+      height: "290vh",
     },
     ".slide-up-panel": {
       width: "94%",

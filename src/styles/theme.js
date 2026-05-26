@@ -4,47 +4,73 @@
 
 export const fonts = {
   // 기본은 600~700
-  titleXLg: { fontSize: "64px", fontWeight: "600" },
-  titleLg: { fontSize: "56px", fontWeight: "600" },
-  titleMd: { fontSize: "36px", fontWeight: "600" },
-  titleSm: { fontSize: "32px", fontWeight: "600" },
+  titleXLg: { fontSize: "64px", fontWeight: "600", lineHeight: "1.2", letterSpacing: "-0.02em" },
+  titleLg: { fontSize: "56px", fontWeight: "600", lineHeight: "1.2", letterSpacing: "-0.02em" },
+  titleMd: { fontSize: "36px", fontWeight: "600", lineHeight: "1.3", letterSpacing: "-0.02em" },
+  titleSm: { fontSize: "32px", fontWeight: "600", lineHeight: "1.3", letterSpacing: "-0.02em" },
 
   //title_B는 900~800으로 굵게,
-  titleXLg_B: { fontSize: "64px", fontWeight: "800" },
-  titleLg_B: { fontSize: "56px", fontWeight: "800" },
-  titleMd_B: { fontSize: "36px", fontWeight: "800" },
-  titleSm_B: { fontSize: "32px", fontWeight: "800" },
+  titleXLg_B: { fontSize: "64px", fontWeight: "800", lineHeight: "1.2", letterSpacing: "-0.02em" },
+  titleLg_B: { fontSize: "56px", fontWeight: "800", lineHeight: "1.2", letterSpacing: "-0.02em" },
+  titleMd_B: { fontSize: "36px", fontWeight: "800", lineHeight: "1.3", letterSpacing: "-0.02em" },
+  titleSm_B: { fontSize: "32px", fontWeight: "800", lineHeight: "1.3", letterSpacing: "-0.02em" },
 
-  testXLg: { fontSize: "24px", fontWeight: "400" },
-  textLg: { fontSize: "20px", fontWeight: "400" },
-  textMd: { fontSize: "16px", fontWeight: "400" },
+  textXLg: { fontSize: "24px", fontWeight: "400", lineHeight: "1.5", letterSpacing: "-0.01em" },
+  textLg: { fontSize: "20px", fontWeight: "400", lineHeight: "1.5", letterSpacing: "-0.01em" },
+  textMd: { fontSize: "16px", fontWeight: "400", lineHeight: "1.5", letterSpacing: "-0.01em" },
 
-  testXLg_B: { fontSize: "24px", fontWeight: "700" },
-  textLg_B: { fontSize: "20px", fontWeight: "700" },
-  textMd_B: { fontSize: "16px", fontWeight: "700" },
+  textXLg_B: { fontSize: "24px", fontWeight: "700", lineHeight: "1.5", letterSpacing: "-0.01em" },
+  textLg_B: { fontSize: "20px", fontWeight: "700", lineHeight: "1.5", letterSpacing: "-0.01em" },
+  textMd_B: { fontSize: "16px", fontWeight: "700", lineHeight: "1.5", letterSpacing: "-0.01em" },
 
-  testXLg_L: { fontSize: "24px", fontWeight: "200" },
-  textLg_L: { fontSize: "20px", fontWeight: "200" },
-  textMd_L: { fontSize: "16px", fontWeight: "200" },
+  textXLg_L: { fontSize: "24px", fontWeight: "200", lineHeight: "1.5", letterSpacing: "-0.01em" },
+  textLg_L: { fontSize: "20px", fontWeight: "200", lineHeight: "1.5", letterSpacing: "-0.01em" },
+  textMd_L: { fontSize: "16px", fontWeight: "200", lineHeight: "1.5", letterSpacing: "-0.01em" },
 
   // 캡션(8~14px)
-  captionXl: { fontSize: "14px", fontWeight: "400" },
-  captionLg: { fontSize: "12px", fontWeight: "400" },
-  captionMd: { fontSize: "10px", fontWeight: "400" },
-  captionSm: { fontSize: "8px", fontWeight: "400" },
+  captionXl: { fontSize: "14px", fontWeight: "400", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionLg: { fontSize: "12px", fontWeight: "400", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionMd: { fontSize: "10px", fontWeight: "400", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionSm: { fontSize: "8px", fontWeight: "400", lineHeight: "1.4", letterSpacing: "-0.005em" },
 
-  captionXl_B: { fontSize: "14px", fontWeight: "700" },
-  captionLg_B: { fontSize: "12px", fontWeight: "700" },
-  captionMd_B: { fontSize: "10px", fontWeight: "700" },
-  captionSm_B: { fontSize: "8px", fontWeight: "700" },
+  captionXl_B: { fontSize: "14px", fontWeight: "700", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionLg_B: { fontSize: "12px", fontWeight: "700", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionMd_B: { fontSize: "10px", fontWeight: "700", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionSm_B: { fontSize: "8px", fontWeight: "700", lineHeight: "1.4", letterSpacing: "-0.005em" },
 
-  captionXl_L: { fontSize: "14px", fontWeight: "300" },
-  captionLg_L: { fontSize: "12px", fontWeight: "300" },
-  captionMd_L: { fontSize: "10px", fontWeight: "300" },
-  captionSm_L: { fontSize: "8px", fontWeight: "300" },
+  captionXl_L: { fontSize: "14px", fontWeight: "300", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionLg_L: { fontSize: "12px", fontWeight: "300", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionMd_L: { fontSize: "10px", fontWeight: "300", lineHeight: "1.4", letterSpacing: "-0.005em" },
+  captionSm_L: { fontSize: "8px", fontWeight: "300", lineHeight: "1.4", letterSpacing: "-0.005em" },
 };
 
 export const flex = {
+  rowEnd: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+
+  rowStart: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+
+  colStart: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+
+  colEnd: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+
   // 중앙 정렬
   center: {
     display: "flex",
