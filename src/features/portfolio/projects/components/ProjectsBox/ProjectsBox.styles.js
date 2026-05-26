@@ -1,0 +1,81 @@
+import { css } from "@emotion/react";
+import { theme } from "@/styles/theme";
+import { mq } from "@/styles/mq";
+
+export const projectsBoxCss = css({
+  width: "100%",
+  minHeight: "320px",
+  height: "100%",
+  flex: "1 1 0",
+  ...theme.flex.colStart,
+  borderRight: `1px solid ${theme.colors.lightLine}`,
+
+  "&:last-child": {
+    borderRight: "none",
+  },
+
+  [mq("mobile")]: {
+    borderRight: "none",
+  },
+
+  "& .img-box": {
+    width: "100%",
+    aspectRatio: "16/9", // 또는 "2/1" 등 원하는 비율
+    maxHeight: "480px", // 필요시 최대 높이 제한
+    borderBottom: `1px solid ${theme.colors.lightLine}`,
+
+    "& > img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      display: "block",
+    },
+  },
+
+  // 콘텐츠
+  "& .content-box": {
+    ...theme.flex.colBetween,
+    height: "100%",
+    border: "none",
+    gap: "8px",
+    padding: "24px 26px",
+
+    // date box
+    "& .date-box": {
+      ...theme.flex.rowStart,
+      ...theme.fonts.captionLg,
+      gap: "8px",
+    },
+
+    // title
+    "& .title": {
+      ...theme.fonts.titleSm,
+      [mq("mobile")]: {
+        ...theme.fonts.titleMd_B,
+      },
+    },
+
+    // 설명
+    "& .description": {
+      ...theme.fonts.captionXl,
+      color: theme.colors.black600,
+      flex: "1 1 auto",
+    },
+
+    // 링크
+    "& .goto": {
+      ...theme.flex.rowStart,
+      gap: "8px",
+      ...theme.fonts.captionXl_B,
+      color: theme.colors.black600,
+      borderBottom: `1px solid ${theme.colors.black800}`,
+      width: "fit-content",
+      padding: "4px 0",
+      transition: "color 0.2s",
+    },
+  },
+
+  "&:hover .goto": {
+    color: theme.colors.black800,
+  },
+});
