@@ -1,6 +1,11 @@
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import { theme } from "@/styles/theme";
 import { mq } from "@/styles/mq";
+
+const shimmer = keyframes`
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+`;
 
 export const projectsBoxCss = css({
   width: "100%",
@@ -19,16 +24,27 @@ export const projectsBoxCss = css({
   },
 
   "& .img-box": {
+    position: "relative",
     width: "100%",
     aspectRatio: "16/9", // 또는 "2/1" 등 원하는 비율
     maxHeight: "480px", // 필요시 최대 높이 제한
     borderBottom: `1px solid ${theme.colors.lightLine}`,
+
+    "& .img-skeleton": {
+      position: "absolute",
+      inset: 0,
+      backgroundImage: `linear-gradient(90deg, ${theme.colors.lightLine} 0%, ${theme.colors.black100} 50%, ${theme.colors.lightLine} 100%)`,
+      backgroundSize: "200% 100%",
+      animation: `${shimmer} 1.2s ease-in-out infinite`,
+      borderRadius: "6px",
+    },
 
     "& > img": {
       width: "100%",
       height: "100%",
       objectFit: "cover",
       display: "block",
+      transition: "opacity 0.2s ease",
     },
   },
 
