@@ -20,7 +20,7 @@ const ProjectDetailHero = ({ data }) => {
               <p className="title">{data.name}</p>
               <p className="description">{data.description}</p>
               <div className="button-box">
-                <div onClick={() => nav(`${data.url}`)} className="cursor-reactive is-green">
+                <div onClick={() => nav(`/project/${data.url}`)} className="cursor-reactive is-green">
                   <Button buttonType="goto" cssObj={{ ...theme.fonts.captionXl, width: "fit-content", backgroundColor: theme.colors.green, color: "white" }}>
                     페이지 바로가기
                   </Button>
