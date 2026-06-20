@@ -11,17 +11,19 @@ import { ProjectHeaderCss } from "./ProjectHeader.styles";
 const ProjectHeader = ({ isPcMode, onChangeDevice, isLogin, onChangeLogin }) => {
   return (
     <header css={ProjectHeaderCss}>
-      <div>
+      <div className="icon-div">
         <LEFT_ICON />
-        <LOGO />
+        <LOGO className="logo" />
       </div>
-      <button onClick={onChangeDevice} aria-label="device-toggle">
-        {isPcMode ? <PC_ICON /> : <MOBILE_ICON />}
-      </button>
-      <button onClick={onChangeLogin} aria-label="auth-toggle">
-        {isLogin ? <LOGOUT_ICON /> : <LOGIN_ICON />}
-      </button>
-      <GIT_ICON />
+      <div className="icon-div">
+        <button onClick={onChangeDevice} aria-label="device-toggle">
+          {isPcMode ? <PC_ICON /> : <MOBILE_ICON />}
+        </button>
+        <button onClick={onChangeLogin} aria-label="auth-toggle">
+          {isLogin ? <LOGOUT_ICON /> : <LOGIN_ICON />}
+        </button>
+        <GIT_ICON className="git" />
+      </div>
     </header>
   );
 };
