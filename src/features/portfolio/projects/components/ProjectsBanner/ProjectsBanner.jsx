@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMedia } from "@/hooks/useMedia";
 import { projectsBannerCss } from "./ProjectsBanner.styles";
 import Tags from "@/components/Tags/Tags";
@@ -10,18 +10,16 @@ import { theme } from "@/styles/theme";
 
 const ProjectsBanner = ({ project }) => {
   const { isTablet, isPc } = useMedia();
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [loadedImageUrl, setLoadedImageUrl] = useState("");
   console.log(project);
   // mainImg는 배열이므로, 첫 번째 이미지만 사용해야 함
   const mainImg = project?.images?.find((img) => img.isMain);
 
-  useEffect(() => {
-    setIsImageLoaded(false);
-  }, [mainImg?.imageUrl]);
-
   const handleImageLoad = () => {
-    setIsImageLoaded(true);
+    setLoadedImageUrl(mainImg?.imageUrl ?? "");
   };
+
+  const isImageLoaded = loadedImageUrl === mainImg?.imageUrl;
 
   // 날짜 포맷 훅 사용
   const formatDate = useFormatDate();

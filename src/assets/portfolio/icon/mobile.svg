@@ -1,10 +1,1 @@
-<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_505_358)">
-<path d="M9.19992 17.6333H13.7999M5.36659 22.2333H17.6333C18.0399 22.2333 18.4299 22.0717 18.7175 21.7842C19.005 21.4966 19.1666 21.1066 19.1666 20.6999V2.29993C19.1666 1.89327 19.005 1.50326 18.7175 1.2157C18.4299 0.928149 18.0399 0.766602 17.6333 0.766602H5.36659C4.95992 0.766602 4.56991 0.928149 4.28235 1.2157C3.9948 1.50326 3.83325 1.89327 3.83325 2.29993V20.6999C3.83325 21.1066 3.9948 21.4966 4.28235 21.7842C4.56991 22.0717 4.95992 22.2333 5.36659 22.2333Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-</g>
-<defs>
-<clipPath id="clip0_505_358">
-<rect width="23" height="23" fill="currentColor"/>
-</clipPath>
-</defs>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?><svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.562 62.562"><rect x="2.745" y="12.719" width="57.562" height="37.124" rx="4.997" ry="4.997" transform="translate(62.807 -.245) rotate(90)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/><line x1="38.287" y1="49.831" x2="24.765" y2="49.831" fill="#fff" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/></svg>

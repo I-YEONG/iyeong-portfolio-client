@@ -5,7 +5,7 @@ import { theme } from "@/styles/theme";
 export const ProjectHeaderCss = css({
   width: "100%",
   height: "62px",
-  borderBottom: `1px solid ${theme.colors.lightLine}`,
+  borderBottom: `1px solid ${theme.colors.darkLine}`,
   // borderBottom: `1px solid #DDDFEA`,
   ...theme.flex.rowBetween,
   backgroundColor: "#353535",
@@ -19,7 +19,7 @@ export const ProjectHeaderCss = css({
   },
 
   "& .logo": {
-    width: "190px",
+    width: "160px",
     height: "auto",
   },
   "& .git": {

@@ -7,22 +7,25 @@ import LOGOUT_ICON from "@/assets/portfolio/icon/logout.svg?react";
 import GIT_ICON from "@/assets/portfolio/skill/github.svg?react";
 
 import { ProjectHeaderCss } from "./ProjectHeader.styles";
+import { Link } from "react-router-dom";
 
 const ProjectHeader = ({ isPcMode, onChangeDevice, isLogin, onChangeLogin }) => {
   return (
     <header css={ProjectHeaderCss}>
-      <div className="icon-div">
+      <Link className="icon-div" to="/projects" aria-label="go-back">
         <LEFT_ICON />
         <LOGO className="logo" />
-      </div>
+      </Link>
       <div className="icon-div">
         <button onClick={onChangeDevice} aria-label="device-toggle">
-          {isPcMode ? <PC_ICON /> : <MOBILE_ICON />}
+          {!isPcMode ? <PC_ICON /> : <MOBILE_ICON />}
         </button>
         <button onClick={onChangeLogin} aria-label="auth-toggle">
           {isLogin ? <LOGOUT_ICON /> : <LOGIN_ICON />}
         </button>
-        <GIT_ICON className="git" />
+        <button onClick={onChangeLogin} aria-label="auth-toggle">
+          <GIT_ICON className="git" />
+        </button>
       </div>
     </header>
   );

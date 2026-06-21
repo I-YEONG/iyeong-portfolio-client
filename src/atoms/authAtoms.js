@@ -1,14 +1,13 @@
 import { atom } from "jotai";
 
-export const authAtom = atom({ isLoggedIn: false, user: null });
+export const authAtom = atom(false);
 
-// write-only atom to update auth state. Accepts a partial update object
+// write-only atom to update auth state as boolean
 export const setAuthAtom = atom(null, (get, set, update) => {
-  const current = get(authAtom) || { isLoggedIn: false, user: null };
-  // if update is a function, call it with current state
-  const next = typeof update === "function" ? update(current) : { ...current, ...update };
+  const current = Boolean(get(authAtom));
+  const next = typeof update === "function" ? Boolean(update(current)) : Boolean(update);
   set(authAtom, next);
 });
 
-export const login = (user) => ({ isLoggedIn: true, user });
-export const logout = () => ({ isLoggedIn: false, user: null });
+export const login = () => true;
+export const logout = () => false;
