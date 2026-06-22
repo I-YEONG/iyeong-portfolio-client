@@ -7,7 +7,7 @@ export const projectSideBoxCss = css({
   maxWidth: "340px",
   height: "100%",
   padding: "24px",
-  backgroundColor: "#2C2C2C",
+  backgroundColor: "#28292a",
   overflowY: "hidden",
   color: "white",
 
