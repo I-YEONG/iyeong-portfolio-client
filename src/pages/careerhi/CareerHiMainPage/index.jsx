@@ -4,11 +4,12 @@ import useAlertCP from "@/features/careerhi/hook/useAlertCP";
 import { useNavigate } from "react-router-dom";
 import MainLayout from "@/layouts/careerhi";
 import MainContentLayout from "@/layouts/careerhi/MainLayout";
-import logo_3d from "@/assets/image/3d_logo.png";
+import logo_3d from "@/assets/careerhi/image/3d_logo.png";
 import { useLoginInfo } from "@/features/careerhi/hook/useLoginInfo";
+import "@/styles/careerhi.global.css";
 import "./style.css";
 
-const CareerhiMainPage = () => {
+const CareerHiMainPage = () => {
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
   const { loginCheck, loginInfo } = useLoginInfo();
   const nav = useNavigate();
@@ -26,7 +27,7 @@ const CareerhiMainPage = () => {
   }, [loginCheck, setAlertTitleText, setAlertButtonText, openAlert]);
 
   return (
-    <div>
+    <div className="careerhi-main-page">
       {/* AlertCP */}
       {isAlertOpen && (
         <AlertCP
@@ -40,10 +41,12 @@ const CareerhiMainPage = () => {
       )}
       <div
         style={{
-          position: isAlertOpen ? "fixed" : "static",
+          position: isAlertOpen ? "absolute" : "static", // fixed -> absolute로 변경
           top: isAlertOpen ? "0" : "unset",
           left: isAlertOpen ? "0" : "unset",
           width: "100%",
+          height: isAlertOpen ? "100%" : "auto", // 필요시 높이도 뷰어에 맞춤
+          zIndex: isAlertOpen ? 50 : "auto", // 알림창이 다른 요소를 덮도록 z-index 추가 추천
         }}>
         <MainLayout mobile_block={true} page="main">
           <MainContentLayout page="main">
@@ -87,4 +90,4 @@ const CareerhiMainPage = () => {
     </div>
   );
 };
-export default CareerhiMainPage;
+export default CareerHiMainPage;

@@ -9,7 +9,6 @@ export const projectViewCss = (isPc) =>
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "20px",
     overflow: "auto",
 
     ".project-view": {
@@ -19,6 +18,7 @@ export const projectViewCss = (isPc) =>
       maxHeight: isPc ? "none" : "94%",
       borderRadius: isPc ? "0" : "12px",
       boxShadow: isPc ? "none" : "0 18px 45px rgba(0, 0, 0, 0.35)",
-      overflow: "hidden",
+      overflow: "auto",
+      position: "relative",
     },
   });

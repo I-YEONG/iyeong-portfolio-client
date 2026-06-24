@@ -3,13 +3,17 @@ import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio/project/components";
 import { theme } from "@/styles/theme";
-import CareerhiMainPage from "../careerhi/MainPage";
+
+// 커리어하이
+import { CareerHiMainPage } from "@/pages/careerhi";
 
 const PortfolioProject = () => {
   const { projectName: projectName, "*": restPath } = useParams();
 
   const { isPc, toggleDeviceMode } = useDeviceMode();
   const { isLoggedIn, toggleAuth } = useAuth();
+
+  console.log(`${projectName}/${restPath}`);
 
   return (
     <div>
@@ -20,7 +24,7 @@ const PortfolioProject = () => {
 
         {/* 시뮬레이션 박스 */}
         <ProjectView isPc={isPc}>
-          {`${projectName}/${restPath}` === "/careerhi" && <CareerhiMainPage />}
+          {`/${projectName}/${restPath}` === "/careerhi/" && <CareerHiMainPage />}
           {/* 메인 페이지
           <Route path="/" element={<MainPage />} />
 

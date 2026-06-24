@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import logoImage from "../../../assets/image/logo.png";
+import logoImage from "@/assets/careerhi/image/logo.png";
 
 const LogoCP = () => {
   const nav = useNavigate();
