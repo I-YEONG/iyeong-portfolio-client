@@ -10,22 +10,22 @@ import SpinnersCP from "@/features/careerhi/components/_common/spinnersCP/spinne
 import { useLoginInfo } from "@/features/careerhi/hook/useLoginInfo";
 import { api_reportDelete, api_roadmapDetailGet } from "@/features/careerhi/api/roadmap";
 
-import percentage_0 from "../../../assets/image/percentage/0.svg";
-import percentage_10 from "../../../assets/image/percentage/10.svg";
-import percentage_20 from "../../../assets/image/percentage/20.svg";
-import percentage_30 from "../../../assets/image/percentage/30.svg";
-import percentage_40 from "../../../assets/image/percentage/40.svg";
-import percentage_50 from "../../../assets/image/percentage/50.svg";
-import percentage_60 from "../../../assets/image/percentage/60.svg";
-import percentage_70 from "../../../assets/image/percentage/70.svg";
-import percentage_80 from "../../../assets/image/percentage/80.svg";
-import percentage_90 from "../../../assets/image/percentage/90.svg";
-import percentage_100 from "../../../assets/image/percentage/100.svg";
+import percentage_0 from "@/assets/careerhi/image/percentage/0.svg";
+import percentage_10 from "@/assets/careerhi/image/percentage/10.svg";
+import percentage_20 from "@/assets/careerhi/image/percentage/20.svg";
+import percentage_30 from "@/assets/careerhi/image/percentage/30.svg";
+import percentage_40 from "@/assets/careerhi/image/percentage/40.svg";
+import percentage_50 from "@/assets/careerhi/image/percentage/50.svg";
+import percentage_60 from "@/assets/careerhi/image/percentage/60.svg";
+import percentage_70 from "@/assets/careerhi/image/percentage/70.svg";
+import percentage_80 from "@/assets/careerhi/image/percentage/80.svg";
+import percentage_90 from "@/assets/careerhi/image/percentage/90.svg";
+import percentage_100 from "@/assets/careerhi/image/percentage/100.svg";
 
-import portfolio_img from "../../../assets/image/portfolio.png";
+import portfolio_img from "@/assets/careerhi/image/portfolio.png";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 
-const MyRoadmapResultPage = () => {
+const CareerHiResultPage = () => {
   const percentageImages = {
     0: percentage_0,
     10: percentage_10,
@@ -175,7 +175,7 @@ const MyRoadmapResultPage = () => {
                 <div className="my-26">
                   <h2 className="H2_bold">{reportData.certificateAnalysis.title}</h2>
                   {/* 자격증 리스트 */}
-                  <div className="flex gap-4 sm:gap-6 flex-wrap my-12">
+                  <div className="flex flex-wrap gap-4 my-12 sm:gap-6">
                     {/* 보유 중 */}
                     {reportData.certificateAnalysis?.preferred?.map((item, idx) => (
                       <div className="h-18 sm:h-22 px-9 border rounded-lg border-point-sub  flexCenter bg-[#FFF1F5] text-point-sub-bold font-bold" key={idx}>
@@ -184,19 +184,19 @@ const MyRoadmapResultPage = () => {
                     ))}
                     {/* 미보유 */}
                     {reportData.certificateAnalysis?.required?.map((item, idx) => (
-                      <div className="h-18 sm:h-22 px-9 border rounded-lg border-gray-300 flexCenter" key={idx}>
+                      <div className="border border-gray-300 rounded-lg h-18 sm:h-22 px-9 flexCenter" key={idx}>
                         {item}
                       </div>
                     ))}
                   </div>
                   {/* 업계 동향, 방향성 */}
-                  <div className="my-4 p-4 bg-gray-100 leading-5">
-                    <p className="mb-3 text-point-main font-bold">업계 동향</p>
-                    <div className="B3 text-gray-500">{reportData.certificateAnalysis.industryTrend || "내용이 존재하지 않습니다."}</div>
+                  <div className="p-4 my-4 leading-5 bg-gray-100">
+                    <p className="mb-3 font-bold text-point-main">업계 동향</p>
+                    <div className="text-gray-500 B3">{reportData.certificateAnalysis.industryTrend || "내용이 존재하지 않습니다."}</div>
                   </div>
                   <div className="my-4 p-4 bg-[#FFF8FA] leading-5">
-                    <p className="mb-3 text-point-sub-bold font-bold">방향성 코칭</p>
-                    <div className="B3 text-gray-600">{reportData.certificateAnalysis.coaching || "내용이 존재하지 않습니다."}</div>
+                    <p className="mb-3 font-bold text-point-sub-bold">방향성 코칭</p>
+                    <div className="text-gray-600 B3">{reportData.certificateAnalysis.coaching || "내용이 존재하지 않습니다."}</div>
                   </div>
                 </div>
                 {/* 자격증 - 끝 */}
@@ -209,10 +209,10 @@ const MyRoadmapResultPage = () => {
                     {reportData.awardAnalysis.charts.map((chart, idx) => (
                       <div key={idx} className="flex flex-col my-12 gap-y-4">
                         {/* 그래프 */}
-                        <div className="relative flex flex-row min-h-18 gap-4">
+                        <div className="relative flex flex-row gap-4 min-h-18">
                           <div
                             style={{ flexBasis: `${getRoundedTensPercent(chart.userPercent)}%` }}
-                            className="rounded-lg bg-point-main flex p-6 items-center text-white">
+                            className="flex items-center p-6 text-white rounded-lg bg-point-main">
                             {chart.userPercent}%
                           </div>
                           <div
@@ -224,7 +224,7 @@ const MyRoadmapResultPage = () => {
                         {/* 설명 */}
                         <div className="flex gap-4">
                           <div className="flex gap-1">
-                            <div className="rounded-full h-3 w-3 bg-point-main"></div>
+                            <div className="w-3 h-3 rounded-full bg-point-main"></div>
                             <span className="B3">{chart.label}</span>
                           </div>
                           <div className="flex gap-1">
@@ -236,21 +236,21 @@ const MyRoadmapResultPage = () => {
                     ))}
                   </div>
                   {/* 차트 - 끝 */}
-                  <div className="my-4 p-4 bg-gray-100 leading-5 text-gray-500">
-                    <p className="mb-3 text-point-main font-bold">업계 동향</p>
+                  <div className="p-4 my-4 leading-5 text-gray-500 bg-gray-100">
+                    <p className="mb-3 font-bold text-point-main">업계 동향</p>
                     <div className="B3 ">{reportData.awardAnalysis.industryTrend.summary || "내용이 존재하지 않습니다."}</div>
-                    <ul className="mt-2 list-disc list-inside pl-5">
+                    <ul className="pl-5 mt-2 list-disc list-inside">
                       {reportData.awardAnalysis.industryTrend.details?.map((detail, idx) => (
-                        <li className="B3 text-gray-500 bullet-list" key={idx} style={{ listStyleType: "disc", display: "list-item" }}>
+                        <li className="text-gray-500 B3 bullet-list" key={idx} style={{ listStyleType: "disc", display: "list-item" }}>
                           {detail}
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div className="my-4 p-4 bg-[#FFF8FA] leading-5 text-gray-600">
-                    <p className="mb-3 text-point-sub-bold font-bold">방향성 코칭</p>
+                    <p className="mb-3 font-bold text-point-sub-bold">방향성 코칭</p>
                     <div className="B3">{reportData.awardAnalysis.coaching.summary || "내용이 존재하지 않습니다."}</div>
-                    <ul className="mt-2 list-disc list-inside pl-5">
+                    <ul className="pl-5 mt-2 list-disc list-inside">
                       {reportData.awardAnalysis.coaching.details?.map((detail, idx) => (
                         <li className="B3 bullet-list" key={idx} style={{ listStyleType: "disc", display: "list-item" }}>
                           {detail}
@@ -263,13 +263,13 @@ const MyRoadmapResultPage = () => {
 
                 {/* 필수 수택 - 시작 */}
                 <div className="my-26">
-                  <h2 className="H2_bold my-12">{reportData.skillGap.title}</h2>
+                  <h2 className="my-12 H2_bold">{reportData.skillGap.title}</h2>
                   {/* 스택 */}
                   <div className="flex flex-col gap-6">
                     {reportData.skillGap.items.map((item, idx) => (
                       <div className="flex gap-4 min-h-20 sm:min-h-24" key={idx}>
                         <div className="min-w-24.5 basis-2/10 flexCenter flex-col gap-1 p-4 rounded-lg bg-[#EAFFE5] border border-[#38D255] text-[#38D255]">
-                          <p className="B3_bold text-center">{item.badgeTitle}</p>
+                          <p className="text-center B3_bold">{item.badgeTitle}</p>
                           {item.badgeValue !== "상" && item.badgeValue !== "중" && item.badgeValue !== "하" ? (
                             <p className="B3">{item.badgeValue}</p>
                           ) : (
@@ -280,9 +280,9 @@ const MyRoadmapResultPage = () => {
                             </p>
                           )}
                         </div>
-                        <div className="flex flex-col gap-4 p-4 rounded-lg bg-gray-100 basis-8/10">
+                        <div className="flex flex-col gap-4 p-4 bg-gray-100 rounded-lg basis-8/10">
                           <p className="B3_bold text-point-main">{item.contentTitle}</p>
-                          <p className="B3 text-gray-500 leading-5 ">{item.contentDescription}</p>
+                          <p className="leading-5 text-gray-500 B3 ">{item.contentDescription}</p>
                         </div>
                       </div>
                     ))}
@@ -294,16 +294,16 @@ const MyRoadmapResultPage = () => {
                 <div>
                   <h2 className="text-center H2_bold mt-30">{reportData.portfolioAnalysis.title}</h2>
 
-                  <img src={portfolio_img} alt="포트폴리오 분석 결과 이미지" className="w-45 h-45 mx-auto my-12" />
+                  <img src={portfolio_img} alt="포트폴리오 분석 결과 이미지" className="mx-auto my-12 w-45 h-45" />
 
-                  <div className="my-4 p-4 bg-gray-100 leading-5 text-gray-500">
-                    <p className="mb-3 text-point-main font-bold">분석 결과</p>
+                  <div className="p-4 my-4 leading-5 text-gray-500 bg-gray-100">
+                    <p className="mb-3 font-bold text-point-main">분석 결과</p>
                     <div className="B3 ">{reportData.portfolioAnalysis.analysisResult || "내용이 존재하지 않습니다."}</div>
                   </div>
                   <div className="my-4 p-4 bg-[#FFF8FA] leading-5 text-gray-600">
-                    <p className="mb-3 text-point-sub-bold font-bold">피드백</p>
+                    <p className="mb-3 font-bold text-point-sub-bold">피드백</p>
 
-                    <ul className="mt-2 list-disc list-inside pl-5">
+                    <ul className="pl-5 mt-2 list-disc list-inside">
                       {reportData.portfolioAnalysis.feedbackList?.map((detail, idx) => (
                         <li className="B3 bullet-list" key={idx} style={{ listStyleType: "disc", display: "list-item" }}>
                           {detail}
@@ -314,8 +314,8 @@ const MyRoadmapResultPage = () => {
                 </div>
                 {/* 포트폴리오 - 끝 */}
 
-                <div className="w-full flex justify-end mt-22 mb-32 gap-6 items-end">
-                  <span onClick={onReportDeleteHandler} className="B4 p-2 text-point-sub-bold cursor-pointer">
+                <div className="flex items-end justify-end w-full gap-6 mb-32 mt-22">
+                  <span onClick={onReportDeleteHandler} className="p-2 cursor-pointer B4 text-point-sub-bold">
                     로드맵 삭제
                   </span>
                   <div className="w-1/2 sm:w-2/10" onClick={() => nav("/roadmap/list")}>
@@ -333,4 +333,4 @@ const MyRoadmapResultPage = () => {
     </div>
   );
 };
-export default MyRoadmapResultPage;
+export default CareerHiResultPage;

@@ -19,6 +19,10 @@ export const projectViewCss = (isPc) =>
       borderRadius: isPc ? "0" : "12px",
       boxShadow: isPc ? "none" : "0 18px 45px rgba(0, 0, 0, 0.35)",
       overflow: "auto",
-      position: "relative",
+      position: "relative", // absolute 가두기 (기존 유지)
+
+      /* ✨ 추가된 마법의 코드 2줄 ✨ */
+      transform: "translate(0, 0)", // fixed 요소를 이 박스 안에 가둡니다.
+      containerType: "size", // 내부에서 vh/vw 대신 cqh/cqw를 쓸 수 있게 컨테이너로 선언합니다.
     },
   });

@@ -16,11 +16,13 @@ export const ProjectHeaderCss = css({
     ...theme.flex.center,
     flexWrap: "nowrap",
     gap: "24px",
+    color: "white",
   },
 
   "& .logo": {
     width: "160px",
     height: "auto",
+    color: "white",
   },
   "& .git": {
     width: "24px",

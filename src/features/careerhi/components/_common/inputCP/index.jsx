@@ -1,3 +1,4 @@
+import "@/styles/careerhi.global.css";
 /**
  * 공통 인풋 컴포넌트
  * @param {Object} props
@@ -22,7 +23,7 @@ const InputCP = ({ placeholder, value, onChangeValue, type = "text", disabled = 
         placeholder={placeholder}
         value={value}
         onChange={onChangeValue}
-        className="B4 text-point-text w-full h-12 py-4 px-5 rounded-lg border border-gray-300 focus:border-gray-500 focus:outline-none"
+        className="w-full h-12 px-5 py-4 border border-gray-300 rounded-lg B4 text-point-text focus:border-gray-500 focus:outline-none"
       />
       {error && <p className="text-[12px] text-point-error pt-1">{errorText}</p>}
     </div>

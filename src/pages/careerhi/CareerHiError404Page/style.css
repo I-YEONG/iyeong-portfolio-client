@@ -1,6 +1,6 @@
 .error404Page {
-  width: 100vw;
-  height: 100vh;
+  width: 100cqw;
+  height: 100cqh;
   font-size: clamp(26px, 2.5vw, 32px);
   background-color: white;
   user-select: none;
@@ -32,6 +32,6 @@
   min-height: 200px;
   margin-bottom: 2rem;
 
-  background: url("../../../assets/image/404.svg") no-repeat center;
+  background: url("@/assets/careerhi/image/404.svg") no-repeat center;
   background-size: contain;
 }

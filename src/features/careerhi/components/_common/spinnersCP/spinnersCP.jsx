@@ -1,4 +1,5 @@
 import { MoonLoader } from "react-spinners";
+import "@/styles/careerhi.global.css";
 
 const SpinnersCP = ({ color = "#fe7ba0", size = 16, height = "100%" }) => {
   return (

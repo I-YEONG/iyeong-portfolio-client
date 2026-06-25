@@ -20,7 +20,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Footer from "@/layouts/careerhi/Footer";
 import FileUploadCP from "@/features/careerhi/components/_common/fileUploadCP";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
-import logo_3d from "@/assets/image/3d_logo.png";
+import logo_3d from "@/assets/careerhi/image/3d_logo.png";
 import {
   api_profileCreate,
   api_profilePatch,
@@ -32,7 +32,7 @@ import {
 import { api_deleteFile, api_uploadFile } from "@/features/careerhi/api/file";
 import { BarLoader } from "react-spinners";
 
-const MyRoadmapCreatePage = () => {
+const CareerHiCreatePage = () => {
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
   const { isPc } = useDeviceMode();
 
@@ -535,16 +535,16 @@ const MyRoadmapCreatePage = () => {
         />
       )}
       <div className="w-full h-full" style={isAlertOpen ? { position: "absolute", top: 0, left: 0 } : {}}>
-        <div className="w-full h-fit hidden md:block fixed z-850">
+        <div className="fixed hidden w-full h-fit md:block z-850">
           <HeaderPc />
         </div>
         {!isPc && <HeaderCP>기본 정보</HeaderCP>}
         <div className="pt-20.5 relative h-full flex flex-col gap-9 px-8 sm:px-0">
           <MainContentLayout page="roadmap" fixed={true} scroll={true} footer={true}>
             {aiReqLoading && (
-              <div className="w-full sm:pb-14 h-full flex flex-col items-center justify-center select-none relative gap-4 sm:gap-8">
+              <div className="relative flex flex-col items-center justify-center w-full h-full gap-4 select-none sm:pb-14 sm:gap-8">
                 <img src={logo_3d} alt="이미지를 불러올 수 없습니다." className="h-2/10 sm:h-6/10 max-h-90 pb-1/5 mb-[18vh] sm:mb-0 sm:mt-[18vh]" />
-                <p className="H3_bold leading-7 text-center">
+                <p className="leading-7 text-center H3_bold">
                   {name} 님에게 딱 맞는
                   <br />
                   취준 로드맵을 생성하고 있습니다..
@@ -553,11 +553,11 @@ const MyRoadmapCreatePage = () => {
               </div>
             )}
             {!aiReqLoading && (
-              <div className="MyRoadmapCreatePage z-50 flex flex-col justify-start w-full gap-12 ">
-                <div className="flex justify-between items-center">
-                  <p className="H2_bold hidden sm:block">{loginInfo.userData?.userName} 님의 스펙 정보를 작성해 주세요</p>
+              <div className="z-50 flex flex-col justify-start w-full gap-12 MyRoadmapCreatePage ">
+                <div className="flex items-center justify-between">
+                  <p className="hidden H2_bold sm:block">{loginInfo.userData?.userName} 님의 스펙 정보를 작성해 주세요</p>
                   {isPc && (
-                    <span onClick={loadProfileData} className="text-point-main B4 cursor-pointer">
+                    <span onClick={loadProfileData} className="cursor-pointer text-point-main B4">
                       정보 불러오기
                     </span>
                   )}
@@ -568,7 +568,7 @@ const MyRoadmapCreatePage = () => {
                     <p className="H3_bold">
                       기본 정보
                       {!isPc && (
-                        <span onClick={loadProfileData} className="text-point-main B4 cursor-pointer absolute right-8">
+                        <span onClick={loadProfileData} className="absolute cursor-pointer text-point-main B4 right-8">
                           정보 불러오기
                         </span>
                       )}
@@ -594,9 +594,9 @@ const MyRoadmapCreatePage = () => {
                         학력<span>*</span>
                       </p>
                       {/* INPUT DIV */}
-                      <div className="flex gap-4 flex-col">
+                      <div className="flex flex-col gap-4">
                         {/* INPUT COL 1 */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:grid sm:grid-cols-3">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                           {/* 최종 학력 */}
                           <div className="">
                             <SelectCP value={univLevel} setValue={setUnivLevel} selectList={data_univLevel} placeholder={"최종 학력"} />
@@ -618,7 +618,7 @@ const MyRoadmapCreatePage = () => {
                           </div>
                         </div>
                         {/* INPUT COL 2 */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:grid sm:grid-cols-3">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                           {/* 전공 */}
                           <div className="col-span-2">
                             <InputCP placeholder="전공" value={department} onChangeValue={onChangeDepartment} disabled={isUnivInputDisabled} />
@@ -660,12 +660,12 @@ const MyRoadmapCreatePage = () => {
                               type="radio"
                               id={`hopeJobGroup_${index}`}
                               name="hopeJobGroup"
-                              className="cursor-pointer accent-point-main hover:accent-point-sub-bold transition-colors duration-100"
+                              className="transition-colors duration-100 cursor-pointer accent-point-main hover:accent-point-sub-bold"
                               value={index}
                               checked={hopeJobGroup === index}
                               onChange={() => handleGroupChange(index)}
                             />
-                            <label htmlFor={`hopeJobGroup_${index}`} className="radioLabelCP cursor-pointer pl-2 B3">
+                            <label htmlFor={`hopeJobGroup_${index}`} className="pl-2 cursor-pointer radioLabelCP B3">
                               {group}
                             </label>
                           </div>
@@ -678,9 +678,9 @@ const MyRoadmapCreatePage = () => {
                       <p className="B3_bold">
                         세부사항<span>*</span>
                       </p>
-                      <div className="flex gap-4 flex-wrap">
+                      <div className="flex flex-wrap gap-4">
                         {currentHopeJobDetails.map((detail, index) => (
-                          <div key={detail} className="cursor-pointer p-1">
+                          <div key={detail} className="p-1 cursor-pointer">
                             <input
                               type="checkbox"
                               id={`hopeJobDetail_${index}`}
@@ -689,7 +689,7 @@ const MyRoadmapCreatePage = () => {
                               checked={hopeJobDetail.includes(detail)}
                               onChange={() => toggleHopeJobDetail(detail)}
                             />
-                            <label htmlFor={`hopeJobDetail_${index}`} className="radioLabelCP cursor-pointer pl-2 B3">
+                            <label htmlFor={`hopeJobDetail_${index}`} className="pl-2 cursor-pointer radioLabelCP B3">
                               {detail}
                             </label>
                           </div>
@@ -713,8 +713,8 @@ const MyRoadmapCreatePage = () => {
                           zIndexClass="z-50"
                         />
                       </div>
-                      <div className="min-h-4 flex flex-wrap gap-x-2 gap-y-3">
-                        {qualificationsList === 0 && <p className="B4 text-gray-500">자격증을 입력해 주세요</p>}
+                      <div className="flex flex-wrap min-h-4 gap-x-2 gap-y-3">
+                        {qualificationsList === 0 && <p className="text-gray-500 B4">자격증을 입력해 주세요</p>}
                         {qualificationsList.map((item) => {
                           return (
                             <span
@@ -739,7 +739,7 @@ const MyRoadmapCreatePage = () => {
                       </div>
                       <div className="flex flex-col gap-6">
                         {premiers.map((item, index) => (
-                          <div key={index} className="flex flex-col sm:flex-row gap-4 sm:grid sm:grid-cols-3">
+                          <div key={index} className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                             {/* 교내/교외 */}
                             <div className="">
                               <SelectCP
@@ -824,8 +824,8 @@ const MyRoadmapCreatePage = () => {
                           zIndexClass="z-40"
                         />
                       </div>
-                      <div className="min-h-4 flex flex-wrap gap-x-2 gap-y-3">
-                        {planguagesList.length === 0 && <p className="B4 text-gray-500">사용 언어를 입력해 주세요</p>}
+                      <div className="flex flex-wrap min-h-4 gap-x-2 gap-y-3">
+                        {planguagesList.length === 0 && <p className="text-gray-500 B4">사용 언어를 입력해 주세요</p>}
                         {planguagesList.map((item) => {
                           return (
                             <span
@@ -858,7 +858,7 @@ const MyRoadmapCreatePage = () => {
                 {/* 구분선 */}
                 <div className="w-full h-px bg-gray-300"></div>
                 {/* 버튼 DIV */}
-                <div className="flex justify-between items-center mb-32 sm:mb-64 flex-col sm:flex-row gap-4">
+                <div className="flex flex-col items-center justify-between gap-4 mb-32 sm:mb-64 sm:flex-row">
                   {/* 동의 */}
                   <form>
                     <input
@@ -869,8 +869,8 @@ const MyRoadmapCreatePage = () => {
                       checked={isAgree}
                       onChange={(e) => setIsAgree(e.target.checked)}
                     />
-                    <label htmlFor="isAgree" className="radioLabelCP cursor-pointer pl-2 B3">
-                      AI를 활용해 로드맵을 생성하는 데에 동의합니다.<span className="text-point-error ml-1">*</span>
+                    <label htmlFor="isAgree" className="pl-2 cursor-pointer radioLabelCP B3">
+                      AI를 활용해 로드맵을 생성하는 데에 동의합니다.<span className="ml-1 text-point-error">*</span>
                     </label>
                   </form>
 
@@ -895,4 +895,4 @@ const MyRoadmapCreatePage = () => {
     </div>
   );
 };
-export default MyRoadmapCreatePage;
+export default CareerHiCreatePage;

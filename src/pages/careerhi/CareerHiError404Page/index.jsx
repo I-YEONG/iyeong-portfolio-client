@@ -1,7 +1,7 @@
 import "./style.css";
 import { useEffect, useState } from "react";
 
-const Error404Page = () => {
+const CareerHiError404Page = () => {
   const [seconds, setSeconds] = useState(5);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,4 +32,4 @@ const Error404Page = () => {
     </section>
   );
 };
-export default Error404Page;
+export default CareerHiError404Page;

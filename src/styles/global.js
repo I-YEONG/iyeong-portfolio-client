@@ -3,8 +3,8 @@ import { css } from "@emotion/react";
 export const globalStyles = css({
   "*, *::before, *::after": {
     boxSizing: "border-box",
-    margin: 0,
-    padding: 0,
+    // margin: 0,
+    // padding: 0,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
     fontFamily: '"Pretendard", "Gothic A1", "-apple-system", "sans-serif"',

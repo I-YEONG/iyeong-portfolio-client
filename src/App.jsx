@@ -22,14 +22,6 @@ function App() {
         경로 패스
         {/* 메인 페이지 */}
         <Route path="/project/:projectName/*" element={<PortfolioProject />} />
-        {/* 
-        마이 로드맵
-        생성
-        <Route path="/roadmap/create" element={<MyRoadmapCreatePage />} />
-        목록
-        <Route path="/roadmap/list" element={<MyRoadmapListPage />} />
-        결과
-        <Route path="/roadmap/result" element={<MyRoadmapResultPage />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
