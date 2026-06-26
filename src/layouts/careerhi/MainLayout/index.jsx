@@ -18,7 +18,7 @@ const MainContentLayout = ({ children, page = "main", fixed = false, scroll = fa
         scroll ? "overflow-y-auto" : ""
       }`}>
       {/* 왼쪽 영역 (남는 공간의 절반) */}
-      <aside className={`z-45 flex-1 box-border px-[2vw] pt-14 h-[calc(100%-5.125rem)] ${fixed ? "fixed top-20.5 w-[calc(50vw/4)]" : "relative"}`}>
+      <aside className={`z-45 flex-1 box-border px-[2vw] pt-14 h-[calc(100%-5.125rem)] ${fixed ? "fixed top-20.5 w-[20%]" : "relative"}`}>
         <div className="flex flex-col gap-1.5">
           <div
             onClick={() => nav("/project/careerhi")}

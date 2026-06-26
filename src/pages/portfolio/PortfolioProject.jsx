@@ -51,7 +51,7 @@ const PortfolioProject = () => {
               <Route path="/" element={<CareerHiMainPage />} />
               <Route path="/roadmap/list" element={<CareerHiListPage />} />
               <Route path="/roadmap/create" element={<CareerHiCreatePage />} />
-              <Route path="/roadmap/result/:id" element={<CareerHiResultPage />} />
+              <Route path="/roadmap/result" element={<CareerHiResultPage />} />
               <Route path="*" element={<CareerHiError404Page />} />
             </Routes>
           )}

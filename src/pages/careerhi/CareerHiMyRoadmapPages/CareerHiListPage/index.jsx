@@ -103,7 +103,9 @@ const CareerHiListPage = () => {
                         key={index}
                         className="relative flex flex-wrap items-center justify-between w-full p-4 mb-6 bg-gray-100 rounded-lg h-fit sm:h-full sm:p-8">
                         <div className="flex flex-col justify-between gap-2 h-fit sm:h-full">
-                          <p className="font-bold">사용자 ㆍ{data.title?.split(" - ")?.[1] || data.title}</p>
+                          <p className="font-bold">
+                            사용자ㆍ{data.title?.split(" - ")?.[1] || data.title}ㆍ{data.matchRate}점
+                          </p>
                           <p className="B4 text-point-main">{data.date}</p>
                         </div>
                         <div onClick={() => onClickGotoReports(data.reportId)} className="">
