@@ -7,8 +7,6 @@ import HeaderCP from "@/features/careerhi/components/_common/headerCP";
 import MainContentLayout from "@/layouts/careerhi/MainLayout";
 import { useEffect, useState } from "react";
 import SpinnersCP from "@/features/careerhi/components/_common/spinnersCP/spinnersCP";
-import { useLoginInfo } from "@/features/careerhi/hook/useLoginInfo";
-import { api_reportDelete, api_roadmapDetailGet } from "@/features/careerhi/api/roadmap";
 
 import percentage_0 from "@/assets/careerhi/image/percentage/0.svg";
 import percentage_10 from "@/assets/careerhi/image/percentage/10.svg";
@@ -24,6 +22,7 @@ import percentage_100 from "@/assets/careerhi/image/percentage/100.svg";
 
 import portfolio_img from "@/assets/careerhi/image/portfolio.png";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
+import { useAuth } from "@/hooks/useAuth";
 
 const CareerHiResultPage = () => {
   const percentageImages = {
@@ -52,51 +51,47 @@ const CareerHiResultPage = () => {
 
   // Alert 관련 상태
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
-  const [alertUrl, setAlertUrl] = useState("/login");
 
   const [loading, setLoading] = useState(true);
 
   const [reportData, setReportData] = useState(null);
 
-  const { loginCheck, roadmapReportId } = useLoginInfo();
+  //FIXME: roadmapReportId는 파라미터 데이터로 가져오기
+  // const { loginCheck, roadmapReportId } = useLoginInfo();
+  const { isLogin, login } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await loginCheck();
-      if (!result?.isLogin) {
+      if (!isLogin) {
         setAlertTitleText("로그인이 필요합니다.");
         setAlertButtonText("로그인/회원가입");
-        setAlertUrl("/login");
         openAlert();
-        setLoading(false);
       } else {
-        const reportId = roadmapReportId;
-        if (!reportId) {
-          setAlertTitleText("올바르지 않은 접근입니다.");
-          setAlertButtonText("로드맵 보관함으로 이동");
-          setAlertUrl("/roadmap/list");
-          openAlert();
-          setLoading(false);
-          return;
-        }
-
-        const resData = await api_roadmapDetailGet(reportId);
-
-        if (!resData?.success) {
-          setAlertTitleText("올바르지 않은 접근입니다.");
-          setAlertButtonText("로드맵 보관함으로 이동");
-          setAlertUrl("/roadmap/list");
-          openAlert();
-          setLoading(false);
-          return;
-        }
-
-        setReportData(resData?.data);
-        setLoading(false);
+        //FIXME: roadmapReportId는 파라미터 데이터로 가져오기
+        // const reportId = roadmapReportId;
+        // if (!reportId) {
+        //   setAlertTitleText("올바르지 않은 접근입니다.");
+        //   setAlertButtonText("로드맵 보관함으로 이동");
+        //   setAlertUrl("/roadmap/list");
+        //   openAlert();
+        //   setLoading(false);
+        //   return;
+        // }
+        //FIXME: 결과값 데이터
+        // const resData = await api_roadmapDetailGet(reportId);
+        // if (!resData?.success) {
+        //   setAlertTitleText("올바르지 않은 접근입니다.");
+        //   setAlertButtonText("로드맵 보관함으로 이동");
+        //   setAlertUrl("/roadmap/list");
+        //   openAlert();
+        //   setLoading(false);
+        //   return;
+        // }
+        // setReportData(resData?.data);
       }
     };
     fetchData();
-  }, [loginCheck, roadmapReportId, openAlert, setAlertButtonText, setAlertTitleText]);
+  }, [isLogin, openAlert, setAlertButtonText, setAlertTitleText]);
 
   const getTargetJobLabel = (targetJob) => {
     const map = {
@@ -111,20 +106,20 @@ const CareerHiResultPage = () => {
       return;
     }
 
-    const targetReportId = reportData?.reportId || roadmapReportId;
-    if (!targetReportId) {
-      alert("삭제할 리포트 정보를 찾을 수 없습니다.");
-      return;
-    }
+    //   const targetReportId = reportData?.reportId || roadmapReportId;
+    //   if (!targetReportId) {
+    //     alert("삭제할 리포트 정보를 찾을 수 없습니다.");
+    //     return;
+    //   }
 
-    const deleteResult = await api_reportDelete(targetReportId);
-    if (!deleteResult?.success) {
-      alert(deleteResult?.message || "로드맵 삭제에 실패했습니다.");
-      return;
-    }
+    //   const deleteResult = await api_reportDelete(targetReportId);
+    //   if (!deleteResult?.success) {
+    //     alert(deleteResult?.message || "로드맵 삭제에 실패했습니다.");
+    //     return;
+    //   }
 
-    alert(deleteResult?.message || "로드맵이 삭제되었습니다.");
-    nav("/roadmap/list");
+    //   alert(deleteResult?.message || "로드맵이 삭제되었습니다.");
+    //   nav("/roadmap/list");
   };
 
   return (
@@ -136,7 +131,7 @@ const CareerHiResultPage = () => {
           closeButton={closeAlert}
           okButton={() => {
             closeAlert();
-            nav(alertUrl);
+            login();
           }}
         />
       )}

@@ -7,7 +7,6 @@ import { data_qualificationsList } from "@/features/careerhi/data/qualifications
 import { data_p_languages, data_languageQualifications } from "@/features/careerhi/data/language";
 import SelectCP from "@/features/careerhi/components/_common/selectCP";
 import { useCallback, useEffect, useState } from "react";
-import { useLoginInfo } from "@/features/careerhi/hook/useLoginInfo";
 import useAlertCP from "@/features/careerhi/hook/useAlertCP";
 import { useNavigate } from "react-router-dom";
 import AlertCP from "@/features/careerhi/components/_common/alertCP";
@@ -21,16 +20,8 @@ import Footer from "@/layouts/careerhi/Footer";
 import FileUploadCP from "@/features/careerhi/components/_common/fileUploadCP";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 import logo_3d from "@/assets/careerhi/image/3d_logo.png";
-import {
-  api_profileCreate,
-  api_profilePatch,
-  api_reportAnalyze,
-  buildProfilePatchRequest,
-  buildProfileRequestFromCreateForm,
-  api_profileGet,
-} from "@/features/careerhi/api/roadmap";
-import { api_deleteFile, api_uploadFile } from "@/features/careerhi/api/file";
 import { BarLoader } from "react-spinners";
+import { useAuth } from "@/hooks/useAuth";
 
 const CareerHiCreatePage = () => {
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
@@ -100,82 +91,49 @@ const CareerHiCreatePage = () => {
   const [isAgree, setIsAgree] = useState(false);
 
   // 최종 학력 변경 시 다른 항목 초기화 및 비활성화
-  useEffect(() => {
-    if (univLevel === "초등학교 졸업" || univLevel === "중학교 졸업") {
-      setUnivType("");
-      setUniv("");
-      setDepartment("");
-      setUnivSituation("");
+  // FIXME: 기능 테스트
+  // useEffect(() => {
+  //   if (univLevel === "초등학교 졸업" || univLevel === "중학교 졸업") {
+  //     setUnivType("");
+  //     setUniv("");
+  //     setDepartment("");
+  //     setUnivSituation("");
 
-      setIsUnivInputDisabled(true);
-    } else {
-      if (univLevel === "고등학교 졸업" && univType === "대학교 진학X") {
-        setUniv("");
-        setDepartment("");
-        setUnivSituation("");
+  //     setIsUnivInputDisabled(true);
+  //   } else {
+  //     if (univLevel === "고등학교 졸업" && univType === "대학교 진학X") {
+  //       setUniv("");
+  //       setDepartment("");
+  //       setUnivSituation("");
 
-        setIsUnivInputDisabled(true);
-      }
+  //       setIsUnivInputDisabled(true);
+  //     }
 
-      setIsUnivInputDisabled(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [univLevel]);
+  //     setIsUnivInputDisabled(false);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [univLevel]);
 
-  const getFileNameFromUrl = (url) => {
-    if (!url) return "";
+  // const getFileNameFromUrl = (url) => {
+  //   if (!url) return "";
 
-    try {
-      const pathname = new URL(url).pathname;
-      const fileName = pathname.split("/").pop() || "";
-      return decodeURIComponent(fileName);
-    } catch {
-      const fileName = String(url).split("/").pop() || "";
-      return decodeURIComponent((fileName.split("?")[0] || "").trim());
-    }
-  };
+  //   try {
+  //     const pathname = new URL(url).pathname;
+  //     const fileName = pathname.split("/").pop() || "";
+  //     return decodeURIComponent(fileName);
+  //   } catch {
+  //     const fileName = String(url).split("/").pop() || "";
+  //     return decodeURIComponent((fileName.split("?")[0] || "").trim());
+  //   }
+  // };
 
-  const handleFileSelect = async (files) => {
-    setSelectedFiles(files);
-
-    const selectedFile = files?.[0]?.file;
-    if (!selectedFile) {
-      const deleteTargetFileName = portfolioFileName || getFileNameFromUrl(portfolioFileUrl);
-      if (deleteTargetFileName) {
-        const deleteResult = await api_deleteFile(deleteTargetFileName);
-        if (!deleteResult?.success) {
-          alert(deleteResult?.message || "기존 포트폴리오 파일 삭제에 실패했습니다.");
-        }
-      }
-
-      setPortfolioFileName("");
-      setPortfolioFileUrl("");
-      return;
-    }
-
-    const deleteTargetFileName = portfolioFileName || getFileNameFromUrl(portfolioFileUrl);
-    if (deleteTargetFileName) {
-      const deleteResult = await api_deleteFile(deleteTargetFileName);
-      if (!deleteResult?.success) {
-        alert(deleteResult?.message || "기존 포트폴리오 파일 삭제에 실패했습니다.");
-      }
-    }
-
-    setIsPortfolioUploading(true);
-
-    const uploadResult = await api_uploadFile(selectedFile);
-    setIsPortfolioUploading(false);
-
-    if (!uploadResult?.success || !uploadResult?.fileUrl) {
-      setPortfolioFileName("");
-      setPortfolioFileUrl("");
-      alert(uploadResult?.message || "포트폴리오 파일 업로드에 실패했습니다.");
-      return;
-    }
-
-    setPortfolioFileName(uploadResult.fileName || "");
-    setPortfolioFileUrl(uploadResult.fileUrl);
-  };
+  // const handleFileSelect = async (files) => {
+  //   setSelectedFiles(files);
+  //   setIsPortfolioUploading(true);
+  //   setIsPortfolioUploading(false);
+  //   setPortfolioFileName("임시로 업로드 처리 된 파일입니다.");
+  //   setPortfolioFileUrl("/test/url");
+  // };
 
   const updatePremier = (index, patch) => {
     // 리뷰: 불변성을 유지해 특정 인덱스만 안전하게 갱신합니다.
@@ -280,7 +238,8 @@ const CareerHiCreatePage = () => {
     setHopeJobDetail((prev) => (prev.includes(detail) ? prev.filter((item) => item !== detail) : [...prev, detail]));
   };
 
-  const { loginInfo, loginCheck, setRoadmapReportId } = useLoginInfo();
+  // const { loginInfo, loginCheck, setRoadmapReportId } = useLoginInfo();
+  const { isLogin } = useAuth();
 
   const nav = useNavigate();
 
@@ -288,7 +247,6 @@ const CareerHiCreatePage = () => {
   const languageQualificationExamList = Object.keys(data_languageQualifications || {});
 
   // FIXME: 이부분 수정하기
-  const [aiReqLoading, setAiReqLoading] = useState(false);
 
   // 제출 함수
   const handleSubmit = useCallback(async () => {
@@ -316,10 +274,8 @@ const CareerHiCreatePage = () => {
       if (univ || department || univSituation) {
         setUnivError(true);
         isValid = false;
-      } else {
-        setUnivError(false);
-        isValid = true;
       }
+      // 💡 수정됨: 에러를 덮어씌우던 else { isValid = true; } 구문 삭제
     } else {
       // 학력 정보가 모두 채워져 있어야 함
       if (!univLevel || !univType || !univ || !univSituation) {
@@ -351,97 +307,58 @@ const CareerHiCreatePage = () => {
 
     if (isValid === false) return alert("입력한 내용을 다시 확인해 주세요.");
 
-    const profileRequest = buildProfileRequestFromCreateForm({
-      //FIXME: 포트폴리오 url 저장
-      univLevel,
-      univType,
-      name,
-      univ,
-      department,
-      univSituation,
-      hopeJobGroupLabel: data_hopeJobGroup[hopeJobGroup],
-      hopeJobDetail,
-      qualificationsList,
-      languageQualifications,
-      premiers,
-      planguagesList,
-      portfolioFileName,
-      portfolioFileUrl,
-    });
+    // FIXME: 포트폴리오
+    // const profileRequest = buildProfileRequestFromCreateForm({
+    //   //FIXME: 포트폴리오 url 저장
+    //   univLevel,
+    //   univType,
+    //   name,
+    //   univ,
+    //   department,
+    //   univSituation,
+    //   hopeJobGroupLabel: data_hopeJobGroup[hopeJobGroup],
+    //   hopeJobDetail,
+    //   qualificationsList,
+    //   languageQualifications,
+    //   premiers,
+    //   planguagesList,
+    //   portfolioFileName,
+    //   portfolioFileUrl,
+    // });
 
-    console.log(profileRequest);
-
-    // 업데이트 분기
-    if (isEdit) {
-      const patchRequest = buildProfilePatchRequest({
-        previousProfile: isEditData,
-        currentProfileRequest: profileRequest,
-      });
-
-      const patchResult = await api_profilePatch({
-        patchRequest,
-      });
-
-      if (!patchResult?.success) {
-        alert(patchResult?.message || "프로필 수정에 실패했습니다.");
-        return;
-      }
-    } else {
-      const createProfileResult = await api_profileCreate({
-        profileRequest,
-      });
-
-      if (!createProfileResult?.success) {
-        alert(createProfileResult?.message || "프로필 저장에 실패했습니다.");
-        return;
-      }
-    }
-
-    setAiReqLoading(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 10000));
-    const analyzeResult = await api_reportAnalyze();
-    if (!analyzeResult?.success || !analyzeResult?.reportId) {
-      alert(analyzeResult?.message || "로드맵 생성에 실패했습니다.");
-      return;
-    }
-
-    setRoadmapReportId(String(analyzeResult.reportId));
-    nav("/roadmap/result");
+    // setRoadmapReportId(String(analyzeResult.reportId));
+    nav(`/project/careerhi/roadmap/result?report_id=1`);
   }, [
     name,
     univLevel,
     univType,
-    hopeJobDetail,
-    isAgree,
-    isEdit,
-    isEditData,
     univ,
     department,
     univSituation,
     hopeJobGroup,
+    hopeJobDetail,
     qualificationsList,
     languageQualifications,
     premiers,
     planguagesList,
-    portfolioFileName,
-    portfolioFileUrl,
+    isAgree,
     isPortfolioUploading,
-    selectedFiles,
-    setRoadmapReportId,
+    selectedFiles.length,
+    portfolioFileUrl,
+    portfolioFileName, // 🌟 반드시 추가해야 새 파일 이름이 서버로 넘어갑니다!
     nav,
   ]);
 
-  useEffect(() => {
-    setHopeJobDetail([]);
-    setHopeJobGroup(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data_hopeJobGroup]);
+  // FIXME: 결과 확인해보기
+  // useEffect(() => {
+  //   setHopeJobDetail([]);
+  //   setHopeJobGroup(0);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [data_hopeJobGroup]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await loginCheck();
-      if (!result?.isLogin) {
+      if (!isLogin) {
         setAlertTitleText("로그인이 필요합니다.");
         setAlertButtonText("로그인/회원가입");
         openAlert();
@@ -555,7 +472,7 @@ const CareerHiCreatePage = () => {
             {!aiReqLoading && (
               <div className="z-50 flex flex-col justify-start w-full gap-12 MyRoadmapCreatePage ">
                 <div className="flex items-center justify-between">
-                  <p className="hidden H2_bold sm:block">{loginInfo.userData?.userName} 님의 스펙 정보를 작성해 주세요</p>
+                  <p className="hidden H2_bold sm:block">사용자 님의 스펙 정보를 작성해 주세요</p>
                   {isPc && (
                     <span onClick={loadProfileData} className="cursor-pointer text-point-main B4">
                       정보 불러오기

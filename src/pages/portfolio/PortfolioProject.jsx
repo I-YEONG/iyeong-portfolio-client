@@ -6,13 +6,34 @@ import { theme } from "@/styles/theme";
 
 // 커리어하이 페이지들
 import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage } from "@/pages/careerhi";
+import { useEffect } from "react";
 
 const PortfolioProject = () => {
   // 이제 restPath는 내부 Routes가 알아서 처리하므로 projectName만 가져옵니다.
   const { projectName } = useParams();
 
-  const { isPc, toggleDeviceMode } = useDeviceMode();
+  const { isPc, toggleDeviceMode, setPcMode, setMobileMode } = useDeviceMode();
   const { isLogin, toggleAuth } = useAuth();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1180px)");
+
+    const handleScreenChange = (e) => {
+      if (e.matches) {
+        setMobileMode();
+      } else {
+        setPcMode();
+      }
+    };
+
+    handleScreenChange(mediaQuery);
+
+    mediaQuery.addEventListener("change", handleScreenChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleScreenChange);
+    };
+  }, [setMobileMode, setPcMode]);
 
   return (
     <div>

@@ -11,7 +11,7 @@ const ProjectSideBox = () => {
   const filterPath = restPath || "/";
   const commentList = data?.comments
     ?.slice()
-    .filter((comment) => comment.detailUrl === filterPath)
+    .filter((comment) => comment.detailUrl === filterPath || comment.detailUrl === "*")
     .sort((a, b) => a.sort - b.sort);
 
   const formatDate = useFormatDate();
@@ -35,7 +35,7 @@ const ProjectSideBox = () => {
           {commentList.map((comment) => (
             <div className="comment-item" key={comment.id}>
               <p className="comment-title">
-                <span>{comment.sort}.</span>
+                <span>{comment.sort === "*" ? "공통" : comment.sort}.</span>
                 {comment.title}
               </p>
               <p className="comment-content">{comment.comment}</p>

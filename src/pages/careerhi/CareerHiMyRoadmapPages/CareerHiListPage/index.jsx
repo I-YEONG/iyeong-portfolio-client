@@ -6,53 +6,63 @@ import MainContentLayout from "@/layouts/careerhi/MainLayout";
 import useAlertCP from "@/features/careerhi/hook/useAlertCP";
 import HeaderPc from "@/layouts/careerhi/Header_PC";
 import RoadmapChartCP from "@/features/careerhi/components/roadmapCP/roadmapChartCP";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import SpinnersCP from "@/features/careerhi/components/_common/spinnersCP/spinnersCP";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 import MainLayout from "@/layouts/careerhi";
 import { useAuth } from "@/hooks/useAuth";
+import { useGetCareerHiQuery } from "@/features/careerhi/hook/useGetCareerHiQuery";
 
 const CareerHiListPage = () => {
   const { isPc } = useDeviceMode();
   const nav = useNavigate();
+  const { isLogin, login } = useAuth();
+
+  const {
+    data: resData,
+    isLoading: loading,
+    isError: error,
+  } = useGetCareerHiQuery("/roadmap/list", {
+    enabled: !!isLogin, // 로그인 상태일 때만 쿼리 실행
+  });
 
   // Alert 관련 상태
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
 
-  const [listData, setListData] = useState([]);
-  const [graphData, setGraphData] = useState({ date: [], rate: [] });
-  const [chartAnalysis, setChartAnalysis] = useState("");
-  // const [loading, setLoading] = useState(true);
-
   // 스펙 클릭 핸들러
   const onClickGotoReports = (reportId) => {
-    // setRoadmapReportId(String(reportId));
-    nav("/project/careerhi/roadmap/result");
+    nav(`/project/careerhi/roadmap/result?report_id=${reportId}`);
   };
 
   // 로그인 체크 및 데이터 로드
-  // const { loginInfo, loginCheck, setRoadmapReportId } = useLoginInfo();
-  const { isLogin } = useAuth();
 
+  // 로그인되지 않았을 때 알림 처리
   useEffect(() => {
     if (!isLogin) {
       setAlertTitleText("로그인이 필요합니다.");
       setAlertButtonText("로그인/회원가입");
       openAlert();
-    } else {
-      // if (!resData?.success) {
-      //   setAlertTitleText(resData?.message || "로드맵 목록을 불러오지 못했습니다.");
-      //   setAlertButtonText("확인");
-      //   openAlert();
-      //   return;
-      // }
-      // setListData(resData?.reportHistory || []);
-      // setGraphData(growthData?.success ? growthData : { date: [], rate: [] });
-      // setChartAnalysis(growthData?.chartAnalysis || resData?.chartAnalysis || "");
     }
+  }, [isLogin, setAlertTitleText, setAlertButtonText, openAlert]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // 첫 마운트 때만 실행
+  // 데이터 가공 (useState와 useEffect 삭제)
+  const listData = resData?.reportHistory || [];
+  const graphData = resData?.growthChart
+    ? {
+        date: resData.growthChart.map((item) => item.date),
+        rate: resData.growthChart.map((item) => item.matchRate),
+      }
+    : { date: [], rate: [] };
+  const chartAnalysis = resData?.chartAnalysis || "";
+
+  // 에러 처리 (로그인 상태인데 에러가 났을 때)
+  useEffect(() => {
+    if (isLogin && error) {
+      setAlertTitleText("로드맵 목록을 불러오지 못했습니다.");
+      setAlertButtonText("확인");
+      openAlert();
+    }
+  }, [isLogin, error, setAlertTitleText, setAlertButtonText, openAlert]);
 
   return (
     <div>
@@ -62,7 +72,7 @@ const CareerHiListPage = () => {
           buttonText={alertButtonText}
           okButton={() => {
             closeAlert();
-            nav("/login");
+            login();
           }}
         />
       )}
@@ -75,15 +85,15 @@ const CareerHiListPage = () => {
           <div className="">
             <MainContentLayout page="roadmap_list" fixed={true} scroll={true} footer={true}>
               {loading && <SpinnersCP height={isPc ? "calc(100vh - 5.125rem - 10.25rem)" : "calc(100vh - 22px - 32px)"} size="26" />}
-              {!loading && <RoadmapChartCP data={graphData} />}
-              {!loading && (
+              {!loading && isLogin && <RoadmapChartCP data={graphData} />}
+              {!loading && isLogin && (
                 <div className="w-full p-5.25 mt-8 mb-18 bg-gray-100 rounded-lg">
                   <p className="mb-4 B2 text-point-main">그래프 분석</p>
                   <p className="text-gray-500 B3">{chartAnalysis || "아직 분석 내용이 없습니다."}</p>
                 </div>
               )}
 
-              {!loading && (
+              {!loading && isLogin && (
                 <div>
                   <p className="mb-4 H2_bold">이전 로드맵</p>
                   {listData.length === 0 && <div className="w-full px-5.25 B3 text-gray-500">생성된 로드맵이 없습니다.</div>}

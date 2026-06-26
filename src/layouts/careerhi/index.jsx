@@ -9,7 +9,7 @@ const MainLayout = ({ children, mobile_block = false, page = "main" }) => {
 
   if (!isPc) {
     return (
-      <main className="relative w-full h-full bg-white">
+      <main className="relative w-full h-[100cqh] bg-white">
         <div className={`w-full ${mobile_block ? "h-9/10" : "h-full"} px-8 relative overflow-y-auto`}>{children}</div>
         {mobile_block && <HeaderMobile page={page} />}
       </main>
@@ -17,7 +17,7 @@ const MainLayout = ({ children, mobile_block = false, page = "main" }) => {
   }
 
   return (
-    <main className="w-full h-full">
+    <main className="w-full h-[100cqh]">
       <HeaderPc />
       {children}
     </main>

@@ -19,7 +19,7 @@ function App() {
         <Route path="/about" element={<PortfolioAbout />} />
         <Route path="/projects" element={<PortfolioProjects />} />
         <Route path="/projects/:id" element={<PortfolioProjectDetail />} />
-        경로 패스
+
         {/* 메인 페이지 */}
         <Route path="/project/:projectName/*" element={<PortfolioProject />} />
         <Route path="*" element={<NotFound />} />

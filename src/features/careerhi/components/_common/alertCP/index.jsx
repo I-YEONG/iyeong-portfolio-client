@@ -14,7 +14,7 @@ import "@/styles/careerhi.global.css";
  */
 const AlertCP = ({ titleText = "AlertTitle", buttonText = "AlertButton", closeButton, onCloseButton = false, okButton }) => {
   return (
-    <div css={{ width: "100cqw", height: "100cqh" }} className="fixed top-0 left-0 select-none z-2000 bg-[#171C20BF] flexCenter">
+    <div css={{ width: "100%", height: "100cqh" }} className=" fixed top-0 left-0 select-none z-2000 bg-[#171C20BF] flexCenter">
       <div className="relative flex flex-col justify-between p-10 bg-white rounded-lg w-80 h-45 min-h-50">
         {/* xMark */}
         {onCloseButton && (

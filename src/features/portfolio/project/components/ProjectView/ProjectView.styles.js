@@ -9,7 +9,7 @@ export const projectViewCss = (isPc) =>
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "auto",
+    overflow: "hidden",
 
     ".project-view": {
       width: isPc ? "100%" : "min(94%, 420px)",
