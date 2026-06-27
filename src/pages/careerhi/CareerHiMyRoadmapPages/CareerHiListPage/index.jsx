@@ -42,8 +42,10 @@ const CareerHiListPage = () => {
       setAlertTitleText("로그인이 필요합니다.");
       setAlertButtonText("로그인/회원가입");
       openAlert();
+    } else {
+      closeAlert();
     }
-  }, [isLogin, setAlertTitleText, setAlertButtonText, openAlert]);
+  }, [isLogin, setAlertTitleText, setAlertButtonText, openAlert, closeAlert]);
 
   // 데이터 가공 (useState와 useEffect 삭제)
   const listData = resData?.reportHistory || [];

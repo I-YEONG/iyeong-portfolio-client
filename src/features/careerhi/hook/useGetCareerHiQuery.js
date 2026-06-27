@@ -11,9 +11,10 @@ const QUERY_KEY = ["careerhi"];
  * @param {*} path
  * @returns { data: cert, isLoading: isCertLoading, isError: isCertError }
  */
-export const useGetCareerHiQuery = (path) => {
+export const useGetCareerHiQuery = (path, options = {}) => {
   return useQuery({
     queryKey: [...QUERY_KEY, path],
     queryFn: () => getDataApi("careerhi", path),
+    ...options,
   });
 };

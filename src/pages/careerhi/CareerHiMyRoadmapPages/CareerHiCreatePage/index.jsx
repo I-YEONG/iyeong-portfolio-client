@@ -22,10 +22,12 @@ import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 import logo_3d from "@/assets/careerhi/image/3d_logo.png";
 import { BarLoader } from "react-spinners";
 import { useAuth } from "@/hooks/useAuth";
+import { useGetCareerHiQuery } from "@/features/careerhi/hook/useGetCareerHiQuery";
 
 const CareerHiCreatePage = () => {
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
   const { isPc } = useDeviceMode();
+  const { refetch } = useGetCareerHiQuery("/roadmap/create", { enabled: false });
 
   // 수정모드
   const [isEdit, setIsEdit] = useState(false);
@@ -82,37 +84,37 @@ const CareerHiCreatePage = () => {
   ]);
 
   // 선택된 파일
-  const [selectedFiles, setSelectedFiles] = useState([]);
   const [portfolioFileName, setPortfolioFileName] = useState("");
   const [portfolioFileUrl, setPortfolioFileUrl] = useState("");
-  const [isPortfolioUploading, setIsPortfolioUploading] = useState(false);
+
+  const [aiReqLoading, setAiReqLoading] = useState(false);
 
   // 동의
   const [isAgree, setIsAgree] = useState(false);
 
   // 최종 학력 변경 시 다른 항목 초기화 및 비활성화
-  // FIXME: 기능 테스트
-  // useEffect(() => {
-  //   if (univLevel === "초등학교 졸업" || univLevel === "중학교 졸업") {
-  //     setUnivType("");
-  //     setUniv("");
-  //     setDepartment("");
-  //     setUnivSituation("");
+  // 학력(univLevel)이 변경될 때 호출되는 이벤트 핸들러
+  const handleChangeUnivLevel = (newUnivLevel) => {
+    setUnivLevel(newUnivLevel); // 1. 학력 상태 업데이트
 
-  //     setIsUnivInputDisabled(true);
-  //   } else {
-  //     if (univLevel === "고등학교 졸업" && univType === "대학교 진학X") {
-  //       setUniv("");
-  //       setDepartment("");
-  //       setUnivSituation("");
+    // 2. 선택된 학력에 따라 연관된 폼 데이터 즉시 초기화
+    if (newUnivLevel === "초등학교 졸업" || newUnivLevel === "중학교 졸업") {
+      setUnivType("");
+      setUniv("");
+      setDepartment("");
+      setUnivSituation("");
 
-  //       setIsUnivInputDisabled(true);
-  //     }
+      setIsUnivInputDisabled(true);
+    } else if (newUnivLevel === "고등학교 졸업" && univType === "대학교 진학X") {
+      setUniv("");
+      setDepartment("");
+      setUnivSituation("");
 
-  //     setIsUnivInputDisabled(false);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [univLevel]);
+      setIsUnivInputDisabled(true);
+    } else {
+      setIsUnivInputDisabled(false);
+    }
+  };
 
   // const getFileNameFromUrl = (url) => {
   //   if (!url) return "";
@@ -128,9 +130,6 @@ const CareerHiCreatePage = () => {
   // };
 
   // const handleFileSelect = async (files) => {
-  //   setSelectedFiles(files);
-  //   setIsPortfolioUploading(true);
-  //   setIsPortfolioUploading(false);
   //   setPortfolioFileName("임시로 업로드 처리 된 파일입니다.");
   //   setPortfolioFileUrl("/test/url");
   // };
@@ -239,7 +238,7 @@ const CareerHiCreatePage = () => {
   };
 
   // const { loginInfo, loginCheck, setRoadmapReportId } = useLoginInfo();
-  const { isLogin } = useAuth();
+  const { isLogin, login } = useAuth();
 
   const nav = useNavigate();
 
@@ -295,39 +294,36 @@ const CareerHiCreatePage = () => {
       return;
     }
 
-    if (isPortfolioUploading) {
-      alert("포트폴리오 파일 업로드 중입니다. 잠시 후 다시 시도해 주세요.");
-      return;
-    }
-
-    if (selectedFiles.length > 0 && !portfolioFileUrl) {
-      alert("포트폴리오 파일 업로드가 완료되지 않았습니다. 파일을 다시 업로드해 주세요.");
-      return;
-    }
-
     if (isValid === false) return alert("입력한 내용을 다시 확인해 주세요.");
 
     // FIXME: 포트폴리오
-    // const profileRequest = buildProfileRequestFromCreateForm({
-    //   //FIXME: 포트폴리오 url 저장
-    //   univLevel,
-    //   univType,
-    //   name,
-    //   univ,
-    //   department,
-    //   univSituation,
-    //   hopeJobGroupLabel: data_hopeJobGroup[hopeJobGroup],
-    //   hopeJobDetail,
-    //   qualificationsList,
-    //   languageQualifications,
-    //   premiers,
-    //   planguagesList,
-    //   portfolioFileName,
-    //   portfolioFileUrl,
-    // });
+    const profileRequest = {
+      univLevel,
+      univType,
+      name,
+      univ,
+      department,
+      univSituation,
+      hopeJobGroupLabel: data_hopeJobGroup[hopeJobGroup],
+      hopeJobDetail,
+      qualificationsList,
+      languageQualifications,
+      premiers,
+      planguagesList,
+      portfolioFileName,
+      portfolioFileUrl,
+    };
+
+    console.log("profileRequest", profileRequest);
+
+    setAiReqLoading(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    setAiReqLoading(false);
 
     // setRoadmapReportId(String(analyzeResult.reportId));
-    nav(`/project/careerhi/roadmap/result?report_id=1`);
+    nav(`/project/careerhi/roadmap/result?report_id=3`);
   }, [
     name,
     univLevel,
@@ -342,8 +338,6 @@ const CareerHiCreatePage = () => {
     premiers,
     planguagesList,
     isAgree,
-    isPortfolioUploading,
-    selectedFiles.length,
     portfolioFileUrl,
     portfolioFileName, // 🌟 반드시 추가해야 새 파일 이름이 서버로 넘어갑니다!
     nav,
@@ -357,21 +351,27 @@ const CareerHiCreatePage = () => {
   // }, [data_hopeJobGroup]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!isLogin) {
-        setAlertTitleText("로그인이 필요합니다.");
-        setAlertButtonText("로그인/회원가입");
-        openAlert();
-      }
-    };
-    fetchData();
+    if (!isLogin) {
+      setAlertTitleText("로그인이 필요합니다.");
+      setAlertButtonText("로그인/회원가입");
+      openAlert();
+    } else {
+      closeAlert();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // 첫 마운트 때만 실행
+  }, [isLogin]); // 첫 마운트 때만 실행
 
   // 정보 불러오기
   const loadProfileData = useCallback(async () => {
-    const result = await api_profileGet();
-    if (!result) {
+    // 2. 원하는 순간에 refetch()를 직접 호출하여 데이터 통신!
+    const { data, isError } = await refetch();
+
+    const result = data.data; // API에서 받아온 데이터
+
+    console.log("loadProfileData result", result);
+
+    // 3. 에러 처리 (API 실패 시)
+    if (isError || !result) {
       return alert("프로필 정보를 불러오는데 실패했습니다\n저장된 내용이 없을 수 있습니다.");
     } else {
       setIsEditData(result);
@@ -381,7 +381,7 @@ const CareerHiCreatePage = () => {
       // 이름
       setName(result.basicInfo.name || "");
 
-      // FIXME:
+      // 학력
       setUnivLevel(result.basicInfo.educationLevel);
       setUnivType(result.basicInfo.schoolType);
       setUniv(result.basicInfo.schoolName || "");
@@ -437,7 +437,8 @@ const CareerHiCreatePage = () => {
 
       setIsAgree(true);
     }
-  }, [setDepartment, setName, setUniv]);
+    // 🌟 의존성 배열에 refetch 추가
+  }, [refetch, setDepartment, setName, setUniv]);
 
   return (
     <div>
@@ -447,7 +448,7 @@ const CareerHiCreatePage = () => {
           buttonText={alertButtonText}
           okButton={() => {
             closeAlert();
-            nav("/login");
+            login();
           }}
         />
       )}
@@ -456,7 +457,7 @@ const CareerHiCreatePage = () => {
           <HeaderPc />
         </div>
         {!isPc && <HeaderCP>기본 정보</HeaderCP>}
-        <div className="pt-20.5 relative h-full flex flex-col gap-9 px-8 sm:px-0">
+        <div css={{ padding: isPc ? "" : "0 24px", backgroundColor: !isPc ? "#fff" : "#f6f8fb" }} className="pt-20.5 relative flex flex-col gap-9 px-8 sm:px-0">
           <MainContentLayout page="roadmap" fixed={true} scroll={true} footer={true}>
             {aiReqLoading && (
               <div className="relative flex flex-col items-center justify-center w-full h-full gap-4 select-none sm:pb-14 sm:gap-8">
@@ -516,7 +517,7 @@ const CareerHiCreatePage = () => {
                         <div className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                           {/* 최종 학력 */}
                           <div className="">
-                            <SelectCP value={univLevel} setValue={setUnivLevel} selectList={data_univLevel} placeholder={"최종 학력"} />
+                            <SelectCP value={univLevel} setValue={handleChangeUnivLevel} selectList={data_univLevel} placeholder={"최종 학력"} />
                           </div>
                           {/* 구분 */}
                           <div className="">
@@ -761,7 +762,7 @@ const CareerHiCreatePage = () => {
                       <p className="B3_bold">첨부</p>
                       <div>
                         <FileUploadCP
-                          onFileSelect={handleFileSelect}
+                          // onFileSelect={handleFileSelect}
                           accept=".pdf,.doc,.docx"
                           multiple={false}
                           placeholder="문서 선택"
@@ -797,7 +798,7 @@ const CareerHiCreatePage = () => {
                       bg={"transition-colors duration-100 bg-[#ddf2d2] sm:bg-[#ddf2d2] sm:hover:bg-[#d4edc8]"}
                       color={"text-point-main"}
                       fontSize={"B3 hover:B3_bold"}>
-                      나의 로드맵 생성하기
+                      {isPc ? "나의 로드맵 생성하기" : "생성"}
                     </ButtonCP>
                   </div>
                 </div>

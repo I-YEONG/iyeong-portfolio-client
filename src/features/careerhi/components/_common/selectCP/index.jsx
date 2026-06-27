@@ -34,12 +34,20 @@ const SelectCP = ({ value, setValue, selectList, placeholder = "", disabled = fa
           <div className="w-fit">
             {selectList.map((item, index) => (
               <div
-                onClick={() => {
+                onMouseDown={(e) => {
+                  e.preventDefault();
+
                   setValue(item);
-                  setIsOpen(false);
+
+                  setTimeout(() => {
+                    setIsOpen(false);
+                    if (document.activeElement instanceof HTMLElement) {
+                      document.activeElement.blur();
+                    }
+                  }, 50);
                 }}
                 key={index}
-                className="mb-2 last:mb-0 cursor-pointer B4 px-2.5 py-1 rounded-sm"
+                className="mb-2 last:mb-0 cursor-pointer B4 px-2.5 py-1 rounded-sm hover:bg-[#fff9fb]"
                 style={{
                   backgroundColor: item === value ? "#FFF2F5" : "withe",
                   color: item === value ? "var(--color-point-sub-bold)" : "var(--color-point-text)",

@@ -29,8 +29,8 @@ export const globalStyles = css({
   },
 
   "button, input, select, textarea": {
-    border: "none",
-    background: "none",
+    // border: "none",
+    // background: "none",
     cursor: "pointer",
     fontFamily: "inherit",
   },

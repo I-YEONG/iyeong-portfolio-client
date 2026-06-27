@@ -71,6 +71,7 @@ const CareerHiResultPage = () => {
       setAlertButtonText("로그인/회원가입");
       openAlert();
     } else {
+      closeAlert();
       const reportId = new URLSearchParams(window.location.search).get("report_id");
       if (!reportId) {
         flushSync(() => {
@@ -86,7 +87,7 @@ const CareerHiResultPage = () => {
       nav("/project/careerhi/roadmap/list");
       return alert("ID또는 백엔드가 다릅니다.\n로드맵 ID를 확인 후 다시 시도해주세요.");
     }
-  }, [isLogin, openAlert, setAlertButtonText, setAlertTitleText]);
+  }, [isLogin, error, nav, openAlert, closeAlert, setAlertTitleText, setAlertButtonText]);
 
   const getTargetJobLabel = (targetJob) => {
     const map = {
@@ -145,7 +146,7 @@ const CareerHiResultPage = () => {
 
             {/* 콘텐츠 - 시작 */}
             {!loading && isLogin && reportData && (
-              <section className="w-full h-full">
+              <section className="w-full h-full" css={{ padding: isPc ? "" : "24px" }}>
                 <p className="text-orange-400 text-end B4">
                   {isPc && "AI를 통해 최신 공고를 분석해 만든 결과로 실제와 차이가 있을 수 있습니다."}
                   {!isPc && "AI를 통해 만들어진 결과로 실제와 차이가 있을 수 있습니다."}
@@ -159,6 +160,7 @@ const CareerHiResultPage = () => {
                     필요한 역량을 {reportData.matchRate}% 갖추었네요!
                   </p>
                   <div
+                    css={{ width: isPc ? "" : "90%", height: isPc ? "" : "250px" }}
                     style={{ backgroundPositionY: "-50%", backgroundImage: `url(${percentageImages[getPercentageKey(reportData.matchRate)]})` }}
                     className="mx-auto bg-no-repeat bg-cover w-full sm:w-6/10 h-65 sm:h-80 bg-[radial-gradient(circle, transparent_50%,white_100%)]"></div>
                   <div className="break-keep mt-4 p-6 text-gray-500 B3 leading-4.5 rounded-lg bg-gray-100">{reportData.overallComment}</div>
@@ -314,7 +316,7 @@ const CareerHiResultPage = () => {
                   </span>
                   <div className="w-1/2 sm:w-2/10" onClick={() => nav("/project/careerhi/roadmap/list")}>
                     <ButtonCP bg="bg-point-text" color="text-white">
-                      히스토리 열람
+                      {isPc ? "히스토리 열람" : "열람"}
                     </ButtonCP>
                   </div>
                 </div>
