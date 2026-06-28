@@ -308,7 +308,6 @@ const CareerHiResultPage = () => {
                     </ul>
                   </div>
                 </div>
-                {/* 포트폴리오 - 끝 */}
 
                 <div className="flex items-end justify-end w-full gap-6 mb-32 mt-22">
                   <span onClick={onReportDeleteHandler} className="p-2 cursor-pointer B4 text-point-sub-bold">
