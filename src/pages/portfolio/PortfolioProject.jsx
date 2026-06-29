@@ -5,8 +5,10 @@ import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio
 import { theme } from "@/styles/theme";
 
 // 커리어하이 페이지들
-import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage } from "@/pages/careerhi";
+import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage, SplashPage, OnboardingPage, MapPage } from "@/pages";
+import { SalpyeoLayout } from "@/features/salpyeo/components"; // SalpyeoLayout 임포트 추가
 import { useEffect } from "react";
+import { FixMobile } from "@/components";
 
 const PortfolioProject = () => {
   // 이제 restPath는 내부 Routes가 알아서 처리하므로 projectName만 가져옵니다.
@@ -44,7 +46,7 @@ const PortfolioProject = () => {
 
         {/* 시뮬레이션 박스 (레이아웃 역할) */}
         <ProjectView isPc={isPc}>
-          {/* 커리어하이 프로젝트일 때의 라우터 */}
+          {/* 커리어하이 프로젝트 라우터 */}
           {projectName === "careerhi" && (
             <Routes>
               {/* 기본 주소: /careerhi/ */}
@@ -53,6 +55,17 @@ const PortfolioProject = () => {
               <Route path="/roadmap/create" element={<CareerHiCreatePage />} />
               <Route path="/roadmap/result" element={<CareerHiResultPage />} />
               <Route path="*" element={<CareerHiError404Page />} />
+            </Routes>
+          )}
+
+          {/* 살펴 프로젝트 라우터 */}
+          {projectName === "salpyeo" && (
+            <Routes className="salpyeo-routes">
+              <Route element={<FixMobile />}>
+                <Route path="/" element={<SplashPage />} />
+                <Route path="/onboarding" element={<OnboardingPage />} />
+                <Route path="/map" element={<MapPage />} />
+              </Route>
             </Routes>
           )}
         </ProjectView>

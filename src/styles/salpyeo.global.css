@@ -1,0 +1,206 @@
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-display: swap;
+}
+
+.title-1 {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 1.5rem;
+  /* 24px */
+}
+.title-2 {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 1.125rem;
+  /* 20px */
+}
+.title-3 {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 1.125rem;
+  /* 18px */
+}
+
+.sub-title-1 {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 1.25rem;
+  /* 20px */
+}
+.sub-title-2 {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 1.125rem;
+  /* 18px */
+}
+.sub-title-3 {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 1rem;
+  /* 16px */
+}
+
+.sub-title-4 {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 0.875rem;
+  /* 14px */
+}
+.sub-title-5 {
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-size: 0.75rem;
+  /* 12px */
+}
+
+.body-1 {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-size: 1rem;
+  /* 16px */
+}
+.body-2 {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-size: 0.875rem;
+  /* 14px */
+}
+.body-3 {
+  font-family: "Pretendard";
+  font-weight: 500;
+  font-size: 0.75rem;
+  /* 12px */
+}
+
+.caption {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-size: 0.75rem;
+  /* 12px */
+}
+
+.button-title {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 0.875rem;
+  /* 14px */
+}
+
+:root {
+  /* 기본 font컬러 #202123 */
+
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #3b82f6;
+  --primary-400: #2563eb;
+
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #9ca3af;
+  --gray-400: #6b7280;
+  --gray-500: #4b5563;
+  --gray-600: #1f2937;
+
+  --black: #000;
+  --white: #fff;
+
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #f87171;
+  --red-300: #ef4444;
+
+  --green-50: #dcfce7;
+  --green-100: #bbf7d0;
+  --green-200: #22c55e;
+  --green-300: #16a34a;
+
+  --cyan: #06b6d4;
+  --indigo: #6366f1;
+  --yellow: #eab308;
+  --orange: #f97416;
+}
+
+/* ────────────── 메인 앱 레이아웃 ────────────── */
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+/* ────────────── 내부 스크롤 영역 ────────────── */
+.scroll-area {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 스크롤바 제거 (iOS 시각 깔끔하게) */
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}

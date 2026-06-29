@@ -3,7 +3,7 @@ import AlertCP from "@/features/careerhi/components/_common/alertCP";
 import HeaderCP from "@/features/careerhi/components/_common/headerCP";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import MainContentLayout from "@/layouts/careerhi/MainLayout";
-import useAlertCP from "@/features/careerhi/hook/useAlertCP";
+import useAlertCP from "@/features/careerhi/hooks/useAlertCP";
 import HeaderPc from "@/layouts/careerhi/Header_PC";
 import RoadmapChartCP from "@/features/careerhi/components/roadmapCP/roadmapChartCP";
 import { useEffect } from "react";
@@ -11,7 +11,7 @@ import SpinnersCP from "@/features/careerhi/components/_common/spinnersCP/spinne
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 import MainLayout from "@/layouts/careerhi";
 import { useAuth } from "@/hooks/useAuth";
-import { useGetCareerHiQuery } from "@/features/careerhi/hook/useGetCareerHiQuery";
+import { useGetCareerHiQuery } from "@/features/careerhi/hooks/useGetCareerHiQuery";
 
 const CareerHiListPage = () => {
   const { isPc } = useDeviceMode();
