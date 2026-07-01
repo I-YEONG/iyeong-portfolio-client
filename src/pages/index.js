@@ -13,9 +13,3 @@ export { default as CareerHiListPage } from "./careerhi/CareerHiMyRoadmapPages/C
 export { default as CareerHiCreatePage } from "./careerhi/CareerHiMyRoadmapPages/CareerHiCreatePage";
 export { default as CareerHiResultPage } from "./careerhi/CareerHiMyRoadmapPages/CareerHiResultPage";
 export { default as CareerHiError404Page } from "./careerhi/CareerHiError404Page";
-
-// 살펴
-export { default as SplashPage } from "./salpyeo/splash/entry/SplashPage.jsx";
-export { default as OnboardingPage } from "./salpyeo/onboarding/entry/OnboardingPage.jsx";
-export { default as MapPage } from "./salpyeo/map/entry/MapPage.jsx";
-export { default as MapSearchPage } from "./salpyeo/map-search/entry/MapSearchPage.jsx";

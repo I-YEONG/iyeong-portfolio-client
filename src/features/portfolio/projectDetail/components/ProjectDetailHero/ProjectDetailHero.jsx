@@ -20,11 +20,13 @@ const ProjectDetailHero = ({ data }) => {
               <p className="title">{data.name}</p>
               <p className="description">{data.description}</p>
               <div className="button-box">
-                <div onClick={() => nav(`/project/${data.url}`)} className="cursor-reactive is-green">
-                  <Button buttonType="goto" cssObj={{ ...theme.fonts.captionXl, width: "fit-content", backgroundColor: theme.colors.green, color: "white" }}>
-                    페이지 바로가기
-                  </Button>
-                </div>
+                {data.url && (
+                  <div onClick={() => nav(`/project/${data.url}`)} className="cursor-reactive is-green">
+                    <Button buttonType="goto" cssObj={{ ...theme.fonts.captionXl, width: "fit-content", backgroundColor: theme.colors.green, color: "white" }}>
+                      페이지 바로가기
+                    </Button>
+                  </div>
+                )}
                 {data.pdfUrl !== null && data.pdfUrl !== "null" && (
                   <a href={data.pdfUrl} role="button">
                     <Button

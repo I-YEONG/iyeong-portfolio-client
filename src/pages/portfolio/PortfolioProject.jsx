@@ -5,8 +5,7 @@ import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio
 import { theme } from "@/styles/theme";
 
 // 커리어하이 페이지들
-import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage, SplashPage, OnboardingPage, MapPage } from "@/pages";
-import { SalpyeoLayout } from "@/features/salpyeo/components"; // SalpyeoLayout 임포트 추가
+import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
 
@@ -59,15 +58,7 @@ const PortfolioProject = () => {
           )}
 
           {/* 살펴 프로젝트 라우터 */}
-          {projectName === "salpyeo" && (
-            <Routes className="salpyeo-routes">
-              <Route element={<FixMobile />}>
-                <Route path="/" element={<SplashPage />} />
-                <Route path="/onboarding" element={<OnboardingPage />} />
-                <Route path="/map" element={<MapPage />} />
-              </Route>
-            </Routes>
-          )}
+          {projectName === "salpyeo" && <Routes className="salpyeo-routes"></Routes>}
         </ProjectView>
       </div>
     </div>
