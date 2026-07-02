@@ -14,6 +14,16 @@ const ProjectDetailHero = ({ data }) => {
     color: theme.colors.green,
     cursor: "not-allowed",
   };
+
+  const isPdf = {
+    ...theme.fonts.captionXl,
+    width: "fit-content",
+    backgroundColor: theme.colors.redBG,
+    color: theme.colors.red,
+    border: `1px solid ${theme.colors.red}`,
+  };
+
+  const isNotPdf = { ...theme.fonts.captionXl, width: "fit-content", color: theme.colors.red, border: `1px solid ${theme.colors.red}`, cursor: "not-allowed" };
   const nav = useNavigate();
   const formatDate = useFormatDate();
   return (
@@ -44,15 +54,7 @@ const ProjectDetailHero = ({ data }) => {
 
                 {data.pdfUrl !== null && data.pdfUrl !== "null" && (
                   <a href={data.pdfUrl} role="button">
-                    <Button
-                      buttonType="pdf"
-                      cssObj={{
-                        ...theme.fonts.captionXl,
-                        width: "fit-content",
-                        backgroundColor: theme.colors.redBG,
-                        color: theme.colors.red,
-                        border: `1px solid ${theme.colors.red}`,
-                      }}>
+                    <Button buttonType="pdf" cssObj={data.pdfUrl !== null && data.pdfUrl !== "null" ? isPdf : isNotPdf}>
                       PDF 다운로드
                     </Button>
                   </a>
