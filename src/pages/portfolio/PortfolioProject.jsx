@@ -5,7 +5,7 @@ import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio
 import { theme } from "@/styles/theme";
 
 // 커리어하이 페이지들
-import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage } from "@/pages";
+import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage, UnivNoticeMainPage } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
 
@@ -58,7 +58,11 @@ const PortfolioProject = () => {
           )}
 
           {/* 살펴 프로젝트 라우터 */}
-          {projectName === "salpyeo" && <Routes className="salpyeo-routes"></Routes>}
+          {projectName === "univnotice" && (
+            <Routes className="univnotice">
+              <Route path="/" element={<UnivNoticeMainPage />} />
+            </Routes>
+          )}
         </ProjectView>
       </div>
     </div>

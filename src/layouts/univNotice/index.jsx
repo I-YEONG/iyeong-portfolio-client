@@ -1,17 +1,19 @@
-import { useMedia } from "../hook/useMedia";
-import { useWeb } from "../hook/useWeb";
-import Footer from "./Footer";
-import Header from "./Header";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import UnivNoticeFooter from "./UnivNoticeFooter";
+import UnivNoticeHeader from "./UnivNoticeHeader";
 
-const MainLayout = ({ children, mainPageLayout }) => {
-  const isApp = useWeb().isApp;
-  const isPc = useMedia().isPc;
+const UnivNoticeMainLayout = ({ children }) => {
+  // const isApp = useWeb().isApp;
+  // const isPc = useMedia().isPc;
+
+  const { isPc } = useDeviceMode();
+
   return (
-    <section style={{ width: "100%", height: "100vh", paddingTop: !isApp ? 0 : "18px", backgroundColor: "#F3F3F3" }}>
-      <Header mainPageLayout={mainPageLayout} />
-      <div style={{ width: "100%", height: isPc ? "100vh" : "96vh" }}>{children}</div>
-      <Footer />
+    <section style={{ width: "100%", height: "100%", paddingTop: isPc ? 0 : "18px", backgroundColor: "#F3F3F3" }}>
+      <UnivNoticeHeader />
+      <div style={{ width: "100%", height: isPc ? "100%" : "96%" }}>{children}</div>
+      {isPc && <UnivNoticeFooter />}
     </section>
   );
 };
-export default MainLayout;
+export default UnivNoticeMainLayout;
