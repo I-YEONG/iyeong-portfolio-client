@@ -13,3 +13,6 @@ export { default as CareerHiListPage } from "./careerhi/CareerHiMyRoadmapPages/C
 export { default as CareerHiCreatePage } from "./careerhi/CareerHiMyRoadmapPages/CareerHiCreatePage";
 export { default as CareerHiResultPage } from "./careerhi/CareerHiMyRoadmapPages/CareerHiResultPage";
 export { default as CareerHiError404Page } from "./careerhi/CareerHiError404Page";
+
+// univNotice
+export { default as UnivNoticeMainPage } from "./univNotice/UnivNoticeMainPage";
