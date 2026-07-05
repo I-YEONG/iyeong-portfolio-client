@@ -5,7 +5,6 @@ import "./style.css";
 import "@/styles/univNotice.global.css";
 import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import { css } from "@emotion/react";
 
 import is_pc_bg from "@/assets/univNotice/pc_main_bg.png";
 import is_mobile_bg from "@/assets/univNotice/mobile_main_bg.png";

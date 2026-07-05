@@ -1,6 +1,7 @@
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import UnivNoticeFooter from "./UnivNoticeFooter";
 import UnivNoticeHeader from "./UnivNoticeHeader";
+import "@/styles/univNotice.global.css";
 
 const UnivNoticeMainLayout = ({ children }) => {
   // const isApp = useWeb().isApp;

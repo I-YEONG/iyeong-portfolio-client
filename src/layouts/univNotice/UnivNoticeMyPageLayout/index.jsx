@@ -1,7 +1,7 @@
 import { useMedia } from "../../hook/useMedia";
 import { useWeb } from "../../hook/useWeb";
 import MyPageHeader from "./UnivNoticeHeader";
-
+import "@/styles/univNotice.global.css";
 const UnivNoticeMyPageLayout = ({ children }) => {
   const isApp = useWeb().isApp;
   const isPc = useMedia().isPc;

@@ -1,4 +1,4 @@
-import UnivNoticeLogoCP from "@/features/univNotice/componentes/_common/UnivNoticeLogoCP";
+import UnivNoticeLogoCP from "@/features/univNotice/components/_common/UnivNoticeLogoCP";
 import "./style.css";
 import "@/styles/univNotice.global.css";
 import { useNavigate } from "react-router-dom";
@@ -16,10 +16,10 @@ const UnivNoticeHeader = () => {
   const nav = useNavigate();
 
   return (
-    <header className="MainLayoutHeader flexBetween">
+    <header className="MainLayoutHeader univnoticeFlexBetween">
       <UnivNoticeLogoCP />
       {isLogin !== null && (
-        <div className="MainLayoutHeader-content flexBetween">
+        <div className="MainLayoutHeader-content univnoticeFlexBetween">
           {isLogin && <p onClick={() => nav("/project/univnotice/notice")}>공지 보기</p>}
           {!isPc && !isLogin && <p onClick={() => nav("/project/univnotice/login/append")}>기기 등록</p>}
           {!isLogin && <p onClick={() => login()}>로그인</p>}

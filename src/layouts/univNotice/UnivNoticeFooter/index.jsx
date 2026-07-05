@@ -12,7 +12,7 @@ const UnivNoticeFooter = () => {
   const { isPc } = useDeviceMode();
 
   return (
-    <footer className="footer flexBetween">
+    <footer className="footer univnoticeFlexBetween">
       {isPc && <p>@2025 UnivNotice. All rights reserved.</p>}
       <p>
         <span onClick={() => nav("/terms")}>이용약관</span>

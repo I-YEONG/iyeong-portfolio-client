@@ -3,11 +3,13 @@ import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio/project/components";
 import { theme } from "@/styles/theme";
+import "@/styles/univNotice.global.css";
 
 // 커리어하이 페이지들
 import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage, UnivNoticeMainPage } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
+import UnivNoticeHelloPage from "../univNotice/SignUpPage/0_HelloPage";
 
 const PortfolioProject = () => {
   // 이제 restPath는 내부 Routes가 알아서 처리하므로 projectName만 가져옵니다.
@@ -60,7 +62,11 @@ const PortfolioProject = () => {
           {/* 살펴 프로젝트 라우터 */}
           {projectName === "univnotice" && (
             <Routes className="univnotice">
+              {/* 메인화면 */}
               <Route path="/" element={<UnivNoticeMainPage />} />
+
+              {/* 회원가입 */}
+              <Route path="/signup/0" element={<UnivNoticeHelloPage />} />
             </Routes>
           )}
         </ProjectView>

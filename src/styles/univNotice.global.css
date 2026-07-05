@@ -28,34 +28,34 @@
   --black: #000000;
 }
 
-.univnotice .flexWidthCenter {
+.univnotice .univnoticeFlexWidthCenter {
   display: flex;
   justify-content: center;
 }
 
-.univnotice .flexHeightCenter {
+.univnotice .univnoticeFlexHeightCenter {
   display: flex;
   align-items: center;
 }
 
-.univnotice .flexCenter {
+.univnotice .univnoticeFlexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.univnotice .flexBetween {
+.univnotice .univnoticeFlexBetween {
   display: flex;
   justify-content: space-between;
 }
 
-.univnotice .flexBetweenCol {
+.univnotice .univnoticeFlexBetweenCol {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.univnotice .flexCol {
+.univnotice .univnoticeFlexCol {
   display: flex;
   flex-direction: column;
   gap: 26px;

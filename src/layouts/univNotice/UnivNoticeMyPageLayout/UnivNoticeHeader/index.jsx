@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { useWeb } from "../../../hook/useWeb";
 import { useNavigate, useLocation } from "react-router-dom";
-import UnivNoticeLogoCP from "@/features/univNotice/componentes/_common/UnivNoticeLogoCP";
+import UnivNoticeLogoCP from "@/features/univNotice/components/_common/UnivNoticeLogoCP";
 import "./style.css";
-import { loginCheck } from "../../../api/user/loginCheck";
 import { useEffect } from "react";
-import { useMedia } from "../../../hook/useMedia";
-
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import "@/styles/univNotice.global.css";
 const UnivNoticeMyPageHeader = () => {
-  const [isLogin, setIsLogin] = useState(null);
-  const isPc = useMedia().isPc;
+  // const [isLogin, setIsLogin] = useState(null);
+  const { isPc, isMobile } = useDeviceMode();
   const nav = useNavigate();
   const location = useLocation();
-  const { isIos, isHomeApp } = useWeb();
 
   // 현재 경로가 /mypage/info인지 확인
   const myPageType = location.pathname;
@@ -20,8 +17,8 @@ const UnivNoticeMyPageHeader = () => {
   useEffect(() => {
     async function fetchLoginCheck() {
       try {
-        const result = await loginCheck();
-        setIsLogin(result);
+        // const result = await loginCheck();
+        // setIsLogin(result);
       } catch (err) {
         console.error(err);
       }
@@ -29,15 +26,15 @@ const UnivNoticeMyPageHeader = () => {
     fetchLoginCheck();
   }, []);
   return (
-    <header className="MyPageHeader flexBetween">
+    <header className="MyPageHeader univnoticeFlexBetween">
       <UnivNoticeLogoCP />
-      <div className="MyPageHeader-content flexBetween">
+      <div className="MyPageHeader-content univnoticeFlexBetween">
         {!isPc && myPageType !== "/mypage/info" && <p onClick={() => nav("/mypage/info")}>내 정보</p>}
-        {!isIos && !isHomeApp && !isPc && myPageType !== "/mypage/device" && <p onClick={() => nav("/mypage/device")}>기기 관리</p>}
+        {!isMobile && !isPc && myPageType !== "/mypage/device" && <p onClick={() => nav("/mypage/device")}>기기 관리</p>}
         {!isPc && myPageType !== "/mypage/setting" && <p onClick={() => nav("/mypage/setting")}>공지 설정</p>}
 
         {isPc && <p onClick={() => nav("/mypage/info")}>내 정보</p>}
-        {!isIos && !isHomeApp && isPc && <p onClick={() => nav("/mypage/device")}>기기 관리</p>}
+        {!isMobile && isPc && <p onClick={() => nav("/mypage/device")}>기기 관리</p>}
         {isPc && <p onClick={() => nav("/mypage/setting")}>공지 설정</p>}
       </div>
     </header>
