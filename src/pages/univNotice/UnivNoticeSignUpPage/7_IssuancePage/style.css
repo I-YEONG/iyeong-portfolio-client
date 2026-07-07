@@ -1,4 +1,4 @@
-.googlePage {
+.issuancePage {
   height: 100%;
   width: 100%;
   background-color: white;
@@ -9,68 +9,73 @@
   gap: 6vw;
 }
 
-.googlePage * {
+.issuancePage * {
   text-align: start;
 }
 
 @media screen and (max-width: 768px) {
-  .googlePage {
+  .issuancePage {
     flex-direction: column;
     gap: 4vh;
     padding: 4vh 0;
-    width: 90%;
-    margin: 0 auto;
   }
 
-  .googlePage * {
+  .issuancePage * {
     text-align: center;
   }
 }
 
-.googlePage .pc-image {
+.issuancePage .pc-image {
   width: 50vh;
   height: 50vh;
 
-  background-image: url("../../../assets/image/google.png");
+  background-image: url("@/assets/univNotice/image/save.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.googlePage .mobile-image {
+.issuancePage .mobile-image {
   width: 55vw;
   height: 55vw;
   margin: 0 auto;
 
-  background-image: url("../../../assets/image/google.png");
+  background-image: url("@/assets/univNotice/image/save.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.googlePage .buttonBox {
+.issuancePage .buttonBox {
   margin-top: 5vh;
 }
 
-.googlePage .pc-title-image {
+.issuancePage .pc-title-image {
   width: 100%;
   height: 25vh;
-  background-image: url("../../../assets/logo.svg");
+  background-image: url("@/assets/univNotice/logo.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center left;
 }
 
+.issuancePage .code {
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
+  margin: 2vh 0;
+  color: var(--point-color-1);
+}
+
 @media screen and (min-width: 769px) {
-  .googlePage .buttonBox {
+  .issuancePage .buttonBox {
     gap: 1rem;
   }
 
-  .googlePage .buttonBox > div {
+  .issuancePage .buttonBox > div {
     flex: 1;
   }
 
-  .googlePage .content {
+  .issuancePage .content {
     width: 30%;
   }
 }

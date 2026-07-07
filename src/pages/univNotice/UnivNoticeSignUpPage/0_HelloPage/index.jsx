@@ -17,7 +17,7 @@ const UnivNoticeHelloPage = () => {
             <br />
             오신 것을 환영합니다!
           </p>
-          <div onClick={() => nav("/signup/1")}>
+          <div onClick={() => nav("/project/univnotice/signup/1")}>
             <UnivNoticeButtonCP>다음</UnivNoticeButtonCP>
           </div>
         </div>

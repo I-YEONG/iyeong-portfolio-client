@@ -6,10 +6,28 @@ import { theme } from "@/styles/theme";
 import "@/styles/univNotice.global.css";
 
 // 커리어하이 페이지들
-import { CareerHiMainPage, CareerHiListPage, CareerHiError404Page, CareerHiCreatePage, CareerHiResultPage, UnivNoticeMainPage } from "@/pages";
+import {
+  CareerHiMainPage,
+  CareerHiListPage,
+  CareerHiError404Page,
+  CareerHiCreatePage,
+  CareerHiResultPage,
+  UnivNoticeMainPage,
+  UnivNoticePhoneSelectPage,
+  UnivNoticeError404Page,
+  UnivNoticeHomeAppPage,
+  UnivNoticeInfoPage,
+  UnivNoticeCategoryPage,
+  UnivNoticeSettingPage,
+  UnivNoticePhonePage,
+  UnivNoticeGooglePage,
+  UnivNoticeIssuancePage,
+  UnivNoticeEndPage,
+  UnivNoticeHelloPage,
+  UnivNoticeDeviceAppendPage,
+} from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
-import UnivNoticeHelloPage from "../univNotice/SignUpPage/0_HelloPage";
 
 const PortfolioProject = () => {
   // 이제 restPath는 내부 Routes가 알아서 처리하므로 projectName만 가져옵니다.
@@ -67,6 +85,19 @@ const PortfolioProject = () => {
 
               {/* 회원가입 */}
               <Route path="/signup/0" element={<UnivNoticeHelloPage />} />
+              <Route path="/signup/1" element={<UnivNoticePhoneSelectPage />} />
+              <Route path="/signup/2" element={<UnivNoticeInfoPage />} />
+              <Route path="/signup/3" element={<UnivNoticeCategoryPage />} />
+              <Route path="/signup/4/:setting_id" element={<UnivNoticeSettingPage />} />
+              <Route path="/signup/5" element={<UnivNoticePhonePage />} />
+              <Route path="/signup/6" element={<UnivNoticeGooglePage />} />
+              <Route path="/signup/7" element={<UnivNoticeIssuancePage />} />
+              <Route path="/signup/8" element={<UnivNoticeEndPage />} />
+
+              <Route path="/login/append" element={<UnivNoticeDeviceAppendPage />} />
+
+              <Route path="/ios" element={<UnivNoticeHomeAppPage />} />
+              <Route path="*" element={<UnivNoticeError404Page />} />
             </Routes>
           )}
         </ProjectView>

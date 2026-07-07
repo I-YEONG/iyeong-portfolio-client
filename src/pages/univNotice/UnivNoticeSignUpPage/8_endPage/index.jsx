@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import { useEffect } from "react";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { UnivNoticeButtonCP } from "@/features/univNotice/components";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
@@ -8,9 +7,10 @@ import "@/styles/univNotice.global.css";
 
 const UnivNoticeEndPage = () => {
   const nav = useNavigate();
+  const { isPc } = useDeviceMode();
   return (
     <UnivNoticeLogoLayout>
-      <section className="endPage univnoticeFlexCenter">
+      <section className="endPage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         <div className="endPage-content">
           <div>{/* 이미지 */}</div>
           <div className="titleBox">

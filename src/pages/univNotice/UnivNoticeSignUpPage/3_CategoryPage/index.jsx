@@ -4,11 +4,16 @@ import { useNavigate } from "react-router-dom";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import "@/styles/univNotice.global.css";
 import { UnivNoticeButtonCP, UnivNoticeButtonToggleCP } from "@/features/univNotice/components";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNoticeQuery";
 
 const UnivNoticeCategoryPage = () => {
   const userInfo = JSON.parse(localStorage.getItem("signupInfo"));
-  const [categoryList, setCategoryList] = useState([]);
+
+  const { data: categoryList, isLoading: isUnivListLoading, isError: isUnivListError } = useGetUnivNoticeQuery("/category/1");
+
   const nav = useNavigate();
+  const { isPc } = useDeviceMode();
 
   const loadCategoryData = useCallback(async () => {
     // if (!userInfo) return;
@@ -24,7 +29,7 @@ const UnivNoticeCategoryPage = () => {
   useEffect(() => {
     if (!userInfo) {
       window.confirm("잘못된 접근입니다. 회원가입 첫 페이지로 이동합니다.");
-      window.location.href = "/signup/1";
+      nav("/project/univnotice/signup/1");
     }
 
     loadCategoryData();
@@ -46,7 +51,7 @@ const UnivNoticeCategoryPage = () => {
       return;
     }
     localStorage.setItem("signupCategory", JSON.stringify(selectedCategories));
-    window.location.href = "/signup/4/1";
+    nav("/project/univnotice/signup/4/1");
   };
 
   useEffect(() => {
@@ -66,7 +71,7 @@ const UnivNoticeCategoryPage = () => {
 
   return (
     <UnivNoticeLogoLayout>
-      <section className="categoryPage univnoticeFlexCenter">
+      <section className="categoryPage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         <div className="centerBox">
           <div className="titleBox">
             <h2 className="title">

@@ -6,10 +6,10 @@ import { useDeviceMode } from "@/hooks/useDeviceMode";
 import "@/styles/univNotice.global.css";
 
 const UnivNoticeIssuancePage = () => {
-  const { isPc } = useDeviceMode();
+  const { isPc, setPcMode } = useDeviceMode();
   const nav = useNavigate();
 
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState("A85PY");
   const [intervalId, setIntervalId] = useState(null);
 
   // const getCode = async () => {
@@ -59,9 +59,20 @@ const UnivNoticeIssuancePage = () => {
   //   return () => clearInterval(id);
   // }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      nav("/project/univnotice/signup/8");
+    }, 5000);
+  }, []);
+
+  if (!isPc) {
+    alert("이 페이지는 PC 전용 페이지 입니다.");
+    setPcMode();
+  }
+
   return (
     <UnivNoticeLogoLayout>
-      <section className="issuancePage univnoticeFlexCenter">
+      <section className="issuancePage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {!isPc && <div className="mobile-image">{/* 이미지 */}</div>}
         <div className="content univnoticeFlexBetweenCol">
           <div>

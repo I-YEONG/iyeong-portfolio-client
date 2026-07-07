@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UnivNoticeSettingCP } from "@/features/univNotice/components";
 import "@/styles/univNotice.global.css";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
 
 const UnivNoticeSettingPage = () => {
   const nav = useNavigate();
   const setting_id = useParams().setting_id;
+  const { isPc } = useDeviceMode();
 
-  const category = JSON.parse(localStorage.getItem("signupCategory"));
+  const savedCategory = localStorage.getItem("signupCategory");
+  const category = savedCategory ? JSON.parse(savedCategory) : [];
 
   const [settingCategory, setSettingCategory] = useState(
     category
@@ -33,9 +36,9 @@ const UnivNoticeSettingPage = () => {
   const nextButtonClick = () => {
     localStorage.setItem("signupKeyword", JSON.stringify(settingCategory));
     if (category.length > Number(setting_id)) {
-      nav(`/signup/4/${Number(setting_id) + 1}`);
+      nav(`/project/univnotice/signup/4/${Number(setting_id) + 1}`);
     } else {
-      nav("/signup/5");
+      nav("/project/univnotice/signup/5");
     }
   };
 
@@ -43,12 +46,12 @@ const UnivNoticeSettingPage = () => {
   const skipAll = () => {
     const skipped = settingCategory.map((item) => ({ ...item, keywords: [] }));
     localStorage.setItem("signupKeyword", JSON.stringify(skipped));
-    nav("/signup/5");
+    nav("/project/univnotice/signup/5");
   };
 
   return (
     <UnivNoticeLogoLayout>
-      <section className="settingPage univnoticeFlexCenter">
+      <section className="settingPage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {settingCategory?.length >= 1 && (
           <UnivNoticeSettingCP
             skipAll={skipAll}

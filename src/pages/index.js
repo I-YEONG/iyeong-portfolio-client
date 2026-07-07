@@ -16,11 +16,18 @@ export { default as CareerHiError404Page } from "./careerhi/CareerHiError404Page
 
 // univNotice
 export { default as UnivNoticeMainPage } from "./univNotice/UnivNoticeMainPage";
-export { default as UnivNoticePhoneSelectPage } from "./univNotice/SignUpPage/1_PhoneSelectPage";
-export { default as UnivNoticeInfoPage } from "./univNotice/SignUpPage/2_InfoPage";
-export { default as UnivNoticeCategoryPage } from "./univNotice/SignUpPage/3_CategoryPage";
-export { default as UnivNoticeSettingPage } from "./univNotice/SignUpPage/4_SettingPage";
-export { default as UnivNoticePhonePage } from "./univNotice/SignUpPage/5_PhonePage";
-export { default as UnivNoticeGooglePage } from "./univNotice/SignUpPage/6_GooglePage";
-export { default as UnivNoticeIssuancePage } from "./univNotice/SignUpPage/7_IssuancePage";
-export { default as UnivNoticeEndPage } from "./univNotice/SignUpPage/8_endPage";
+
+export { default as UnivNoticeHelloPage } from "./univNotice/UnivNoticeSignUpPage/0_HelloPage";
+export { default as UnivNoticePhoneSelectPage } from "./univNotice/UnivNoticeSignUpPage/1_PhoneSelectPage";
+export { default as UnivNoticeInfoPage } from "./univNotice/UnivNoticeSignUpPage/2_InfoPage";
+export { default as UnivNoticeCategoryPage } from "./univNotice/UnivNoticeSignUpPage/3_CategoryPage";
+export { default as UnivNoticeSettingPage } from "./univNotice/UnivNoticeSignUpPage/4_SettingPage";
+export { default as UnivNoticePhonePage } from "./univNotice/UnivNoticeSignUpPage/5_PhonePage";
+export { default as UnivNoticeGooglePage } from "./univNotice/UnivNoticeSignUpPage/6_GooglePage";
+export { default as UnivNoticeIssuancePage } from "./univNotice/UnivNoticeSignUpPage/7_IssuancePage";
+export { default as UnivNoticeEndPage } from "./univNotice/UnivNoticeSignUpPage/8_endPage";
+
+export { default as UnivNoticeError404Page } from "./univNotice/UnivNoticeError404Page";
+export { default as UnivNoticeHomeAppPage } from "./univNotice/UnivNoticeHomeAppPage";
+
+export { default as UnivNoticeDeviceAppendPage } from "./univNotice/UnivNoticeDeviceAppendPage";

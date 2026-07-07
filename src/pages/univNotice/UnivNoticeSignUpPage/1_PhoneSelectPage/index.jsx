@@ -3,13 +3,15 @@ import "./style.css";
 import "@/styles/univNotice.global.css";
 import { useNavigate } from "react-router-dom";
 import { UnivNoticeButtonCP } from "@/features/univNotice/components";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
 
 const UnivNoticePhoneSelectPage = () => {
   const nav = useNavigate();
+  const { isPc } = useDeviceMode();
 
   return (
     <UnivNoticeLogoLayout>
-      <section className="phonePage univnoticeFlexCenter">
+      <section className="phonePage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         <div className="centerBox">
           <div className="titleBox">
             <h2 className="title">
@@ -22,7 +24,7 @@ const UnivNoticePhoneSelectPage = () => {
               className="phonePage-button"
               onClick={() => {
                 localStorage.setItem("phoneType", "android");
-                return nav("/signup/2");
+                return nav("/project/univnotice/signup/2");
               }}>
               <UnivNoticeButtonCP color="--main-color" bgColor="--black-0">
                 Android
@@ -31,7 +33,7 @@ const UnivNoticePhoneSelectPage = () => {
             <div
               className="phonePage-button"
               onClick={() => {
-                return nav("/signup/2");
+                return nav("/project/univnotice/ios");
               }}>
               <UnivNoticeButtonCP color="--main-color" bgColor="--black-0">
                 iPhone

@@ -5,27 +5,36 @@ import "@/styles/univNotice.global.css";
 import { useNavigate } from "react-router-dom";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import { UnivNoticeButtonCP, UnivNoticeSelectCP } from "@/features/univNotice/components";
+import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNoticeQuery";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
 
 const UnivNoticeInfoPage = () => {
   const nav = useNavigate();
+  const { isPc } = useDeviceMode();
 
-  // 학교목록
-  const [univList, setUnivList] = useState([]);
-  // 선택된 학과의 학과목록
-  const [departmentList, setDepartmentList] = useState([]);
+  const { data: univList, isLoading: isUnivListLoading, isError: isUnivListError } = useGetUnivNoticeQuery("/school");
+
   // 학번
   // const [student_id, onChangeStudent_id, setStudent_id] = useInput("");
 
   // 0:로딩, 1: 학교선택, 2: 학과선택
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
 
   const [selectedUniv, setSelectedUniv] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 
+  const {
+    data: departmentList,
+    isLoading: isDepartmentListLoading,
+    isError: isDepartmentListError,
+  } = useGetUnivNoticeQuery(`/department/${selectedUniv}`, {
+    enabled: !!selectedUniv,
+  });
+
   const onChangeUniv = (value) => {
     setSelectedUniv(value);
-    // loadDepartmentData(value);
-    setStep(1);
+    setSelectedDepartment(null);
+    setStep(2);
   };
 
   const onChangeDepartment = (value) => {
@@ -61,13 +70,13 @@ const UnivNoticeInfoPage = () => {
     localStorage.setItem("signupInfo", JSON.stringify({ school_id: selectedUniv, department_id: selectedDepartment }));
 
     if (window.confirm("학교·학과는 수정이 힘듭니다\n계속 진행하시겠습니까?")) {
-      nav("/signup/3");
+      nav("/project/univnotice/signup/3");
     }
   }, [step, selectedUniv, selectedDepartment, nav]);
 
   return (
     <UnivNoticeLogoLayout>
-      <section className="infoPage univnoticeFlexCenter">
+      <section css={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }} className="infoPage univnoticeFlexCenter">
         {/* 중앙 */}
         <div className="centerBox">
           {/* 타이틀 */}
@@ -79,12 +88,12 @@ const UnivNoticeInfoPage = () => {
           </div>
           {/* 인풋요소 */}
           <div className="univnoticeFlexCol" style={{ gap: "26px", width: "100%" }}>
-            {step >= 1 && (
+            {step >= 1 && univList && (
               <div>
                 <UnivNoticeSelectCP title="학교" dataList={univList} value={selectedUniv} onChangeFunc={onChangeUniv} />
               </div>
             )}
-            {step >= 2 && (
+            {step >= 2 && !isDepartmentListLoading && (
               <div>
                 <UnivNoticeSelectCP title="학과" dataList={departmentList} value={selectedDepartment} onChangeFunc={onChangeDepartment} />
               </div>

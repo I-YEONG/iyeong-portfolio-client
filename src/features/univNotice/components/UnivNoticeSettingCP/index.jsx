@@ -1,10 +1,10 @@
 import { useState } from "react";
-import UnivNoticeInputCP from "../_common/UnivNoticeInputCP";
+import UnivNoticeInputCP from "@/features/univNotice/components/_common/UnivNoticeInputCP";
 import { useInput } from "@/hooks/useInput";
 import UnivNoticeKeywordCP from "./UnivNoticeKeywordCP";
 import "@/styles/univNotice.global.css";
 import "./style.css";
-import UnivNoticeButtonCP from "../_common/UnivNoticeButtonCP";
+import UnivNoticeButtonCP from "@/features/univNotice/components/_common/UnivNoticeButtonCP";
 
 const UnivNoticeSettingCP = ({ pageId, data, setKeywordFunc, nextButtonClick, skipAll }) => {
   const [keywords, setKeywords] = useState(data.keywords || []);

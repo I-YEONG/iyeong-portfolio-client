@@ -1,5 +1,7 @@
-import ClearIcon from "@mui/icons-material/Clear";
 import "@/styles/univNotice.global.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
 const UnivNoticeKeywordCP = ({ kw, onDelete }) => {
   return (
     <div
@@ -17,7 +19,7 @@ const UnivNoticeKeywordCP = ({ kw, onDelete }) => {
       }}>
       <span>{kw}</span>
       <span style={{ marginLeft: "4px", color: "var(--black-5)" }}>
-        <ClearIcon fontSize="small" />
+        <FontAwesomeIcon icon={faXmark} />
       </span>
     </div>
   );

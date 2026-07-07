@@ -3,6 +3,7 @@ import "./style.css";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import "@/styles/univNotice.global.css";
+import { UnivNoticeButtonCP } from "@/features/univNotice/components";
 
 const UnivNoticeGooglePage = () => {
   const nav = useNavigate();
@@ -10,6 +11,7 @@ const UnivNoticeGooglePage = () => {
 
   const onClickDownload = () => {
     // 구글 플레이스토어 이동
+    alert("현재 설치해도 동작하지 않는 서비스입니다.");
     window.open(`https://play.google.com/store/apps/details?id=com.iyeonggyu0.univnotice&pcampaignid=web_share`, "_blank");
   };
 
@@ -19,7 +21,7 @@ const UnivNoticeGooglePage = () => {
 
   return (
     <UnivNoticeLogoLayout>
-      <section className="googlePage univnoticeFlexCenter">
+      <section className="googlePage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {!isPc && <div className="mobile-image">{/* 이미지 */}</div>}
         <div className="content univnoticeFlexBetweenCol">
           <div>
@@ -33,10 +35,10 @@ const UnivNoticeGooglePage = () => {
           </div>
           <div className={`buttonBox ${isPc ? "univnoticeFlexBetween" : "univnoticeFlexCol"}`}>
             <div onClick={onClickDownload}>
-              <ButtonCP>설치</ButtonCP>
+              <UnivNoticeButtonCP>설치</UnivNoticeButtonCP>
             </div>
             <div onClick={onNextClick}>
-              <ButtonCP bgColor="--point-color-1">설치 완료</ButtonCP>
+              <UnivNoticeButtonCP bgColor="--point-color-1">설치 완료</UnivNoticeButtonCP>
             </div>
           </div>
         </div>

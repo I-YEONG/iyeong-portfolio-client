@@ -28,41 +28,41 @@
   --black: #000000;
 }
 
-.univnotice .univnoticeFlexWidthCenter {
+.univnoticeFlexWidthCenter {
   display: flex;
   justify-content: center;
 }
 
-.univnotice .univnoticeFlexHeightCenter {
+.univnoticeFlexHeightCenter {
   display: flex;
   align-items: center;
 }
 
-.univnotice .univnoticeFlexCenter {
+.univnoticeFlexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.univnotice .univnoticeFlexBetween {
+.univnoticeFlexBetween {
   display: flex;
   justify-content: space-between;
 }
 
-.univnotice .univnoticeFlexBetweenCol {
+.univnoticeFlexBetweenCol {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.univnotice .univnoticeFlexCol {
+.univnoticeFlexCol {
   display: flex;
   flex-direction: column;
   gap: 26px;
 }
 
 /* 공통 스타일2 */
-.univnotice .centerBox {
+.centerBox {
   width: 100%;
   min-height: 50vh;
   max-width: 400px;
@@ -77,41 +77,41 @@
 }
 
 @media screen and (max-width: 768px) {
-  .univnotice .centerBox {
+  .centerBox {
     width: 90%;
     margin: 0 auto;
     gap: 1rem;
   }
 
-  .univnotice .centerBox > .bottomItem {
+  .centerBox > .bottomItem {
     margin-top: 2rem !important;
   }
 }
 
-.univnotice .centerBox > .bottomItem {
+.centerBox > .bottomItem {
   margin-top: auto;
 }
 
-.univnotice .centerBox > * {
+.centerBox > * {
   width: 100%;
 }
 
-.univnotice .titleBox {
+.titleBox {
   width: 100%;
 }
 
-.univnotice .title {
+.title {
   font-size: clamp(28px, 2.5vw, 1.875rem);
   line-height: 1.4;
   font-weight: 500;
   text-align: center;
 }
 
-.univnotice .title > span.bold {
+.title > span.bold {
   font-weight: 800;
 }
 
-.univnotice .subTitle {
+.subTitle {
   font-size: clamp(0.875rem, 2.5vw, 1rem);
   font-weight: 400;
   line-height: 1.3;
@@ -120,7 +120,7 @@
   text-align: center;
 }
 
-.univnotice .centerBox > .titleBox + .flexCol {
+.centerBox > .titleBox + .flexCol {
   max-height: 48vh;
   overflow-y: auto;
   padding-right: 4px; /* 스크롤바 공간 확보 */
@@ -128,7 +128,7 @@
 
 /* Firefox 전용: 표준 속성 */
 @supports (scrollbar-width: thin) and (not (selector(::-webkit-scrollbar))) {
-  .univnotice .centerBox > .titleBox + .flexCol {
+  .centerBox > .titleBox + .flexCol {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
@@ -136,28 +136,28 @@
 
 /* Blink/WebKit 전용: 화살표 제거 */
 @supports selector(::-webkit-scrollbar) {
-  .univnotice .centerBox > .titleBox + .flexCol::-webkit-scrollbar {
+  .centerBox > .titleBox + .flexCol::-webkit-scrollbar {
     width: 4px;
     background: transparent;
   }
-  .univnotice .centerBox > .titleBox + .flexCol::-webkit-scrollbar-thumb {
+  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
-  .univnotice .centerBox > .titleBox + .flexCol::-webkit-scrollbar-track {
+  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-track {
     background: transparent;
   }
 
   /* 화살표 버튼 숨김 */
-  .univnotice .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button {
+  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button {
     display: none;
     width: 0;
     height: 0;
   }
-  .univnotice .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button:single-button {
+  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button:single-button {
     display: none;
   }
-  .univnotice .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button:double-button {
+  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button:double-button {
     display: none;
   }
 }
