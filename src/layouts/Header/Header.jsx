@@ -20,7 +20,13 @@ const Header = ({ themeCode = "light" }) => {
   const { isTablet } = useMedia();
   const githubUrl = import.meta.env.VITE_GITHUB_URL;
 
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(() => {
+    try {
+      return window?.scrollY > 80;
+    } catch (e) {
+      return false;
+    }
+  });
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,6 +34,10 @@ const Header = ({ themeCode = "light" }) => {
       const isScrolled = window.scrollY > 80;
       if (scrolled !== isScrolled) setScrolled(isScrolled);
     };
+
+    // 초기 상태 동기화 (마운트 시 현재 스크롤 위치 반영)
+    onScroll();
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrolled]);

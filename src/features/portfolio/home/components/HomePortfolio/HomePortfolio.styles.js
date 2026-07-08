@@ -154,7 +154,7 @@ const bannerContentBase = {
 // 배너 1 전용 스타일
 export const banner1Css = () => ({
   ".banner-1": {
-    height: "230vh",
+    height: "220vh",
   },
 
   "& .banner-1 .banner-content": {
@@ -187,7 +187,7 @@ export const banner1Css = () => ({
 // 배너 2 전용 스타일
 export const banner2Css = () => ({
   ".banner-2": {
-    height: "270vh",
+    height: "250vh",
   },
 
   "& .banner-2 .banner-content": {
@@ -260,6 +260,7 @@ export const banner2Css = () => ({
 
   ".banner-2 .images-box .image-1": {
     transform: "scale(1.2)",
+    opacity: 0,
   },
 
   ".banner-2 .images-box .image-2": {
@@ -314,13 +315,13 @@ export const banner3Css = () => ({
 const responsiveCss = () => ({
   [mq("tablet")]: {
     ".banner-1": {
-      height: "182vh",
+      height: "172vh",
     },
     ".banner-stage": {
       height: "158vh",
     },
     ".banner-2": {
-      height: "210vh",
+      height: "198vh",
     },
     ".banner-3": {
       height: "290vh",

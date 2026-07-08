@@ -34,6 +34,15 @@ export function LenisProvider({ children }) {
       smoothWheel: true,
     });
 
+    // expose Lenis instance for global programmatic scrolling
+    // 다른 훅에서 `window.lenis`로 접근해 스크롤을 제어할 수 있도록 함
+    try {
+      // eslint-disable-next-line no-undef
+      window.lenis = lenis;
+    } catch (e) {
+      // ignore
+    }
+
     lenis.on("scroll", ScrollTrigger.update);
 
     const updateLenis = (time) => {
