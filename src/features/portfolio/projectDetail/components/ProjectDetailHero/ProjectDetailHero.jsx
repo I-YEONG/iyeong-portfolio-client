@@ -6,6 +6,24 @@ import { useNavigate } from "react-router-dom";
 import { projectDetailHeroCss, projectDetailHeroInfoDomainCss, projectDetailHeroInfoStatusCss } from "./ProjectDetailHero.styles";
 
 const ProjectDetailHero = ({ data }) => {
+  const isUrlCss = { ...theme.fonts.captionXl, width: "fit-content", backgroundColor: theme.colors.green, color: "white" };
+  const isNotUrlCss = {
+    ...theme.fonts.captionXl,
+    width: "fit-content",
+    border: "1px solid" + theme.colors.green,
+    color: theme.colors.green,
+    cursor: "not-allowed",
+  };
+
+  const isPdf = {
+    ...theme.fonts.captionXl,
+    width: "fit-content",
+    backgroundColor: theme.colors.redBG,
+    color: theme.colors.red,
+    border: `1px solid ${theme.colors.red}`,
+  };
+
+  const isNotPdf = { ...theme.fonts.captionXl, width: "fit-content", color: theme.colors.red, border: `1px solid ${theme.colors.red}`, cursor: "not-allowed" };
   const nav = useNavigate();
   const formatDate = useFormatDate();
   return (
@@ -20,22 +38,23 @@ const ProjectDetailHero = ({ data }) => {
               <p className="title">{data.name}</p>
               <p className="description">{data.description}</p>
               <div className="button-box">
-                <div onClick={() => nav(`${data.url}`)} className="cursor-reactive is-green">
-                  <Button buttonType="goto" cssObj={{ ...theme.fonts.captionXl, width: "fit-content", backgroundColor: theme.colors.green, color: "white" }}>
-                    페이지 바로가기
+                <div
+                  onClick={() => {
+                    if (!data.url) {
+                      alert("구현이 안 되어 있는 페이지입니다.");
+                      return;
+                    }
+                    nav(`/project/${data.url}`);
+                  }}
+                  className="cursor-reactive is-green">
+                  <Button buttonType="goto" cssObj={data?.url ? isUrlCss : isNotUrlCss}>
+                    페이지 바로 가기
                   </Button>
                 </div>
+
                 {data.pdfUrl !== null && data.pdfUrl !== "null" && (
                   <a href={data.pdfUrl} role="button">
-                    <Button
-                      buttonType="pdf"
-                      cssObj={{
-                        ...theme.fonts.captionXl,
-                        width: "fit-content",
-                        backgroundColor: theme.colors.redBG,
-                        color: theme.colors.red,
-                        border: `1px solid ${theme.colors.red}`,
-                      }}>
+                    <Button buttonType="pdf" cssObj={data.pdfUrl !== null && data.pdfUrl !== "null" ? isPdf : isNotPdf}>
                       PDF 다운로드
                     </Button>
                   </a>

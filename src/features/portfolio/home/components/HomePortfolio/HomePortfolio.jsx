@@ -42,7 +42,7 @@ const HomePortfolio = () => {
           scrollTrigger: {
             trigger: stage,
             start: "top-=30% top",
-            end: isBanner2 ? "bottom+=220% top" : "bottom+=140% top",
+            end: isBanner2 ? "bottom+=160% top" : "bottom+=100% top",
             scrub: true,
             invalidateOnRefresh: true,
           },
@@ -74,7 +74,7 @@ const HomePortfolio = () => {
 
         // banner-2는 마지막 reveal 후에도 한 템포 유지
         if (isBanner2) {
-          timeline.to({}, { duration: 1.6 });
+          timeline.to({}, { duration: 0.8 });
         }
       });
 
