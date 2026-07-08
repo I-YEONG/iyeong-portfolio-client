@@ -1,6 +1,7 @@
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import DownloadIcon from "@mui/icons-material/Download";
+import { faBell, faFile } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@/styles/univNotice.global.css";
+
 const UnivNoticeNoticeListLiCP = ({ data, url }) => {
   // 날짜 포맷팅: YYYY. MM. DD
   let formattedDate = "";
@@ -48,7 +49,8 @@ const UnivNoticeNoticeListLiCP = ({ data, url }) => {
         )}
         {showNew && <span style={{ color: "var(--orange)", fontWeight: 600, fontSize: "8px", marginLeft: "4px" }}>NEW</span>}
         {data.NoticeKeywordMatches.length !== 0 && (
-          <NotificationsNoneIcon
+          <FontAwesomeIcon
+            icon={faBell}
             // fontSize="xSmall"
             style={{
               color: "var(--point-color-1)",
@@ -58,7 +60,7 @@ const UnivNoticeNoticeListLiCP = ({ data, url }) => {
       </div>
       <div className="noticeListLiCP-author">{data.author}</div>
       <div className="noticeListLiCP-attachments">
-        <DownloadIcon style={{ fontSize: "14px", color: data.attachments ? "var(--black-4)" : "var(--black-2)" }} />
+        <FontAwesomeIcon icon={faFile} style={{ fontSize: "14px", color: data.attachments ? "var(--black-4)" : "var(--black-2)" }} />
       </div>
       <div className="noticeListLiCP-published_at">{formattedDate}</div>
     </div>

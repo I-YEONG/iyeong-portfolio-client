@@ -11,7 +11,7 @@ const UnivNoticeMyPageHeader = () => {
   const nav = useNavigate();
   const location = useLocation();
 
-  // 현재 경로가 /mypage/info인지 확인
+  // 현재 경로가 /project/univnotice/mypage/info인지 확인
   const myPageType = location.pathname;
 
   useEffect(() => {
@@ -29,13 +29,13 @@ const UnivNoticeMyPageHeader = () => {
     <header className="MyPageHeader univnoticeFlexBetween">
       <UnivNoticeLogoCP />
       <div className="MyPageHeader-content univnoticeFlexBetween">
-        {!isPc && myPageType !== "/mypage/info" && <p onClick={() => nav("/mypage/info")}>내 정보</p>}
-        {!isMobile && !isPc && myPageType !== "/mypage/device" && <p onClick={() => nav("/mypage/device")}>기기 관리</p>}
-        {!isPc && myPageType !== "/mypage/setting" && <p onClick={() => nav("/mypage/setting")}>공지 설정</p>}
+        {!isPc && myPageType !== "/project/univnotice/mypage/info" && <p onClick={() => nav("/project/univnotice/mypage/info")}>내 정보</p>}
+        {!isMobile && !isPc && myPageType !== "/project/univnotice/mypage/device" && <p onClick={() => nav("/project/univnotice/mypage/device")}>기기 관리</p>}
+        {!isPc && myPageType !== "/project/univnotice/mypage/setting" && <p onClick={() => nav("/project/univnotice/mypage/setting")}>공지 설정</p>}
 
-        {isPc && <p onClick={() => nav("/mypage/info")}>내 정보</p>}
-        {!isMobile && isPc && <p onClick={() => nav("/mypage/device")}>기기 관리</p>}
-        {isPc && <p onClick={() => nav("/mypage/setting")}>공지 설정</p>}
+        {isPc && <p onClick={() => nav("/project/univnotice/mypage/info")}>내 정보</p>}
+        {!isMobile && isPc && <p onClick={() => nav("/project/univnotice/mypage/device")}>기기 관리</p>}
+        {isPc && <p onClick={() => nav("/project/univnotice/mypage/setting")}>공지 설정</p>}
       </div>
     </header>
   );

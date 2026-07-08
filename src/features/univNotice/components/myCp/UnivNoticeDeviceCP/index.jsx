@@ -1,6 +1,10 @@
 import UnivNoticeToggleCP from "../../_common/UnivNoticeToggleCP";
 import "./style.css";
 import "@/styles/univNotice.global.css";
+
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const UnivNoticeDeviceCP = ({ device, onChangeActive, onDeleteDevice }) => {
   const onChangeActiveFunc = (value) => {
     onChangeActive(device.id, value);
@@ -16,8 +20,13 @@ const UnivNoticeDeviceCP = ({ device, onChangeActive, onDeleteDevice }) => {
             onDeleteDevice(device.id);
           }}
         /> */}
-        {/* <FontAwesomeIcon icon={faTrash} /> */}
-        <FontAwesomeIcon icon="fa-solid fa-trash" />
+        <FontAwesomeIcon
+          icon={faTrash}
+          className="trash"
+          onClick={() => {
+            onDeleteDevice(device.id);
+          }}
+        />
         <UnivNoticeToggleCP value={device.is_active} onClickFun={onChangeActiveFunc} />
       </div>
     </div>

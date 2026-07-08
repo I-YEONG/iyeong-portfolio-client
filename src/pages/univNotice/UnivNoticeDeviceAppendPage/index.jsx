@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import "@/styles/univNotice.global.css";
 import "./style.css";
 import { useCallback, useEffect } from "react";
 import { useInput } from "@/hooks/useInput";
@@ -88,10 +88,12 @@ const UnivNoticeDeviceAppendPage = () => {
   };
 
   useEffect(() => {
-    if (isPc) {
-      alert("모바일에서만 접근 가능합니다\n 모바일 모드로 변경됩니다");
-      setMobileMode();
-    }
+    setTimeout(() => {
+      if (isPc) {
+        alert("모바일에서만 접근 가능합니다\n 모바일 모드로 변경됩니다");
+        setMobileMode();
+      }
+    }, 200);
   }, [isPc]);
 
   const onEnter = (e) => {

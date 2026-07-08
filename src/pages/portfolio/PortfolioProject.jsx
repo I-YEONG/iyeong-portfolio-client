@@ -3,7 +3,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio/project/components";
 import { theme } from "@/styles/theme";
-import "@/styles/univNotice.global.css";
 
 // 커리어하이 페이지들
 import {
@@ -25,9 +24,16 @@ import {
   UnivNoticeEndPage,
   UnivNoticeHelloPage,
   UnivNoticeDeviceAppendPage,
+  UnivNoticeNoticePage,
+  UnivNoticeUserDeletePage,
+  UnivNoticeMyInfoPage,
+  UnivNoticeMyDevicePage,
+  UnivNoticeMySettingPage,
 } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
+import UnivNoticeTermsPage from "../univNotice/UnivNoticeTermsPage";
+import UnivNoticeKakaoPage from "../univNotice/UnivNoticeKakaoPage";
 
 const PortfolioProject = () => {
   // 이제 restPath는 내부 Routes가 알아서 처리하므로 projectName만 가져옵니다.
@@ -93,8 +99,16 @@ const PortfolioProject = () => {
               <Route path="/signup/6" element={<UnivNoticeGooglePage />} />
               <Route path="/signup/7" element={<UnivNoticeIssuancePage />} />
               <Route path="/signup/8" element={<UnivNoticeEndPage />} />
-
               <Route path="/login/append" element={<UnivNoticeDeviceAppendPage />} />
+
+              <Route path="/mypage/info" element={<UnivNoticeMyInfoPage />} />
+              <Route path="/mypage/device" element={<UnivNoticeMyDevicePage />} />
+              <Route path="/mypage/setting" element={<UnivNoticeMySettingPage />} />
+
+              <Route path="/notice" element={<UnivNoticeNoticePage />} />
+              <Route path="/withdraw" element={<UnivNoticeUserDeletePage />} />
+              <Route path="/terms" element={<UnivNoticeTermsPage />} />
+              <Route path="/kakao" element={<UnivNoticeKakaoPage />} />
 
               <Route path="/ios" element={<UnivNoticeHomeAppPage />} />
               <Route path="*" element={<UnivNoticeError404Page />} />

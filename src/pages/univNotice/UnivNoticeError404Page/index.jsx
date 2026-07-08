@@ -13,7 +13,7 @@ const UnivNoticeError404Page = () => {
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        window.location.href = "/"; // 또는 원하는 경로
+        window.location.href = "/project/univnotice"; // 또는 원하는 경로
       }
     }, 5000);
     return () => {

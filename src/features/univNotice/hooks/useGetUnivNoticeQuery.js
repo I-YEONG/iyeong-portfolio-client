@@ -7,7 +7,14 @@ const QUERY_KEY = ["univnotice"];
 
 // 오버뷰 조회 훅
 /**
- * const { data: cert, isLoading: isCertLoading, isError: isCertError } = useCertificationsQuery();
+ *   const {
+    data: departmentList,
+    isLoading: isDepartmentListLoading,
+    isError: isDepartmentListError,
+  } = useGetUnivNoticeQuery(`/department/${selectedUniv}`, {
+    enabled: !!selectedUniv,
+  });
+  
  * @param {*} path
  * @returns { data: cert, isLoading: isCertLoading, isError: isCertError }
  */

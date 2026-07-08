@@ -16,7 +16,14 @@ export { default as CareerHiError404Page } from "./careerhi/CareerHiError404Page
 
 // univNotice
 export { default as UnivNoticeMainPage } from "./univNotice/UnivNoticeMainPage";
+export { default as UnivNoticeDeviceAppendPage } from "./univNotice/UnivNoticeDeviceAppendPage";
+export { default as UnivNoticeNoticePage } from "./univNotice/UnivNoticeNoticePage";
+export { default as UnivNoticeUserDeletePage } from "./univNotice/UnivNoticeUserDeletePage";
+export { default as UnivNoticeMyInfoPage } from "./univNotice/UnivNoticeMyPage/UnivNoticeMyInfoPage";
+export { default as UnivNoticeMyDevicePage } from "./univNotice/UnivNoticeMyPage/UnivNoticeMyDevicePage";
+export { default as UnivNoticeMySettingPage } from "./univNotice/UnivNoticeMyPage/UnivNoticeMySettingPage";
 
+// 가입페이지
 export { default as UnivNoticeHelloPage } from "./univNotice/UnivNoticeSignUpPage/0_HelloPage";
 export { default as UnivNoticePhoneSelectPage } from "./univNotice/UnivNoticeSignUpPage/1_PhoneSelectPage";
 export { default as UnivNoticeInfoPage } from "./univNotice/UnivNoticeSignUpPage/2_InfoPage";
@@ -27,7 +34,6 @@ export { default as UnivNoticeGooglePage } from "./univNotice/UnivNoticeSignUpPa
 export { default as UnivNoticeIssuancePage } from "./univNotice/UnivNoticeSignUpPage/7_IssuancePage";
 export { default as UnivNoticeEndPage } from "./univNotice/UnivNoticeSignUpPage/8_endPage";
 
+// 에러페이지
 export { default as UnivNoticeError404Page } from "./univNotice/UnivNoticeError404Page";
 export { default as UnivNoticeHomeAppPage } from "./univNotice/UnivNoticeHomeAppPage";
-
-export { default as UnivNoticeDeviceAppendPage } from "./univNotice/UnivNoticeDeviceAppendPage";

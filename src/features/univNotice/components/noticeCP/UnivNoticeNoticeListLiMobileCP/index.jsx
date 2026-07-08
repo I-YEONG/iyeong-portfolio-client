@@ -1,7 +1,10 @@
 import "./style.css";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DownloadIcon from "@mui/icons-material/Download";
+import { faBell, faFile } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "@/styles/univNotice.global.css";
+
 const UnivNoticeNoticeListLiMobileCP = ({ data, url }) => {
   // 날짜 포맷팅: YYYY. MM. DD
   let formattedDate = "";
@@ -50,8 +53,9 @@ const UnivNoticeNoticeListLiMobileCP = ({ data, url }) => {
           </span>
         )}
         <div className="noticeListLiMobileCP-attachments">
-          <DownloadIcon
+          <FontAwesomeIcon
             fontSize="small"
+            icon={faBell}
             style={{
               color: data.attachments ? "var(--black-4)" : "var(--black-2)",
               fontSize: "18px",
@@ -60,7 +64,8 @@ const UnivNoticeNoticeListLiMobileCP = ({ data, url }) => {
         </div>
         {data.NoticeKeywordMatches.length !== 0 && (
           <div className="noticeListLiMobileCP-alarm">
-            <NotificationsNoneIcon
+            <FontAwesomeIcon
+              icon={faFile}
               style={{
                 fontSize: "18px",
               }}

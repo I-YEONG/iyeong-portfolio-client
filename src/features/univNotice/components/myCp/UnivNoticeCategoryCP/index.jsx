@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
 import "./style.css";
 import "@/styles/univNotice.global.css";
-import ClearIcon from "@mui/icons-material/Clear";
+
 import UnivNoticeToggleCP from "../../_common/UnivNoticeToggleCP";
 import UnivNoticeMyPageKeywordCP from "./UnivNoticeMyPageKeywordCP";
-import AddIcon from "@mui/icons-material/Add";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UnivNoticeCategoryCP = ({ category, onEnabledCategory, onDeleteKeyword, onPostKeyword }) => {
   const onEnabledCategoryFunc = (value) => {
@@ -42,7 +43,7 @@ const UnivNoticeCategoryCP = ({ category, onEnabledCategory, onDeleteKeyword, on
       <div className="univnoticeFlexBetween">
         <div className="title">{category.category}</div>
         <div className="univnoticeFlexBetween" style={{ alignItems: "center", gap: "8px", color: "var(--black-3)" }}>
-          <AddIcon onClick={onPostKeywordFunc} style={{ cursor: "pointer" }} />
+          <FontAwesomeIcon icon={faPlus} onClick={onPostKeywordFunc} style={{ cursor: "pointer" }} />
           <UnivNoticeToggleCP value={category?.Categories.length === 0 ? false : true} onClickFun={onEnabledCategoryFunc} />
         </div>
       </div>
