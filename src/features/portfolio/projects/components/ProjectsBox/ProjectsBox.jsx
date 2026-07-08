@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { theme } from "@/styles/theme";
 import { projectsBoxCss } from "./ProjectsBox.styles";
 import useFormatDate from "@/hooks/useFormatDate";
@@ -8,15 +9,35 @@ import GOTO from "@/assets/portfolio/icon/goto.svg?react";
 // "2099-12-30"
 const ProjectsBox = ({ data }) => {
   const mainImg = data?.images?.find((img) => img.isMain);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const formatDate = useFormatDate();
+
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [mainImg?.imageUrl]);
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+  };
 
   return (
     <Link css={projectsBoxCss} className="cursor-reactive is-green projectCard" to={`/projects/${data.id}`}>
       {/* 프로젝트 카드 */}
       <div className="img-box">
         {/* 이미지 */}
-        {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
+        {mainImg && (
+          <>
+            {!isImageLoaded && <div className="img-skeleton" aria-hidden="true" />}
+            <img
+              src={mainImg.imageUrl}
+              alt={"메인 이미지 로딩 오류"}
+              onLoad={handleImageLoad}
+              onError={handleImageLoad}
+              style={{ opacity: isImageLoaded ? 1 : 0 }}
+            />
+          </>
+        )}
       </div>
       <div className="content-box">
         {/* 콘텐츠 */}

@@ -3,7 +3,7 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 
 // 페이지 임포트
 import { MouseFollower } from "@/components";
-import { NotFound, PortfolioAbout, PortfolioHome, PortfolioProjectDetail, PortfolioProjects } from "@/pages";
+import { NotFound, PortfolioAbout, PortfolioHome, PortfolioProject, PortfolioProjectDetail, PortfolioProjects } from "@/pages";
 import ImageModal from "./components/ImageModal/ImageModal";
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
         <Route path="/projects" element={<PortfolioProjects />} />
         <Route path="/projects/:id" element={<PortfolioProjectDetail />} />
 
-        {/* common */}
-        {/* 404 Not Found */}
+        {/* 메인 페이지 */}
+        <Route path="/project/:projectName/*" element={<PortfolioProject />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

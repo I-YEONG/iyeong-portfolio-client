@@ -3,8 +3,6 @@ import { getProjectDetailApi } from "@/features/portfolio/projectDetail/api/proj
 import { ProjectDetailHero, ProjectDetailImgs, ProjectDetailContent } from "@/features/portfolio/projectDetail/components";
 
 import { css } from "@emotion/react";
-import { theme } from "@/styles/theme";
-import { mq } from "@/styles/mq";
 
 import { Footer, Header } from "@/layouts";
 import { useEffect, useState } from "react";
@@ -14,7 +12,7 @@ import Tags from "@/components/Tags/Tags";
 
 const PortfolioProjectDetail = () => {
   const [projectDetail, setProjectDetail] = useState(null);
-  const formatDate = useFormatDate();
+  const _formatDate = useFormatDate();
   const { id: projectId } = useParams();
 
   useEffect(() => {

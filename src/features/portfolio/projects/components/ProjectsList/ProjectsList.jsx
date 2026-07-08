@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useAtomValue } from "jotai";
-import { Loading } from "@/components";
 
 // 스타일
 import { projectsListCss } from "./ProjectsList.styles";
@@ -42,6 +41,22 @@ const ProjectsList = () => {
       {/* 리스트 */}
       <ProjectsListHeader />
       {/* 베너 */}
+      {isProjectsListLoading && (
+        <section className="content-box">
+          <div className="content-center">
+            <div className="projects-banner-skeleton">
+              <div className="banner-content">
+                <div className="skeleton-line line-short" />
+                <div className="skeleton-line line-wide" />
+                <div className="skeleton-line line-mid" />
+                <div className="skeleton-line line-wide" />
+                <div className="skeleton-line line-short" />
+              </div>
+              <div className="banner-image skeleton-block" />
+            </div>
+          </div>
+        </section>
+      )}
       {!isProjectsListLoading && bannerProject && <ProjectsBanner project={bannerProject} />}
       {!isProjectsListLoading && restProjects.length > 0 && (
         <div className="gap-box">
@@ -50,9 +65,21 @@ const ProjectsList = () => {
       )}
       {/* 프로젝트 반복 3개씩 */}
       {isProjectsListLoading && (
-        <div className="loading-box">
-          <Loading />
-        </div>
+        <section className="content-box">
+          <div className="content-center project-row">
+            {[0, 1, 2].map((index) => (
+              <div key={`skeleton-${index}`} className="projects-box-skeleton">
+                <div className="box-image skeleton-block" />
+                <div className="box-content">
+                  <div className="skeleton-line line-short" />
+                  <div className="skeleton-line line-wide" />
+                  <div className="skeleton-line line-mid" />
+                  <div className="skeleton-line line-short" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       )}
       {!isProjectsListLoading &&
         projectRows.map((row, index) => (

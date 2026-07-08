@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useMedia } from "@/hooks/useMedia";
 import { projectsBannerCss } from "./ProjectsBanner.styles";
 import Tags from "@/components/Tags/Tags";
@@ -9,9 +10,16 @@ import { theme } from "@/styles/theme";
 
 const ProjectsBanner = ({ project }) => {
   const { isTablet, isPc } = useMedia();
+  const [loadedImageUrl, setLoadedImageUrl] = useState("");
   console.log(project);
   // mainImg는 배열이므로, 첫 번째 이미지만 사용해야 함
   const mainImg = project?.images?.find((img) => img.isMain);
+
+  const handleImageLoad = () => {
+    setLoadedImageUrl(mainImg?.imageUrl ?? "");
+  };
+
+  const isImageLoaded = loadedImageUrl === mainImg?.imageUrl;
 
   // 날짜 포맷 훅 사용
   const formatDate = useFormatDate();
@@ -23,7 +31,18 @@ const ProjectsBanner = ({ project }) => {
           {!isTablet && !isPc && (
             <div className="img-box cursor-reactive is-green">
               {/* 이미지 */}
-              {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
+              {mainImg && (
+                <>
+                  {!isImageLoaded && <div className="img-skeleton" aria-hidden="true" />}
+                  <img
+                    src={mainImg.imageUrl}
+                    alt={"메인 이미지 로딩 오류"}
+                    onLoad={handleImageLoad}
+                    onError={handleImageLoad}
+                    style={{ opacity: isImageLoaded ? 1 : 0 }}
+                  />
+                </>
+              )}
             </div>
           )}
 
@@ -59,7 +78,18 @@ const ProjectsBanner = ({ project }) => {
           {(isTablet || isPc) && (
             <div className="img-box cursor-reactive is-green">
               {/* 이미지 */}
-              {mainImg && <img src={mainImg.imageUrl} alt={"메인 이미지 로딩 오류"} />}
+              {mainImg && (
+                <>
+                  {!isImageLoaded && <div className="img-skeleton" aria-hidden="true" />}
+                  <img
+                    src={mainImg.imageUrl}
+                    alt={"메인 이미지 로딩 오류"}
+                    onLoad={handleImageLoad}
+                    onError={handleImageLoad}
+                    style={{ opacity: isImageLoaded ? 1 : 0 }}
+                  />
+                </>
+              )}
             </div>
           )}
         </Link>
