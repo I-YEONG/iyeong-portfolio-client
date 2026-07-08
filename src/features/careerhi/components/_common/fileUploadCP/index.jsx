@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import "@/styles/careerhi.global.css";
 
 /**
  * 파일 업로드 공통 컴포넌트
@@ -143,7 +144,7 @@ const FileUploadCP = ({
           backgroundColor: disabled ? "#d6d6d6" : "white",
         }}
         onClick={handleButtonClick}
-        className="B4 cursor-pointer text-point-text w-full h-12 py-4 px-5 rounded-lg border border-gray-300 focus:border-gray-500 focus:outline-none">
+        className="w-full h-12 px-5 py-4 border border-gray-300 rounded-lg cursor-pointer B4 text-point-text focus:border-gray-500 focus:outline-none">
         {placeholder}
         <input ref={fileInputRef} type="file" accept={accept} multiple={multiple} onChange={handleFileChange} style={{ display: "none" }} disabled={disabled} />
       </div>
@@ -151,7 +152,7 @@ const FileUploadCP = ({
         {selectedFiles.map((file, index) => (
           <div key={index} className="flex items-center justify-between bg-[#F0F9EB] p-2 rounded mb-2">
             <span className="B4 text-point-main">{file.name}</span>
-            <button type="button" className="text-point-main cursor-pointer" onClick={() => handleRemoveFile(index)}>
+            <button type="button" className="cursor-pointer text-point-main" onClick={() => handleRemoveFile(index)}>
               <FontAwesomeIcon icon={faXmark} />
             </button>
           </div>

@@ -7,7 +7,6 @@ import { data_qualificationsList } from "@/features/careerhi/data/qualifications
 import { data_p_languages, data_languageQualifications } from "@/features/careerhi/data/language";
 import SelectCP from "@/features/careerhi/components/_common/selectCP";
 import { useCallback, useEffect, useState } from "react";
-import { useLoginInfo } from "@/features/careerhi/hook/useLoginInfo";
 import useAlertCP from "@/features/careerhi/hook/useAlertCP";
 import { useNavigate } from "react-router-dom";
 import AlertCP from "@/features/careerhi/components/_common/alertCP";
@@ -20,21 +19,15 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Footer from "@/layouts/careerhi/Footer";
 import FileUploadCP from "@/features/careerhi/components/_common/fileUploadCP";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
-import logo_3d from "@/assets/image/3d_logo.png";
-import {
-  api_profileCreate,
-  api_profilePatch,
-  api_reportAnalyze,
-  buildProfilePatchRequest,
-  buildProfileRequestFromCreateForm,
-  api_profileGet,
-} from "@/features/careerhi/api/roadmap";
-import { api_deleteFile, api_uploadFile } from "@/features/careerhi/api/file";
+import logo_3d from "@/assets/careerhi/image/3d_logo.png";
 import { BarLoader } from "react-spinners";
+import { useAuth } from "@/hooks/useAuth";
+import { useGetCareerHiQuery } from "@/features/careerhi/hook/useGetCareerHiQuery";
 
-const MyRoadmapCreatePage = () => {
+const CareerHiCreatePage = () => {
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
   const { isPc } = useDeviceMode();
+  const { refetch } = useGetCareerHiQuery("/roadmap/create", { enabled: false });
 
   // 수정모드
   const [isEdit, setIsEdit] = useState(false);
@@ -91,91 +84,55 @@ const MyRoadmapCreatePage = () => {
   ]);
 
   // 선택된 파일
-  const [selectedFiles, setSelectedFiles] = useState([]);
   const [portfolioFileName, setPortfolioFileName] = useState("");
   const [portfolioFileUrl, setPortfolioFileUrl] = useState("");
-  const [isPortfolioUploading, setIsPortfolioUploading] = useState(false);
+
+  const [aiReqLoading, setAiReqLoading] = useState(false);
 
   // 동의
   const [isAgree, setIsAgree] = useState(false);
 
   // 최종 학력 변경 시 다른 항목 초기화 및 비활성화
-  useEffect(() => {
-    if (univLevel === "초등학교 졸업" || univLevel === "중학교 졸업") {
+  // 학력(univLevel)이 변경될 때 호출되는 이벤트 핸들러
+  const handleChangeUnivLevel = (newUnivLevel) => {
+    setUnivLevel(newUnivLevel); // 1. 학력 상태 업데이트
+
+    // 2. 선택된 학력에 따라 연관된 폼 데이터 즉시 초기화
+    if (newUnivLevel === "초등학교 졸업" || newUnivLevel === "중학교 졸업") {
       setUnivType("");
       setUniv("");
       setDepartment("");
       setUnivSituation("");
 
       setIsUnivInputDisabled(true);
+    } else if (newUnivLevel === "고등학교 졸업" && univType === "대학교 진학X") {
+      setUniv("");
+      setDepartment("");
+      setUnivSituation("");
+
+      setIsUnivInputDisabled(true);
     } else {
-      if (univLevel === "고등학교 졸업" && univType === "대학교 진학X") {
-        setUniv("");
-        setDepartment("");
-        setUnivSituation("");
-
-        setIsUnivInputDisabled(true);
-      }
-
       setIsUnivInputDisabled(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [univLevel]);
-
-  const getFileNameFromUrl = (url) => {
-    if (!url) return "";
-
-    try {
-      const pathname = new URL(url).pathname;
-      const fileName = pathname.split("/").pop() || "";
-      return decodeURIComponent(fileName);
-    } catch {
-      const fileName = String(url).split("/").pop() || "";
-      return decodeURIComponent((fileName.split("?")[0] || "").trim());
-    }
   };
 
-  const handleFileSelect = async (files) => {
-    setSelectedFiles(files);
+  // const getFileNameFromUrl = (url) => {
+  //   if (!url) return "";
 
-    const selectedFile = files?.[0]?.file;
-    if (!selectedFile) {
-      const deleteTargetFileName = portfolioFileName || getFileNameFromUrl(portfolioFileUrl);
-      if (deleteTargetFileName) {
-        const deleteResult = await api_deleteFile(deleteTargetFileName);
-        if (!deleteResult?.success) {
-          alert(deleteResult?.message || "기존 포트폴리오 파일 삭제에 실패했습니다.");
-        }
-      }
+  //   try {
+  //     const pathname = new URL(url).pathname;
+  //     const fileName = pathname.split("/").pop() || "";
+  //     return decodeURIComponent(fileName);
+  //   } catch {
+  //     const fileName = String(url).split("/").pop() || "";
+  //     return decodeURIComponent((fileName.split("?")[0] || "").trim());
+  //   }
+  // };
 
-      setPortfolioFileName("");
-      setPortfolioFileUrl("");
-      return;
-    }
-
-    const deleteTargetFileName = portfolioFileName || getFileNameFromUrl(portfolioFileUrl);
-    if (deleteTargetFileName) {
-      const deleteResult = await api_deleteFile(deleteTargetFileName);
-      if (!deleteResult?.success) {
-        alert(deleteResult?.message || "기존 포트폴리오 파일 삭제에 실패했습니다.");
-      }
-    }
-
-    setIsPortfolioUploading(true);
-
-    const uploadResult = await api_uploadFile(selectedFile);
-    setIsPortfolioUploading(false);
-
-    if (!uploadResult?.success || !uploadResult?.fileUrl) {
-      setPortfolioFileName("");
-      setPortfolioFileUrl("");
-      alert(uploadResult?.message || "포트폴리오 파일 업로드에 실패했습니다.");
-      return;
-    }
-
-    setPortfolioFileName(uploadResult.fileName || "");
-    setPortfolioFileUrl(uploadResult.fileUrl);
-  };
+  // const handleFileSelect = async (files) => {
+  //   setPortfolioFileName("임시로 업로드 처리 된 파일입니다.");
+  //   setPortfolioFileUrl("/test/url");
+  // };
 
   const updatePremier = (index, patch) => {
     // 리뷰: 불변성을 유지해 특정 인덱스만 안전하게 갱신합니다.
@@ -280,7 +237,8 @@ const MyRoadmapCreatePage = () => {
     setHopeJobDetail((prev) => (prev.includes(detail) ? prev.filter((item) => item !== detail) : [...prev, detail]));
   };
 
-  const { loginInfo, loginCheck, setRoadmapReportId } = useLoginInfo();
+  // const { loginInfo, loginCheck, setRoadmapReportId } = useLoginInfo();
+  const { isLogin, login } = useAuth();
 
   const nav = useNavigate();
 
@@ -288,7 +246,6 @@ const MyRoadmapCreatePage = () => {
   const languageQualificationExamList = Object.keys(data_languageQualifications || {});
 
   // FIXME: 이부분 수정하기
-  const [aiReqLoading, setAiReqLoading] = useState(false);
 
   // 제출 함수
   const handleSubmit = useCallback(async () => {
@@ -316,10 +273,8 @@ const MyRoadmapCreatePage = () => {
       if (univ || department || univSituation) {
         setUnivError(true);
         isValid = false;
-      } else {
-        setUnivError(false);
-        isValid = true;
       }
+      // 💡 수정됨: 에러를 덮어씌우던 else { isValid = true; } 구문 삭제
     } else {
       // 학력 정보가 모두 채워져 있어야 함
       if (!univLevel || !univType || !univ || !univSituation) {
@@ -339,20 +294,10 @@ const MyRoadmapCreatePage = () => {
       return;
     }
 
-    if (isPortfolioUploading) {
-      alert("포트폴리오 파일 업로드 중입니다. 잠시 후 다시 시도해 주세요.");
-      return;
-    }
-
-    if (selectedFiles.length > 0 && !portfolioFileUrl) {
-      alert("포트폴리오 파일 업로드가 완료되지 않았습니다. 파일을 다시 업로드해 주세요.");
-      return;
-    }
-
     if (isValid === false) return alert("입력한 내용을 다시 확인해 주세요.");
 
-    const profileRequest = buildProfileRequestFromCreateForm({
-      //FIXME: 포트폴리오 url 저장
+    // FIXME: 포트폴리오
+    const profileRequest = {
       univLevel,
       univType,
       name,
@@ -367,94 +312,66 @@ const MyRoadmapCreatePage = () => {
       planguagesList,
       portfolioFileName,
       portfolioFileUrl,
-    });
+    };
 
-    console.log(profileRequest);
-
-    // 업데이트 분기
-    if (isEdit) {
-      const patchRequest = buildProfilePatchRequest({
-        previousProfile: isEditData,
-        currentProfileRequest: profileRequest,
-      });
-
-      const patchResult = await api_profilePatch({
-        patchRequest,
-      });
-
-      if (!patchResult?.success) {
-        alert(patchResult?.message || "프로필 수정에 실패했습니다.");
-        return;
-      }
-    } else {
-      const createProfileResult = await api_profileCreate({
-        profileRequest,
-      });
-
-      if (!createProfileResult?.success) {
-        alert(createProfileResult?.message || "프로필 저장에 실패했습니다.");
-        return;
-      }
-    }
+    console.log("profileRequest", profileRequest);
 
     setAiReqLoading(true);
 
-    await new Promise((resolve) => setTimeout(resolve, 10000));
-    const analyzeResult = await api_reportAnalyze();
-    if (!analyzeResult?.success || !analyzeResult?.reportId) {
-      alert(analyzeResult?.message || "로드맵 생성에 실패했습니다.");
-      return;
-    }
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    setRoadmapReportId(String(analyzeResult.reportId));
-    nav("/roadmap/result");
+    setAiReqLoading(false);
+
+    // setRoadmapReportId(String(analyzeResult.reportId));
+    nav(`/project/careerhi/roadmap/result?report_id=3`);
   }, [
     name,
     univLevel,
     univType,
-    hopeJobDetail,
-    isAgree,
-    isEdit,
-    isEditData,
     univ,
     department,
     univSituation,
     hopeJobGroup,
+    hopeJobDetail,
     qualificationsList,
     languageQualifications,
     premiers,
     planguagesList,
-    portfolioFileName,
+    isAgree,
     portfolioFileUrl,
-    isPortfolioUploading,
-    selectedFiles,
-    setRoadmapReportId,
+    portfolioFileName, // 🌟 반드시 추가해야 새 파일 이름이 서버로 넘어갑니다!
     nav,
   ]);
 
-  useEffect(() => {
-    setHopeJobDetail([]);
-    setHopeJobGroup(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data_hopeJobGroup]);
+  // FIXME: 결과 확인해보기
+  // useEffect(() => {
+  //   setHopeJobDetail([]);
+  //   setHopeJobGroup(0);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [data_hopeJobGroup]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await loginCheck();
-      if (!result?.isLogin) {
-        setAlertTitleText("로그인이 필요합니다.");
-        setAlertButtonText("로그인/회원가입");
-        openAlert();
-      }
-    };
-    fetchData();
+    if (!isLogin) {
+      setAlertTitleText("로그인이 필요합니다.");
+      setAlertButtonText("로그인/회원가입");
+      openAlert();
+    } else {
+      closeAlert();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // 첫 마운트 때만 실행
+  }, [isLogin]); // 첫 마운트 때만 실행
 
   // 정보 불러오기
   const loadProfileData = useCallback(async () => {
-    const result = await api_profileGet();
-    if (!result) {
+    // 2. 원하는 순간에 refetch()를 직접 호출하여 데이터 통신!
+    const { data, isError } = await refetch();
+
+    const result = data.data; // API에서 받아온 데이터
+
+    console.log("loadProfileData result", result);
+
+    // 3. 에러 처리 (API 실패 시)
+    if (isError || !result) {
       return alert("프로필 정보를 불러오는데 실패했습니다\n저장된 내용이 없을 수 있습니다.");
     } else {
       setIsEditData(result);
@@ -464,7 +381,7 @@ const MyRoadmapCreatePage = () => {
       // 이름
       setName(result.basicInfo.name || "");
 
-      // FIXME:
+      // 학력
       setUnivLevel(result.basicInfo.educationLevel);
       setUnivType(result.basicInfo.schoolType);
       setUniv(result.basicInfo.schoolName || "");
@@ -520,7 +437,8 @@ const MyRoadmapCreatePage = () => {
 
       setIsAgree(true);
     }
-  }, [setDepartment, setName, setUniv]);
+    // 🌟 의존성 배열에 refetch 추가
+  }, [refetch, setDepartment, setName, setUniv]);
 
   return (
     <div>
@@ -530,21 +448,21 @@ const MyRoadmapCreatePage = () => {
           buttonText={alertButtonText}
           okButton={() => {
             closeAlert();
-            nav("/login");
+            login();
           }}
         />
       )}
       <div className="w-full h-full" style={isAlertOpen ? { position: "absolute", top: 0, left: 0 } : {}}>
-        <div className="w-full h-fit hidden md:block fixed z-850">
+        <div className="fixed hidden w-full h-fit md:block z-850">
           <HeaderPc />
         </div>
         {!isPc && <HeaderCP>기본 정보</HeaderCP>}
-        <div className="pt-20.5 relative h-full flex flex-col gap-9 px-8 sm:px-0">
+        <div css={{ padding: isPc ? "" : "0 24px", backgroundColor: !isPc ? "#fff" : "#f6f8fb" }} className="pt-20.5 relative flex flex-col gap-9 px-8 sm:px-0">
           <MainContentLayout page="roadmap" fixed={true} scroll={true} footer={true}>
             {aiReqLoading && (
-              <div className="w-full sm:pb-14 h-full flex flex-col items-center justify-center select-none relative gap-4 sm:gap-8">
+              <div className="relative flex flex-col items-center justify-center w-full h-full gap-4 select-none sm:pb-14 sm:gap-8">
                 <img src={logo_3d} alt="이미지를 불러올 수 없습니다." className="h-2/10 sm:h-6/10 max-h-90 pb-1/5 mb-[18vh] sm:mb-0 sm:mt-[18vh]" />
-                <p className="H3_bold leading-7 text-center">
+                <p className="leading-7 text-center H3_bold">
                   {name} 님에게 딱 맞는
                   <br />
                   취준 로드맵을 생성하고 있습니다..
@@ -553,11 +471,11 @@ const MyRoadmapCreatePage = () => {
               </div>
             )}
             {!aiReqLoading && (
-              <div className="MyRoadmapCreatePage z-50 flex flex-col justify-start w-full gap-12 ">
-                <div className="flex justify-between items-center">
-                  <p className="H2_bold hidden sm:block">{loginInfo.userData?.userName} 님의 스펙 정보를 작성해 주세요</p>
+              <div className="z-50 flex flex-col justify-start w-full gap-12 MyRoadmapCreatePage ">
+                <div className="flex items-center justify-between">
+                  <p className="hidden H2_bold sm:block">사용자 님의 스펙 정보를 작성해 주세요</p>
                   {isPc && (
-                    <span onClick={loadProfileData} className="text-point-main B4 cursor-pointer">
+                    <span onClick={loadProfileData} className="cursor-pointer text-point-main B4">
                       정보 불러오기
                     </span>
                   )}
@@ -568,7 +486,7 @@ const MyRoadmapCreatePage = () => {
                     <p className="H3_bold">
                       기본 정보
                       {!isPc && (
-                        <span onClick={loadProfileData} className="text-point-main B4 cursor-pointer absolute right-8">
+                        <span onClick={loadProfileData} className="absolute cursor-pointer text-point-main B4 right-8">
                           정보 불러오기
                         </span>
                       )}
@@ -594,12 +512,12 @@ const MyRoadmapCreatePage = () => {
                         학력<span>*</span>
                       </p>
                       {/* INPUT DIV */}
-                      <div className="flex gap-4 flex-col">
+                      <div className="flex flex-col gap-4">
                         {/* INPUT COL 1 */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:grid sm:grid-cols-3">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                           {/* 최종 학력 */}
                           <div className="">
-                            <SelectCP value={univLevel} setValue={setUnivLevel} selectList={data_univLevel} placeholder={"최종 학력"} />
+                            <SelectCP value={univLevel} setValue={handleChangeUnivLevel} selectList={data_univLevel} placeholder={"최종 학력"} />
                           </div>
                           {/* 구분 */}
                           <div className="">
@@ -618,7 +536,7 @@ const MyRoadmapCreatePage = () => {
                           </div>
                         </div>
                         {/* INPUT COL 2 */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:grid sm:grid-cols-3">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                           {/* 전공 */}
                           <div className="col-span-2">
                             <InputCP placeholder="전공" value={department} onChangeValue={onChangeDepartment} disabled={isUnivInputDisabled} />
@@ -660,12 +578,12 @@ const MyRoadmapCreatePage = () => {
                               type="radio"
                               id={`hopeJobGroup_${index}`}
                               name="hopeJobGroup"
-                              className="cursor-pointer accent-point-main hover:accent-point-sub-bold transition-colors duration-100"
+                              className="transition-colors duration-100 cursor-pointer accent-point-main hover:accent-point-sub-bold"
                               value={index}
                               checked={hopeJobGroup === index}
                               onChange={() => handleGroupChange(index)}
                             />
-                            <label htmlFor={`hopeJobGroup_${index}`} className="radioLabelCP cursor-pointer pl-2 B3">
+                            <label htmlFor={`hopeJobGroup_${index}`} className="pl-2 cursor-pointer radioLabelCP B3">
                               {group}
                             </label>
                           </div>
@@ -678,9 +596,9 @@ const MyRoadmapCreatePage = () => {
                       <p className="B3_bold">
                         세부사항<span>*</span>
                       </p>
-                      <div className="flex gap-4 flex-wrap">
+                      <div className="flex flex-wrap gap-4">
                         {currentHopeJobDetails.map((detail, index) => (
-                          <div key={detail} className="cursor-pointer p-1">
+                          <div key={detail} className="p-1 cursor-pointer">
                             <input
                               type="checkbox"
                               id={`hopeJobDetail_${index}`}
@@ -689,7 +607,7 @@ const MyRoadmapCreatePage = () => {
                               checked={hopeJobDetail.includes(detail)}
                               onChange={() => toggleHopeJobDetail(detail)}
                             />
-                            <label htmlFor={`hopeJobDetail_${index}`} className="radioLabelCP cursor-pointer pl-2 B3">
+                            <label htmlFor={`hopeJobDetail_${index}`} className="pl-2 cursor-pointer radioLabelCP B3">
                               {detail}
                             </label>
                           </div>
@@ -713,8 +631,8 @@ const MyRoadmapCreatePage = () => {
                           zIndexClass="z-50"
                         />
                       </div>
-                      <div className="min-h-4 flex flex-wrap gap-x-2 gap-y-3">
-                        {qualificationsList === 0 && <p className="B4 text-gray-500">자격증을 입력해 주세요</p>}
+                      <div className="flex flex-wrap min-h-4 gap-x-2 gap-y-3">
+                        {qualificationsList === 0 && <p className="text-gray-500 B4">자격증을 입력해 주세요</p>}
                         {qualificationsList.map((item) => {
                           return (
                             <span
@@ -739,7 +657,7 @@ const MyRoadmapCreatePage = () => {
                       </div>
                       <div className="flex flex-col gap-6">
                         {premiers.map((item, index) => (
-                          <div key={index} className="flex flex-col sm:flex-row gap-4 sm:grid sm:grid-cols-3">
+                          <div key={index} className="flex flex-col gap-4 sm:flex-row sm:grid sm:grid-cols-3">
                             {/* 교내/교외 */}
                             <div className="">
                               <SelectCP
@@ -824,8 +742,8 @@ const MyRoadmapCreatePage = () => {
                           zIndexClass="z-40"
                         />
                       </div>
-                      <div className="min-h-4 flex flex-wrap gap-x-2 gap-y-3">
-                        {planguagesList.length === 0 && <p className="B4 text-gray-500">사용 언어를 입력해 주세요</p>}
+                      <div className="flex flex-wrap min-h-4 gap-x-2 gap-y-3">
+                        {planguagesList.length === 0 && <p className="text-gray-500 B4">사용 언어를 입력해 주세요</p>}
                         {planguagesList.map((item) => {
                           return (
                             <span
@@ -844,7 +762,7 @@ const MyRoadmapCreatePage = () => {
                       <p className="B3_bold">첨부</p>
                       <div>
                         <FileUploadCP
-                          onFileSelect={handleFileSelect}
+                          // onFileSelect={handleFileSelect}
                           accept=".pdf,.doc,.docx"
                           multiple={false}
                           placeholder="문서 선택"
@@ -858,7 +776,7 @@ const MyRoadmapCreatePage = () => {
                 {/* 구분선 */}
                 <div className="w-full h-px bg-gray-300"></div>
                 {/* 버튼 DIV */}
-                <div className="flex justify-between items-center mb-32 sm:mb-64 flex-col sm:flex-row gap-4">
+                <div className="flex flex-col items-center justify-between gap-4 mb-32 sm:mb-64 sm:flex-row">
                   {/* 동의 */}
                   <form>
                     <input
@@ -869,8 +787,8 @@ const MyRoadmapCreatePage = () => {
                       checked={isAgree}
                       onChange={(e) => setIsAgree(e.target.checked)}
                     />
-                    <label htmlFor="isAgree" className="radioLabelCP cursor-pointer pl-2 B3">
-                      AI를 활용해 로드맵을 생성하는 데에 동의합니다.<span className="text-point-error ml-1">*</span>
+                    <label htmlFor="isAgree" className="pl-2 cursor-pointer radioLabelCP B3">
+                      AI를 활용해 로드맵을 생성하는 데에 동의합니다.<span className="ml-1 text-point-error">*</span>
                     </label>
                   </form>
 
@@ -880,7 +798,7 @@ const MyRoadmapCreatePage = () => {
                       bg={"transition-colors duration-100 bg-[#ddf2d2] sm:bg-[#ddf2d2] sm:hover:bg-[#d4edc8]"}
                       color={"text-point-main"}
                       fontSize={"B3 hover:B3_bold"}>
-                      나의 로드맵 생성하기
+                      {isPc ? "나의 로드맵 생성하기" : "생성"}
                     </ButtonCP>
                   </div>
                 </div>
@@ -895,4 +813,4 @@ const MyRoadmapCreatePage = () => {
     </div>
   );
 };
-export default MyRoadmapCreatePage;
+export default CareerHiCreatePage;

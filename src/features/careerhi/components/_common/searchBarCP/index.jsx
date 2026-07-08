@@ -2,6 +2,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMemo, useState } from "react";
 import "./style.css";
+import "@/styles/careerhi.global.css";
 
 const CHOSEONG = ["ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
 
@@ -100,7 +101,7 @@ const SearchBarCP = ({ value, onChangeValue, setValue, selectList, placeholder =
     const parts = text.split(regex);
     return parts.map((part, index) =>
       regex.test(part) ? (
-        <span key={index} className="text-point-main font-bold">
+        <span key={index} className="font-bold text-point-main">
           {part}
         </span>
       ) : (
@@ -113,14 +114,14 @@ const SearchBarCP = ({ value, onChangeValue, setValue, selectList, placeholder =
 
   //FIXME: 디자인 수정, 다른 div 위치에 간섭이 되는지 확인하기, 스크롤바 수정하기
   return (
-    <div className="relative w-full max-h-12 overflow-y-visible">
+    <div className="relative w-full overflow-y-visible max-h-12">
       <div
         className={`searchBarCp rounded-lg border border-gray-300 focus:border-gray-500 relative bg-white ${zIndexClass}`}
         style={{
           opacity: disabled ? 0.5 : 1,
         }}>
         {/* INPUT */}
-        <div className="flex px-5 flex-nowrap gap-3 items-center" onFocus={() => setIsOpen(true)} onBlur={() => setTimeout(() => setIsOpen(false), 100)}>
+        <div className="flex items-center gap-3 px-5 flex-nowrap" onFocus={() => setIsOpen(true)} onBlur={() => setTimeout(() => setIsOpen(false), 100)}>
           <input
             type="text"
             className="B4 h-11.5 text-point-text flex-1 w-full outline-none border-0"
@@ -134,9 +135,9 @@ const SearchBarCP = ({ value, onChangeValue, setValue, selectList, placeholder =
 
         {/* LIST */}
         {showList && (
-          <div className="searchBarCp-list border-t border-t-gray-200 py-5 mx-5 max-h-52 overflow-y-auto">
+          <div className="py-5 mx-5 overflow-y-auto border-t searchBarCp-list border-t-gray-200 max-h-52">
             {filteredList.map((item, index) => (
-              <div key={index} className="pb-3 last:pb-0 cursor-pointer B4 text-point-text" onClick={() => handleItemClick(item)}>
+              <div key={index} className="pb-3 cursor-pointer last:pb-0 B4 text-point-text" onClick={() => handleItemClick(item)}>
                 {highlightText(item, value)}
               </div>
             ))}

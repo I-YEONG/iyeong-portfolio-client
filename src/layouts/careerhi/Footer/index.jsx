@@ -1,5 +1,5 @@
 import "./style.css";
-import logo from "@/assets/image/logo.png";
+import logo from "@/assets/careerhi/image/logo.png";
 
 const Footer = () => {
   return (

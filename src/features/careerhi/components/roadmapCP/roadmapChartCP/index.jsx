@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ReactApexChart from "react-apexcharts";
-import { useMedia } from "../../../hook/useMedia";
+
 import ButtonCP from "../../_common/buttonCP";
 import { useNavigate } from "react-router-dom";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
 
 const RoadmapChartCP = ({ data }) => {
-  const isPc = useMedia().isPc;
+  const { isPc } = useDeviceMode();
   const [state] = useState({
     series: [
       {

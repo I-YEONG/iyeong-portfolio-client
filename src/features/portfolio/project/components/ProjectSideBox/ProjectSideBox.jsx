@@ -8,12 +8,13 @@ import { projectSideBoxCss } from "./ProjectSideBox.styles";
 const ProjectSideBox = () => {
   const { projectName, "*": restPath } = useParams();
   const { data } = useCommentQuery(projectName);
-  const filterPath = restPath || "/";
+  const filterPath = "/" + restPath || "/";
   const commentList = data?.comments
     ?.slice()
-    .filter((comment) => comment.detailUrl === filterPath)
+    .filter((comment) => comment.detailUrl === filterPath || comment.detailUrl === "*")
     .sort((a, b) => a.sort - b.sort);
 
+  console.log(filterPath);
   const formatDate = useFormatDate();
 
   return (
@@ -35,7 +36,7 @@ const ProjectSideBox = () => {
           {commentList.map((comment) => (
             <div className="comment-item" key={comment.id}>
               <p className="comment-title">
-                <span>{comment.sort}.</span>
+                <span>{comment.sort === 0 ? "공통" : comment.sort}.</span>
                 {comment.title}
               </p>
               <p className="comment-content">{comment.comment}</p>

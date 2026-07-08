@@ -1,18 +1,19 @@
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
+import "@/styles/careerhi.global.css";
 import { useState } from "react";
 
 const SelectCP = ({ value, setValue, selectList, placeholder = "", disabled = false }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative w-full max-h-12 overflow-y-visible">
+    <div className="relative w-full overflow-y-visible max-h-12">
       <div
         style={{
           opacity: disabled ? 0.5 : 1,
         }}
-        className="SelectCP z-10 flex px-5 flex-nowrap gap-3 items-center cursor-pointer rounded-lg border border-gray-300 relative bg-white"
+        className="relative z-10 flex items-center gap-3 px-5 bg-white border border-gray-300 rounded-lg cursor-pointer SelectCP flex-nowrap"
         onFocus={() => setIsOpen(true)}
         onBlur={() => setTimeout(() => setIsOpen(false), 100)}>
         <input
@@ -33,12 +34,20 @@ const SelectCP = ({ value, setValue, selectList, placeholder = "", disabled = fa
           <div className="w-fit">
             {selectList.map((item, index) => (
               <div
-                onClick={() => {
+                onMouseDown={(e) => {
+                  e.preventDefault();
+
                   setValue(item);
-                  setIsOpen(false);
+
+                  setTimeout(() => {
+                    setIsOpen(false);
+                    if (document.activeElement instanceof HTMLElement) {
+                      document.activeElement.blur();
+                    }
+                  }, 50);
                 }}
                 key={index}
-                className="mb-2 last:mb-0 cursor-pointer B4 px-2.5 py-1 rounded-sm"
+                className="mb-2 last:mb-0 cursor-pointer B4 px-2.5 py-1 rounded-sm hover:bg-[#fff9fb]"
                 style={{
                   backgroundColor: item === value ? "#FFF2F5" : "withe",
                   color: item === value ? "var(--color-point-sub-bold)" : "var(--color-point-text)",

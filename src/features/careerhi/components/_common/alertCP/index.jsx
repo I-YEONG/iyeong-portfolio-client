@@ -1,5 +1,6 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "@/styles/careerhi.global.css";
 
 /**
  * AlertCP 컴포넌트
@@ -13,18 +14,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
  */
 const AlertCP = ({ titleText = "AlertTitle", buttonText = "AlertButton", closeButton, onCloseButton = false, okButton }) => {
   return (
-    <div className="fixed top-0 left-0 w-screen h-screen select-none z-2000 bg-[#171C20BF] flexCenter">
-      <div className="relative w-80 h-45 bg-white min-h-50 rounded-lg p-10 flex flex-col justify-between">
+    <div css={{ width: "100%", height: "100cqh" }} className=" fixed top-0 left-0 select-none z-2000 bg-[#171C20BF] flexCenter">
+      <div className="relative flex flex-col justify-between p-10 bg-white rounded-lg w-80 h-45 min-h-50">
         {/* xMark */}
         {onCloseButton && (
-          <div onClick={() => closeButton()} className="absolute top-6 right-6 cursor-pointer text-gray-400">
+          <div onClick={() => closeButton()} className="absolute text-gray-400 cursor-pointer top-6 right-6">
             <FontAwesomeIcon icon={faXmark} />
           </div>
         )}
 
         {/* title */}
-        <p className="H3_bold w-full text-center leading-6">{titleText}</p>
-        <div className="H4_bold cursor-pointer w-full py-4 text-center text-white bg-point-main rounded-lg" onClick={okButton}>
+        <p className="w-full leading-6 text-center H3_bold">{titleText}</p>
+        <div className="w-full py-4 text-center text-white rounded-lg cursor-pointer H4_bold bg-point-main" onClick={okButton}>
           {buttonText}
         </div>
       </div>
