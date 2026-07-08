@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import useAlertCP from "@/features/careerhi/hook/useAlertCP";
+import useAlertCP from "@/features/careerhi/hooks/useAlertCP";
 import AlertCP from "@/features/careerhi/components/_common/alertCP";
 import HeaderPc from "@/layouts/careerhi/Header_PC";
 import HeaderCP from "@/features/careerhi/components/_common/headerCP";
@@ -24,7 +24,7 @@ import percentage_100 from "@/assets/careerhi/image/percentage/100.svg";
 import portfolio_img from "@/assets/careerhi/image/portfolio.png";
 import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 import { useAuth } from "@/hooks/useAuth";
-import { useGetCareerHiQuery } from "@/features/careerhi/hook/useGetCareerHiQuery";
+import { useGetCareerHiQuery } from "@/features/careerhi/hooks/useGetCareerHiQuery";
 
 const CareerHiResultPage = () => {
   const percentageImages = {
@@ -308,7 +308,6 @@ const CareerHiResultPage = () => {
                     </ul>
                   </div>
                 </div>
-                {/* 포트폴리오 - 끝 */}
 
                 <div className="flex items-end justify-end w-full gap-6 mb-32 mt-22">
                   <span onClick={onReportDeleteHandler} className="p-2 cursor-pointer B4 text-point-sub-bold">

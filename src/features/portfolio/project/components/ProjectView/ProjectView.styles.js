@@ -13,7 +13,8 @@ export const projectViewCss = (isPc) =>
 
     ".project-view": {
       width: isPc ? "100%" : "min(94%, 420px)",
-      height: isPc ? "100%" : "auto",
+      // height: isPc ? "100%" : "auto",
+      height: isPc ? "100%" : "calc(min(94%, 420px) * (19.5 / 9))",
       aspectRatio: isPc ? "auto" : "9 / 19.5",
       maxHeight: isPc ? "none" : "94%",
       borderRadius: isPc ? "0" : "12px",

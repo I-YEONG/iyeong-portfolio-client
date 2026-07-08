@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import AlertCP from "@/features/careerhi/components/_common/alertCP";
-import useAlertCP from "@/features/careerhi/hook/useAlertCP";
+import useAlertCP from "@/features/careerhi/hooks/useAlertCP";
 import { useNavigate } from "react-router-dom";
 import MainLayout from "@/layouts/careerhi";
 import MainContentLayout from "@/layouts/careerhi/MainLayout";

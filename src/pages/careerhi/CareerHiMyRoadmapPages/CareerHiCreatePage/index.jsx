@@ -7,7 +7,7 @@ import { data_qualificationsList } from "@/features/careerhi/data/qualifications
 import { data_p_languages, data_languageQualifications } from "@/features/careerhi/data/language";
 import SelectCP from "@/features/careerhi/components/_common/selectCP";
 import { useCallback, useEffect, useState } from "react";
-import useAlertCP from "@/features/careerhi/hook/useAlertCP";
+import useAlertCP from "@/features/careerhi/hooks/useAlertCP";
 import { useNavigate } from "react-router-dom";
 import AlertCP from "@/features/careerhi/components/_common/alertCP";
 import HeaderCP from "@/features/careerhi/components/_common/headerCP";
@@ -22,7 +22,7 @@ import ButtonCP from "@/features/careerhi/components/_common/buttonCP";
 import logo_3d from "@/assets/careerhi/image/3d_logo.png";
 import { BarLoader } from "react-spinners";
 import { useAuth } from "@/hooks/useAuth";
-import { useGetCareerHiQuery } from "@/features/careerhi/hook/useGetCareerHiQuery";
+import { useGetCareerHiQuery } from "@/features/careerhi/hooks/useGetCareerHiQuery";
 
 const CareerHiCreatePage = () => {
   const [isAlertOpen, alertTitleText, alertButtonText, setAlertTitleText, setAlertButtonText, closeAlert, openAlert] = useAlertCP();
