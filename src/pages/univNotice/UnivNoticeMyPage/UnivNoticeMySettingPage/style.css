@@ -5,7 +5,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .mySettingPage .centerBox {
+  .mySettingPage .univnoticeCenterBox {
     width: 80vw;
   }
 }

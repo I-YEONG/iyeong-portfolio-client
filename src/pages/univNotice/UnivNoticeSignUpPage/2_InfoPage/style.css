@@ -5,7 +5,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .infoPage .centerBox {
+  .infoPage .univnoticeCenterBox {
     min-width: 80vw;
   }
 }

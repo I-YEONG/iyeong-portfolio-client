@@ -25,8 +25,8 @@ const UnivNoticeGooglePage = () => {
         {!isPc && <div className="mobile-image">{/* 이미지 */}</div>}
         <div className="content univnoticeFlexBetweenCol">
           <div>
-            {isPc && <div className="pc-title-image">{/* 이미지 */}</div>}
-            <p className="title">
+            {isPc && <div className="pc-univnoticeTitle-image">{/* 이미지 */}</div>}
+            <p className="univnoticeTitle">
               완료까지 얼마 남지 않았어요
               <br />
               아래에서 <span className="bold">앱을 설치</span>해 주세요

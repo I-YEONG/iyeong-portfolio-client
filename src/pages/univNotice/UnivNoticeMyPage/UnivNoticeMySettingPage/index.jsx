@@ -108,10 +108,10 @@ const UnivNoticeMySettingPage = () => {
     <UnivNoticeMyPageLayout>
       <section className="mySettingPage univnoticeFlexCenter" css={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {/* 중앙 */}
-        <div className="centerBox">
+        <div className="univnoticeCenterBox">
           {/* 타이틀 */}
-          <div className="titleBox">
-            <h2 className="title">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">공지 설정</span>
             </h2>
             <h4 className="subTitle">공지별 On/Off 및 키워드를 설정</h4>

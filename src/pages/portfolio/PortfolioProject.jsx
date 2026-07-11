@@ -115,7 +115,7 @@ const PortfolioProject = () => {
             </Routes>
           )}
           {/* 살펴 프로젝트 라우터 */}
-          {projectName === "univnotice" && (
+          {projectName === "domo" && (
             <Routes>
               <Route path="/" element={<DomoHomePage />} />
               <Route path="*" element={<DomoNotFoundPage />} />

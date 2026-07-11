@@ -18,7 +18,6 @@ const DomoPcHeader = () => {
           <li>
             <NavLink to="/project/domo/recs">일정 짜기</NavLink>
           </li>
-          /project/domo
           <li>
             <NavLink to="/project/domo/benefix">혜택 보기</NavLink>
           </li>

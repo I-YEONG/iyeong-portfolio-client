@@ -62,7 +62,7 @@
 }
 
 /* 공통 스타일2 */
-.centerBox {
+.univnoticeCenterBox {
   width: 100%;
   min-height: 50vh;
   max-width: 400px;
@@ -77,30 +77,30 @@
 }
 
 @media screen and (max-width: 768px) {
-  .centerBox {
+  .univnoticeCenterBox {
     width: 90%;
     margin: 0 auto;
     gap: 1rem;
   }
 
-  .centerBox > .bottomItem {
+  .univnoticeCenterBox > .bottomItem {
     margin-top: 2rem !important;
   }
 }
 
-.centerBox > .bottomItem {
+.univnoticeCenterBox > .bottomItem {
   margin-top: auto;
 }
 
-.centerBox > * {
+.univnoticeCenterBox > * {
   width: 100%;
 }
 
-.titleBox {
+.univnoticeTitleBox {
   width: 100%;
 }
 
-.title {
+.univnoticeTitle {
   font-size: clamp(28px, 2.5vw, 1.875rem);
   line-height: 1.4;
   font-weight: 500;
@@ -120,7 +120,7 @@
   text-align: center;
 }
 
-.centerBox > .titleBox + .flexCol {
+.univnoticeCenterBox > .univnoticeTitleBox + .flexCol {
   max-height: 48vh;
   overflow-y: auto;
   padding-right: 4px; /* 스크롤바 공간 확보 */
@@ -128,7 +128,7 @@
 
 /* Firefox 전용: 표준 속성 */
 @supports (scrollbar-width: thin) and (not (selector(::-webkit-scrollbar))) {
-  .centerBox > .titleBox + .flexCol {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
@@ -136,28 +136,28 @@
 
 /* Blink/WebKit 전용: 화살표 제거 */
 @supports selector(::-webkit-scrollbar) {
-  .centerBox > .titleBox + .flexCol::-webkit-scrollbar {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar {
     width: 4px;
     background: transparent;
   }
-  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-thumb {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
-  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-track {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-track {
     background: transparent;
   }
 
   /* 화살표 버튼 숨김 */
-  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button {
     display: none;
     width: 0;
     height: 0;
   }
-  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button:single-button {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button:single-button {
     display: none;
   }
-  .centerBox > .titleBox + .flexCol::-webkit-scrollbar-button:double-button {
+  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button:double-button {
     display: none;
   }
 }

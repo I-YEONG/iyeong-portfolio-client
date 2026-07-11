@@ -9,7 +9,7 @@ export const aboutTechnicalItemBoxCss = (color, pagination) =>
     height: "100%",
     borderRight: `1px solid ${theme.colors.lightLine}`,
 
-    // titleBox
+    // univnoticeTitleBox
     "& > .title-box": {
       ...theme.flex.rowBetween,
       fontWeight: "600",

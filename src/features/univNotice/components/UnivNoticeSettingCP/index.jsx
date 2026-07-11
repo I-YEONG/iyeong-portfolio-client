@@ -44,10 +44,10 @@ const UnivNoticeSettingCP = ({ pageId, data, setKeywordFunc, nextButtonClick, sk
   };
 
   return (
-    <div className="centerBox settingCP">
+    <div className="univnoticeCenterBox settingCP">
       {/* 타이틀 */}
-      <div className="titleBox">
-        <h2 className="title">
+      <div className="univnoticeTitleBox">
+        <h2 className="univnoticeTitle">
           <span className="bold">{data.category}</span>의<br />
           키워드를 설정합니다!
         </h2>
@@ -58,7 +58,13 @@ const UnivNoticeSettingCP = ({ pageId, data, setKeywordFunc, nextButtonClick, sk
         </h4>
       </div>
       <div className="univnoticeFlexCol">
-        <UnivNoticeInputCP value={inputValue} onChange={onChangeInputValue} title="키워드" placeholder="' / '로 구분, Enter로 등록" onKeyDown={onKeyDown} />
+        <UnivNoticeInputCP
+          value={inputValue}
+          onChange={onChangeInputValue}
+          univnoticeTitle="키워드"
+          placeholder="' / '로 구분, Enter로 등록"
+          onKeyDown={onKeyDown}
+        />
         <div className="keywordList">
           {keywords.map((kw, idx) => (
             <UnivNoticeKeywordCP key={idx} kw={kw} onDelete={deleteKeyword} />

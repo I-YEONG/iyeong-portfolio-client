@@ -150,8 +150,8 @@
   font-size: 0.875rem;
 }
 
-.noticePage .noticeListLiCP .noticeListLiCP-title,
-.noticePage .noticeListLiCPTitle .noticeListLiCP-title {
+.noticePage .noticeListLiCP .noticeListLiCP-univnoticeTitle,
+.noticePage .noticeListLiCPTitle .noticeListLiCP-univnoticeTitle {
   flex: 0.6;
 }
 .noticePage .noticeListLiCP .noticeListLiCP-author,

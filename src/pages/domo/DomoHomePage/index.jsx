@@ -3,15 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
 
 import "swiper/css";
-import "./index.css";
 import "@/styles/domo.global.css";
-import MainLayout from "../layout/MainLayout";
-import CustomSwiper from "../component/Swiper";
 import homeData from "@/mockup/home.json";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { DomoMainLayout } from "@/layouts";
+import DomoCustomSwiper from "@/features/domo/components/DomoSwiper";
+import { domoHomeStyle } from "./style";
 
 const DomoHomePage = () => {
-  const { isMobile } = useDeviceMode();
+  const { isMobile, isPc } = useDeviceMode();
   const [randomCourses, setRandomCourses] = useState([]);
   const navigate = useNavigate();
 
@@ -33,12 +33,12 @@ const DomoHomePage = () => {
   };
 
   return (
-    <MainLayout>
+    <DomoMainLayout>
       <section className="slider-section">
-        <CustomSwiper />
+        <DomoCustomSwiper />
       </section>
 
-      <main className="home-container">
+      <main className="home-container" css={domoHomeStyle(isPc)}>
         <section className="grid-section">
           <h2 className="grid-title">
             <span className="span-domo-blue">도모</span>가 모아온 각 지역의 특별한 하루!
@@ -106,7 +106,7 @@ const DomoHomePage = () => {
           {isMobile && <div style={{ height: "48px" }} />}
         </section>
       </main>
-    </MainLayout>
+    </DomoMainLayout>
   );
 };
 

@@ -1,0 +1,88 @@
+.slide-main {
+  margin: 0 auto;
+  margin-top: 56px;
+}
+
+.swiper-slide {
+  height: 636px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: start;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide {
+  cursor: pointer;
+}
+
+.slide-1 {
+  background-image: url("/images/domo/banner/busan.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide-2 {
+  background-image: url("/images/domo/banner/ddp.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide-3 {
+  background-image: url("/images/domo/banner/chuncheon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.slide-content {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.slide-content h2 {
+  font-size: 64px;
+  font-weight: bold;
+  font-family: "pre-semibold";
+  margin-bottom: 32px;
+  line-height: 1.4;
+}
+
+.slide-content button {
+  background-color: #ffe17d;
+  color: #2c2f33;
+  border: none;
+  padding: 16px 42px;
+  font-size: 36px;
+  font-weight: 600;
+  font-family: "pre-semibold";
+  border-radius: 42px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slide-content button:hover {
+  background-color: #f39c12;
+}
+
+/* Customizing Swiper Navigation/Pagination to match the image */
+:root {
+  --swiper-navigation-color: rgba(255, 255, 255, 0.5);
+  --swiper-pagination-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .slide-main {
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+
+  .slide-main .slide-content h2 {
+    font-size: 22px;
+    padding-bottom: 32px;
+  }
+}
