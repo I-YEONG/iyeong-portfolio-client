@@ -19,21 +19,21 @@
 }
 
 .slide-1 {
-  background-image: url("/images/domo/banner/busan.jpg");
+  background-image: url("https://hiqyqzmyoxafmrrspntv.supabase.co/storage/v1/object/public/iyeong-portfolio-file-bucket/domo/banner/busan.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .slide-2 {
-  background-image: url("/images/domo/banner/ddp.png");
+  background-image: url("https://hiqyqzmyoxafmrrspntv.supabase.co/storage/v1/object/public/iyeong-portfolio-file-bucket/domo/banner/ddp.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .slide-3 {
-  background-image: url("/images/domo/banner/chuncheon.jpg");
+  background-image: url("https://hiqyqzmyoxafmrrspntv.supabase.co/storage/v1/object/public/iyeong-portfolio-file-bucket/domo/banner/chuncheon.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

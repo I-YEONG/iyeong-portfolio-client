@@ -4,28 +4,31 @@ import { useState, useEffect } from "react";
 
 import "swiper/css";
 import "@/styles/domo.global.css";
-import homeData from "@/mockup/home.json";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { DomoMainLayout } from "@/layouts";
 import DomoCustomSwiper from "@/features/domo/components/DomoSwiper";
 import { domoHomeStyle } from "./style";
+import { useGetDomoQuery } from "@/features/domo/hooks/useGetDomoQuery";
 
 const DomoHomePage = () => {
   const { isMobile, isPc } = useDeviceMode();
   const [randomCourses, setRandomCourses] = useState([]);
   const navigate = useNavigate();
-
-  // 12개 중 랜덤하게 8개 선택하는 함수
-  const selectRandomCourses = () => {
-    const shuffled = [...homeData].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 8);
-  };
+  const {
+    data: homeData,
+    isLoading: isHomeDataLoading,
+    // isError: isDepartmentListError,
+  } = useGetDomoQuery(`/`, {});
 
   // 컴포넌트 마운트 시 랜덤 코스 선택
   useEffect(() => {
+    if (isHomeDataLoading) return;
+
+    const shuffled = [...homeData].sort(() => 0.5 - Math.random());
+
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setRandomCourses(selectRandomCourses());
-  }, []);
+    setRandomCourses(shuffled.slice(0, 8));
+  }, [isHomeDataLoading, setRandomCourses, homeData]);
 
   // 이미지 클릭 시 RecsResult 페이지로 이동하는 함수
   const handleImageClick = (course) => {
