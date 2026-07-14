@@ -1,13 +1,14 @@
+/** @jsxImportSource @emotion/react */
 import { useEffect, useRef } from "react";
-import "./styles/naverMap.css";
-import "@/styles/domo.global.css";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { domoNaverMapStyle } from "./styles/naverMap.js"; // 스타일 파일 임포트
+import "@/styles/domo.global.css";
 
-// center: { lat, lng } 형태의 prop 추가
 const DomoNaverMap = ({ recommendations, center }) => {
   const mapRef = useRef(null);
   const markersRef = useRef([]);
   const polylinesRef = useRef([]);
+  const { isPc } = useDeviceMode();
 
   useEffect(() => {
     if (!window.naver || !window.naver.maps) {
@@ -15,7 +16,6 @@ const DomoNaverMap = ({ recommendations, center }) => {
       return;
     }
 
-    // center prop이 있으면 center, 없으면 recommendations[0]
     const initialCenter = center
       ? new window.naver.maps.LatLng(center.lat, center.lng)
       : new window.naver.maps.LatLng(recommendations[0].lat, recommendations[0].lng);
@@ -89,10 +89,10 @@ const DomoNaverMap = ({ recommendations, center }) => {
     mapRef.current.setCenter(new window.naver.maps.LatLng(center.lat, center.lng));
   }, [center]);
 
-  // 미디어 쿼리 훅을 사용하여 PC 여부를 확인
-  const { isPc } = useDeviceMode();
-
-  return <div id="map" style={{ width: "100%", height: isPc ? "100vh" : "60vh" }} />;
+  return (
+    // 기존에 있던 인라인 style을 제거하고 css 속성을 주입합니다.
+    <div id="map" css={domoNaverMapStyle(isPc)} />
+  );
 };
 
 export default DomoNaverMap;

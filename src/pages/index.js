@@ -37,3 +37,4 @@ export { default as UnivNoticeHomeAppPage } from "./univNotice/UnivNoticeHomeApp
 // DOMO
 export { default as DomoHomePage } from "./domo/DomoHomePage";
 export { default as DomoNotFoundPage } from "./domo/DomoNotFoundPage";
+export { default as DomoBenefix } from "./domo/DomoBenefix";

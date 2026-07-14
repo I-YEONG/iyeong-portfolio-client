@@ -9,8 +9,12 @@
   margin-bottom: 50px;
 }
 
-.pagination li a {
-  font-family: 'pre-regular';
+.pagination li a,
+.pagination li button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  font-family: "pre-regular";
   padding: 0;
   cursor: pointer;
   color: #6e738c;
@@ -21,12 +25,14 @@
   background-color: transparent;
 }
 
-.pagination li a:hover {
+.pagination li a:hover,
+.pagination li button:hover {
   color: #0052e9;
   background-color: transparent;
 }
 
-.pagination li.active a {
+.pagination li.active a,
+.pagination li.active button {
   color: #0052e9;
   font-weight: bold;
   background-color: transparent;
@@ -34,12 +40,16 @@
 }
 
 .pagination li.disabled a,
-.pagination li.disabled a:hover {
+.pagination li.disabled button,
+.pagination li.disabled a:hover,
+.pagination li.disabled button:hover {
   color: #ced4da;
   cursor: default;
 }
 
 .pagination .previous a,
-.pagination .next a {
+.pagination .next a,
+.pagination .previous button,
+.pagination .next button {
   font-size: 28px;
 }

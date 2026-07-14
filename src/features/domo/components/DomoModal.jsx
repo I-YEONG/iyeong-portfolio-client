@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import "./styles/modal.css";
+import "./styles/modal.js";
 import "@/styles/domo.global.css";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { domoModalStyle } from "./styles/modal.js";
 
 const DomoModal = ({ children }) => {
   useEffect(() => {
@@ -11,8 +13,10 @@ const DomoModal = ({ children }) => {
     };
   }, []);
 
+  const { isPc } = useDeviceMode();
+
   return (
-    <section className="modal_background flexCenter">
+    <section css={domoModalStyle(isPc)} className="modal_background flexCenter">
       <div className="modal_content">{children}</div>
     </section>
   );

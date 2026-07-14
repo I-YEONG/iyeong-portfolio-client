@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import "./styles/mobileSearchModal.css";
+import "./styles/mobileSearchModal.js";
+import "@/styles/domo.global.css";
 import { regions } from "./DomoFilter";
 import { ChevronRight } from "lucide-react";
-import "@/styles/domo.global.css";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { domoMobileSearchStyle } from "./styles/mobileSearchModal.js";
 
 const DomoMobileSearchModal = ({ isOpen, onClose, onChangeDisplayValue, displayValue }) => {
   const [searchValue, setSearchValue] = useState(displayValue || "");
   const [filteredRegions, setFilteredRegions] = useState([]);
+  const { isPc } = useDeviceMode();
 
   // 검색창이 열릴 때마다 displayValue로 초기화
   useEffect(() => {
@@ -51,7 +54,7 @@ const DomoMobileSearchModal = ({ isOpen, onClose, onChangeDisplayValue, displayV
   };
 
   return (
-    <>
+    <div css={domoMobileSearchStyle(isPc)}>
       {/* 배경 오버레이 - 검색창 외부 클릭 시 닫기 */}
       {isOpen && <div className="mobile-search-overlay" onClick={onClose} />}
 
@@ -100,7 +103,7 @@ const DomoMobileSearchModal = ({ isOpen, onClose, onChangeDisplayValue, displayV
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

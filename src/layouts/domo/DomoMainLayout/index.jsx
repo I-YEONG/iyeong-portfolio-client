@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "@/styles/domo.global.css";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { DomoMobileFooter, DomoMobileHeader, DomoPcFooter, DomoPcHeader } from "@/layouts";
@@ -17,6 +16,7 @@ const DomoMainLayout = ({ children, onChangeMobileToggle }) => {
           marginTop: isPc ? "min(12%, 89px)" : "64px",
           overflowY: "scroll",
           position: "relative",
+          // padding: isPc ? "" : "0 5%",
         }}>
         {children}
         {isPc && <DomoPcFooter style={{ zIndex: "9999" }} />}

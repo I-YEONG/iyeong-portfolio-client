@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./index.css";
+import "./style.css";
 import "@/styles/domo.global.css";
 
 function DomoNotFoundPage() {
@@ -10,7 +10,7 @@ function DomoNotFoundPage() {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/");
+      navigate("/project/domo/");
     }, 3000); // 3초 후 홈으로 이동
   }, [navigate]);
 

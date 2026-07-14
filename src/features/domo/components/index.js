@@ -10,4 +10,4 @@ export { default as DomoPagination } from "./DomoPagination.jsx";
 export { default as DomoPopover } from "./DomoPopover.jsx";
 export { default as DomoRecsLoading } from "./DomoRecsLoading.jsx";
 export { default as DomoRecsSaveScreenshot } from "./DomoRecsSaveScreenshot.jsx";
-export { default as DomoSwiper } from "./DomoSwiper.jsx";
+export { default as DomoCustomSwiper } from "./DomoSwiper.jsx";

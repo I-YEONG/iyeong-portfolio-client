@@ -31,6 +31,7 @@ import {
   UnivNoticeMySettingPage,
   DomoHomePage,
   DomoNotFoundPage,
+  DomoBenefix,
 } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
@@ -118,6 +119,8 @@ const PortfolioProject = () => {
           {projectName === "domo" && (
             <Routes>
               <Route path="/" element={<DomoHomePage />} />
+              <Route path="/benefix" element={<DomoBenefix />} />
+
               <Route path="*" element={<DomoNotFoundPage />} />
             </Routes>
           )}
