@@ -101,7 +101,7 @@ const DomoHomePage = () => {
             </div>
           )}
 
-          <Link to="/recs">
+          <Link to="/project/domo/recs">
             <button className="load-more-button">도모와 함께 내 주변 놀거리 찾기 &gt;</button>
           </Link>
 
