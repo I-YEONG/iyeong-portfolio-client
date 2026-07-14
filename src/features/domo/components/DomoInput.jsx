@@ -25,7 +25,7 @@ const DomoInput = ({ title = "", essential = false, ex, pw = false, onChangeHand
         </label>
       )}
       <input
-        style={{ height: title && !essential ? "3.5rem" : "100%", cursor: lock ? "not-allowed" : "text" }}
+        style={{ height: title && !essential ? "3.5rem" : "52px", cursor: lock ? "not-allowed" : "text" }}
         type={pw ? "password" : "text"}
         id="InputCP"
         name="InputCP"

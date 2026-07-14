@@ -39,3 +39,4 @@ export { default as DomoHomePage } from "./domo/DomoHomePage";
 export { default as DomoNotFoundPage } from "./domo/DomoNotFoundPage";
 export { default as DomoBenefix } from "./domo/DomoBenefix";
 export { default as DomoRecs } from "./domo/DomoRecs";
+export { default as DomoRecsInfo } from "./domo/DomoRecsInfo";

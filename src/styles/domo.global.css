@@ -19,34 +19,34 @@
   --black: #2c2f33;
 }
 
-.flexWidthCenter {
+.DomoFlexWidthCenter {
   display: flex;
   justify-content: center;
 }
 
-.flexHeightCenter {
+.DomoFlexHeightCenter {
   display: flex;
   align-items: center;
 }
 
-.flexCenter {
+.DomoFlexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.flexBetween {
+.DomoFlexBetween {
   display: flex;
   justify-content: space-between;
 }
 
-.flexBetweenCol {
+.DomoFlexBetweenCol {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.flexCol {
+.DomoFlexCol {
   display: flex;
   flex-direction: column;
 }

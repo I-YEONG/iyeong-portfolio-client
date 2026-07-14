@@ -7,20 +7,20 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { TicketPercent } from "lucide-react";
 const DomoMobileFooter = () => {
   return (
-    <footer className="mobile-footer flexBetween">
-      <div className="flexCenter">
+    <footer className="mobile-footer DomoFlexBetween">
+      <div className="DomoFlexCenter">
         <NavLink to="/project/domo/">
           <FontAwesomeIcon icon={faHouse} />
           <p>홈</p>
         </NavLink>
       </div>
-      <div className="flexCenter">
+      <div className="DomoFlexCenter">
         <NavLink to="/project/domo/recs">
           <FontAwesomeIcon icon={faLocationDot} />
           <p>일정</p>
         </NavLink>
       </div>
-      <div className="flexCenter">
+      <div className="DomoFlexCenter">
         <NavLink to="/project/domo/benefix">
           <TicketPercent />
           <p>혜택</p>

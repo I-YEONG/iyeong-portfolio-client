@@ -4,8 +4,8 @@ export const domoModalStyle = (isPc) =>
   css({
     // --- 모달 배경 (오버레이) ---
     "&.modal_background, .modal_background": {
-      width: isPc ? "100vw" : "100%",
-      height: isPc ? "100vh" : "100%",
+      width: isPc ? "100%" : "100%",
+      height: isPc ? "100%" : "100%",
       backgroundColor: "#0000007d",
       position: "fixed",
       top: 0,
@@ -26,6 +26,6 @@ export const domoModalStyle = (isPc) =>
       padding: isPc ? "48px" : "24px",
 
       // 모바일에서는 vw 대신 100% 꽉 차게 (부모의 0 16px 패딩 안에서 꽉 참)
-      minWidth: isPc ? "32vw" : "100%",
+      minWidth: isPc ? "32%" : "100%",
     },
   });

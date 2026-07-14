@@ -9,88 +9,33 @@ import { DomoBoxButton, DomoModal } from "@/features/domo/components";
 import "@/styles/domo.global.css";
 
 const DomoRecs = () => {
+  // 1. 기본적으로 gps는 허용하지 않음 (false)
   const [gpsAgree, setGpsAgree] = useState(false);
-  const [onGpsAgree, setOnGpsAgree] = useState(false);
+  // 2. 초기 접속 시 무조건 권한 요청 모달이 표시되도록 (true)
+  const [onGpsAgree, setOnGpsAgree] = useState(true);
 
   const nav = useNavigate();
 
-  // 1, 2. 사이트 접속 시 권한 팝업 없이 gps 사용 가능 여부만 확인
-  useEffect(() => {
-    const checkPermission = async () => {
-      if (navigator.permissions) {
-        try {
-          const result = await navigator.permissions.query({ name: "geolocation" });
-          if (result.state === "granted") {
-            setGpsAgree(true);
-            setOnGpsAgree(false);
-          } else {
-            setGpsAgree(false);
-            setOnGpsAgree(true);
-          }
-        } catch (e) {
-          setGpsAgree(false);
-          setOnGpsAgree(true);
-        }
-      } else {
-        // permissions API 미지원 브라우저 fallback
-        setGpsAgree(false);
-        setOnGpsAgree(true);
-      }
-    };
-    checkPermission();
-  }, []);
+  /* * 기존에 있던 navigator.permissions 검사 로직 및
+   * setInterval을 이용한 주기적 검사 로직(useEffect 2개)은 모두 삭제합니다.
+   */
 
-  // onGpsAgree가 true인 동안 2초마다 gps 권한을 검사
-  useEffect(() => {
-    if (!onGpsAgree) return;
-    let intervalId;
-    const checkPermission = async () => {
-      if (navigator.permissions) {
-        try {
-          const result = await navigator.permissions.query({ name: "geolocation" });
-          if (result.state === "granted") {
-            setGpsAgree(true);
-          } else {
-            setGpsAgree(false);
-          }
-        } catch (e) {
-          setGpsAgree(false);
-        }
-      } else {
-        setGpsAgree(false);
-      }
-    };
-    intervalId = setInterval(checkPermission, 1000);
-    // 최초 1회 즉시 실행
-    checkPermission();
-    return () => clearInterval(intervalId);
-  }, [onGpsAgree]);
-
-  // 3. gps 허용 팝업 띄우기
+  // 3. 실제 GPS 권한 요청 API 제거 -> 단순 체크박스 토글 기능으로 대체
   const onClickAgree = useCallback(() => {
-    navigator.geolocation.getCurrentPosition(
-      () => {
-        setGpsAgree(true);
-      },
-      (error) => {
-        setGpsAgree(false);
-      },
-    );
+    setGpsAgree((prev) => !prev);
   }, []);
 
-  // 4. gps 동의 후 다음 단계
+  // 4. gps 동의(체크) 후 '다음' 버튼 클릭 시 모달 닫기
   const onClickAgreeNext = useCallback(() => {
     if (gpsAgree) {
-      setOnGpsAgree(false);
+      setOnGpsAgree(false); // 동의했으므로 모달 숨김
     } else {
-      setOnGpsAgree(true);
       alert("위치 정보 수집 및 이용에 동의해 주세요.");
     }
   }, [gpsAgree]);
-
   const { isPc } = useDeviceMode();
   return (
-    <section className="recsPage flexCenter" css={domoRecsPageStyle(isPc)}>
+    <section className="recsPage DomoFlexCenter" css={domoRecsPageStyle(isPc)}>
       {isPc && <DomoPcHeader />}
       {!isPc && <DomoMobileHeader />}
       {/* 위치수집 및 이용동의 */}
@@ -101,8 +46,8 @@ const DomoRecs = () => {
             <br />
             아래 항목에 대한 동의가 필요해요.
           </div>
-          <div className="flexHeightCenter">
-            <div onClick={onClickAgree} className={`flexCenter ${gpsAgree ? "checked" : "none"}`}>
+          <div className="DomoFlexHeightCenter">
+            <div onClick={onClickAgree} className={`DomoFlexCenter ${gpsAgree ? "checked" : "none"}`}>
               <FontAwesomeIcon icon={faCheck} className={`recsPage_checkIcon `} />
             </div>
             <span>사용자의 위치 정보 수집 및 이용에 동의합니다.</span>
@@ -115,7 +60,7 @@ const DomoRecs = () => {
         </DomoModal>
       )}
 
-      <section className="flexCenter content">
+      <section className="DomoFlexCenter content">
         <div className="">
           <h2>
             잠깐! 아직도 오늘
