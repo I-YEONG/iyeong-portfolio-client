@@ -34,6 +34,7 @@ import {
   DomoBenefix,
   DomoRecs,
   DomoRecsInfo,
+  DomoRecsResult,
 } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
@@ -124,6 +125,7 @@ const PortfolioProject = () => {
               <Route path="/benefix" element={<DomoBenefix />} />
               <Route path="/recs" element={<DomoRecs />} />
               <Route path="/recs/info" element={<DomoRecsInfo />} />
+              <Route path="/recs/result" element={<DomoRecsResult />} />
 
               <Route path="*" element={<DomoNotFoundPage />} />
             </Routes>

@@ -17,6 +17,7 @@
 
 .screenshotContainer .recsResult_header {
   margin-bottom: clamp(0.5vw, 1vw, 2.5rem);
+  background-color: white;
 }
 
 .screenshotContainer .recsResult_back-button {
