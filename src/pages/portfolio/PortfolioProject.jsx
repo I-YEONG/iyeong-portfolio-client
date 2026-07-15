@@ -3,6 +3,8 @@ import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { ProjectHeader, ProjectSideBox, ProjectView } from "@/features/portfolio/project/components";
 import { theme } from "@/styles/theme";
+import { css } from "@emotion/react";
+import { mq } from "@/styles/mq";
 
 // 커리어하이 페이지들
 import {
@@ -37,7 +39,7 @@ import {
   DomoRecsResult,
   DomoRecsSave,
 } from "@/pages";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FixMobile } from "@/components";
 import UnivNoticeTermsPage from "../univNotice/UnivNoticeTermsPage";
 import UnivNoticeKakaoPage from "../univNotice/UnivNoticeKakaoPage";
@@ -69,10 +71,52 @@ const PortfolioProject = () => {
     };
   }, [setMobileMode, setPcMode]);
 
+  const [menuToggle, setMenuToggle] = useState(false);
+
+  const isOffMenu = () => {
+    setMenuToggle(false);
+  };
+
+  const isOnMenu = () => {
+    setMenuToggle(true);
+  };
+
+  const style = css({
+    ...theme.flex.between,
+    width: "100%",
+    height: "calc(100vh - 62px)",
+    overflow: "hidden",
+
+    [mq("mobile")]: {
+      height: "100%",
+      width: "100vw",
+      overflow: "hidden",
+      "& .menu-box": {
+        position: "absolute",
+        right: "0px",
+        bottom: "0px",
+        display: !menuToggle ? "none" : "block",
+      },
+
+      "& .project-view-box": {
+        width: "100vw",
+        overflow: "hidden",
+      },
+    },
+  });
+
   return (
     <div>
-      <ProjectHeader isPcMode={isPc} onChangeDevice={toggleDeviceMode} isLogin={isLogin} onChangeLogin={toggleAuth} />
-      <div css={{ ...theme.flex.between, width: "100%", height: "calc(100vh - 62px)", overflow: "hidden" }}>
+      <ProjectHeader
+        isPcMode={isPc}
+        onChangeDevice={toggleDeviceMode}
+        isLogin={isLogin}
+        onChangeLogin={toggleAuth}
+        menuToggle={menuToggle}
+        isOffMenu={isOffMenu}
+        isOnMenu={isOnMenu}
+      />
+      <div css={style}>
         {/* 왼쪽 박스 */}
         <ProjectSideBox />
 
