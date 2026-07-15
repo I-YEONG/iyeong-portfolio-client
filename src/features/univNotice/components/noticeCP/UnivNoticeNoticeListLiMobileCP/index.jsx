@@ -36,10 +36,10 @@ const UnivNoticeNoticeListLiMobileCP = ({ data, url }) => {
   return (
     <div className="noticeListLiMobileCP" onClick={onClickDiv}>
       <div className="noticeListLiMobileCP-univnoticeTitle">
-        {data.univnoticeTitle}
+        {data.title}
         {showNew && <span style={{ color: "var(--univ-orange)", fontWeight: 600, fontSize: "8px", marginLeft: "4px" }}>NEW</span>}
       </div>
-      <div className="univnoticeFlexCenter">
+      <div className="univnoticeFlexHeightCenter">
         <div className="noticeListLiMobileCP-author">{data.author}</div>
         <div className="line"></div>
         <div className="noticeListLiMobileCP-published_at">{formattedDate}</div>
