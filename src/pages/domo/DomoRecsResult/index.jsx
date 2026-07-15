@@ -179,7 +179,7 @@ const DomoRecsResult = () => {
             </div>
             <div>
               <a href={`https://map.naver.com/p/search/${modalData.address} ${modalData.name}`} target="_blank" rel="noopener noreferrer">
-                <DomoBoxButton padding="0 24px" bgColor="--main-color" color="--black-0">
+                <DomoBoxButton padding="0 24px" bgColor="--domo-main-color" color="--black-0">
                   자세히 보기
                 </DomoBoxButton>
               </a>

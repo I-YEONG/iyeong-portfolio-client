@@ -38,7 +38,7 @@ const UnivNoticeGooglePage = () => {
               <UnivNoticeButtonCP>설치</UnivNoticeButtonCP>
             </div>
             <div onClick={onNextClick}>
-              <UnivNoticeButtonCP bgColor="--point-color-1">설치 완료</UnivNoticeButtonCP>
+              <UnivNoticeButtonCP bgColor="--domo-point-color-1">설치 완료</UnivNoticeButtonCP>
             </div>
           </div>
         </div>

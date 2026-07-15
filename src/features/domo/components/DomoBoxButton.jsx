@@ -19,7 +19,7 @@ const DomoBoxButton = ({
   height = "100%",
   padding = "unset unset",
   color = "--black-0",
-  bgColor = "--main-color",
+  bgColor = "--domo-main-color",
   radius = "16px",
 }) => {
   return (

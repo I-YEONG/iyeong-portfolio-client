@@ -116,7 +116,8 @@ const PortfolioProject = () => {
         isOffMenu={isOffMenu}
         isOnMenu={isOnMenu}
       />
-      <div css={style}>
+      {/* <div css={style}> */}
+      <div css={{ ...theme.flex.between, width: "100%", height: "calc(100vh - 62px)", overflow: "hidden" }}>
         {/* 왼쪽 박스 */}
         <ProjectSideBox />
 
