@@ -59,7 +59,7 @@
 
 .deviceAppendPage-content > div:last-child > p > span {
   padding-bottom: 4px;
-  border-bottom: 1px solid var(--main-color);
+  border-bottom: 1px solid var(--univ-main-color);
 }
 
 @media screen and (max-width: 768px) {

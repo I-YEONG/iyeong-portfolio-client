@@ -55,7 +55,7 @@
 }
 
 .savePage .isPc > div:nth-child(1) > h2:nth-child(1) > span {
-  color: var(--main-color);
+  color: var(--domo-main-color);
 }
 
 .savePage .isPc .desc {
@@ -124,7 +124,7 @@
 }
 
 .savePage .isMobile > h2 > span {
-  color: var(--main-color);
+  color: var(--domo-main-color);
 }
 
 .savePage .isMobile > div:nth-child(2) {

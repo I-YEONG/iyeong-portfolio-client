@@ -99,7 +99,7 @@ const DomoRecsSave = () => {
             </h2>
             <div>
               <div className="saveButton">
-                <DomoBoxButton bgColor="--point-color-2" color="--point-color-2-2" onClickHandler={onSaveHandler}>
+                <DomoBoxButton bgColor="--domo-point-color-2" color="--domo-point-color-2-2" onClickHandler={onSaveHandler}>
                   일정 저장
                 </DomoBoxButton>
                 <span className="desc">

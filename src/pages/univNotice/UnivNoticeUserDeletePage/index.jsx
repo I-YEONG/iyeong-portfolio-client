@@ -110,7 +110,7 @@ const UnivNoticeUserDeletePage = () => {
             )}
           </div>
           <div className="bottomItem" onClick={onClickDelete}>
-            <UnivNoticeButtonCP bgColor="--red">회원 탈퇴</UnivNoticeButtonCP>
+            <UnivNoticeButtonCP bgColor="--univ-red">회원 탈퇴</UnivNoticeButtonCP>
           </div>
         </div>
       </section>

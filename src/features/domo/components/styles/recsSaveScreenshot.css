@@ -27,7 +27,7 @@
   padding: 0;
   display: flex;
   align-items: center;
-  color: var(--main-color);
+  color: var(--domo-main-color);
 }
 
 .screenshotContainer .recsResult_back-button .logo-text {
@@ -51,11 +51,11 @@
 }
 
 .screenshotContainer .list_header_title span {
-  color: var(--main-color);
+  color: var(--domo-main-color);
 }
 
 .screenshotContainer .list_header_backBtn {
-  background-color: var(--point-color-2);
+  background-color: var(--domo-point-color-2);
   border: none;
   max-width: 124px;
   max-height: 56px;
@@ -63,13 +63,13 @@
   cursor: pointer;
   font-size: clamp(0.8rem, 1.2vw, 1.2rem);
   font-weight: 600;
-  color: var(--point-color-2-2);
+  color: var(--domo-point-color-2-2);
   font-family: "pre-semibold";
 }
 
 .screenshotContainer .list_header_backBtn:hover {
-  background-color: var(--point-color-2);
-  color: var(--point-color-2-2);
+  background-color: var(--domo-point-color-2);
+  color: var(--domo-point-color-2-2);
 }
 
 .screenshotContainer .list_items {
@@ -96,7 +96,7 @@
   font-size: 40px;
   font-weight: 400;
   margin-right: 16px;
-  color: var(--main-color);
+  color: var(--domo-main-color);
   font-family: "pre-regular";
 }
 
@@ -129,8 +129,8 @@
   height: clamp(3rem, 4vw, 6rem);
   border-radius: 50%;
   font-size: clamp(1.4rem, 2vw, 2.5rem);
-  background-color: var(--point-color-2);
-  color: var(--point-color-2-2);
+  background-color: var(--domo-point-color-2);
+  color: var(--domo-point-color-2-2);
   margin-right: 18px;
   flex-shrink: 0;
 }
@@ -157,7 +157,7 @@
 .screenshotContainer .item_benefit {
   font-size: clamp(0.8rem, 0.9vw, 1rem);
   background-color: #dbeeff;
-  color: var(--main-color);
+  color: var(--domo-main-color);
   border-radius: 12px;
   display: inline-block;
   font-family: "pre-regular";
@@ -195,7 +195,7 @@
 
 .screenshotContainer .list_footer-btn {
   color: white;
-  background-color: var(--main-color);
+  background-color: var(--domo-main-color);
   width: 100%;
   height: 12vh;
   max-height: 88px;
@@ -234,7 +234,7 @@
   padding: 12px 26px;
   font-size: 18px;
   font-weight: bold;
-  background-color: var(--main-color);
+  background-color: var(--domo-main-color);
   color: var(--black-0);
   border: none;
   border-radius: 12px;

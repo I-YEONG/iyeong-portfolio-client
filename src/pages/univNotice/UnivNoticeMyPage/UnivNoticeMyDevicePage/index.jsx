@@ -74,7 +74,7 @@ const UnivNoticeMyDevicePage = () => {
                 <a
                   href={`https://play.google.com/store/apps/details?id=com.iyeonggyu0.univnotice&pcampaignid=web_share`}
                   target="_blank"
-                  style={{ color: "var(--point-color-1)" }}>
+                  style={{ color: "var(--univ-point-color-1)" }}>
                   앱 설치 바로가기
                 </a>
               </div>

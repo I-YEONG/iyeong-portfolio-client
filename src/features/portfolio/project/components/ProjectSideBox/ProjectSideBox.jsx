@@ -18,7 +18,7 @@ const ProjectSideBox = () => {
   const formatDate = useFormatDate();
 
   return (
-    <section css={projectSideBoxCss}>
+    <section css={projectSideBoxCss} className="menu-box">
       <div className="title-content">
         <div className="title-box">
           {/* 프로젝트 이름 */}

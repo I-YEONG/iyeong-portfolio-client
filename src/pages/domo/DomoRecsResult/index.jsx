@@ -179,7 +179,7 @@ const DomoRecsResult = () => {
             </div>
             <div>
               <a href={`https://map.naver.com/p/search/${modalData.address} ${modalData.name}`} target="_blank" rel="noopener noreferrer">
-                <DomoBoxButton padding="0 24px" bgColor="--main-color" color="--black-0">
+                <DomoBoxButton padding="0 24px" bgColor="--domo-main-color" color="--black-0">
                   자세히 보기
                 </DomoBoxButton>
               </a>
@@ -194,7 +194,7 @@ const DomoRecsResult = () => {
             <p>
               기존 장소와 새로운 장소의 이동거리 차이가
               <br />
-              <span style={{ color: "var(--main-color)" }}>
+              <span style={{ color: "var(--domo-main-color)" }}>
                 {tempData && Math.abs(tempData.oldDistance - tempData.newDistance) < 1
                   ? "별로 없어요!"
                   : tempData &&

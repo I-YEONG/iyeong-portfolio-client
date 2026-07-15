@@ -26,7 +26,7 @@ const UnivNoticePhoneSelectPage = () => {
                 localStorage.setItem("phoneType", "android");
                 return nav("/project/univnotice/signup/2");
               }}>
-              <UnivNoticeButtonCP color="--main-color" bgColor="--black-0">
+              <UnivNoticeButtonCP color="--univ-main-color" bgColor="--black-0">
                 Android
               </UnivNoticeButtonCP>
             </div>
@@ -35,7 +35,7 @@ const UnivNoticePhoneSelectPage = () => {
               onClick={() => {
                 return nav("/project/univnotice/ios");
               }}>
-              <UnivNoticeButtonCP color="--main-color" bgColor="--black-0">
+              <UnivNoticeButtonCP color="--univ-main-color" bgColor="--black-0">
                 iPhone
               </UnivNoticeButtonCP>
             </div>

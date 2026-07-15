@@ -63,7 +63,7 @@
   font-size: clamp(2rem, 8vw, 3rem);
   font-weight: 700;
   margin: 2vh 0;
-  color: var(--point-color-1);
+  color: var(--univ-point-color-1);
 }
 
 @media screen and (min-width: 769px) {

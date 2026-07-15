@@ -64,7 +64,7 @@ export const domoRecsInfoStyle = (isPc) =>
 
     "&.recsInfoPage > .context > div:nth-child(1) > div:nth-child(2) > div:last-child, .recsInfoPage > .context > div:nth-child(1) > div:nth-child(2) > div:last-child":
       {
-        backgroundColor: "var(--main-color)",
+        backgroundColor: "var(--domo-main-color)",
         borderRadius: "12px",
         width: "30%",
         color: "var(--black-0)",
@@ -88,7 +88,7 @@ export const domoRecsInfoStyle = (isPc) =>
         display: "inline-block",
         width: "5px",
         height: "2px",
-        backgroundColor: "var(--main-color)",
+        backgroundColor: "var(--domo-main-color)",
       },
 
     // --- 3번째 줄 ---

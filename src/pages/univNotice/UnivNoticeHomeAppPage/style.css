@@ -29,7 +29,7 @@
 
 .homeAppPage .homeAppPage-content a {
   font-size: clamp(0.8rem, 4%, 1rem);
-  color: var(--point-color-1);
+  color: var(--univ-point-color-1);
 }
 
 .homeAppPage .homeAppPage-images {
@@ -61,7 +61,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: var(--point-color-1);
+  background-color: var(--univ-point-color-1);
   color: white;
   font-size: clamp(0.75rem, 4%, 0.9rem);
 }

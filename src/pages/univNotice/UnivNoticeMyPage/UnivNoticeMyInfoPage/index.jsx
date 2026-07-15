@@ -58,7 +58,7 @@ const UnivNoticeMyInfoPage = () => {
                 setLogoutButton(true);
                 logout() & nav("/project/univnotice");
               }}>
-              <UnivNoticeButtonCP bgColor="--red">로그아웃</UnivNoticeButtonCP>
+              <UnivNoticeButtonCP bgColor="--univ-red">로그아웃</UnivNoticeButtonCP>
             </div>
             <p className="deleteAccount">
               <span onClick={() => nav("/project/univnotice/withdraw")}>회원 탈퇴</span>

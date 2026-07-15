@@ -156,7 +156,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("액티비티")}
                 style={{
-                  backgroundColor: subject.includes("액티비티") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("액티비티") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("액티비티") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 액티비티
@@ -164,7 +164,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("혼자만의 휴식")}
                 style={{
-                  backgroundColor: subject.includes("혼자만의 휴식") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("혼자만의 휴식") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("혼자만의 휴식") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 혼자만의 휴식
@@ -172,7 +172,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("데이트")}
                 style={{
-                  backgroundColor: subject.includes("데이트") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("데이트") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("데이트") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 데이트
@@ -180,7 +180,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("맛집 발굴")}
                 style={{
-                  backgroundColor: subject.includes("맛집 발굴") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("맛집 발굴") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("맛집 발굴") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 맛집 발굴
@@ -188,7 +188,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("인생샷")}
                 style={{
-                  backgroundColor: subject.includes("인생샷") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("인생샷") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("인생샷") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 인생샷
@@ -196,7 +196,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("아이 동반")}
                 style={{
-                  backgroundColor: subject.includes("아이 동반") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("아이 동반") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("아이 동반") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 아이 동반
@@ -204,7 +204,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("반려견 동반")}
                 style={{
-                  backgroundColor: subject.includes("반려견 동반") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("반려견 동반") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("반려견 동반") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 반려견 동반
@@ -212,7 +212,7 @@ const DomoRecsInfo = () => {
               <li
                 onClick={() => onChangeSubject("아무거나")}
                 style={{
-                  backgroundColor: subject.includes("아무거나") ? "var(--main-color)" : "var(--black-1)",
+                  backgroundColor: subject.includes("아무거나") ? "var(--domo-main-color)" : "var(--black-1)",
                   color: subject.includes("아무거나") ? "var(--black-0)" : "var(--black-3)",
                 }}>
                 아무거나
