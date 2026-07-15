@@ -9,7 +9,7 @@
   border-bottom: 1px solid var(--black-2);
 }
 
-.noticeListLiMobileCP .noticeListLiMobileCP-title {
+.noticeListLiMobileCP .noticeListLiMobileCP-univnoticeTitle {
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -21,7 +21,7 @@
 }
 
 .noticeListLiMobileCP .noticeListLiMobileCP-alarm {
-  color: var(--point-color-1);
+  color: var(--univ-point-color-1);
 }
 
 .noticeListLiMobileCP .line {

@@ -11,7 +11,7 @@
   display: none;
 }
 
-.categoryCP .title {
+.categoryCP .univnoticeTitle {
   font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   font-weight: 600;
 }

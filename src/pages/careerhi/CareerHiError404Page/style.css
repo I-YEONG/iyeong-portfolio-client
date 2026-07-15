@@ -12,7 +12,7 @@
 }
 
 .error404Page .explanation > span {
-  color: var(--point-color-1);
+  color: var(--domo-point-color-1);
   display: inline-block;
   width: 32px;
 }

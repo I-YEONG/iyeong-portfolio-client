@@ -35,7 +35,7 @@ const UnivNoticeNoticePage = () => {
 
   // 💡 [수정됨] useState 제거! 파생 상태 적용
   // paging이 바뀔 때마다 아래 변수들이 새롭게 계산되어 자동으로 타이틀과 목록이 바뀝니다.
-  const title = noticeData[paging]?.category || "";
+  const univnoticeTitle = noticeData[paging]?.category || "";
   const base = noticeData[paging]?.Notices || [];
   const pagingData = alarmOnly ? base.filter((d) => (d.NoticeKeywordMatches?.length || 0) > 0) : base;
 
@@ -53,7 +53,7 @@ const UnivNoticeNoticePage = () => {
           <div style={{ width: "100%", height: isPc ? "100%" : "96%", paddingTop: isPc ? undefined : "20%" }} className="noticePage">
             <div className="centerSection">
               {/* 💡 자동으로 계산된 타이틀 표시 */}
-              <h2>{title}</h2>
+              <h2>{univnoticeTitle}</h2>
 
               <div className="alarmCheck univnoticeFlexHeightCenter" style={{ gap: "16px", cursor: "pointer" }}>
                 <div></div>
@@ -63,7 +63,7 @@ const UnivNoticeNoticePage = () => {
                     id="alarmOnly"
                     checked={alarmOnly}
                     onChange={(e) => setAlarmOnly(e.target.checked)}
-                    style={{ accentColor: "var(--main-color)", width: 18, height: 18, cursor: "pointer" }}
+                    style={{ accentColor: "var(--univ-main-color)", width: 18, height: 18, cursor: "pointer" }}
                   />
                   <label htmlFor="alarmOnly" style={{ cursor: "pointer", userSelect: "none" }}>
                     알림 공지만 보기
@@ -95,9 +95,9 @@ const UnivNoticeNoticePage = () => {
                   if (index === paging) {
                     indicator = <div className="point"></div>;
                   } else if (hasRecentAlarm) {
-                    indicator = <div className="point" style={{ backgroundColor: "var(--light-orange)" }}></div>;
+                    indicator = <div className="point" style={{ backgroundColor: "var(--univ-light-orange)" }}></div>;
                   } else if (hasRecent) {
-                    indicator = <div className="point" style={{ backgroundColor: "var(--point-color-3)" }}></div>;
+                    indicator = <div className="point" style={{ backgroundColor: "var(--univ-point-color-3)" }}></div>;
                   }
 
                   return (
@@ -124,7 +124,7 @@ const UnivNoticeNoticePage = () => {
               <div className="noticeList">
                 {isPc && (
                   <div className="noticeListLiCPTitle">
-                    <div className="noticeListLiCP-title">제목</div>
+                    <div className="noticeListLiCP-univnoticeTitle">제목</div>
                     <div className="noticeListLiCP-author">작성자</div>
                     <div className="noticeListLiCP-attachments">첨부파일</div>
                     <div className="noticeListLiCP-published_at">등록일</div>

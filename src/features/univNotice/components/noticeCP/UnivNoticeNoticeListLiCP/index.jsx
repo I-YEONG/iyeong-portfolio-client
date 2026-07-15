@@ -34,7 +34,7 @@ const UnivNoticeNoticeListLiCP = ({ data, url }) => {
   }
   return (
     <div className="noticeListLiCP" style={{ cursor: "pointer" }} onClick={onClickDiv}>
-      <div className="noticeListLiCP-title univnoticeFlexCenter" style={{ gap: "6px", wordBreak: "break-all", overflowWrap: "anywhere" }}>
+      <div className="noticeListLiCP-univnoticeTitle univnoticeFlexCenter" style={{ gap: "6px", wordBreak: "break-all", overflowWrap: "anywhere" }}>
         {data.title}
         {data.other_info && (
           <span
@@ -47,13 +47,13 @@ const UnivNoticeNoticeListLiCP = ({ data, url }) => {
             {data.other_info}
           </span>
         )}
-        {showNew && <span style={{ color: "var(--orange)", fontWeight: 600, fontSize: "8px", marginLeft: "4px" }}>NEW</span>}
+        {showNew && <span style={{ color: "var(--univ-orange)", fontWeight: 600, fontSize: "8px", marginLeft: "4px" }}>NEW</span>}
         {data.NoticeKeywordMatches.length !== 0 && (
           <FontAwesomeIcon
             icon={faBell}
             // fontSize="xSmall"
             style={{
-              color: "var(--point-color-1)",
+              color: "var(--univ-point-color-1)",
             }}
           />
         )}

@@ -4,7 +4,7 @@ import "@/styles/univNotice.global.css";
  *
  * @param {string} value 초기 값 (기본값: "")
  * @param {function} onChange 변경 함수 (필수)
- * @param {string} title 제목 (기본값: "")
+ * @param {string} univnoticeTitle 제목 (기본값: "")
  * @param {boolean} activate 입력 활성화 여부 (기본값: true)
  * @param {string} width 가로길이 (기본값: "100%")
  * @param {string} height 세로길이 (기본값: "62px")
@@ -18,7 +18,7 @@ import "@/styles/univNotice.global.css";
 const UnivNoticeInputCP = ({
   value = "",
   onChange = {},
-  title = "",
+  univnoticeTitle = "",
   activate = true,
   width = "100%",
   height = "3rem",
@@ -41,7 +41,7 @@ const UnivNoticeInputCP = ({
   return (
     <div className="inputCP" style={{ width }}>
       <p>
-        {title}
+        {univnoticeTitle}
         {essential && <span>*</span>}
       </p>
       <input

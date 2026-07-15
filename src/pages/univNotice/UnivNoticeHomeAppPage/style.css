@@ -16,20 +16,20 @@
   gap: 5% 24px;
 }
 
-.homeAppPage .homeAppPage-content .title {
+.homeAppPage .homeAppPage-content .univnoticeTitle {
   font-size: clamp(1.2rem, 4vw, 1.4rem);
   font-weight: 600;
   text-align: start;
   margin-bottom: 6px;
 }
 
-.homeAppPage .homeAppPage-content .title + p {
+.homeAppPage .homeAppPage-content .univnoticeTitle + p {
   margin-bottom: 16px;
 }
 
 .homeAppPage .homeAppPage-content a {
   font-size: clamp(0.8rem, 4%, 1rem);
-  color: var(--point-color-1);
+  color: var(--univ-point-color-1);
 }
 
 .homeAppPage .homeAppPage-images {
@@ -61,7 +61,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: var(--point-color-1);
+  background-color: var(--univ-point-color-1);
   color: white;
   font-size: clamp(0.75rem, 4%, 0.9rem);
 }

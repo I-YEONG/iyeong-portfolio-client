@@ -78,10 +78,10 @@ const UnivNoticeInfoPage = () => {
     <UnivNoticeLogoLayout>
       <section css={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }} className="infoPage univnoticeFlexCenter">
         {/* 중앙 */}
-        <div className="centerBox">
+        <div className="univnoticeCenterBox">
           {/* 타이틀 */}
-          <div className="titleBox">
-            <h2 className="title">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">학교 정보</span>를 알려주세요!
             </h2>
             <h4 className="subTitle">학교 / 학과에 따라 설정 내용이 달라져요</h4>
@@ -90,12 +90,12 @@ const UnivNoticeInfoPage = () => {
           <div className="univnoticeFlexCol" style={{ gap: "26px", width: "100%" }}>
             {step >= 1 && univList && (
               <div>
-                <UnivNoticeSelectCP title="학교" dataList={univList} value={selectedUniv} onChangeFunc={onChangeUniv} />
+                <UnivNoticeSelectCP univnoticeTitle="학교" dataList={univList} value={selectedUniv} onChangeFunc={onChangeUniv} />
               </div>
             )}
             {step >= 2 && !isDepartmentListLoading && (
               <div>
-                <UnivNoticeSelectCP title="학과" dataList={departmentList} value={selectedDepartment} onChangeFunc={onChangeDepartment} />
+                <UnivNoticeSelectCP univnoticeTitle="학과" dataList={departmentList} value={selectedDepartment} onChangeFunc={onChangeDepartment} />
               </div>
             )}
           </div>

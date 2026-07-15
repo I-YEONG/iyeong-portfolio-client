@@ -22,10 +22,10 @@
 }
 
 .kakaoPage-content > p {
-  color: var(--main-color);
+  color: var(--univ-main-color);
   font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   font-weight: 700;
   cursor: pointer;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--univ-main-color);
   padding: 0 1rem 8px;
 }

@@ -4,13 +4,21 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider as JotaiProvider } from "jotai";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { Global, ThemeProvider } from "@emotion/react";
+import { Global } from "@emotion/react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import gsap from "gsap";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import App from "./App.jsx";
 import { globalStyles } from "./styles/global";
 import { theme } from "./styles/theme";
+
+const muiTheme = createTheme({
+  palette: {
+    mode: "light",
+  },
+  ...theme,
+});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -102,7 +110,7 @@ export function LenisProvider({ children }) {
 createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
     <JotaiProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={muiTheme}>
         <Global styles={globalStyles} />
         <BrowserRouter>
           <LenisProvider>

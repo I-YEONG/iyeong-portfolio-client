@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { theme } from "@/styles/theme";
-// import { mq } from "@/styles/mq";
+import { mq } from "@/styles/mq";
 
 export const ProjectHeaderCss = css({
   width: "100%",
@@ -11,6 +11,19 @@ export const ProjectHeaderCss = css({
   backgroundColor: "#353535",
   color: "#fff",
   padding: "0 24px",
+
+  "& .menu": {
+    display: "none",
+  },
+
+  [mq("mobile")]: {
+    "& .device": {
+      display: "none",
+    },
+    "& .menu": {
+      display: "block",
+    },
+  },
 
   "& .icon-div": {
     ...theme.flex.center,

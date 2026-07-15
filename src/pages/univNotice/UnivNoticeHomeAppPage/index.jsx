@@ -8,7 +8,7 @@ const UnivNoticeHomeAppPage = () => {
       <div className="homeAppPage univnoticeFlexCenter">
         <div className="homeAppPage-content">
           <div>
-            <p className="title">univNotice는 iOS 16.4 이상 버전에서 가입 및 사용이 가능합니다.</p>
+            <p className="univnoticeTitle">univNotice는 iOS 16.4 이상 버전에서 가입 및 사용이 가능합니다.</p>
             <p style={{ fontSize: "0.8rem" }}>하단 설명은 기기별로 차이가 존재할 수 있습니다</p>
             <a href="https://support.apple.com/ko-kr/103267" target="_blank">
               지원 기기 알아보기

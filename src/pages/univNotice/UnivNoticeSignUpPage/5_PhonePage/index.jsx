@@ -153,9 +153,9 @@ const UnivNoticePhonePage = () => {
   return (
     <UnivNoticeLogoLayout>
       <section className="phonePage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
-        <div className="centerBox">
-          <div className="titleBox">
-            <h2 className="title">
+        <div className="univnoticeCenterBox">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">마지막</span> 단계예요!
             </h2>
             <h4 className="subTitle">
@@ -165,8 +165,8 @@ const UnivNoticePhonePage = () => {
             </h4>
           </div>
           <div className="univnoticeFlexCol">
-            <UnivNoticeInputCP value={name} onChange={onChangeName} title="이름" />
-            <UnivNoticeInputCP value={student_id} onChange={onChangeStudent_id} title="학번" placeholder="6자리 이상 입력하세요" />
+            <UnivNoticeInputCP value={name} onChange={onChangeName} univnoticeTitle="이름" />
+            <UnivNoticeInputCP value={student_id} onChange={onChangeStudent_id} univnoticeTitle="학번" placeholder="6자리 이상 입력하세요" />
             <div className="relative">
               <span className="smsButton" onClick={onCertificationClick}>
                 발송
@@ -174,14 +174,16 @@ const UnivNoticePhonePage = () => {
               <UnivNoticeInputCP
                 value={phone}
                 onChange={onChangePhone}
-                title="휴대폰 번호"
+                univnoticeTitle="휴대폰 번호"
                 placeholder="숫자만 입력하세요"
                 activate={() => {
                   return !isCert;
                 }}
               />
             </div>
-            {isCert && <UnivNoticeInputCP value={certification} onChange={onChangeCertification} title="인증번호" placeholder="인증번호를 입력하세요" />}
+            {isCert && (
+              <UnivNoticeInputCP value={certification} onChange={onChangeCertification} univnoticeTitle="인증번호" placeholder="인증번호를 입력하세요" />
+            )}
           </div>
           {student_id?.length >= 6 && isCert && (
             <div className="bottomItem buttonBox">

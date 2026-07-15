@@ -44,7 +44,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .categoryPage .centerBox {
+  .categoryPage .univnoticeCenterBox {
     width: 80vw;
   }
 }

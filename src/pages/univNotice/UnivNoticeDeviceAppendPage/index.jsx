@@ -116,7 +116,7 @@ const UnivNoticeDeviceAppendPage = () => {
           </div>
           <div>
             <div onClick={onClickRegister}>
-              <UnivNoticeButtonCP bgColor="--point-color-1">로그인 및 기기 등록</UnivNoticeButtonCP>
+              <UnivNoticeButtonCP bgColor="--domo-point-color-1">로그인 및 기기 등록</UnivNoticeButtonCP>
             </div>
             <p className="terms" onClick={() => nav("/project/univnotice/terms")}>
               <span>넘어갈 시 개인정보 처리 방침과 이용 약관에 동의함으로 간주합니다.</span>

@@ -10,6 +10,11 @@ export const projectSideBoxCss = css({
   backgroundColor: "#28292a",
   overflowY: "hidden",
   color: "white",
+  zIndex: "999",
+
+  [mq("mobile")]: {
+    height: "calc(100vh - 62px)",
+  },
 
   "& .title-content": {
     paddingBottom: "24px",

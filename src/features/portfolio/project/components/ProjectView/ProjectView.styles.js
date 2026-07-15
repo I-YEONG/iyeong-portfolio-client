@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { mq } from "@/styles/mq";
 
 export const projectViewCss = (isPc) =>
   css({
@@ -25,5 +26,13 @@ export const projectViewCss = (isPc) =>
       /* ✨ 추가된 마법의 코드 2줄 ✨ */
       transform: "translate(0, 0)", // fixed 요소를 이 박스 안에 가둡니다.
       containerType: "size", // 내부에서 vh/vw 대신 cqh/cqw를 쓸 수 있게 컨테이너로 선언합니다.
+    },
+
+    [mq("mobile")]: {
+      "& > .project-view": {
+        width: "100%",
+        borderRadius: "0",
+        height: "calc(100vh - 62px)",
+      },
     },
   });
