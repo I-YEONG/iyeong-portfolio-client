@@ -32,7 +32,6 @@ export const globalStyles = css({
     // border: "none",
     // background: "none",
     cursor: "pointer",
-    fontFamily: "inherit",
   },
 
   "ul, ol": {

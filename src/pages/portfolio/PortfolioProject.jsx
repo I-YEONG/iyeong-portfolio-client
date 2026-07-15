@@ -29,6 +29,13 @@ import {
   UnivNoticeMyInfoPage,
   UnivNoticeMyDevicePage,
   UnivNoticeMySettingPage,
+  DomoHomePage,
+  DomoNotFoundPage,
+  DomoBenefix,
+  DomoRecs,
+  DomoRecsInfo,
+  DomoRecsResult,
+  DomoRecsSave,
 } from "@/pages";
 import { useEffect } from "react";
 import { FixMobile } from "@/components";
@@ -86,10 +93,8 @@ const PortfolioProject = () => {
           {/* 살펴 프로젝트 라우터 */}
           {projectName === "univnotice" && (
             <Routes className="univnotice">
-              {/* 메인화면 */}
               <Route path="/" element={<UnivNoticeMainPage />} />
 
-              {/* 회원가입 */}
               <Route path="/signup/0" element={<UnivNoticeHelloPage />} />
               <Route path="/signup/1" element={<UnivNoticePhoneSelectPage />} />
               <Route path="/signup/2" element={<UnivNoticeInfoPage />} />
@@ -112,6 +117,19 @@ const PortfolioProject = () => {
 
               <Route path="/ios" element={<UnivNoticeHomeAppPage />} />
               <Route path="*" element={<UnivNoticeError404Page />} />
+            </Routes>
+          )}
+          {/* 살펴 프로젝트 라우터 */}
+          {projectName === "domo" && (
+            <Routes>
+              <Route path="/" element={<DomoHomePage />} />
+              <Route path="/benefix" element={<DomoBenefix />} />
+              <Route path="/recs" element={<DomoRecs />} />
+              <Route path="/recs/info" element={<DomoRecsInfo />} />
+              <Route path="/recs/result" element={<DomoRecsResult />} />
+              <Route path="/recs/save" element={<DomoRecsSave />} />
+
+              <Route path="*" element={<DomoNotFoundPage />} />
             </Routes>
           )}
         </ProjectView>

@@ -1,4 +1,4 @@
-.settingCP.centerBox .keywordList {
+.settingCP.univnoticeCenterBox .keywordList {
   display: flex;
   justify-content: flex-start;
   gap: 8px;
@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .settingCP.centerBox {
+  .settingCP.univnoticeCenterBox {
     width: 80vw;
   }
 }

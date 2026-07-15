@@ -13,8 +13,8 @@ const UnivNoticeEndPage = () => {
       <section className="endPage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         <div className="endPage-content">
           <div>{/* 이미지 */}</div>
-          <div className="titleBox">
-            <p className="title">
+          <div className="univnoticeTitleBox">
+            <p className="univnoticeTitle">
               <span>성공적</span>으로
               <br />
               <span>등록</span>되었어요!

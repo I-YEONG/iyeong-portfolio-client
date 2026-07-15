@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .myDevicePage .centerBox {
+  .myDevicePage .univnoticeCenterBox {
     width: 80vw;
   }
 }

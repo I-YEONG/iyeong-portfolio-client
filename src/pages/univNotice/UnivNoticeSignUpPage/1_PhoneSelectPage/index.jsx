@@ -12,9 +12,9 @@ const UnivNoticePhoneSelectPage = () => {
   return (
     <UnivNoticeLogoLayout>
       <section className="phonePage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
-        <div className="centerBox">
-          <div className="titleBox">
-            <h2 className="title">
+        <div className="univnoticeCenterBox">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">기종</span>을 선택해 주세요
             </h2>
             <h4 className="subTitle">잘못 선택 시, 알림이 오지 않을 수 있어요</h4>

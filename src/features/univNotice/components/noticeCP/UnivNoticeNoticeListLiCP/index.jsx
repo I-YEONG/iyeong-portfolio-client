@@ -34,8 +34,8 @@ const UnivNoticeNoticeListLiCP = ({ data, url }) => {
   }
   return (
     <div className="noticeListLiCP" style={{ cursor: "pointer" }} onClick={onClickDiv}>
-      <div className="noticeListLiCP-title univnoticeFlexCenter" style={{ gap: "6px", wordBreak: "break-all", overflowWrap: "anywhere" }}>
-        {data.title}
+      <div className="noticeListLiCP-univnoticeTitle univnoticeFlexCenter" style={{ gap: "6px", wordBreak: "break-all", overflowWrap: "anywhere" }}>
+        {data.univnoticeTitle}
         {data.other_info && (
           <span
             style={{

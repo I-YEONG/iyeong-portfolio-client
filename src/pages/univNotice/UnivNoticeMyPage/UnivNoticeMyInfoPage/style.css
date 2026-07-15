@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .myPageInfo .centerBox {
+  .myPageInfo .univnoticeCenterBox {
     width: 80vw;
   }
 }

@@ -9,7 +9,7 @@ const AboutTechnicalItemBox = ({ data = [], title, color }) => {
 
   return (
     <div css={aboutTechnicalItemBoxCss(color, pagination)}>
-      {/* titleBox */}
+      {/* univnoticeTitleBox */}
       <div className="title-box">
         <p className="title">{title}</p>
         <div className="color-bar">{/* 컬러 바 */}</div>

@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .phonePage .centerBox {
+  .phonePage .univnoticeCenterBox {
     width: 80vw;
   }
 }

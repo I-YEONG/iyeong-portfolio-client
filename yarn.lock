@@ -1630,6 +1630,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"base64-arraybuffer@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "base64-arraybuffer@npm:1.0.2"
+  checksum: 10c0/3acac95c70f9406e87a41073558ba85b6be9dbffb013a3d2a710e3f2d534d506c911847d5d9be4de458af6362c676de0a5c4c2d7bdf4def502d00b313368e72f
+  languageName: node
+  linkType: hard
+
 "baseline-browser-mapping@npm:^2.10.12":
   version: 2.10.23
   resolution: "baseline-browser-mapping@npm:2.10.23"
@@ -1773,15 +1780,19 @@ __metadata:
     eslint-plugin-react-refresh: "npm:^0.5.2"
     globals: "npm:^17.4.0"
     gsap: "npm:^3.14.2"
+    html2canvas: "npm:^1.4.1"
     jotai: "npm:^2.19.0"
     lenis: "npm:^1.3.21"
-    lucide-react: "npm:1.3.0"
+    lucide: "npm:^1.23.0"
+    lucide-react: "npm:^1.23.0"
     postcss: "npm:^8.5.15"
     re-resizable: "npm:^6.11.2"
     react: "npm:^19.2.4"
     react-apexcharts: "npm:^2.1.1"
+    react-daum-postcode: "npm:^4.0.0"
     react-dom: "npm:^19.2.4"
     react-helmet-async: "npm:^3.0.0"
+    react-paginate: "npm:^8.3.0"
     react-responsive: "npm:^10.0.1"
     react-router-dom: "npm:^7.13.2"
     react-spinners: "npm:^0.17.0"
@@ -1892,6 +1903,15 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 10c0/053ea8b2135caff68a9e81470e845613e374e7309a47731e81639de3eaeb90c3d01af0e0b44d2ab9d50b43467223b88567dfeb3262db942dc063b9976718ffc1
+  languageName: node
+  linkType: hard
+
+"css-line-break@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "css-line-break@npm:2.1.0"
+  dependencies:
+    utrie: "npm:^1.0.2"
+  checksum: 10c0/b2222d99d5daf7861ecddc050244fdce296fad74b000dcff6bdfb1eb16dc2ef0b9ffe2c1c965e3239bd05ebe9eadb6d5438a91592fa8648d27a338e827cf9048
   languageName: node
   linkType: hard
 
@@ -2491,6 +2511,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"html2canvas@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "html2canvas@npm:1.4.1"
+  dependencies:
+    css-line-break: "npm:^2.1.0"
+    text-segmentation: "npm:^1.0.3"
+  checksum: 10c0/6de86f75762b00948edf2ea559f16da0a1ec3facc4a8a7d3f35fcec59bb0c5970463478988ae3d9082152e0173690d46ebf4082e7ac803dd4817bae1d355c0db
+  languageName: node
+  linkType: hard
+
 "hyphenate-style-name@npm:^1.0.0":
   version: 1.1.0
   resolution: "hyphenate-style-name@npm:1.1.0"
@@ -2880,12 +2910,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:1.3.0":
-  version: 1.3.0
-  resolution: "lucide-react@npm:1.3.0"
+"lucide-react@npm:^1.23.0":
+  version: 1.23.0
+  resolution: "lucide-react@npm:1.23.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-  checksum: 10c0/e8db5f1c715d9fe01138554aef13e7c16a3caa3326dcbc44cea55b63fe90812500bd25bba4abead3ebb88aba83d95de24c28ce139824de74de9ba551b065bbf1
+  checksum: 10c0/1cb2108d81c9713e20dd1beb7b6ac5bfc17307d5f38388f84921cf6a124efb4b933c73929bede42f00bd08aa2df340b0904acdf4fb90206ccd52971e943e775b
+  languageName: node
+  linkType: hard
+
+"lucide@npm:^1.23.0":
+  version: 1.23.0
+  resolution: "lucide@npm:1.23.0"
+  checksum: 10c0/a15f56f7459d394cc6cc7509dfe9879d264a9db79737320f5e675fbf984478608c93501feaf5aa4e3e54bbaba80731443fc6f5b9c29f1a6f900ce315e9c4ea8c
   languageName: node
   linkType: hard
 
@@ -3187,7 +3224,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -3234,6 +3271,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-daum-postcode@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "react-daum-postcode@npm:4.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/5f166b56fdcfa876ec3a02864d034b24d3522af47b9168497cb051df4fe24d692f1102e8894e51f4f860d2e8ff63eb017435d8063ea7797343a749186ae2a3a7
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^19.2.4":
   version: 19.2.5
   resolution: "react-dom@npm:19.2.5"
@@ -3276,6 +3322,17 @@ __metadata:
   version: 19.2.7
   resolution: "react-is@npm:19.2.7"
   checksum: 10c0/419fe54d5bd7fdf5414a5bb7bd9a1e0e36f9fae28ffb4cb73290fbe342bde15d8584a90d1db62547f6aa03018dce517b178a041abb522136cd4b4b51b4e94c83
+  languageName: node
+  linkType: hard
+
+"react-paginate@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "react-paginate@npm:8.3.0"
+  dependencies:
+    prop-types: "npm:^15"
+  peerDependencies:
+    react: ^16 || ^17 || ^18 || ^19
+  checksum: 10c0/2529fe1d5235fb50195b78c2edf4ab72c5dda88d38445e68521822cd2ea1e47d490a6af9ac2e4d0507db3d094cded4cdd4b5db2b12e535b2c435b123e9427eb7
   languageName: node
   linkType: hard
 
@@ -3603,6 +3660,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"text-segmentation@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "text-segmentation@npm:1.0.3"
+  dependencies:
+    utrie: "npm:^1.0.2"
+  checksum: 10c0/8b9ae8524e3a332371060d0ca62f10ad49a13e954719ea689a6c3a8b8c15c8a56365ede2bb91c322fb0d44b6533785f0da603e066b7554d052999967fb72d600
+  languageName: node
+  linkType: hard
+
 "tinyglobby@npm:^0.2.12":
   version: 0.2.17
   resolution: "tinyglobby@npm:0.2.17"
@@ -3706,6 +3772,15 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
   checksum: 10c0/c4a81c968819c89b2d22c0862f3ee375b951ae34598ee1077523e144d1da50b82882b1b12d1df116a645494689b0ea073a69cd3b34279d91824b4ee0219ae428
+  languageName: node
+  linkType: hard
+
+"utrie@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "utrie@npm:1.0.2"
+  dependencies:
+    base64-arraybuffer: "npm:^1.0.2"
+  checksum: 10c0/eaffe645bd81a39e4bc3abb23df5895e9961dbdd49748ef3b173529e8b06ce9dd1163e9705d5309a1c61ee41ffcb825e2043bc0fd1659845ffbdf4b1515dfdb4
   languageName: node
   linkType: hard
 

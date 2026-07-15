@@ -34,12 +34,12 @@
   border-radius: 0.75rem;
 }
 
-.phonePage .centerBox {
+.phonePage .univnoticeCenterBox {
   min-height: unset;
 }
 
 @media screen and (max-width: 768px) {
-  .phonePage .centerBox {
+  .phonePage .univnoticeCenterBox {
     width: 80vw;
   }
 }

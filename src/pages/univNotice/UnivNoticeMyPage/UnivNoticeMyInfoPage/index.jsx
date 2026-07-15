@@ -34,10 +34,10 @@ const UnivNoticeMyInfoPage = () => {
     <UnivNoticeMyPageLayout>
       <section className="myPageInfo univnoticeFlexCenter" css={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {/* 중앙 */}
-        <div className="centerBox">
+        <div className="univnoticeCenterBox">
           {/* 타이틀 */}
-          <div className="titleBox">
-            <h2 className="title">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">내 정보</span>
             </h2>
             <h4 className="subTitle">가입할 때 입력하신 정보입니다.</h4>
@@ -45,10 +45,10 @@ const UnivNoticeMyInfoPage = () => {
           {/* 인풋요소 */}
           {!isUserDataLoading && (
             <div className="univnoticeFlexCol">
-              <UnivNoticeInputCP title="이름" activate={false} value={userData.name} />
-              <UnivNoticeInputCP title="학번" activate={false} value={`****${userData.student_id}`} />
-              <UnivNoticeInputCP title="학교/학과" activate={false} value={`${userData.school.name} / ${userData.department.name}`} />
-              <UnivNoticeInputCP title="핸드폰 번호" activate={false} value={`010 - **** - ${userData.phone}`} />
+              <UnivNoticeInputCP univnoticeTitle="이름" activate={false} value={userData.name} />
+              <UnivNoticeInputCP univnoticeTitle="학번" activate={false} value={`****${userData.student_id}`} />
+              <UnivNoticeInputCP univnoticeTitle="학교/학과" activate={false} value={`${userData.school.name} / ${userData.department.name}`} />
+              <UnivNoticeInputCP univnoticeTitle="핸드폰 번호" activate={false} value={`010 - **** - ${userData.phone}`} />
             </div>
           )}
 
