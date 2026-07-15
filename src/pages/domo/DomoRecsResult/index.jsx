@@ -194,7 +194,7 @@ const DomoRecsResult = () => {
             <p>
               기존 장소와 새로운 장소의 이동거리 차이가
               <br />
-              <span style={{ color: "var(--main-color)" }}>
+              <span style={{ color: "var(--domo-main-color)" }}>
                 {tempData && Math.abs(tempData.oldDistance - tempData.newDistance) < 1
                   ? "별로 없어요!"
                   : tempData &&

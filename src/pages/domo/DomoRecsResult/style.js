@@ -41,7 +41,7 @@ export const domoRecsResultStyle = (isPc) =>
       padding: 0,
       display: "flex",
       alignItems: "center",
-      color: "var(--main-color)",
+      color: "var(--domo-main-color)",
     },
 
     "& .recsResult_back-button .logo-text": {
@@ -65,11 +65,11 @@ export const domoRecsResultStyle = (isPc) =>
     },
 
     "& .list_header_title span": {
-      color: "var(--main-color)",
+      color: "var(--domo-main-color)",
     },
 
     "& .list_header_backBtn": {
-      backgroundColor: "var(--point-color-2)",
+      backgroundColor: "var(--domo-point-color-2)",
       border: "none",
       maxWidth: "124px",
       maxHeight: "56px",
@@ -79,13 +79,13 @@ export const domoRecsResultStyle = (isPc) =>
       cursor: "pointer",
       fontSize: "clamp(0.8rem, 1.2vw, 1.2rem)",
       fontWeight: 600,
-      color: "var(--point-color-2-2)",
+      color: "var(--domo-point-color-2-2)",
       fontFamily: "pre-semibold",
     },
 
     "& .list_header_backBtn:hover": {
-      backgroundColor: "var(--point-color-2)",
-      color: "var(--point-color-2-2)",
+      backgroundColor: "var(--domo-point-color-2)",
+      color: "var(--domo-point-color-2-2)",
     },
 
     "& .list_items": {
@@ -114,7 +114,7 @@ export const domoRecsResultStyle = (isPc) =>
       fontWeight: 400,
       marginRight: "16px",
       flex: 0.01,
-      color: "var(--main-color)",
+      color: "var(--domo-main-color)",
       fontFamily: "pre-regular",
     },
 
@@ -147,8 +147,8 @@ export const domoRecsResultStyle = (isPc) =>
       height: "clamp(3rem, 4vw, 6rem)",
       borderRadius: "50%",
       fontSize: "clamp(1.4rem, 2vw, 2.5rem)",
-      backgroundColor: "var(--point-color-2)",
-      color: "var(--point-color-2-2)",
+      backgroundColor: "var(--domo-point-color-2)",
+      color: "var(--domo-point-color-2-2)",
       marginRight: "18px",
       flexShrink: 0,
     },
@@ -176,7 +176,7 @@ export const domoRecsResultStyle = (isPc) =>
     "& .item_benefit": {
       fontSize: "clamp(0.75rem, 0.75vw, 0.9rem)",
       backgroundColor: "#dbeeff",
-      color: "var(--main-color)",
+      color: "var(--domo-main-color)",
       borderRadius: "12px",
       display: "inline-block",
       fontFamily: "pre-regular",
@@ -214,7 +214,7 @@ export const domoRecsResultStyle = (isPc) =>
 
     "& .list_footer-btn": {
       color: "white",
-      backgroundColor: "var(--main-color)",
+      backgroundColor: "var(--domo-main-color)",
       width: "100%",
       height: "12vh",
       maxHeight: "88px",
@@ -253,7 +253,7 @@ export const domoRecsResultStyle = (isPc) =>
       padding: "12px 26px",
       fontSize: "18px",
       fontWeight: "bold",
-      backgroundColor: "var(--main-color)",
+      backgroundColor: "var(--domo-main-color)",
       color: "var(--black-0)",
       border: "none",
       borderRadius: "12px",
@@ -339,7 +339,7 @@ export const domoRecsResultStyle = (isPc) =>
     },
 
     "& .isMobile .list_header_backBtn": {
-      backgroundColor: "var(--point-color-2)",
+      backgroundColor: "var(--domo-point-color-2)",
       border: "none",
       width: "25%",
       height: "56px",
@@ -347,7 +347,7 @@ export const domoRecsResultStyle = (isPc) =>
       cursor: "pointer",
       fontSize: "12px",
       fontWeight: 600,
-      color: "var(--point-color-2-2)",
+      color: "var(--domo-point-color-2-2)",
       fontFamily: "pre-semibold",
     },
 
@@ -370,7 +370,7 @@ export const domoRecsResultStyle = (isPc) =>
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      color: "var(--point-color-2-2)",
+      color: "var(--domo-point-color-2-2)",
       width: "56px",
       height: "56px",
       padding: "12px",
@@ -400,7 +400,7 @@ export const domoRecsResultStyle = (isPc) =>
 
     "& .isMobile .list_footer-btn": {
       color: "white",
-      backgroundColor: "var(--main-color)",
+      backgroundColor: "var(--domo-main-color)",
       width: "90%",
       height: "5vh",
       borderRadius: "20px",
@@ -439,7 +439,7 @@ export const domoRecsResultStyle = (isPc) =>
       width: "100%",
       height: "40%",
       minHeight: "128px",
-      backgroundColor: "var(--point-color-2)",
+      backgroundColor: "var(--domo-point-color-2)",
       borderRadius: "24px 24px 0 0",
       padding: "24px 48px",
       overflow: "visible",
@@ -477,8 +477,8 @@ export const domoRecsResultStyle = (isPc) =>
       justifyContent: "center",
       alignItems: "center",
       fontSize: "3rem",
-      color: "var(--point-color-2-2)",
-      border: "4px solid var(--point-color-2)",
+      color: "var(--domo-point-color-2-2)",
+      border: "4px solid var(--domo-point-color-2)",
     },
 
     "& .modal_content_ > div:nth-child(2)": {
@@ -499,7 +499,7 @@ export const domoRecsResultStyle = (isPc) =>
 
     "& .modal_content_ > div:nth-child(2) > p:nth-child(3)": {
       fontSize: "clamp(1rem, 1vw, 1.2rem)",
-      color: "var(--main-color)",
+      color: "var(--domo-main-color)",
       backgroundColor: "#dbeeff",
       fontFamily: "pre-regular",
       borderRadius: "12px",
@@ -572,7 +572,7 @@ export const domoRecsResultStyle = (isPc) =>
     },
 
     "& .modal_content_2 > div:nth-child(3) > div:nth-child(2)": {
-      backgroundColor: "var(--main-color)",
+      backgroundColor: "var(--domo-main-color)",
       cursor: "pointer",
       color: "var(--black-0)",
     },

@@ -32,7 +32,7 @@
 }
 
 .mainPage > p {
-  color: var(--main-color);
+  color: var(--univ-main-color);
   font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   font-weight: 700;
   position: absolute;
@@ -41,13 +41,13 @@
   transform: translateX(-50%);
   cursor: pointer;
   padding-bottom: 4px;
-  border-bottom: 2px solid var(--main-color);
+  border-bottom: 2px solid var(--univ-main-color);
   transition: all 0.2s;
 }
 
 .mainPage > p:hover {
-  color: var(--point-color-1);
-  border-bottom: 2px solid var(--point-color-1);
+  color: var(--univ-point-color-1);
+  border-bottom: 2px solid var(--univ-point-color-1);
 }
 
 /* @media screen and (max-width: 768px) {

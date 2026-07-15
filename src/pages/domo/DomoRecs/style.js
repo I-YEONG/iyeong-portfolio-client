@@ -87,7 +87,7 @@ export const domoRecsPageStyle = (isPc) =>
         lineHeight: isPc ? "27px" : "1.5",
 
         ".point": {
-          color: "var(--main-color)",
+          color: "var(--domo-main-color)",
           position: "relative",
 
           "&::before": {
@@ -99,7 +99,7 @@ export const domoRecsPageStyle = (isPc) =>
             transform: "translateX(-50%)",
             width: "3px",
             height: "3px",
-            background: "var(--main-color)", // 점 색상
+            background: "var(--domo-main-color)", // 점 색상
             borderRadius: "50%",
           },
         },
@@ -132,7 +132,7 @@ export const domoRecsPageStyle = (isPc) =>
       height: "40%",
       left: "-20%",
       top: "-20%",
-      background: "var(--point-color-1)",
+      background: "var(--domo-point-color-1)",
       filter: "blur(200px)",
     },
 

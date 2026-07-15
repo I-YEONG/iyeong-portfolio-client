@@ -63,7 +63,7 @@ const UnivNoticeNoticePage = () => {
                     id="alarmOnly"
                     checked={alarmOnly}
                     onChange={(e) => setAlarmOnly(e.target.checked)}
-                    style={{ accentColor: "var(--main-color)", width: 18, height: 18, cursor: "pointer" }}
+                    style={{ accentColor: "var(--univ-main-color)", width: 18, height: 18, cursor: "pointer" }}
                   />
                   <label htmlFor="alarmOnly" style={{ cursor: "pointer", userSelect: "none" }}>
                     알림 공지만 보기
@@ -95,9 +95,9 @@ const UnivNoticeNoticePage = () => {
                   if (index === paging) {
                     indicator = <div className="point"></div>;
                   } else if (hasRecentAlarm) {
-                    indicator = <div className="point" style={{ backgroundColor: "var(--light-orange)" }}></div>;
+                    indicator = <div className="point" style={{ backgroundColor: "var(--univ-light-orange)" }}></div>;
                   } else if (hasRecent) {
-                    indicator = <div className="point" style={{ backgroundColor: "var(--point-color-3)" }}></div>;
+                    indicator = <div className="point" style={{ backgroundColor: "var(--univ-point-color-3)" }}></div>;
                   }
 
                   return (

@@ -13,7 +13,7 @@ const UnivNoticeAlarmCP = (onClickAlarm) => {
         zIndex: "1000",
         width: "3rem",
         height: "3rem",
-        backgroundColor: "var(--main-color)",
+        backgroundColor: "var(--univ-main-color)",
         borderRadius: "50%",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
         display: "flex",

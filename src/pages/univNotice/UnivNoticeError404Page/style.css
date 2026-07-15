@@ -11,7 +11,7 @@
 }
 
 .error404Page .explanation > span {
-  color: var(--point-color-1);
+  color: var(--univ-point-color-1);
   display: inline-block;
   width: 32px;
 }

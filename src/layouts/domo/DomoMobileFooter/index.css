@@ -26,5 +26,5 @@ footer.mobile-footer a > :first-child {
 }
 
 footer.mobile-footer a.active {
-  color: var(--main-color);
+  color: var(--domo-main-color);
 }

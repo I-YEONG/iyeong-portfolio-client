@@ -18,7 +18,7 @@ header.mobile-header .home-button {
   padding: 0;
   display: flex;
   align-items: center;
-  color: var(--main-color);
+  color: var(--domo-main-color);
 }
 
 header.mobile-header .logo-text {

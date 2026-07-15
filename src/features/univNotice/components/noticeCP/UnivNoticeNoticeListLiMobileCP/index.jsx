@@ -37,7 +37,7 @@ const UnivNoticeNoticeListLiMobileCP = ({ data, url }) => {
     <div className="noticeListLiMobileCP" onClick={onClickDiv}>
       <div className="noticeListLiMobileCP-univnoticeTitle">
         {data.univnoticeTitle}
-        {showNew && <span style={{ color: "var(--orange)", fontWeight: 600, fontSize: "8px", marginLeft: "4px" }}>NEW</span>}
+        {showNew && <span style={{ color: "var(--univ-orange)", fontWeight: 600, fontSize: "8px", marginLeft: "4px" }}>NEW</span>}
       </div>
       <div className="univnoticeFlexCenter">
         <div className="noticeListLiMobileCP-author">{data.author}</div>

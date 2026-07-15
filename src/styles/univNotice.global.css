@@ -4,19 +4,19 @@
 
 :root {
   /* 색상 팔레트 var()로 사용 */
-  --main-color: #474a50;
-  --main-color-2: rgb(92, 93, 95);
-  --point-color-1: #6ba2ff;
-  --point-color-2: #fbe464;
-  --point-color-3: #8bb6ff;
+  --univ-main-color: #474a50;
+  --univ-main-color-2: rgb(92, 93, 95);
+  --univ-point-color-1: #6ba2ff;
+  --univ-point-color-2: #fbe464;
+  --univ-point-color-3: #8bb6ff;
 
-  --red: #ff7676;
-  --red-2: #a32a2a;
-  --green: #77f085;
-  --orange: #ffb36f;
-  --light-orange: #ffc796;
+  --univ-red: #ff7676;
+  --univ-red-2: #a32a2a;
+  --univ-green: #77f085;
+  --univ-orange: #ffb36f;
+  --univ-light-orange: #ffc796;
 
-  --text-color: #2c2f33;
+  --univ-text-color: #2c2f33;
 
   --black-0: #ffffff;
   --black-1: #eff0f5;
