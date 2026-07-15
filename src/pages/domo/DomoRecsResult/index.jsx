@@ -40,6 +40,7 @@ const DomoRecsResult = () => {
   useEffect(() => {
     if (isLoading || isError || !data) return;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRecommendations(data);
 
     // 데이터가 존재할 경우 첫 번째 장소로 중심 좌표 설정
@@ -80,7 +81,7 @@ const DomoRecsResult = () => {
   // 결정하기 핸들러 함수
   const onSaveToNextHandler = () => {
     if (window.confirm("다음으로 넘어가면 수정이 불가능합니다.\n넘어가시겠습니까?")) {
-      nav("/recs/save", { state: { recommendations } });
+      nav("/project/domo/recs/save", { state: { recommendations } });
     }
   };
 

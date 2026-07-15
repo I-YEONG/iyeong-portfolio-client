@@ -112,12 +112,9 @@ const DomoRecsInfo = () => {
 
     setLoading(true);
 
-    // 요청 api
-    // const data = await planRequest(infoData);
-
-    // setLoading(false);
-
-    // nav("/recs/result", { state: { recommendations: data } });
+    setTimeout(() => {
+      nav("/project/domo/recs/result");
+    }, 2000);
   };
 
   const { isPc } = useDeviceMode();
