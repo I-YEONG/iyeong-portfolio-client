@@ -72,9 +72,9 @@ const UnivNoticeCategoryPage = () => {
   return (
     <UnivNoticeLogoLayout>
       <section className="categoryPage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
-        <div className="centerBox">
-          <div className="titleBox">
-            <h2 className="title">
+        <div className="univnoticeCenterBox">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               알림 받을 <span className="bold">공지</span>를
               <br />
               선택해 주세요!

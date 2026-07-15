@@ -1,0 +1,116 @@
+import { Link, useNavigate } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useState, useEffect } from "react";
+
+import "swiper/css";
+import "@/styles/domo.global.css";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { DomoMainLayout } from "@/layouts";
+import DomoCustomSwiper from "@/features/domo/components/DomoSwiper";
+import { domoHomeStyle } from "./style";
+import { useGetDomoQuery } from "@/features/domo/hooks/useGetDomoQuery";
+
+const DomoHomePage = () => {
+  const { isMobile, isPc } = useDeviceMode();
+  const [randomCourses, setRandomCourses] = useState([]);
+  const navigate = useNavigate();
+  const {
+    data: homeData,
+    isLoading: isHomeDataLoading,
+    // isError: isDepartmentListError,
+  } = useGetDomoQuery(`/`, {});
+
+  // 컴포넌트 마운트 시 랜덤 코스 선택
+  useEffect(() => {
+    if (isHomeDataLoading) return;
+
+    const shuffled = [...homeData].sort(() => 0.5 - Math.random());
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setRandomCourses(shuffled.slice(0, 8));
+  }, [isHomeDataLoading, setRandomCourses, homeData]);
+
+  // 이미지 클릭 시 RecsResult 페이지로 이동하는 함수
+  const handleImageClick = (course) => {
+    navigate("/recs/result", { state: { recommendations: course.data } });
+  };
+
+  return (
+    <DomoMainLayout>
+      <section className="slider-section">
+        <DomoCustomSwiper />
+      </section>
+
+      <main className="home-container" css={domoHomeStyle(isPc)}>
+        <section className="grid-section">
+          <h2 className="grid-title">
+            <span className="span-domo-blue">도모</span>가 모아온 각 지역의 특별한 하루!
+          </h2>
+
+          {isMobile ? (
+            <Swiper className="grid-swiper" spaceBetween={16} slidesPerView={2.5} slidesOffsetAfter={20} slidesOffsetBefore={20}>
+              {/* 모바일 스와이퍼 - 랜덤 데이터 사용 */}
+              {randomCourses.map((course) => (
+                <SwiperSlide key={course.course_name} className="grid-swiper-slide">
+                  <div className="grid-item">
+                    <div
+                      className="grid-item-image"
+                      style={{
+                        backgroundImage: `url(${course.image})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                      onClick={() => handleImageClick(course)}
+                    />
+                    <div className="grid-item-info">
+                      <h4>{course.course_name}</h4>
+                      <p>{course.short_description}</p>
+                      <div className="tags">
+                        <span className="tag-blue">{course.region_name}</span>
+                        <span className="tag-yellow">{course.activity_keyword}</span>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : (
+            <div className="grid-container">
+              {/* PC 그리드 - 랜덤 데이터 사용 */}
+              {randomCourses.map((course) => (
+                <div className="grid-item" key={course.course_name}>
+                  <div
+                    className="grid-item-image"
+                    style={{
+                      backgroundImage: `url(${course.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                    onClick={() => handleImageClick(course)}
+                  />
+                  <div className="grid-item-info">
+                    <h4>{course.course_name}</h4>
+                    <p>{course.short_description}</p>
+                    <div className="tags">
+                      <span className="tag-blue">{course.region_name}</span>
+                      <span className="tag-yellow">{course.activity_keyword}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <Link to="/project/domo/recs">
+            <button className="load-more-button">도모와 함께 내 주변 놀거리 찾기 &gt;</button>
+          </Link>
+
+          {/* footer 위쪽에 공간 만들기 */}
+          {isMobile && <div style={{ height: "48px" }} />}
+        </section>
+      </main>
+    </DomoMainLayout>
+  );
+};
+
+export default DomoHomePage;

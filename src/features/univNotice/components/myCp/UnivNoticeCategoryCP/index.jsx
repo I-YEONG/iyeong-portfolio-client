@@ -41,7 +41,7 @@ const UnivNoticeCategoryCP = ({ category, onEnabledCategory, onDeleteKeyword, on
   return (
     <div className="categoryCP">
       <div className="univnoticeFlexBetween">
-        <div className="title">{category.category}</div>
+        <div className="univnoticeTitle">{category.category}</div>
         <div className="univnoticeFlexBetween" style={{ alignItems: "center", gap: "8px", color: "var(--black-3)" }}>
           <FontAwesomeIcon icon={faPlus} onClick={onPostKeywordFunc} style={{ cursor: "pointer" }} />
           <UnivNoticeToggleCP value={category?.Categories.length === 0 ? false : true} onClickFun={onEnabledCategoryFunc} />

@@ -102,7 +102,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--point-color-1);
+  background-color: var(--univ-point-color-1);
   position: absolute;
   top: 14px;
   right: 16px;
@@ -150,8 +150,8 @@
   font-size: 0.875rem;
 }
 
-.noticePage .noticeListLiCP .noticeListLiCP-title,
-.noticePage .noticeListLiCPTitle .noticeListLiCP-title {
+.noticePage .noticeListLiCP .noticeListLiCP-univnoticeTitle,
+.noticePage .noticeListLiCPTitle .noticeListLiCP-univnoticeTitle {
   flex: 0.6;
 }
 .noticePage .noticeListLiCP .noticeListLiCP-author,

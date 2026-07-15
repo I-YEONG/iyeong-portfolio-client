@@ -1,0 +1,26 @@
+// NotFoundPage.js
+
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./style.css";
+import "@/styles/domo.global.css";
+
+function DomoNotFoundPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/project/domo/");
+    }, 3000); // 3초 후 홈으로 이동
+  }, [navigate]);
+
+  return (
+    <div className="not-found">
+      <h1>404</h1>
+      <h3>페이지를 찾을 수 없습니다.</h3>
+      <p>3초 후 홈으로 이동합니다...</p>
+    </div>
+  );
+}
+
+export default DomoNotFoundPage;

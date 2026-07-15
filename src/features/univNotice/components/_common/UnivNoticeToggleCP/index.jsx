@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import "./style.css";
 import "@/styles/univNotice.global.css";
-const UnivNoticeToggleCP = ({ title = "", value = true, onClickFun }) => {
+const UnivNoticeToggleCP = ({ univnoticeTitle = "", value = true, onClickFun }) => {
   const [toggleValue, setToggleValue] = useState(value);
   const isInitialMount = useRef(true);
 
@@ -22,7 +22,7 @@ const UnivNoticeToggleCP = ({ title = "", value = true, onClickFun }) => {
 
   return (
     <div className="toggleCP">
-      <p>{title}</p>
+      <p>{univnoticeTitle}</p>
       <div>
         <div
           onClick={() => {

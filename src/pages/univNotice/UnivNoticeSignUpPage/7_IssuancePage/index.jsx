@@ -76,8 +76,8 @@ const UnivNoticeIssuancePage = () => {
         {!isPc && <div className="mobile-image">{/* 이미지 */}</div>}
         <div className="content univnoticeFlexBetweenCol">
           <div>
-            {isPc && <div className="pc-title-image">{/* 이미지 */}</div>}
-            <p className="title">
+            {isPc && <div className="pc-univnoticeTitle-image">{/* 이미지 */}</div>}
+            <p className="univnoticeTitle">
               어플 상단 <span className="bold">기기 등록</span>을 눌러
               <br />
               <span className="bold">

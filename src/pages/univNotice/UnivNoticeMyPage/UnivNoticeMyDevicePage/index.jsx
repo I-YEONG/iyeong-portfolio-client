@@ -57,10 +57,10 @@ const UnivNoticeMyDevicePage = () => {
     <UnivNoticeMyPageLayout>
       <section className="myDevicePage univnoticeFlexCenter" css={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {/* 중앙 */}
-        <div className="centerBox" style={{ minHeight: deviceData.length === 0 ? "auto" : "" }}>
+        <div className="univnoticeCenterBox" style={{ minHeight: deviceData.length === 0 ? "auto" : "" }}>
           {/* 타이틀 */}
-          <div className="titleBox">
-            <h2 className="title">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">기기 정보</span>
             </h2>
             <h4 className="subTitle">현재 로그인 된 기기 목록입니다.</h4>
@@ -74,7 +74,7 @@ const UnivNoticeMyDevicePage = () => {
                 <a
                   href={`https://play.google.com/store/apps/details?id=com.iyeonggyu0.univnotice&pcampaignid=web_share`}
                   target="_blank"
-                  style={{ color: "var(--point-color-1)" }}>
+                  style={{ color: "var(--univ-point-color-1)" }}>
                   앱 설치 바로가기
                 </a>
               </div>

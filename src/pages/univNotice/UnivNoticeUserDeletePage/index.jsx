@@ -77,16 +77,16 @@ const UnivNoticeUserDeletePage = () => {
     <UnivNoticeMainLayout>
       <section className="userDeletePage univnoticeFlexCenter" style={isPc ? { padding: "0 6rem" } : { padding: "0 3rem" }}>
         {/* 중앙 */}
-        <div className="centerBox">
+        <div className="univnoticeCenterBox">
           {/* 타이틀 */}
-          <div className="titleBox">
-            <h2 className="title">
+          <div className="univnoticeTitleBox">
+            <h2 className="univnoticeTitle">
               <span className="bold">회원 탈퇴</span>
             </h2>
             <h4 className="subTitle">가입한 정보를 입력해 주세요</h4>
           </div>
           <div className="univnoticeFlexCol">
-            <UnivNoticeInputCP value={student_id} onChange={onChangeStudent_id} title="학번" placeholder="학번을 6자리 이상 입력해 주세요" />
+            <UnivNoticeInputCP value={student_id} onChange={onChangeStudent_id} univnoticeTitle="학번" placeholder="학번을 6자리 이상 입력해 주세요" />
             <div>
               <span className="smsButton" onClick={(e) => onClickCertification(e)}>
                 발송
@@ -94,7 +94,7 @@ const UnivNoticeUserDeletePage = () => {
               <UnivNoticeInputCP
                 value={phone}
                 onChange={onChangePhone}
-                title="휴대폰 번호"
+                univnoticeTitle="휴대폰 번호"
                 placeholder="숫자만 입력하세요"
                 onKeyDown={onKeyDownCertification}
               />
@@ -103,14 +103,14 @@ const UnivNoticeUserDeletePage = () => {
               <UnivNoticeInputCP
                 value={certification_code}
                 onChange={onChangeCertification_code}
-                title="인증번호"
+                univnoticeTitle="인증번호"
                 placeholder="문자로 받은 6자릿값을 입력하세요"
                 onKeyDown={onKeyDownDelete}
               />
             )}
           </div>
           <div className="bottomItem" onClick={onClickDelete}>
-            <UnivNoticeButtonCP bgColor="--red">회원 탈퇴</UnivNoticeButtonCP>
+            <UnivNoticeButtonCP bgColor="--univ-red">회원 탈퇴</UnivNoticeButtonCP>
           </div>
         </div>
       </section>

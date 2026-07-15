@@ -7,7 +7,7 @@ export const globalStyles = css({
     // padding: 0,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
-    fontFamily: '"Pretendard", "Gothic A1", "-apple-system", "sans-serif"',
+    fontFamily: '"pretendard", "Gothic A1", "-apple-system", "sans-serif"',
   },
 
   html: {
@@ -32,7 +32,6 @@ export const globalStyles = css({
     // border: "none",
     // background: "none",
     cursor: "pointer",
-    fontFamily: "inherit",
   },
 
   "ul, ol": {
