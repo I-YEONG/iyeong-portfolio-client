@@ -101,6 +101,7 @@ const PortfolioProject = () => {
       "& .project-view-box": {
         width: "100vw",
         overflow: "hidden",
+        position: "relative",
       },
     },
   });
@@ -124,8 +125,8 @@ const PortfolioProject = () => {
         {/* 시뮬레이션 박스 (레이아웃 역할) */}
         <ProjectView isPc={isPc}>
           {/* 커리어하이 프로젝트 라우터 */}
-          <div className="careerhi">
-            {projectName === "careerhi" && (
+          {projectName === "careerhi" && (
+            <div className="careerhi">
               <Routes>
                 {/* 기본 주소: /careerhi/ */}
                 <Route path="/" element={<CareerHiMainPage />} />
@@ -134,13 +135,13 @@ const PortfolioProject = () => {
                 <Route path="/roadmap/result" element={<CareerHiResultPage />} />
                 <Route path="*" element={<CareerHiError404Page />} />
               </Routes>
-            )}
-          </div>
+            </div>
+          )}
 
-          {/* 살펴 프로젝트 라우터 */}
-          <div className="univnotice">
-            {projectName === "univnotice" && (
-              <Routes className="univnotice">
+          {/* univnotice 프로젝트 라우터 */}
+          {projectName === "univnotice" && (
+            <div className="univnotice">
+              <Routes>
                 <Route path="/" element={<UnivNoticeMainPage />} />
 
                 <Route path="/signup/0" element={<UnivNoticeHelloPage />} />
@@ -166,12 +167,12 @@ const PortfolioProject = () => {
                 <Route path="/ios" element={<UnivNoticeHomeAppPage />} />
                 <Route path="*" element={<UnivNoticeError404Page />} />
               </Routes>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* 살펴 프로젝트 라우터 */}
-          <div className="domo">
-            {projectName === "domo" && (
+          {projectName === "domo" && (
+            <div className="domo">
               <Routes>
                 <Route path="/" element={<DomoHomePage />} />
                 <Route path="/benefix" element={<DomoBenefix />} />
@@ -182,8 +183,8 @@ const PortfolioProject = () => {
 
                 <Route path="*" element={<DomoNotFoundPage />} />
               </Routes>
-            )}
-          </div>
+            </div>
+          )}
         </ProjectView>
       </div>
     </div>
