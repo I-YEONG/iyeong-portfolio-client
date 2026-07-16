@@ -73,7 +73,7 @@ export const footerCss = css({
 
     // 타이틀
     "& .title": {
-      ...theme.fonts.testXLg_B,
+      ...theme.fonts.textXLg_B,
       marginBottom: "16px",
       [mq("mobile")]: {
         ...theme.fonts.textLg_B,

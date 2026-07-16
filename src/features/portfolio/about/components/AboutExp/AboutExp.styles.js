@@ -24,13 +24,29 @@ export const aboutExpCss = css({
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+      overflow: "hidden",
+      WebkitLineClamp: 4,
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      [mq("mobile")]: {
+        display: "block",
+      },
     },
 
     "& > .title": {
       flex: "1 0 20%",
+      WebkitLineClamp: 4,
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
     },
     "& > .type": {
-      display: "block",
+      // display: "block",
+      flex: "1 0 7%",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "column",
+      alignItems: "start",
+      gap: "4px",
     },
 
     "& > div.detail": {
@@ -45,13 +61,7 @@ export const aboutExpCss = css({
       flex: "1 0 15%",
     },
 
-    "&:not(.header) > .type": {
-      flex: "1 0 7%",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "start",
-      gap: "4px",
-    },
+    "&:not(.header) > .type": {},
 
     "&:last-child": {
       borderBottom: "none",
