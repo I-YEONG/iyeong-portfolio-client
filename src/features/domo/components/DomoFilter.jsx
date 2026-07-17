@@ -4,7 +4,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./styles/filter.js";
-import "@/styles/domo.global.css";
+
 import { domoFilterStyle } from "./styles/filter.js";
 import { useDeviceMode } from "@/hooks/useDeviceMode.js";
 

@@ -3,7 +3,6 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeIssuancePage = () => {
   const { isPc, setPcMode } = useDeviceMode();

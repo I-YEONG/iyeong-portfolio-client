@@ -1,5 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import "@/styles/careerhi.global.css";
+import "@/styles/food.global.css";
+import "@/styles/domo.global.css";
+import "@/styles/univNotice.global.css";
 
 // 페이지 임포트
 import { MouseFollower } from "@/components";

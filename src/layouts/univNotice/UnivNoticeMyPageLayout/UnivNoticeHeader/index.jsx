@@ -4,7 +4,7 @@ import UnivNoticeLogoCP from "@/features/univNotice/components/_common/UnivNotic
 import "./style.css";
 import { useEffect } from "react";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import "@/styles/univNotice.global.css";
+
 const UnivNoticeMyPageHeader = () => {
   // const [isLogin, setIsLogin] = useState(null);
   const { isPc, isMobile } = useDeviceMode();

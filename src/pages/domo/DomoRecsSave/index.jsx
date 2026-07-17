@@ -1,5 +1,5 @@
 import "./style.css";
-import "@/styles/domo.global.css";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import html2canvas from "html2canvas";

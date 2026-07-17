@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { Resizable } from "re-resizable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad, faMugHot, faUtensils, faXmark } from "@fortawesome/free-solid-svg-icons";
-import "@/styles/domo.global.css";
+
 import { DomoPcHeader } from "@/layouts";
 import { DomoBoxButton, DomoModal, DomoModalLoading, DomoNaverMap, DomoPopover } from "@/features/domo/components";
 import { domoRecsResultStyle } from "./style";

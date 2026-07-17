@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./styles/modal.js";
-import "@/styles/domo.global.css";
+
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { domoModalStyle } from "./styles/modal.js";
 

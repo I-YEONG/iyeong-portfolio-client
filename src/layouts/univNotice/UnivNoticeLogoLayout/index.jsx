@@ -1,6 +1,6 @@
 import UnivNoticeLogoCP from "@/features/univNotice/components/_common/UnivNoticeLogoCP";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import "@/styles/univNotice.global.css";
+
 const UnivNoticeLogoLayout = ({ children }) => {
   const { isPc } = useDeviceMode();
 

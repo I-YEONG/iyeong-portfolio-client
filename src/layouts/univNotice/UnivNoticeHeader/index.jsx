@@ -1,6 +1,6 @@
 import UnivNoticeLogoCP from "@/features/univNotice/components/_common/UnivNoticeLogoCP";
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 import { useNavigate } from "react-router-dom";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { useAuth } from "@/hooks/useAuth";
