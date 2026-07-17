@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* 1. 플러그인 추가 */
+@plugin "tailwindcss-animate";
+
+/* 2. 다크모드 클래스 제어 (테일윈드 유틸리티용) */
+@custom-variant dark (&:is(.dark *));
+
+/* 3. 테마 커스텀 (그대로 유지) */
+@theme {
+  --shadow-food-cards: 0 0 4px rgba(0, 0, 0, 0.3);
+
+  --radius-food-lg: var(--food-radius);
+  --radius-food-md: calc(var(--food-radius) - 2px);
+  --radius-food-sm: calc(var(--food-radius) - 4px);
+
+  --color-food-brown-main: #a47764;
+  --color-food-brown-dark: #746563;
+  --color-food-brown-dark2: #543c35;
+  --color-food-brown-1: #f7f4f2;
+  --color-food-brown-2: #ede6e0;
+  --color-food-brown-3: #dcc9bd;
+  --color-food-brown-4: #c5a394;
+  --color-food-brown-5: #a47764;
+  --color-food-brown-6: #8f6854;
+  --color-food-brown-7: #7a5647;
+  --color-food-brown-8: #65463c;
+  --color-food-brown-9: #543c35;
+  --color-food-brown-10: #483530;
+
+  --color-food-main-bg: #f6f4f3ff;
+  --color-food-green-accent: #22c55e;
+
+  --color-food-gray-0: #ffffff;
+  --color-food-gray-1: #f7f7f7ff;
+  --color-food-gray-2: #ededed;
+  --color-food-gray-3: #d5d5d5;
+  --color-food-gray-4: #a4a4a4;
+  --color-food-gray-5: #7b8694;
+  --color-food-gray-6: #49505a;
+
+  --color-food-navy: #111827;
+
+  --color-food-red: #e1645b;
+  --color-food-red-dark: #c74940ff;
+
+  --color-food-background: hsl(var(--food-background));
+  --color-food-foreground: hsl(var(--food-foreground));
+  --color-food-card: hsl(var(--food-card));
+  --color-food-card-foreground: hsl(var(--food-card-foreground));
+  --color-food-popover: hsl(var(--food-popover));
+  --color-food-popover-foreground: hsl(var(--food-popover-foreground));
+  --color-food-primary: hsl(var(--food-primary));
+  --color-food-primary-foreground: hsl(var(--food-primary-foreground));
+  --color-food-secondary: hsl(var(--food-secondary));
+  --color-food-secondary-foreground: hsl(var(--food-secondary-foreground));
+  --color-food-muted: hsl(var(--food-muted));
+  --color-food-muted-foreground: hsl(var(--food-muted-foreground));
+  --color-food-accent: hsl(var(--food-accent));
+  --color-food-accent-foreground: hsl(var(--food-accent-foreground));
+  --color-food-destructive: hsl(var(--food-destructive));
+  --color-food-destructive-foreground: hsl(var(--food-destructive-foreground));
+  --color-food-border: hsl(var(--food-border));
+  --color-food-input: hsl(var(--food-input));
+  --color-food-ring: hsl(var(--food-ring));
+  --color-food-chart-1: hsl(var(--food-chart-1));
+  --color-food-chart-2: hsl(var(--food-chart-2));
+  --color-food-chart-3: hsl(var(--food-chart-3));
+  --color-food-chart-4: hsl(var(--food-chart-4));
+  --color-food-chart-5: hsl(var(--food-chart-5));
+}
+
+/* 4. CSS 변수 스코프를 .food 로 제한 */
+@layer base {
+  /* :root 대신 .food 클래스 하위에만 라이트 모드 변수 선언 */
+  .food {
+    --food-background: 0 0% 100%;
+    --food-foreground: 0 0% 3.9%;
+    --food-card: 0 0% 100%;
+    --food-card-foreground: 0 0% 3.9%;
+    --food-popover: 0 0% 100%;
+    --food-popover-foreground: 0 0% 3.9%;
+    --food-primary: 0 0% 9%;
+    --food-primary-foreground: 0 0% 98%;
+    --food-secondary: 0 0% 96.1%;
+    --food-secondary-foreground: 0 0% 9%;
+    --food-muted: 0 0% 96.1%;
+    --food-muted-foreground: 0 0% 45.1%;
+    --food-accent: 0 0% 96.1%;
+    --food-accent-foreground: 0 0% 9%;
+    --food-destructive: 0 84.2% 60.2%;
+    --food-destructive-foreground: 0 0% 98%;
+    --food-border: 0 0% 89.8%;
+    --food-input: 0 0% 89.8%;
+    --food-ring: 0 0% 3.9%;
+    --food-chart-1: 12 76% 61%;
+    --food-chart-2: 173 58% 39%;
+    --food-chart-3: 197 37% 24%;
+    --food-chart-4: 43 74% 66%;
+    --food-chart-5: 27 87% 67%;
+    --food-radius: 0.5rem;
+  }
+
+  /* 전역 .dark 대신 .food 내부에서 다크모드가 켜졌을 때만 적용 */
+  .dark .food,
+  .food.dark {
+    --food-background: 0 0% 3.9%;
+    --food-foreground: 0 0% 98%;
+    --food-card: 0 0% 3.9%;
+    --food-card-foreground: 0 0% 98%;
+    --food-popover: 0 0% 3.9%;
+    --food-popover-foreground: 0 0% 98%;
+    --food-primary: 0 0% 98%;
+    --food-primary-foreground: 0 0% 9%;
+    --food-secondary: 0 0% 14.9%;
+    --food-secondary-foreground: 0 0% 98%;
+    --food-muted: 0 0% 14.9%;
+    --food-muted-foreground: 0 0% 63.9%;
+    --food-accent: 0 0% 14.9%;
+    --food-accent-foreground: 0 0% 98%;
+    --food-destructive: 0 62.8% 30.6%;
+    --food-destructive-foreground: 0 0% 98%;
+    --food-border: 0 0% 14.9%;
+    --food-input: 0 0% 14.9%;
+    --food-ring: 0 0% 83.1%;
+    --food-chart-1: 220 70% 50%;
+    --food-chart-2: 160 60% 45%;
+    --food-chart-3: 30 80% 55%;
+    --food-chart-4: 280 65% 60%;
+    --food-chart-5: 340 75% 55%;
+  }
+}
+
+:root {
+  --food-brown-light: #a47764;
+  --food-brown: #543c35;
+  --food-brown-dark: #746563;
+
+  --food-main-page-bg: #f6f4f3ff;
+
+  /* 포인트 그린 */
+  --food-green-accent: #22c55e;
+
+  /* 회색 계열 */
+  --food-gray-0: #ffffff;
+  --food-gray-1: #f7f7f7ff;
+  --food-gray-2: #ededed;
+  --food-gray-3: #d5d5d5;
+  --food-gray-4: #a4a4a4;
+  --food-gray-5: #7b8694;
+  --food-gray-6: #49505a;
+
+  /* 남색 계열 */
+  --food-navy: #111827;
+
+  --food-red: #e1645b;
+  --food-red-dark: #c74940ff;
+}
+
+/* 5. 기본 스타일 적용도 .food 하위로 제한 */
+@layer base {
+  /* 모든 요소(*) 대신 .food 하위 요소에만 보더 컬러 기본 적용 */
+  .food * {
+    @apply border-food-border;
+  }
+
+  /* body 대신 .food 컨테이너 자체에 배경/글자색 기본 적용 */
+  .food {
+    @apply bg-food-background text-food-foreground;
+  }
+}
+
+.foodFlexWidthCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.foodFlexHeightCenter {
+  display: flex;
+  align-items: center;
+}
+
+.foodFlexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foodFlexBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.foodFlexBetweenCol {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.foodFlexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap");
