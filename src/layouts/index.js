@@ -12,3 +12,5 @@ export { default as DomoMobileFooter } from "./domo/DomoMobileFooter";
 export { default as DomoMobileHeader } from "./domo/DomoMobileHeader";
 export { default as DomoPcFooter } from "./domo/DomoPcFooter";
 export { default as DomoPcHeader } from "./domo/DomoPcHeader";
+
+export { default as FoodMainLayOut } from "./food/FoodMainLayOut";
