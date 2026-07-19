@@ -1,15 +1,12 @@
-import { useDeviceMode } from "@/hooks/useDeviceMode";
-import { useCallback, useEffect, useState } from "react";
-import { useInput } from "../../../hooks/useInput";
-import FoodButtonCP from "../../FoodCommon/FoodButtonCP";
-import FoodInputCP from "../../FoodCommon/FoodInputCP";
-import FoodOutLineButtonCP from "../../FoodCommon/FoodOutLineButtonCP";
-import { MyPageInfoCPMainStyle } from "./style";
+/** @jsxImportSource @emotion/react */
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useMedia } from "../../../hooks/useMedia";
+import { useDeviceMode } from "@/hooks/useDeviceMode"; // 새로 지정된 훅 경로
+import { foodMyPageInfoCPStyle } from "./style";
+import { useInput } from "@/hooks/useInput";
+import { FoodButtonCP, FoodInputCP, FoodOutLineButtonCP } from "@/features/food/components";
 
 const FoodMyPageInfoCP = ({ userData }) => {
-  const { isPc } = useDeviceMode();
   console.log(userData);
   // 기본 정보
   const [nickName, onChangeNickName, setNickName] = useInput();
@@ -21,7 +18,7 @@ const FoodMyPageInfoCP = ({ userData }) => {
   const [pwError, setPwError] = useState(false);
   const [pwConfirmError, setPwConfirmError] = useState(false);
 
-  const isPc = useMedia().isPc;
+  const { isPc } = useDeviceMode(); // 미디어 쿼리 훅 호출
 
   useEffect(() => {
     setNickName(userData.nickname);
@@ -37,7 +34,6 @@ const FoodMyPageInfoCP = ({ userData }) => {
    * - 성공 시 알림 및 페이지 새로고침
    */
   const onUpdatePassword = () => {
-  const { isPc } = useDeviceMode();
     let valid = true;
     // 비밀번호: 8~20자
     if (password.length < 8 || password.length > 20) {
@@ -122,7 +118,6 @@ const FoodMyPageInfoCP = ({ userData }) => {
    * - 성공 시 알림 및 메인 페이지 이동
    */
   const onSecession = () => {
-  const { isPc } = useDeviceMode();
     if (window.confirm("정말로 회원탈퇴를 하시겠습니까?")) {
       axios
         .delete(`${import.meta.env.VITE_API_URL}/user/secession`, { withCredentials: true })
@@ -142,7 +137,7 @@ const FoodMyPageInfoCP = ({ userData }) => {
   };
 
   return (
-    <div css={MyPageInfoCPMainStyle(isPc)} isPc={isPc}>
+    <section css={foodMyPageInfoCPStyle(isPc)}>
       <h2>내 정보</h2>
       <div>
         <FoodInputCP title={"사용자 이름"} value={userData.username} lock={true} />
@@ -185,7 +180,8 @@ const FoodMyPageInfoCP = ({ userData }) => {
           <FoodButtonCP color={"--food-red"}>회원탈퇴</FoodButtonCP>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
+
 export default FoodMyPageInfoCP;

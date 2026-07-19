@@ -19,4 +19,7 @@ export { default as FoodPcReviewCP } from "./FoodMapPageCP/FoodPcCP/FoodPcReview
 export { default as FoodPcCP } from "./FoodMapPageCP/FoodPcCP";
 
 export { default as FoodMyFTCP } from "./FoodMyPageCP/FoodMyFTCP";
-export { default as FoodMyFTCP } from "./FoodMyPageCP/FoodMyFTCP";
+export { default as FoodMyLikeLiCP } from "./FoodMyPageCP/FoodMyLikeCP/FoodMyLikeLiCP";
+export { default as FoodMyLikeCP } from "./FoodMyPageCP/FoodMyLikeCP";
+export { default as FoodMyPageInfoCP } from "./FoodMyPageCP/FoodMyPageInfoCP";
+export { default as FoodMyReviewCPDiv } from "./FoodMyPageCP/FoodMyReviewCP";

@@ -1,16 +1,15 @@
-import { useDeviceMode } from "@/hooks/useDeviceMode";
-import { useMedia } from "../../../hooks/useMedia";
-import { MyLikeCPMainStyle } from "./style";
+/** @jsxImportSource @emotion/react */
 import { useCallback } from "react";
 import axios from "axios";
+import { useDeviceMode } from "@/hooks/useDeviceMode"; // 새로 지정된 훅 경로
 import { useLoginCheck } from "../../../hooks/useLoginCheck";
-import FoodMyLikeLiCP from "./FoodMyLikeLiCP";
+import FoodMyLikeLiCP from "./FoodMyLikeLiCP"; // 변경된 자식 컴포넌트 이름
+import { foodMyLikeCPStyle } from "./style"; // 변경된 스타일 함수
 
 // likeList, smsList를 props로 받음
 const FoodMyLikeCP = ({ likeList = [] }) => {
-  const { isPc } = useDeviceMode();
   const isLogin = useLoginCheck();
-  const isPc = useMedia().isPc;
+  const { isPc } = useDeviceMode(); // 미디어 쿼리 상태 가져오기
 
   // 좋아요 삭제
   const onDeleteLike = useCallback(
@@ -32,7 +31,7 @@ const FoodMyLikeCP = ({ likeList = [] }) => {
           alert("취소에 실패했습니다.");
         });
     },
-    [isLogin]
+    [isLogin],
   );
 
   // 알림 추가
@@ -55,7 +54,7 @@ const FoodMyLikeCP = ({ likeList = [] }) => {
           alert("알림 등록에 실패했습니다.");
         });
     },
-    [isLogin]
+    [isLogin],
   );
 
   // 알림 삭제
@@ -78,13 +77,13 @@ const FoodMyLikeCP = ({ likeList = [] }) => {
           alert("알림 취소에 실패했습니다.");
         });
     },
-    [isLogin]
+    [isLogin],
   );
 
   console.log(likeList);
 
   return (
-    <div css={MyLikeCPMainStyle(isPc)} isPc={isPc}>
+    <section css={foodMyLikeCPStyle(isPc)}>
       <h2>알림/찜 목록</h2>
       <ul>
         {likeList && likeList.length > 0 ? (
@@ -95,7 +94,8 @@ const FoodMyLikeCP = ({ likeList = [] }) => {
           <li>찜한 푸드트럭이 없습니다.</li>
         )}
       </ul>
-    </div>
+    </section>
   );
 };
+
 export default FoodMyLikeCP;

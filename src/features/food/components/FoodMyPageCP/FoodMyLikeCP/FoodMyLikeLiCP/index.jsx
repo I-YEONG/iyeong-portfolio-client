@@ -1,11 +1,16 @@
+/** @jsxImportSource @emotion/react */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar, faBell as faBellSolid } from "@fortawesome/free-solid-svg-icons";
 import { faBell as faBellRegular } from "@fortawesome/free-regular-svg-icons";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useDeviceMode } from "@/hooks/useDeviceMode";
+import { foodMyLikeLiCPStyle } from "./style";
 
 const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
+  const { isPc } = useDeviceMode(); // 미디어 쿼리 훅 호출
+
   const today = (new Date().getDay() + 6) % 7; // 0:월~6:일
   const dayMap = ["월", "화", "수", "목", "금", "토", "일"];
   const todayKorean = dayMap[today];
@@ -14,22 +19,27 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
   const getBusinessStatus = (ft) => {
     const todaySchedule = ft.schedule?.find((sch) => sch.day === todayKorean);
     const isHolidayToday = !todaySchedule || todaySchedule.holiday;
+
     if (!isHolidayToday) {
       return { status: "휴무", color: "#999" };
     }
+
     const now = new Date();
     const currentTime = now.getHours().toString().padStart(2, "0") + ":" + now.getMinutes().toString().padStart(2, "0");
     const startTime = todaySchedule.start;
     const endTime = todaySchedule.end;
+
     const timeToMinutes = (time) => {
       const timeParts = time.split(":");
       const hours = parseInt(timeParts[0]);
       const minutes = timeParts.length > 1 ? parseInt(timeParts[1]) : 0;
       return hours * 60 + minutes;
     };
+
     const currentMinutes = timeToMinutes(currentTime);
     const startMinutes = timeToMinutes(startTime);
     const endMinutes = timeToMinutes(endTime);
+
     if (currentMinutes < startMinutes) {
       return { status: "준비", color: "#fba33e" };
     } else if (currentMinutes >= startMinutes && currentMinutes <= endMinutes) {
@@ -51,7 +61,6 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
   const [businessInfo, setBusinessInfo] = useState(null);
   const [ftData, setFtData] = useState({});
 
-  // const businessInfo = getBusinessStatus(ft);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/user/foodtruck/${ftId}`, { withCredentials: true })
@@ -67,7 +76,7 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
   }, [ftId]);
 
   return (
-    <div>
+    <div css={foodMyLikeLiCPStyle(isPc)}>
       {ftData && (
         <li className="ftListIndexLi">
           <div className="ftListIndex">
@@ -120,4 +129,5 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
     </div>
   );
 };
+
 export default FoodMyLikeLiCP;
