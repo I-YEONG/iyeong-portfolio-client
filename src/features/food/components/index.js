@@ -23,3 +23,24 @@ export { default as FoodMyLikeLiCP } from "./FoodMyPageCP/FoodMyLikeCP/FoodMyLik
 export { default as FoodMyLikeCP } from "./FoodMyPageCP/FoodMyLikeCP";
 export { default as FoodMyPageInfoCP } from "./FoodMyPageCP/FoodMyPageInfoCP";
 export { default as FoodMyReviewCPDiv } from "./FoodMyPageCP/FoodMyReviewCP";
+
+export { FoodBadge } from "./Foodui/Foodbadge.jsx";
+export { badgeVariants } from "./Foodui/Foodbadge.jsx";
+export { FoodCheckbox } from "./Foodui/Foodcheckbox.jsx";
+export { FoodCard, FoodCardHeader, FoodCardFooter, FoodCardTitle, FoodCardDescription, FoodCardContent } from "./Foodui/Foodcard.jsx";
+export { FoodInput } from "./Foodui/FoodInput.jsx";
+export { FoodLabel } from "./Foodui/Foodlabel.jsx";
+export { FoodTextarea } from "./Foodui/Foodtextarea.jsx";
+export { FoodTabs, FoodTabsList, FoodTabsTrigger, FoodTabsContent } from "./Foodui/Foodtabs.jsx";
+export {
+  FoodSelect,
+  FoodSelectGroup,
+  FoodSelectValue,
+  FoodSelectTrigger,
+  FoodSelectContent,
+  FoodSelectLabel,
+  FoodSelectItem,
+  FoodSelectSeparator,
+  FoodSelectScrollUpButton,
+  FoodSelectScrollDownButton,
+} from "./Foodui/Foodselect.jsx";

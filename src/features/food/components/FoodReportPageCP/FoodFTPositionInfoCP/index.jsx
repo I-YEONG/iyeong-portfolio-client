@@ -1,25 +1,24 @@
 import { useState } from "react";
 import DaumPostcode from "react-daum-postcode";
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/Foodui/Foodcard";
-import { Checkbox } from "@/components/Foodui/Foodcheckbox";
-import { Label } from "@/components/Foodui/Foodlabel";
-import {
-  Select,
-  SelectContent,
-  SelectTrigger,
-  SelectValue,
-  SelectItem,
-} from "@/components/Foodui/Foodselect";
-import { Input } from "@/components/Foodui/Foodinput";
+  FoodCard,
+  FoodCardHeader,
+  FoodCardTitle,
+  FoodCardContent,
+  FoodCardDescription,
+  FoodCheckbox,
+  FoodLabel,
+  FoodInput,
+  FoodOutLineButtonCP,
+} from "@/features/food/components";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectTrigger,
+//   SelectValue,
+//   SelectItem,
+// } from "@/components/Foodui/Foodselect";
 import { MapPin } from "lucide-react";
-import FoodOutLineButtonCP from "@/components/FoodCommon/FoodOutLineButtonCP";
-import { format } from "crypto-js";
 
 const locations = [
   "강남구",
@@ -127,59 +126,53 @@ const FoodFTPositionInfoCP = ({ formData, setFormData, handleInputChange }) => {
   };
 
   return (
-    <Card className="cards">
-      <CardHeader>
-        <CardTitle className="flex items-center space-x-2">
-          <MapPin className="h-5 w-5 text-brown-main" />
+    <FoodCard className="cards">
+      <FoodCardHeader>
+        <FoodCardTitle className="flex items-center space-x-2">
+          <MapPin className="w-5 h-5 text-brown-main" />
           <span>위치 정보</span>
-        </CardTitle>
-        <CardDescription>푸드트럭을 발견한 위치를 알려주세요</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
+        </FoodCardTitle>
+        <FoodCardDescription>푸드트럭을 발견한 위치를 알려주세요</FoodCardDescription>
+      </FoodCardHeader>
+      <FoodCardContent className="space-y-4">
         <div className="space-y-4">
-          <Label>요일별 운영 정보</Label>
+          <FoodLabel>요일별 운영 정보</FoodLabel>
           {daysOfWeek.map((day, index) => (
-            <div key={day.id} className="space-y-2 p-4 border rounded-lg">
+            <div key={day.id} className="p-4 space-y-2 border rounded-lg">
               <div className="flex items-center justify-between">
-                <div className="flex w-32 items-center space-x-4">
+                <div className="flex items-center w-32 space-x-4">
                   <span className="font-medium">{day.Foodlabel}</span>
                   <div className="flex items-center space-x-2">
-                    <Checkbox
+                    <FoodCheckbox
                       className="border-solid border-brown-main data-[state=checked]:bg-brown-main"
                       id={`holiday-${day.id}`}
                       checked={formData.schedule[index]?.holiday}
-                      onCheckedChange={(checked) =>
-                        handleScheduleChange(index, "holiday", checked)
-                      }
+                      onCheckedChange={(checked) => handleScheduleChange(index, "holiday", checked)}
                     />
-                    <Label htmlFor={`holiday-${day.id}`}>휴무일</Label>
+                    <FoodLabel htmlFor={`holiday-${day.id}`}>휴무일</FoodLabel>
                   </div>
                 </div>
-                <div className="flex items-center space-x-2 ml-8 flex-1">
-                  <Input
+                <div className="flex items-center flex-1 ml-8 space-x-2">
+                  <FoodInput
                     type="text"
-                    className="border border-solid flex-1"
+                    className="flex-1 border border-solid"
                     placeholder="영업 시작 시간 (ex: 09)"
                     value={getDisplayTime(formData.schedule[index]?.start)}
                     onChange={(e) => {
-                      const formattedTime = validateAndFormatTime(
-                        e.target.value
-                      );
+                      const formattedTime = validateAndFormatTime(e.target.value);
                       handleScheduleChange(index, "start", formattedTime);
                     }}
                     disabled={formData.schedule[index]?.holiday}
                     maxLength={2}
                   />
                   <span>~</span>
-                  <Input
+                  <FoodInput
                     type="text"
-                    className="border border-solid flex-1"
+                    className="flex-1 border border-solid"
                     placeholder="영업 종료 시간 (ex: 18)"
                     value={getDisplayTime(formData.schedule[index]?.end)}
                     onChange={(e) => {
-                      const formattedTime = validateAndFormatTime(
-                        e.target.value
-                      );
+                      const formattedTime = validateAndFormatTime(e.target.value);
                       handleScheduleChange(index, "end", formattedTime);
                     }}
                     disabled={formData.schedule[index]?.holiday}
@@ -189,30 +182,22 @@ const FoodFTPositionInfoCP = ({ formData, setFormData, handleInputChange }) => {
               </div>
 
               <div className="flex justify-between item-center">
-                <FoodOutLineButtonCP
-                  width="8rem"
-                  color="brown"
-                  onClick={() => handleAddressSearch(index)}
-                >
+                <FoodOutLineButtonCP width="8rem" color="brown" onClick={() => handleAddressSearch(index)}>
                   주소 찾기
                 </FoodOutLineButtonCP>
-                <div className="flex ml-8 flex-1 space-x-6">
-                  <Input
-                    className="border border-solid flex-1"
+                <div className="flex flex-1 ml-8 space-x-6">
+                  <FoodInput
+                    className="flex-1 border border-solid"
                     placeholder="지도상 주소"
                     value={formData.schedule[index]?.mapAddress || ""}
-                    onChange={(e) =>
-                      handleScheduleChange(index, "mapAddress", e.target.value)
-                    }
+                    onChange={(e) => handleScheduleChange(index, "mapAddress", e.target.value)}
                     disabled={formData.schedule[index]?.holiday}
                   />
-                  <Input
-                    className="border border-solid flex-1"
+                  <FoodInput
+                    className="flex-1 border border-solid"
                     placeholder="사용자 안내용 주소"
                     value={formData.schedule[index]?.userAddress || ""}
-                    onChange={(e) =>
-                      handleScheduleChange(index, "userAddress", e.target.value)
-                    }
+                    onChange={(e) => handleScheduleChange(index, "userAddress", e.target.value)}
                     disabled={formData.schedule[index]?.holiday}
                   />
                 </div>
@@ -232,8 +217,7 @@ const FoodFTPositionInfoCP = ({ formData, setFormData, handleInputChange }) => {
                     alignItems: "center",
                     justifyContent: "center",
                   }}
-                  onClick={() => setModalState(false)}
-                >
+                  onClick={() => setModalState(false)}>
                   <div
                     style={{
                       background: "#fff",
@@ -242,12 +226,8 @@ const FoodFTPositionInfoCP = ({ formData, setFormData, handleInputChange }) => {
                       padding: 0,
                       zIndex: 10001,
                     }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <DaumPostcode
-                      style={{ width: 400, height: 500 }}
-                      onComplete={onCompletePost}
-                    />
+                    onClick={(e) => e.stopPropagation()}>
+                    <DaumPostcode style={{ width: 400, height: 500 }} onComplete={onCompletePost} />
                   </div>
                 </div>
               )}
@@ -256,9 +236,9 @@ const FoodFTPositionInfoCP = ({ formData, setFormData, handleInputChange }) => {
         </div>
 
         <div>
-          <Label htmlFor="phone">연락처</Label>
-          <Input
-            className="border border-solid mt-2"
+          <FoodLabel htmlFor="phone">연락처</FoodLabel>
+          <FoodInput
+            className="mt-2 border border-solid"
             id="phone"
             type="tel"
             placeholder="01012345678 (알고 있는 경우, 숫자만)"
@@ -267,8 +247,8 @@ const FoodFTPositionInfoCP = ({ formData, setFormData, handleInputChange }) => {
             maxLength={11}
           />
         </div>
-      </CardContent>
-    </Card>
+      </FoodCardContent>
+    </FoodCard>
   );
 };
 export default FoodFTPositionInfoCP;

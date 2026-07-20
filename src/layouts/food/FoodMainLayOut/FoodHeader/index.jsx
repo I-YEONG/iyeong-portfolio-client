@@ -1,13 +1,14 @@
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import BrownButtonCP from "../../../components/FoodCommon/FoodButtonCP";
-import { useLoginCheck } from "../../../hooks/useLoginCheck";
+import { FoodButtonCP } from "@/features/food/components";
 import { MainLayOutHeaderStyled } from "./style";
+import { useAuth } from "@/hooks/useAuth";
 
 const FoodMainLayOutHeader = () => {
   const { isPc } = useDeviceMode();
-  const loginCheck = useLoginCheck();
+  // const isLogin = useLoginCheck();
+  const { isLogin } = useAuth();
 
-  console.log(loginCheck);
+  console.log(isLogin);
   return (
     <div css={MainLayOutHeaderStyled(isPc)}>
       <div className="flexBetween">
@@ -31,22 +32,22 @@ const FoodMainLayOutHeader = () => {
             <a href="/faq">
               <li>FAQ</li>
             </a>
-            {!loginCheck && (
+            {!isLogin && (
               <a href="/login">
                 <li className="loginButton">로그인</li>
               </a>
             )}
-            {!loginCheck && (
+            {!isLogin && (
               <li className="singInButton">
                 <a href="/sign-up">
-                  <BrownButtonCP pcOnly="true">회원가입</BrownButtonCP>
+                  <FoodButtonCP pcOnly="true">회원가입</FoodButtonCP>
                 </a>
               </li>
             )}
-            {loginCheck && (
+            {isLogin && (
               <li className="singInButton">
                 <a href="/my-page">
-                  <BrownButtonCP pcOnly="true">마이페이지</BrownButtonCP>
+                  <FoodButtonCP pcOnly="true">마이페이지</FoodButtonCP>
                 </a>
               </li>
             )}

@@ -2,13 +2,13 @@
 import { useCallback } from "react";
 import axios from "axios";
 import { useDeviceMode } from "@/hooks/useDeviceMode"; // 새로 지정된 훅 경로
-import { useLoginCheck } from "../../../hooks/useLoginCheck";
 import FoodMyLikeLiCP from "./FoodMyLikeLiCP"; // 변경된 자식 컴포넌트 이름
 import { foodMyLikeCPStyle } from "./style"; // 변경된 스타일 함수
+import { useAuth } from "@/hooks/useAuth";
 
 // likeList, smsList를 props로 받음
 const FoodMyLikeCP = ({ likeList = [] }) => {
-  const isLogin = useLoginCheck();
+  const { isLogin } = useAuth();
   const { isPc } = useDeviceMode(); // 미디어 쿼리 상태 가져오기
 
   // 좋아요 삭제

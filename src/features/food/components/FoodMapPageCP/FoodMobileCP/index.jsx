@@ -16,8 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-import FTList from "../_common/FTList";
-import PcReviewCP from "../_common/ReviewCP";
+import { FoodFTList, FoodPcReviewCP } from "@/features/food/components";
 
 // 1. isPc를 가져오기 위한 커스텀 훅 추가
 import { useDeviceMode } from "@/hooks/useDeviceMode";
@@ -105,7 +104,7 @@ const FoodMobileCP = ({
           <FontAwesomeIcon icon={faBars} />
         </div>
 
-        {onReview && <PcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} />}
+        {onReview && <FoodPcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} />}
       </section>
 
       {/* 리스트 */}
@@ -135,7 +134,7 @@ const FoodMobileCP = ({
                       imageUrl: item.imageUrl,
                     });
                   }}>
-                  <FTList data={item} isLogin={isLogin} />
+                  <FoodFTList data={item} isLogin={isLogin} />
                 </div>
               ))}
         </ul>

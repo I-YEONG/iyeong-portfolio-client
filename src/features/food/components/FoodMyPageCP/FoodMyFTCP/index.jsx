@@ -7,13 +7,10 @@ import DaumPostcode from "react-daum-postcode";
 
 // 훅 및 외부 컴포넌트 임포트
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import { useInput } from "../../../hooks/useInput";
 import { foodMyFTCPMainStyle, foodMyFTCPMenuStyle, foodMyFTCPScheduleStyle } from "./style";
-import SelectInputCP from "../../_common/SelectInputCP";
-import InputCP from "../../_common/InputCP";
-import TextAreaInputCP from "../../_common/TextAreaInputCP";
-import OutLineButtonCP from "../../_common/OutLineButtonCP";
-import ButtonCP from "../../_common/ButtonCP";
+import { useInput } from "@/hooks/useInput";
+
+import { FoodSelectInputCP, FoodInputCP, FoodTextAreaInputCP, FoodOutLineButtonCP, FoodButtonCP } from "@/features/food/components";
 
 const FoodMyFTCP = ({ myTruckList = [] }) => {
   // 이미지 파일 상태
@@ -414,13 +411,13 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
           <h2>기본 정보</h2>
           <div className="col">
             <div>
-              <InputCP title="푸드트럭 이름" essential="true" value={FTName} ex="황금 잉어빵" onChangeHandler={onChangeFTName} />
+              <FoodInputCP title="푸드트럭 이름" essential="true" value={FTName} ex="황금 잉어빵" onChangeHandler={onChangeFTName} />
               <span className="nameError error" ref={nameErrorRef}>
                 2글자 이상 입력하세요
               </span>
             </div>
             <div>
-              <SelectInputCP title="카테고리" essential="true" listData={FTCategoryList} value={FTCategory} onChangeHandler={onChangeFTCategory} />
+              <FoodSelectInputCP title="카테고리" essential="true" listData={FTCategoryList} value={FTCategory} onChangeHandler={onChangeFTCategory} />
               <span className="categoryError error" ref={categoryErrorRef}>
                 카테고리를 선택하세요
               </span>
@@ -428,7 +425,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
           </div>
           <div className="col-full">
             <div>
-              <TextAreaInputCP
+              <FoodTextAreaInputCP
                 title="푸드트럭 소개"
                 essential="true"
                 ex="푸드트럭에 대한 소개를 입력하세요."
@@ -504,10 +501,10 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
             <div className="menu-add">
               <p>메뉴 등록</p>
               <div>
-                <InputCP title="메뉴 이름" value={menuName} onChangeHandler={onChangeMenuName} essential="true" />
-                <InputCP title="가격" value={menuPrice} onChangeHandler={onChangeMenuPrice} essential="true" ex="숫자만 입력" />
-                <InputCP title="설명" value={menuInfo} onChangeHandler={onChangeMenuInfo} />
-                <InputCP
+                <FoodInputCP title="메뉴 이름" value={menuName} onChangeHandler={onChangeMenuName} essential="true" />
+                <FoodInputCP title="가격" value={menuPrice} onChangeHandler={onChangeMenuPrice} essential="true" ex="숫자만 입력" />
+                <FoodInputCP title="설명" value={menuInfo} onChangeHandler={onChangeMenuInfo} />
+                <FoodInputCP
                   title="표시 순서"
                   value={menuNum}
                   onChangeHandler={onChangeMenuNum}
@@ -518,12 +515,12 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
               <div>
                 {!menuModify && (
                   <div onClick={menuAddHandler}>
-                    <ButtonCP>등록</ButtonCP>
+                    <FoodButtonCP>등록</FoodButtonCP>
                   </div>
                 )}
                 {menuModify && (
                   <div onClick={menuEditHandler}>
-                    <ButtonCP>수정</ButtonCP>
+                    <FoodButtonCP>수정</FoodButtonCP>
                   </div>
                 )}
               </div>
@@ -554,7 +551,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
                     ~
                   </span>
                 )}
-                <InputCP
+                <FoodInputCP
                   value={item.start}
                   onChangeHandler={(e) => handleScheduleChange(idx, "start", e.target.value)}
                   ex="영업 시작 시간 (ex: 15)"
@@ -563,7 +560,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
                 <span style={{ textAlign: "center" }} className={!item.holiday ? "disabled-food-ring" : scheduleErrors[idx]?.open ? "error-food-ring" : ""}>
                   ~
                 </span>
-                <InputCP
+                <FoodInputCP
                   value={item.end}
                   onChangeHandler={(e) => handleScheduleChange(idx, "end", e.target.value)}
                   ex="영업 종료 시간 (ex: 21)"
@@ -572,9 +569,9 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
               </div>
               <div>
                 <div onClick={() => item.holiday && handleAddressSearch(idx)}>
-                  <OutLineButtonCP color="#A47764" borderColor="--food-brown-light" className={!item.holiday ? "disabled-food-ring" : ""}>
+                  <FoodOutLineButtonCP color="#A47764" borderColor="--food-brown-light" className={!item.holiday ? "disabled-food-ring" : ""}>
                     주소찾기
-                  </OutLineButtonCP>
+                  </FoodOutLineButtonCP>
                 </div>
                 {isPc && (
                   <span
@@ -583,7 +580,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
                     ~
                   </span>
                 )}
-                <InputCP
+                <FoodInputCP
                   value={item.mapAddress}
                   lock={true}
                   ex="지도 상 주소"
@@ -596,7 +593,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
                     ~
                   </span>
                 )}
-                <InputCP
+                <FoodInputCP
                   value={item.userAddress}
                   onChangeHandler={(e) => handleScheduleChange(idx, "userAddress", e.target.value)}
                   ex="사용자 안내용 주소"
@@ -634,12 +631,12 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
         </span>
         <div className="col-full">
           <div className="axiosButton" onClick={updateSubmitHandler}>
-            <ButtonCP>수정 신청</ButtonCP>
+            <FoodButtonCP>수정 신청</FoodButtonCP>
           </div>
         </div>
         <div className="col-full">
           <div className="axiosButton" onClick={ftDelecteHandler}>
-            <ButtonCP color="--food-red">푸드트럭 삭제</ButtonCP>
+            <FoodButtonCP color="--food-red">푸드트럭 삭제</FoodButtonCP>
           </div>
         </div>
       </section>

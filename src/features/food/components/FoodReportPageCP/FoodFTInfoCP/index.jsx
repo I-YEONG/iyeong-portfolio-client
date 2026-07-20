@@ -1,13 +1,18 @@
 /** @jsxImportSource @emotion/react */
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectTrigger, SelectValue, SelectItem, SelectContent } from "@/components/ui/select";
+import {
+  FoodInput,
+  FoodLabel,
+  FoodTextarea,
+  FoodSelect,
+  FoodSelectTrigger,
+  FoodSelectValue,
+  FoodSelectItem,
+  FoodSelectContent,
+} from "@/features/food/components";
 import { Pencil, Eraser } from "lucide-react";
 import React, { useCallback, useState, forwardRef } from "react";
 import { useDeviceMode } from "@/hooks/useDeviceMode"; // 미디어 쿼리 훅 임포트
 import { foodReportPageMenuStyle } from "./style"; // 스타일 임포트
-import {} from "@/features/food/components";
 
 const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, errors }, refs) => {
   const { isPc } = useDeviceMode(); // 미디어 쿼리 훅 호출
@@ -149,8 +154,8 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-6 lg:flex-row">
           <div className="flex-1 ">
-            <Label htmlFor="name">푸드트럭 이름 *</Label>
-            <Input
+            <FoodLabel htmlFor="name">푸드트럭 이름 *</FoodLabel>
+            <FoodInput
               ref={refs.name}
               className="mt-2 border border-solid"
               id="name"
@@ -162,33 +167,33 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
             {errors.name && <span className="text-sm text-red-500">{errors.name}</span>}
           </div>
           <div className="flex-1">
-            <Label htmlFor="category">카테고리 *</Label>
-            <Select
+            <FoodLabel htmlFor="category">카테고리 *</FoodLabel>
+            <FoodSelect
               ref={refs.category}
               onValueChange={(value) => {
                 const selected = categoryList.find((item) => item.data === value);
                 handleInputChange("category", selected.value);
               }}>
-              <SelectTrigger className="mt-2 border border-solid">
-                <SelectValue placeholder="카테고리 선택">
+              <FoodSelectTrigger className="mt-2 border border-solid">
+                <FoodSelectValue placeholder="카테고리 선택">
                   {formData.category ? categoryList.find((item) => item.value === formData.category)?.data : "카테고리 선택"}
-                </SelectValue>
-              </SelectTrigger>
-              <SelectContent className="border border-solid border-gray-3">
+                </FoodSelectValue>
+              </FoodSelectTrigger>
+              <FoodSelectContent className="border border-solid border-gray-3">
                 {categoryList.map((items) => (
-                  <SelectItem key={items.value} value={items.data}>
+                  <FoodSelectItem key={items.value} value={items.data}>
                     {items.data}
-                  </SelectItem>
+                  </FoodSelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </FoodSelectContent>
+            </FoodSelect>
             {errors.category && <span className="text-sm text-red-500">{errors.category}</span>}
           </div>
         </div>
         <div className="col-full">
           <div>
-            <Label htmlFor="intro">푸드트럭 설명</Label>
-            <Textarea
+            <FoodLabel htmlFor="intro">푸드트럭 설명</FoodLabel>
+            <FoodTextarea
               ref={refs.intro}
               className="mt-2 border border-solid"
               id="intro"
