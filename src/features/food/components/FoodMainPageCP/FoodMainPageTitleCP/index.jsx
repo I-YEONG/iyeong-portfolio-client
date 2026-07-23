@@ -13,8 +13,8 @@ const FoodMainPageTitleCP = () => {
   const { isPc } = useDeviceMode();
 
   return (
-    <main css={foodMainPageTitleCPMainStyle(isPc)} className="flexBetween">
-      <div className="flexBetweenCol">
+    <main css={foodMainPageTitleCPMainStyle(isPc)} className="foodFlexBetween">
+      <div className="foodFlexBetweenCol">
         {/* title */}
         <p>
           내 주변 <span className="highlight">푸드트럭</span>의 <br />
@@ -25,14 +25,18 @@ const FoodMainPageTitleCP = () => {
           실시간 위치 정보와 신뢰할 수 있는 리뷰로 <br />내 주변 최고의 푸드트럭을 쉽고 빠르게 찾아보세요!
         </p>
         {/* btn + btn */}
-        <div className="flexCenter">
-          <a href="/map">
-            <FoodButtonCP backgroundColor="--brown-light" icon={<FontAwesomeIcon icon={faMagnifyingGlass} />} color="--brown-light" fontColor="--gray-0">
+        <div className="foodFlexCenter">
+          <a href="/project/foodmap/map">
+            <FoodButtonCP
+              backgroundColor="--food-brown-light"
+              icon={<FontAwesomeIcon icon={faMagnifyingGlass} />}
+              color="--food-brown-light"
+              fontColor="--food-gray-0">
               지도에서 찾기
             </FoodButtonCP>
           </a>
-          <a href="/register">
-            <FoodOutLineButtonCP icon={<FontAwesomeIcon icon={faMap} />} color="black" borderColor="--gray-3">
+          <a href="/project/foodmap/register">
+            <FoodOutLineButtonCP icon={<FontAwesomeIcon icon={faMap} />} color="black" borderColor="--food-gray-3">
               푸드트럭 등록하기
             </FoodOutLineButtonCP>
           </a>

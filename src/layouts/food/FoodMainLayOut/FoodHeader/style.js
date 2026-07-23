@@ -2,7 +2,6 @@ import { css } from "@emotion/react";
 // import { theme } from "../../../style/theme";
 
 export const MainLayOutHeaderStyled = (isPc) => css`
-
   height: 70px;
   border-bottom: 1px solid var(--food-gray-3);
   background-color: var(--food-gray-0);
@@ -10,7 +9,7 @@ export const MainLayOutHeaderStyled = (isPc) => css`
   /* & .logo {
     width: 50px;
     height: 50px;
-    background-image: url("/image/logo/logo-1.png");
+    background-image: url("/project/foodmap/image/logo/logo-1.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,7 +17,7 @@ export const MainLayOutHeaderStyled = (isPc) => css`
   } */
 
   & > div {
-    width: 75vw;
+    width: 75%;
     height: 100%;
     max-width: 1440px;
     margin: 0 auto;
@@ -45,21 +44,22 @@ export const MainLayOutHeaderStyled = (isPc) => css`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow-x: auto;
   }
 
   & nav ul li {
     cursor: pointer;
-  }
-
-  /* PC */
-  @media screen and (min-width: 1024px) {
-    & nav ul li {
-      padding: 1rem 0.6rem;
-    }
+    padding: 1rem 0.6rem;
   }
 
   /* 핸드폰 */
-  ${!isPc && css`height: unset;
+  ${!isPc &&
+  css`
+    & nav ul li {
+      padding: 0;
+    }
+
+    height: unset;
     border-bottom: 1px solid var(--food-gray-2);
 
     & > div {
@@ -85,6 +85,6 @@ export const MainLayOutHeaderStyled = (isPc) => css`
     & nav ul {
       padding: 0.7rem 2rem;
       font-size: 0.9rem;
-    }`}
-
+    }
+  `}
 `;

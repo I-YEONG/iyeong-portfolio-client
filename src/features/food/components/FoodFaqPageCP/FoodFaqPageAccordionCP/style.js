@@ -9,7 +9,7 @@ export const foodContainerStyle = () =>
 
 export const foodItemStyle = () =>
   css({
-    borderBottom: "1px solid var(--gray-3)",
+    borderBottom: "1px solid var(--food-gray-3)",
   });
 
 /** 질문버튼, 누르면 answer 내용 드랍 */
@@ -17,7 +17,7 @@ export const foodHeaderStyle = () =>
   css({
     width: "100%",
     padding: "1rem",
-    backgroundColor: "var(--gray-0)",
+    backgroundColor: "var(--food-gray-0)",
     cursor: "pointer",
     display: "flex",
     justifyContent: "space-between",
@@ -43,7 +43,7 @@ export const foodIconStyle = (isOpen) =>
   css({
     width: "15px",
     height: "15px",
-    color: "var(--brown)",
+    color: "var(--food-brown)",
     transform: isOpen ? "rotate(-90deg)" : "rotate(90deg)",
     transition: "transform 0.4s ease",
   });
@@ -60,7 +60,7 @@ export const foodAnswerStyle = (isOpen) =>
   css({
     fontSize: "0.8rem",
     padding: "1rem",
-    color: "var(--gray-5)",
+    color: "var(--food-gray-5)",
     transition: "opacity 0.3s ease",
     opacity: isOpen ? 1 : 0,
   });

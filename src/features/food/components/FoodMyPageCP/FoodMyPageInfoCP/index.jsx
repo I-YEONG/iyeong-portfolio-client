@@ -124,7 +124,7 @@ const FoodMyPageInfoCP = ({ userData }) => {
         .then((res) => {
           if (res.data.message) {
             alert(res.data.message);
-            window.location.href = "/";
+            window.location.href = "/project/foodmap/";
           } else {
             alert("회원탈퇴에 실패했습니다. 다시 시도해주세요.");
           }

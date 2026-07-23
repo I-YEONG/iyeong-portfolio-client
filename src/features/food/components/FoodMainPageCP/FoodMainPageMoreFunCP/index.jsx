@@ -8,10 +8,10 @@ const FoodMainPageMoreFunCP = () => {
   const { isPc } = useDeviceMode();
 
   return (
-    <section css={foodMainPageMoreFunCPMainStyle(isPc)} className="flexBetween">
+    <section css={foodMainPageMoreFunCPMainStyle(isPc)} className="foodFlexBetween">
       {/* <h2>더 많은 기능들</h2> */}
-      <div className="flexBetweenCol">
-        <div className="flexCenter">
+      <div className="foodFlexBetweenCol">
+        <div className="foodFlexCenter">
           <FontAwesomeIcon icon={faBell} className="icon" />
         </div>
         <p>실시간 알림</p>
@@ -21,8 +21,8 @@ const FoodMainPageMoreFunCP = () => {
           새로운 소식을 즉시 받아보세요
         </p>
       </div>
-      <div className="flexBetweenCol">
-        <div className="flexCenter">
+      <div className="foodFlexBetweenCol">
+        <div className="foodFlexCenter">
           <FontAwesomeIcon icon={faStar} className="icon" />
         </div>
         <p>평점 시스템</p>
@@ -32,8 +32,8 @@ const FoodMainPageMoreFunCP = () => {
           최고의 푸드트럭을 찾아보세요
         </p>
       </div>
-      <div className="flexBetweenCol">
-        <div className="flexCenter">
+      <div className="foodFlexBetweenCol">
+        <div className="foodFlexCenter">
           <FontAwesomeIcon icon={faMap} className="icon" />
         </div>
         <p>정확한 위치</p>

@@ -24,7 +24,7 @@ export const foodMyReviewCPDivStyle = css({
   flexDirection: "column",
   gap: "1rem",
 
-  ".flexBetween": {
+  ".foodFlexBetween": {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",

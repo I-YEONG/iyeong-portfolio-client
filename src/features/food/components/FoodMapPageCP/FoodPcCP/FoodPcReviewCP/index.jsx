@@ -75,19 +75,19 @@ const FoodPcReviewCP = ({ isLogin, offReviewClick, details }) => {
   }, [reviewText, rating, isLogin, details.truckId, setReviewText]);
 
   return (
-    <div css={foodPcReviewCPMainStyle(isPc)} className="flexCenter">
+    <div css={foodPcReviewCPMainStyle(isPc)} className="foodFlexCenter">
       <span style={{ position: "absolute", top: "1rem", right: "1rem" }}>
         <FontAwesomeIcon icon={faXmark} onClick={offReviewClick} className="closeIcon" />
       </span>
       <span style={{ position: "absolute", bottom: "1rem", right: "1rem", fontSize: "0.7rem", color: "gray" }}>수정 및 삭제는 마이페이지에서 가능합니다</span>
-      <div className="flexBetweenCol">
+      <div className="foodFlexBetweenCol">
         <div>
           <p>
             <span>'{details.name}'</span>에
           </p>
           <p>리뷰를 작성합니다</p>
         </div>
-        <div className="flexBetween flexHeightCenter starDiv">
+        <div className="foodFlexBetween foodFlexHeightCenter starDiv">
           <span className="starControllerIcon" onClick={onDecreaseRating} style={{ cursor: "pointer" }}>
             <FontAwesomeIcon icon={faMinus} />
           </span>

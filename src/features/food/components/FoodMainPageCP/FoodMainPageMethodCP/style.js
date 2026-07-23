@@ -3,8 +3,8 @@ import { css } from "@emotion/react";
 export const foodMainPageMethodCPMainStyle = (isPc) =>
   css({
     /* 전체 푸터 */
-    width: isPc ? "100%" : "90vw",
-    margin: isPc ? "6vh 0" : "6vh auto",
+    width: isPc ? "100%" : "90%",
+    margin: isPc ? "6% 0" : "6% auto",
 
     "& > div:nth-of-type(1)": {
       textAlign: "center",
@@ -17,13 +17,13 @@ export const foodMainPageMethodCPMainStyle = (isPc) =>
 
       "& > p": {
         fontSize: "1.1rem",
-        color: "var(--gray-6)",
+        color: "var(--food-gray-6)",
         padding: "1rem 0rem",
       },
     },
 
     "& > div:nth-of-type(2)": {
-      width: isPc ? "75vw" : "100%",
+      width: isPc ? "75%" : "100%",
       maxWidth: "1440px",
       margin: "0 auto",
       position: "relative",
@@ -35,12 +35,12 @@ export const foodMainPageMethodCPMainStyle = (isPc) =>
     },
   });
 
-export const foodMainPageMethodCPStyle = (isPc, color = "--brown-light") =>
+export const foodMainPageMethodCPStyle = (isPc, color = "--food-brown-light") =>
   css({
     padding: isPc ? "3rem" : "3rem 2.5rem",
     width: isPc ? "48%" : "100%",
     borderRadius: "1rem",
-    backgroundColor: "var(--gray-0)",
+    backgroundColor: "var(--food-gray-0)",
     boxShadow: "0px 0px 14.7px rgba(0, 0, 0, 0.05)",
 
     "& > div:first-of-type": {
@@ -55,7 +55,7 @@ export const foodMainPageMethodCPStyle = (isPc, color = "--brown-light") =>
       },
 
       "& > p": {
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
       },
     },
 
@@ -76,7 +76,7 @@ export const foodMainPageMethodCPStyle = (isPc, color = "--brown-light") =>
           height: "2.5rem",
           borderRadius: "50%",
           backgroundColor: `var(${color})`,
-          color: "var(--gray-0)",
+          color: "var(--food-gray-0)",
           fontWeight: 700,
           paddingBottom: "0.1rem",
         },
@@ -91,7 +91,7 @@ export const foodMainPageMethodCPStyle = (isPc, color = "--brown-light") =>
           },
 
           "& > p:nth-of-type(2)": {
-            color: "var(--gray-5)",
+            color: "var(--food-gray-5)",
             fontSize: "1rem",
           },
         },
@@ -105,7 +105,7 @@ export const foodMainPageMethodCPStyle = (isPc, color = "--brown-light") =>
       backgroundColor: `var(${color})`,
       margin: "0 auto 1rem",
       fontSize: "1.8rem",
-      color: "var(--gray-0)",
+      color: "var(--food-gray-0)",
     },
 
     "& > div:nth-of-type(3)": {
@@ -114,6 +114,6 @@ export const foodMainPageMethodCPStyle = (isPc, color = "--brown-light") =>
       backgroundColor: `var(${color})`,
       padding: "1rem",
       borderRadius: "0.5rem",
-      color: "var(--gray-0)",
+      color: "var(--food-gray-0)",
     },
   });

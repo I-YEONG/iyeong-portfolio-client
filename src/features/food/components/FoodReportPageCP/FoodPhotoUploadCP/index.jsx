@@ -125,7 +125,7 @@ const FoodPhotoUploadCP = ({ formData, setFormData }) => {
                 {formData.photos.map((photo, index) => (
                   <div key={index} className="relative group">
                     <img
-                      src={URL.createObjectURL(photo) || "/placeholder.svg"}
+                      src={URL.createObjectURL(photo) || "/project/foodmap/placeholder.svg"}
                       alt={`업로드된 사진 ${index + 1}`}
                       className="object-cover w-full h-24 rounded-lg"
                     />

@@ -63,7 +63,7 @@ const FoodFTList = ({ data, isLogin }) => {
 
   return (
     <li css={foodFTListMainStyle()}>
-      <p className="flexBetween">
+      <p className="foodFlexBetween">
         <span className="name">{data.name}</span>
         <span className="isHolidayToday" style={{ backgroundColor: businessInfo.color }}>
           {businessInfo.status}
@@ -72,7 +72,7 @@ const FoodFTList = ({ data, isLogin }) => {
       <p className="intro">{data.intro}</p>
       {/* 데이터 구조상 data.schedule[today]가 존재하지 않을 수 있으므로 안전한 접근 필요 */}
       <p>{data.schedule[today]?.userAddress}</p>
-      <p className="flexBetween">
+      <p className="foodFlexBetween">
         <span>
           {data.schedule[today]?.start}시 ~ {data.schedule[today]?.end}시
         </span>

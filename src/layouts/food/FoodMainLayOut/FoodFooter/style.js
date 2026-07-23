@@ -1,7 +1,6 @@
 import { css } from "@emotion/react";
 
 export const MainLayOutFooterStyled = (isPc) => css`
-
   /* 전체 푸터 */
   width: 100%;
   background-color: var(--food-navy);
@@ -10,7 +9,7 @@ export const MainLayOutFooterStyled = (isPc) => css`
 
   /* 푸터 콘텐츠 래퍼 (중앙 정렬) */
   & > div {
-    width: 75vw;
+    width: 75%;
     max-width: 1440px;
     margin: 0 auto;
   }
@@ -79,7 +78,9 @@ export const MainLayOutFooterStyled = (isPc) => css`
   }
 
   /* 핸드폰 */
-  ${!isPc && css`& > div {
+  ${!isPc &&
+  css`
+    & > div {
       flex-wrap: wrap;
     }
     & > div > div {
@@ -97,6 +98,6 @@ export const MainLayOutFooterStyled = (isPc) => css`
       flex: unset;
       text-align: center;
       font-size: 0.85rem;
-    }`}
-
+    }
+  `}
 `;

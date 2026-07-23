@@ -9,11 +9,11 @@ const FoodMainLayOutFooter = () => {
   const { isPc } = useDeviceMode();
   const nav = useNavigate();
   return (
-    <div css={MainLayOutFooterStyled(isPc)} className="flexBetweenCol">
+    <div css={MainLayOutFooterStyled(isPc)} className="foodFlexBetweenCol">
       {/* 중앙 */}
       <div>
         {/* 상단 */}
-        <div className="flexBetween">
+        <div className="foodFlexBetween">
           {/* 사이트정보 */}
           <div className="site-info">
             {/* title */}
@@ -25,17 +25,17 @@ const FoodMainLayOutFooter = () => {
             </p>
           </div>
           {/* 목록 */}
-          <nav className="flexBetween list">
+          <nav className="foodFlexBetween list">
             <ul>
               <li className="ul-title">서비스</li>
-              <li onClick={() => nav("/map")}>푸드트럭 지도</li>
-              <li onClick={() => nav("/register")}>푸드트럭 등록</li>
-              <li onClick={() => nav("/report")}>푸드트럭 제보</li>
+              <li onClick={() => nav("/project/foodmap/map")}>푸드트럭 지도</li>
+              <li onClick={() => nav("/project/foodmap/register")}>푸드트럭 등록</li>
+              <li onClick={() => nav("/project/foodmap/report")}>푸드트럭 제보</li>
             </ul>
             <ul>
               <li className="ul-title">고객지원</li>
-              <li onClick={() => nav("/faq")}>FAQ</li>
-              <li onClick={() => nav("/faq#qna")}>Q&A</li>
+              <li onClick={() => nav("/project/foodmap/faq")}>FAQ</li>
+              <li onClick={() => nav("/project/foodmap/faq#qna")}>Q&A</li>
             </ul>
             <ul>
               <li className="ul-title">Front</li>
@@ -58,13 +58,13 @@ const FoodMainLayOutFooter = () => {
           </nav>
         </div>
         {/* 하단   */}
-        <div className="bottom flexBetween flexHeightCenter">
+        <div className="bottom foodFlexBetween foodFlexHeightCenter">
           <span>
             © 2025 길맛지도. All rights reserved.{" "}
-            <a href="/terms" target="_blank">
+            <a href="/project/foodmap/terms" target="_blank">
               이용약관
             </a>
-            <a href="/privacy-policy" target="_blank">
+            <a href="/project/foodmap/privacy-policy" target="_blank">
               개인정보처리방침
             </a>
           </span>

@@ -63,15 +63,15 @@ const FoodPcCP = ({
     <section css={foodPcCpMainStyle(isPc)}>
       <section css={foodPcCpButtonStyle(isPc)}>
         {/* GPS */}
-        <div className="gps flexCenter" onClick={currentLocationButton}>
+        <div className="gps foodFlexCenter" onClick={currentLocationButton}>
           <FontAwesomeIcon icon={faLocationCrosshairs} />
         </div>
         {/* 홈으로 이동 */}
-        <div className="home flexCenter" onClick={() => nav("/")}>
+        <div className="home foodFlexCenter" onClick={() => nav("/project/foodmap/")}>
           <FontAwesomeIcon icon={faHouse} />
         </div>
         {/* 새로고침 */}
-        <div className="relay flexCenter" onClick={onClickRelay}>
+        <div className="relay foodFlexCenter" onClick={onClickRelay}>
           <FontAwesomeIcon icon={faArrowRotateRight} />
         </div>
         {onReview && <FoodPcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} />}
@@ -149,9 +149,9 @@ const FoodPcCP = ({
             </h3>
             <p className="intro">{details.intro}</p>
           </div>
-          <p className="flexBetween category review">
+          <p className="foodFlexBetween category review">
             <span className="category">{details.category}</span>
-            <span className="flexBetween">
+            <span className="foodFlexBetween">
               <FontAwesomeIcon
                 icon={faHeart}
                 style={{ marginRight: "1rem", color: details.like ? "var(--food-red)" : "lightgray", cursor: "pointer" }}
@@ -164,7 +164,7 @@ const FoodPcCP = ({
                 }}
               />
 
-              <a href="#review" className="flexCenter" style={{ textDecoration: "none", color: "inherit" }}>
+              <a href="#review" className="foodFlexCenter" style={{ textDecoration: "none", color: "inherit" }}>
                 <FontAwesomeIcon icon={faStar} className="icon" /> {detailAvgRating() || "리뷰 없음"}
               </a>
             </span>
@@ -202,7 +202,7 @@ const FoodPcCP = ({
               .sort((a, b) => a.num - b.num)
               .map((menuItem, index) => (
                 <li key={index}>
-                  <p className="flexBetween">
+                  <p className="foodFlexBetween">
                     <span>{menuItem.name}</span>
                     <span>{menuItem.price.toLocaleString()}원</span>
                   </p>
@@ -213,7 +213,7 @@ const FoodPcCP = ({
 
           <div className="marginTop"></div>
 
-          <h3 id="review" className="flexBetween">
+          <h3 id="review" className="foodFlexBetween">
             리뷰
             <span onClick={() => setOnReview(true)} style={{ fontSize: "0.9rem", color: "var(--food-gray-5)", cursor: "pointer" }}>
               <FontAwesomeIcon icon={faPen} />
@@ -228,7 +228,7 @@ const FoodPcCP = ({
             <ul style={{ borderTop: "1px solid var(--food-gray-2)" }}>
               {details.review.slice().map((review, index) => (
                 <li key={index} className="reviewItem">
-                  <p className="flexBetween">
+                  <p className="foodFlexBetween">
                     <span>{review.userName}</span>
                     <span>
                       <FontAwesomeIcon icon={faStar} className="icon" /> {review.rating}

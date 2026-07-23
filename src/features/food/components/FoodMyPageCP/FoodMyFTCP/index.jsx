@@ -344,7 +344,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
         if (res.data?.length === 0) {
           alert("등록된 푸드트럭이 없습니다.");
           if (window.confirm("푸드트럭을 등록하시겠습니까?")) {
-            window.location.href = "/register";
+            window.location.href = "/project/foodmap/register";
           }
           return;
         }
@@ -443,7 +443,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
 
         <div>
           <h2>이미지</h2>
-          <div className="image-upload col flexCenter">
+          <div className="image-upload col foodFlexCenter">
             <div>
               <p>푸드트럭이 드러난 이미지를 업로드 해 주세요</p>
               <p>선택사항</p>
@@ -459,20 +459,20 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
               <p>
                 메뉴 리스트<span className="essential">*</span>
               </p>
-              <div className={menuList.length === 0 ? "flexCenter" : "flexCol"}>
+              <div className={menuList.length === 0 ? "foodFlexCenter" : "flexCol"}>
                 {menuList.length === 0 && <p>메뉴를 등록하세요</p>}
                 {menuList
                   .slice()
                   .sort((a, b) => Number(a.num) - Number(b.num))
                   .map((menu, idx) => (
                     <div key={idx} className="menu-item">
-                      <div className="flexBetween">
-                        <p className="flexBetween">
+                      <div className="foodFlexBetween">
+                        <p className="foodFlexBetween">
                           <span>{menu.num}.</span>
                           <span>{menu.name}</span>
                           <span>({Number(menu.price).toLocaleString()}원)</span>
                         </p>
-                        <p className="flexBetween icon">
+                        <p className="foodFlexBetween icon">
                           <span
                             style={{ cursor: "pointer" }}
                             onClick={() => {
@@ -604,14 +604,14 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
           ))}
         </div>
 
-        <form className="terms flexHeightCenter">
+        <form className="terms foodFlexHeightCenter">
           <input type="checkbox" id="terms" name="terms" />
           <label htmlFor="terms">
-            <a href="/terms" target="_blank" rel="noopener noreferrer">
+            <a href="/project/foodmap/terms" target="_blank" rel="noopener noreferrer">
               이용약관
             </a>{" "}
             및{" "}
-            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
+            <a href="/project/foodmap/privacy-policy" target="_blank" rel="noopener noreferrer">
               개인정보처리방침
             </a>
             에 동의합니다<span className="essential">*</span>

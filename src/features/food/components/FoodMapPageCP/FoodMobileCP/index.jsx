@@ -89,18 +89,18 @@ const FoodMobileCP = ({
     <section css={foodMobileCPMainStyle(isPc, details?.imageUrl ? `${import.meta.env.VITE_API_URL}${details.imageUrl}` : "")}>
       <section css={foodMobileCPButtonStyle(isPc)}>
         {/* GPS */}
-        <div className="gps flexCenter" onClick={currentLocationButton}>
+        <div className="gps foodFlexCenter" onClick={currentLocationButton}>
           <FontAwesomeIcon icon={faLocationCrosshairs} />
         </div>
         {/* 홈으로 이동 */}
-        <div className="home flexCenter" onClick={() => nav("/")}>
+        <div className="home foodFlexCenter" onClick={() => nav("/project/foodmap/")}>
           <FontAwesomeIcon icon={faHouse} />
         </div>
         {/* 새로고침 */}
-        <div className="relay flexCenter" onClick={onClickRelay}>
+        <div className="relay foodFlexCenter" onClick={onClickRelay}>
           <FontAwesomeIcon icon={faArrowRotateRight} />
         </div>
-        <div className="menu flexCenter" onClick={onFTListTrueHandler}>
+        <div className="menu foodFlexCenter" onClick={onFTListTrueHandler}>
           <FontAwesomeIcon icon={faBars} />
         </div>
 
@@ -109,7 +109,7 @@ const FoodMobileCP = ({
 
       {/* 리스트 */}
       <section className="ftList flexCol" style={{ top: onFTList && !onReview ? "calc(100vh - 40vh)" : "100vh" }}>
-        <h3 className="flexBetween">
+        <h3 className="foodFlexBetween">
           <span>푸드트럭 목록</span>
           <FontAwesomeIcon icon={faXmark} onClick={onFalseHandler} />
         </h3>
@@ -142,27 +142,27 @@ const FoodMobileCP = ({
 
       {/* 상세정보 */}
       <section className="ftDetails flexCol" style={{ top: onDetails && !onReview ? "calc(100vh - 40vh)" : "100vh" }}>
-        <h3 className="flexBetween">
+        <h3 className="foodFlexBetween">
           <span>푸드트럭 정보</span> <FontAwesomeIcon icon={faXmark} onClick={onDeleteDetails} />
         </h3>
         <p style={{ gap: "16px", display: "flex" }}>
-          <span style={{ color: detailsPage === 0 ? "var(--gary-5)" : "var(--gray-4)" }} className="info" onClick={() => setDetailsPage(0)}>
+          <span style={{ color: detailsPage === 0 ? "var(--gary-5)" : "var(--food-gray-4)" }} className="info" onClick={() => setDetailsPage(0)}>
             정보
           </span>
-          <span style={{ color: detailsPage === 1 ? "var(--gary-5)" : "var(--gray-4)" }} className="menu" onClick={() => setDetailsPage(1)}>
+          <span style={{ color: detailsPage === 1 ? "var(--gary-5)" : "var(--food-gray-4)" }} className="menu" onClick={() => setDetailsPage(1)}>
             메뉴
           </span>
-          <span style={{ color: detailsPage === 2 ? "var(--gary-5)" : "var(--gray-4)" }} className="schedule" onClick={() => setDetailsPage(2)}>
+          <span style={{ color: detailsPage === 2 ? "var(--gary-5)" : "var(--food-gray-4)" }} className="schedule" onClick={() => setDetailsPage(2)}>
             일정
           </span>
-          <span style={{ color: detailsPage === 3 ? "var(--gary-5)" : "var(--gray-4)" }} className="review" onClick={() => setDetailsPage(3)}>
+          <span style={{ color: detailsPage === 3 ? "var(--gary-5)" : "var(--food-gray-4)" }} className="review" onClick={() => setDetailsPage(3)}>
             리뷰
           </span>
         </p>
 
         {/* 0: 기본정보 */}
         {detailsPage === 0 && (
-          <section className="info flexBetweenCol">
+          <section className="info foodFlexBetweenCol">
             <div className="imageBox">
               {details.imageUrl && (
                 <img
@@ -183,9 +183,9 @@ const FoodMobileCP = ({
               </h3>
               <p className="intro">{details.intro}</p>
             </div>
-            <p className="flexBetween category review">
+            <p className="foodFlexBetween category review">
               <span className="category">{details.category}</span>
-              <span className="flexBetween">
+              <span className="foodFlexBetween">
                 <FontAwesomeIcon
                   icon={faHeart}
                   style={{ marginRight: "1rem", color: details.like ? "var(--red)" : "lightgray", cursor: "pointer" }}
@@ -197,7 +197,7 @@ const FoodMobileCP = ({
                     }
                   }}
                 />
-                <a href="#review" className="flexCenter">
+                <a href="#review" className="foodFlexCenter">
                   <FontAwesomeIcon icon={faStar} className="icon" /> {detailAvgRating() || "리뷰 없음"}
                 </a>
               </span>
@@ -213,7 +213,7 @@ const FoodMobileCP = ({
                 .sort((a, b) => a.num - b.num) // num 오름차순 정렬
                 .map((menuItem, index) => (
                   <li key={index}>
-                    <p className="flexBetween">
+                    <p className="foodFlexBetween">
                       <span>{menuItem.name}</span>
                       <span>{menuItem.price.toLocaleString()}원</span>
                     </p>
@@ -231,7 +231,7 @@ const FoodMobileCP = ({
                 <li
                   key={index}
                   style={{
-                    color: !schedule.holiday ? "var(--red)" : index === today ? "var(--green-accent)" : "",
+                    color: !schedule.holiday ? "var(--red)" : index === today ? "var(--food-green-accent)" : "",
                   }}>
                   <span>
                     {!schedule.holiday ? <FontAwesomeIcon icon={faBellRegular} onClick={onAddSms} style={{ visibility: "hidden" }} /> : ""}
@@ -249,13 +249,13 @@ const FoodMobileCP = ({
         {/* 3: 리뷰 */}
         {detailsPage === 3 && (
           <section className="review">
-            <h3 id="review" className="flexBetween">
+            <h3 id="review" className="foodFlexBetween">
               리뷰
               <span
                 onClick={() => {
                   setOnReview(true);
                 }}
-                style={{ fontSize: "0.9rem", color: "var(--gray-5)", cursor: "pointer" }}>
+                style={{ fontSize: "0.9rem", color: "var(--food-gray-5)", cursor: "pointer" }}>
                 <FontAwesomeIcon icon={faPen} />
               </span>
             </h3>
@@ -265,10 +265,10 @@ const FoodMobileCP = ({
               </div>
             )}
             {details.review?.length > 0 && (
-              <ul style={{ borderTop: "1px solid var(--gray-2)" }}>
+              <ul style={{ borderTop: "1px solid var(--food-gray-2)" }}>
                 {details.review.slice().map((review, index) => (
                   <li key={index} className="reviewItem">
-                    <p className="flexBetween">
+                    <p className="foodFlexBetween">
                       <span>{review.nickName}</span>
                       <span>
                         <FontAwesomeIcon icon={faStar} className="icon" /> {review.rating}

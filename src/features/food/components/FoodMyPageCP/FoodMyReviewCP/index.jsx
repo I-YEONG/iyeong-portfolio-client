@@ -83,7 +83,7 @@ const FoodMyReviewCPDiv = ({ rv }) => {
 
   return (
     <div css={foodMyReviewCPDivStyle}>
-      <p className="flexBetween">
+      <p className="foodFlexBetween">
         <span className="truckName">{rv.truckName}</span>
         <span>
           {upDateMode && (
@@ -119,7 +119,7 @@ const FoodMyReviewCPDiv = ({ rv }) => {
       <div className="textAreaWrapper">
         <FoodTextAreaInputCP title="" value={content} onChangeHandler={onChangeContent} essential={false} maxRows={5} minRows={2} lock={!upDateMode} />
       </div>
-      <p className="flexBetween">
+      <p className="foodFlexBetween">
         <span className="dateText">{formatted}</span>
         {!upDateMode && (
           <span>
@@ -128,7 +128,7 @@ const FoodMyReviewCPDiv = ({ rv }) => {
           </span>
         )}
         {upDateMode && (
-          <span className="flexBetween buttonGroup">
+          <span className="foodFlexBetween buttonGroup">
             <span
               onClick={() => {
                 setContent(rv.content);

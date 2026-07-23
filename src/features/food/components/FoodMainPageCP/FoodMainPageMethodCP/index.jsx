@@ -22,10 +22,10 @@ const FoodMainPageMethodCP = () => {
       </div>
       <div>
         {/* 손님 */}
-        <section css={foodMainPageMethodCPStyle(isPc, "--brown-light")}>
+        <section css={foodMainPageMethodCPStyle(isPc, "--food-brown-light")}>
           {/* 상단 */}
           <div>
-            <div className="icon flexCenter">
+            <div className="icon foodFlexCenter">
               {/* 아이콘 */}
               <FontAwesomeIcon icon={faUser} />
             </div>
@@ -33,47 +33,47 @@ const FoodMainPageMethodCP = () => {
             <p>맛있는 푸드트럭을 쉽게 찾아 보세요</p>
           </div>
           {/* 하단 */}
-          <div className="flexBetweenCol">
+          <div className="foodFlexBetweenCol">
             <div>
-              <div className="flexCenter">1</div>
+              <div className="foodFlexCenter">1</div>
               <div>
                 <p>지도에서 내 주변 푸드트럭 확인</p>
                 <p>실시간 위치 정보로 가까운 포드트럭을 한눈에 찾아보세요.</p>
               </div>
             </div>
             <div>
-              <div className="flexCenter">2</div>
+              <div className="foodFlexCenter">2</div>
               <div>
                 <p>리뷰와 메뉴 정보 확인</p>
                 <p>다른 고객들의 솔직한 후기와 메뉴를 미리 확인하세요.</p>
               </div>
             </div>
             <div>
-              <div className="flexCenter">3</div>
+              <div className="foodFlexCenter">3</div>
               <div>
                 <p>찜하기로 즐겨찾는 푸드트럭 저장</p>
                 <p>마음에 드는 푸드트럭을 저장하고 알림을 받아보세요.</p>
               </div>
             </div>
             <div>
-              <div className="flexCenter">4</div>
+              <div className="foodFlexCenter">4</div>
               <div>
                 <p>방문 후 리뷰 작성</p>
                 <p>경험을 공유하고 다른 고객들에게 도움을 주세요.</p>
               </div>
             </div>
           </div>
-          <div className="flexCenter">
-            <FontAwesomeIcon icon={faMagnifyingGlass} onClick={() => nav("/map")} style={{ cursor: "pointer" }} />
+          <div className="foodFlexCenter">
+            <FontAwesomeIcon icon={faMagnifyingGlass} onClick={() => nav("/project/foodmap/map")} style={{ cursor: "pointer" }} />
             <p>지금 바로 찾기</p>
           </div>
         </section>
 
         {/* 사장님 */}
-        <section css={foodMainPageMethodCPStyle(isPc, "--brown")}>
+        <section css={foodMainPageMethodCPStyle(isPc, "--food-brown")}>
           {/* 상단 */}
           <div>
-            <div className="icon flexCenter">
+            <div className="icon foodFlexCenter">
               {/* 아이콘 */}
               <FontAwesomeIcon icon={faShop} />
             </div>
@@ -81,37 +81,37 @@ const FoodMainPageMethodCP = () => {
             <p>푸드트럭을 효과적으로 홍보하세요</p>
           </div>
           {/* 하단 */}
-          <div className="flexBetweenCol">
+          <div className="foodFlexBetweenCol">
             <div>
-              <div className="flexCenter">1</div>
+              <div className="foodFlexCenter">1</div>
               <div>
                 <p>푸드트럭 정보 등록</p>
                 <p>메뉴, 운영시간, 연락처 등 기본 정보를 등록하세요.</p>
               </div>
             </div>
             <div>
-              <div className="flexCenter">2</div>
+              <div className="foodFlexCenter">2</div>
               <div>
                 <p>실시간 위치와 운영 시간 업데이트</p>
                 <p>고객들이 쉽게 찾을 수 있도록 현재 위치를 업데이트하세요.</p>
               </div>
             </div>
             <div>
-              <div className="flexCenter">3</div>
+              <div className="foodFlexCenter">3</div>
               <div>
                 <p>고객 리뷰 관리</p>
                 <p>고객 후기에 답글을 달고 소통을 통해 신뢰를 쌓으세요.</p>
               </div>
             </div>
             <div>
-              <div className="flexCenter">4</div>
+              <div className="foodFlexCenter">4</div>
               <div>
                 <p>매출 및 통계 확인</p>
                 <p>방문자 수, 리뷰 통계 등을 확인하고 사업을 개선하세요.</p>
               </div>
             </div>
           </div>
-          <div className="flexCenter" onClick={() => nav("/register")} style={{ cursor: "pointer" }}>
+          <div className="foodFlexCenter" onClick={() => nav("/project/foodmap/register")} style={{ cursor: "pointer" }}>
             <FontAwesomeIcon icon={faPlus} />
             <p>푸드트럭 등록하기</p>
           </div>

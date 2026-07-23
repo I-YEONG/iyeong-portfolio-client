@@ -160,14 +160,14 @@
 /* 5. 기본 스타일 적용도 .food 하위로 제한 */
 @layer base {
   /* 모든 요소(*) 대신 .food 하위 요소에만 보더 컬러 기본 적용 */
-  .food * {
+  /* .food * {
     @apply border-food-border;
-  }
+  } */
 
   /* body 대신 .food 컨테이너 자체에 배경/글자색 기본 적용 */
-  .food {
+  /* .food {
     @apply bg-food-background text-food-foreground;
-  }
+  } */
 }
 
 .foodFlexWidthCenter {

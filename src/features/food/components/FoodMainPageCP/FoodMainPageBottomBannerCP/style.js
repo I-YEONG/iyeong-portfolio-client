@@ -4,8 +4,8 @@ export const foodMainPageBottomBannerCPMainStyle = () =>
   css({
     height: "264px",
     width: "100%",
-    backgroundColor: "var(--brown-light)",
-    color: "var(--gray-0)",
+    backgroundColor: "var(--food-brown-light)",
+    color: "var(--food-gray-0)",
 
     "& > div": {
       width: "340px",

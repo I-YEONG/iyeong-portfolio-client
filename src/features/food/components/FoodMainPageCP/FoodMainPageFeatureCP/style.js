@@ -4,10 +4,10 @@ import { css } from "@emotion/react";
 export const foodMainPageFeatureCPMainStyle = (isPc) =>
   css({
     width: "100%",
-    margin: "6vh 0",
+    margin: "6% 0",
     height: "auto",
     padding: "3rem 1rem",
-    backgroundColor: "var(--gray-0)",
+    backgroundColor: "var(--food-gray-0)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -16,7 +16,7 @@ export const foodMainPageFeatureCPMainStyle = (isPc) =>
     flexDirection: isPc ? undefined : "column",
 
     "& > div": {
-      width: isPc ? "75vw" : "100%",
+      width: isPc ? "75%" : "100%",
       maxWidth: "1440px",
       display: "flex",
       justifyContent: "center",
@@ -45,7 +45,7 @@ export const foodMainPageFeatureCPMainStyle = (isPc) =>
         "& > div": {
           /* card container */
           borderRadius: "8px",
-          border: "1px solid var(--gray-2)",
+          border: "1px solid var(--food-gray-2)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -60,7 +60,7 @@ export const foodMainPageFeatureCPMainStyle = (isPc) =>
           "& p:nth-of-type(1)": {
             fontSize: "1.5rem",
             fontWeight: 550,
-            color: "var(--brown)",
+            color: "var(--food-brown)",
           },
 
           "& p:nth-of-type(2)": {
@@ -69,7 +69,7 @@ export const foodMainPageFeatureCPMainStyle = (isPc) =>
             maxWidth: "400px",
             fontSize: "1rem",
             fontWeight: 400,
-            color: "var(--gray-4)",
+            color: "var(--food-gray-4)",
           },
         },
       },
@@ -79,6 +79,6 @@ export const foodMainPageFeatureCPMainStyle = (isPc) =>
       width: "3rem",
       height: "3rem",
       fontSize: "3rem",
-      color: "var(--brown-light)",
+      color: "var(--food-brown-light)",
     },
   });

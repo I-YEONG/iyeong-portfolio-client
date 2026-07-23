@@ -17,7 +17,7 @@ export const foodMyLikeLiCPStyle = (isPc) =>
     ".ftListIndex": {
       marginBottom: "1rem",
     },
-    ".flexBetween": {
+    ".foodFlexBetween": {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",

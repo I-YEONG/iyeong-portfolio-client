@@ -2,11 +2,11 @@ import { css } from "@emotion/react";
 
 export const foodMainPageMoreFunCPMainStyle = (isPc) =>
   css({
-    width: isPc ? "65vw" : "90vw",
+    width: isPc ? "65%" : "90%",
     maxWidth: "1240px",
-    margin: "6vh auto",
+    margin: "6% auto",
     padding: isPc ? "4rem 6rem" : "4rem 0",
-    backgroundColor: "var(--gray-0)",
+    backgroundColor: "var(--food-gray-0)",
     borderRadius: "1rem",
     boxShadow: "0px 0px 14.7px rgba(0, 0, 0, 0.05)",
     flexWrap: "wrap",
@@ -26,7 +26,7 @@ export const foodMainPageMoreFunCPMainStyle = (isPc) =>
         width: "6rem",
         height: "6rem",
         borderRadius: "50%",
-        backgroundColor: "var(--brown-light)",
+        backgroundColor: "var(--food-brown-light)",
         margin: "0 auto",
       },
 
@@ -38,13 +38,13 @@ export const foodMainPageMoreFunCPMainStyle = (isPc) =>
 
       "& > p:nth-of-type(2)": {
         fontSize: "14px",
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
         lineHeight: 1.5,
       },
     },
 
     "& .icon": {
       fontSize: "1.8rem",
-      color: "var(--gray-0)",
+      color: "var(--food-gray-0)",
     },
   });

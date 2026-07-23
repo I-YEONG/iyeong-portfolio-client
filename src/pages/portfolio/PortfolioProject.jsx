@@ -38,6 +38,7 @@ import {
   DomoRecsInfo,
   DomoRecsResult,
   DomoRecsSave,
+  FoodMainPage,
 } from "@/pages";
 import { useEffect, useState } from "react";
 import { FixMobile } from "@/components";
@@ -182,6 +183,14 @@ const PortfolioProject = () => {
                 <Route path="/recs/save" element={<DomoRecsSave />} />
 
                 <Route path="*" element={<DomoNotFoundPage />} />
+              </Routes>
+            </div>
+          )}
+
+          {projectName === "foodmap" && (
+            <div className="food">
+              <Routes>
+                <Route path="/" element={<FoodMainPage />} />
               </Routes>
             </div>
           )}

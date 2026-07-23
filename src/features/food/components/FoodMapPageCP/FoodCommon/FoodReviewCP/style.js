@@ -6,7 +6,7 @@ export const foodReviewCPMainStyle = (isPc) =>
     position: "absolute",
     zIndex: 1000,
     top: 0,
-    backgroundColor: "var(--gray-0)",
+    backgroundColor: "var(--food-gray-0)",
     boxShadow: "0 0 15px rgba(0, 0, 0, 0.05)",
     padding: "0 2rem",
 
@@ -27,7 +27,7 @@ export const foodReviewCPMainStyle = (isPc) =>
         lineHeight: 1.3,
 
         "& span": {
-          color: "var(--brown-dark)",
+          color: "var(--food-brown-dark)",
           display: "inline-block",
           maxWidth: "80%",
           whiteSpace: "nowrap",
@@ -48,8 +48,8 @@ export const foodReviewCPMainStyle = (isPc) =>
       justifyContent: "center",
       alignItems: "center",
       cursor: "pointer",
-      color: "var(--gray-0)",
-      backgroundColor: "var(--brown-light)",
+      color: "var(--food-gray-0)",
+      backgroundColor: "var(--food-brown-light)",
       transition: "all 0.05s",
 
       "&:hover": {

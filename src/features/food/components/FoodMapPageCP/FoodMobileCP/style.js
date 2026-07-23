@@ -12,7 +12,7 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
     "& > .ftList, & > .ftDetails": {
       zIndex: 999,
       width: isPc ? "400px" : "100vw", // 예시: PC일 때는 고정너비, 모바일은 100vw
-      backgroundColor: "var(--gray-0)",
+      backgroundColor: "var(--food-gray-0)",
       padding: "2rem",
       borderRadius: "1rem 1rem 0 0",
       boxShadow: "0 -2px 6px rgba(0, 0, 0, 0.1)",
@@ -59,7 +59,7 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
         width: "100%",
         height: "28%",
         maxHeight: "170px",
-        color: "var(--gray-3)",
+        color: "var(--food-gray-3)",
         borderRadius: "12px",
       },
 
@@ -71,18 +71,18 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
 
       "& p.intro": {
         fontSize: "1rem",
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
         marginBottom: "1.2rem",
         lineHeight: 1.5,
       },
 
       "& p.category.review": {
         fontSize: "1rem",
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
 
         "& .category": {
           fontWeight: 600,
-          color: "var(--brown-dark)",
+          color: "var(--food-brown-dark)",
         },
 
         "& .icon": {
@@ -96,12 +96,12 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
       overflowY: "scroll",
 
       "& > ul.menuList > li:nth-child(1)": {
-        borderTop: "1px solid var(--gray-2)",
+        borderTop: "1px solid var(--food-gray-2)",
       },
 
       "& > ul.menuList > li": {
         padding: "1.6rem 0",
-        borderBottom: "1px solid var(--gray-2)",
+        borderBottom: "1px solid var(--food-gray-2)",
       },
 
       "& > ul.menuList > li > p:nth-child(1) > span:nth-child(1)": {
@@ -112,15 +112,15 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
       "& > ul.menuList > li > p:nth-child(2)": {
         marginTop: "0.5rem",
         fontSize: "0.9rem",
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
       },
     },
 
     "& .ftDetails > section.schedule": {
       "& ul": {
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
         marginBottom: "1.2rem",
-        borderTop: "1px solid var(--gray-2)",
+        borderTop: "1px solid var(--food-gray-2)",
         fontFamily: '"Noto Sans KR", sans-serif',
       },
 
@@ -128,8 +128,8 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
         display: "flex",
         justifyContent: "space-between",
         padding: "0.5rem 0",
-        borderBottom: "1px solid var(--gray-2)",
-        color: "var(--gray-4)",
+        borderBottom: "1px solid var(--food-gray-2)",
+        color: "var(--food-gray-4)",
         gap: "1rem",
       },
 
@@ -145,12 +145,12 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
 
     "& .ftDetails > section.review": {
       "& > ul.menuList > li:nth-child(1)": {
-        borderTop: "1px solid var(--gray-2)",
+        borderTop: "1px solid var(--food-gray-2)",
       },
 
       "& > ul.menuList > li": {
         padding: "1.6rem 0",
-        borderBottom: "1px solid var(--gray-2)",
+        borderBottom: "1px solid var(--food-gray-2)",
       },
 
       "& > ul.menuList > li > p:nth-child(1) > span:nth-child(1)": {
@@ -161,12 +161,12 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
       "& > ul.menuList > li > p:nth-child(2)": {
         marginTop: "0.5rem",
         fontSize: "0.95rem",
-        color: "var(--gray-5)",
+        color: "var(--food-gray-5)",
       },
 
       "& .reviewItem": {
         padding: "1.6rem 0",
-        borderBottom: "1px solid var(--gray-2)",
+        borderBottom: "1px solid var(--food-gray-2)",
 
         "& > p:nth-child(1)": {
           marginBottom: "0.5rem",
@@ -195,7 +195,7 @@ export const foodMobileCPButtonStyle = (isPc) =>
       width: "40px",
       height: "40px",
       borderRadius: "50%",
-      backgroundColor: "var(--gray-0)",
+      backgroundColor: "var(--food-gray-0)",
       boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
       fontSize: "0.9rem",
       transition: "all 0.15s ease-in-out",
@@ -204,31 +204,31 @@ export const foodMobileCPButtonStyle = (isPc) =>
     },
 
     "& > div.gps": {
-      color: "var(--brown-dark)",
+      color: "var(--food-brown-dark)",
       left: "calc(100vw - 1rem - 40px)",
       top: "1rem",
     },
 
     "& > div.home": {
-      color: "var(--brown)",
+      color: "var(--food-brown)",
       left: "calc(100vw - 1.6rem - 80px)",
       top: "1rem",
     },
 
     "& > div.relay": {
-      color: "var(--brown-light)",
+      color: "var(--food-brown-light)",
       left: "calc(100vw - 2.2rem - 120px)",
       top: "1rem",
     },
 
     "& > div.menu": {
-      color: "var(--brown-light)",
+      color: "var(--food-brown-light)",
       left: "calc(100vw - 1rem - 40px) !important",
       bottom: "1rem !important",
     },
 
     "& > div.gps:hover, & > div.home:hover, & > div.relay:hover, & > div.menu:hover": {
-      backgroundColor: "var(--brown-light)",
-      color: "var(--gray-0)",
+      backgroundColor: "var(--food-brown-light)",
+      color: "var(--food-gray-0)",
     },
   });

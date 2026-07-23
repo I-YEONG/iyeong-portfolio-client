@@ -215,7 +215,7 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
             <p>
               메뉴 리스트<span className="essential">*</span>
             </p>
-            <div className={formData.menu.length === 0 ? "flexCenter" : "flexCol"}>
+            <div className={formData.menu.length === 0 ? "foodFlexCenter" : "flexCol"}>
               {formData.menu.length === 0 && <p>메뉴를 등록하세요</p>}
               {/* menuList를 num 오름차순으로 정렬하여 출력 */}
               {formData.menu
@@ -223,13 +223,13 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
                 .sort((a, b) => Number(a.num) - Number(b.num))
                 .map((menu, idx) => (
                   <div key={idx} className="menu-item">
-                    <div className="flexBetween">
-                      <p className="flexBetween">
+                    <div className="foodFlexBetween">
+                      <p className="foodFlexBetween">
                         <span>{menu.num}.</span>
                         <span>{menu.name}</span>
                         <span>({Number(menu.price).toLocaleString()}원)</span>
                       </p>
-                      <p className="flexBetween icon">
+                      <p className="foodFlexBetween icon">
                         {/* 수정 아이콘 클릭 시 해당 메뉴 정보로 input값 세팅 및 수정모드 진입 */}
                         <span
                           style={{ cursor: "pointer" }}

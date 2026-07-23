@@ -80,7 +80,7 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
       {ftData && (
         <li className="ftListIndexLi">
           <div className="ftListIndex">
-            <p className="flexBetween">
+            <p className="foodFlexBetween">
               <span className="name">{ftData.name}</span>
               <span className="isHolidayToday" style={{ backgroundColor: businessInfo?.color || "#999" }}>
                 {businessInfo?.status || "휴무"}
@@ -88,7 +88,7 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
             </p>
             <p className="intro">{ftData.intro}</p>
             <p>{ftData.schedule?.[today]?.userAddress}</p>
-            <p className="flexBetween">
+            <p className="foodFlexBetween">
               <span>
                 {ftData.schedule?.[today]?.start}시 ~ {ftData.schedule?.[today]?.end}시
               </span>
@@ -100,7 +100,7 @@ const FoodMyLikeLiCP = ({ ftId, onDeleteLike, onDeleteSms, onAddSms }) => {
               </span>
             </p>
           </div>
-          <div className="ftScheduleDiv flexBetween">
+          <div className="ftScheduleDiv foodFlexBetween">
             <ul className="schedule">
               {ftData.schedule?.slice().map((schedule, idx) => (
                 <li
