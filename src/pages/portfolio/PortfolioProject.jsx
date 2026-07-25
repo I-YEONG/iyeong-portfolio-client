@@ -39,6 +39,8 @@ import {
   DomoRecsResult,
   DomoRecsSave,
   FoodMainPage,
+  FoodError404Page,
+  FoodRegisterPage,
 } from "@/pages";
 import { useEffect, useState } from "react";
 import { FixMobile } from "@/components";
@@ -191,6 +193,9 @@ const PortfolioProject = () => {
             <div className="food">
               <Routes>
                 <Route path="/" element={<FoodMainPage />} />
+                <Route path="/register" element={<FoodRegisterPage />} />
+
+                <Route path="*" element={<FoodError404Page />} />
               </Routes>
             </div>
           )}

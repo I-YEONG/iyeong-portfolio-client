@@ -45,3 +45,5 @@ export { default as DomoRecsSave } from "./domo/DomoRecsSave";
 
 // FOOD
 export { default as FoodMainPage } from "./food/FoodMainPage";
+export { default as FoodRegisterPage } from "./food/FoodRegisterPage";
+export { default as FoodError404Page } from "./food/FoodError404Page";
