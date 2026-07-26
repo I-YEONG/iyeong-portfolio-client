@@ -24,6 +24,11 @@ export { default as FoodMyLikeCP } from "./FoodMyPageCP/FoodMyLikeCP";
 export { default as FoodMyPageInfoCP } from "./FoodMyPageCP/FoodMyPageInfoCP";
 export { default as FoodMyReviewCPDiv } from "./FoodMyPageCP/FoodMyReviewCP";
 
+export { default as FoodFTInfoCP } from "./FoodReportPageCP/FoodFTInfoCP";
+export { default as FoodFTPositionInfoCP } from "./FoodReportPageCP/FoodFTPositionInfoCP";
+export { default as FoodPhotoUploadCP } from "./FoodReportPageCP/FoodPhotoUploadCP";
+export { default as FoodReporterInfoCP } from "./FoodReportPageCP/FoodReporterInfoCP";
+
 export { FoodBadge } from "./Foodui/Foodbadge.jsx";
 export { badgeVariants } from "./Foodui/Foodbadge.jsx";
 export { FoodCheckbox } from "./Foodui/Foodcheckbox.jsx";

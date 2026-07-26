@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { FoodCard, FoodCardHeader, FoodCardTitle, CardDescription, FoodCardContent, FoodLabel, FoodInput } from "@/features/food/components";
+import { FoodCard, FoodCardHeader, FoodCardTitle, FoodCardContent, FoodLabel, FoodInput, FoodCardDescription } from "@/features/food/components";
 
 const FoodReporterInfoCP = forwardRef(({ formData, handleInputChange, errors }, refs) => {
   /** 전화번호는 숫자만 입력되도록 처리 */
@@ -12,7 +12,7 @@ const FoodReporterInfoCP = forwardRef(({ formData, handleInputChange, errors }, 
     <FoodCard className="cards">
       <FoodCardHeader>
         <FoodCardTitle>제보자 정보</FoodCardTitle>
-        <CardDescription>검토 결과 안내를 위한 연락처를 입력해주세요</CardDescription>
+        <FoodCardDescription>검토 결과 안내를 위한 연락처를 입력해주세요</FoodCardDescription>
       </FoodCardHeader>
       <FoodCardContent className="space-y-4">
         <div className="grid gap-4 md:grid-cols-2">

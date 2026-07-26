@@ -8,6 +8,8 @@ import {
   FoodSelectValue,
   FoodSelectItem,
   FoodSelectContent,
+  FoodInputCP,
+  FoodButtonCP,
 } from "@/features/food/components";
 import { Pencil, Eraser } from "lucide-react";
 import React, { useCallback, useState, forwardRef } from "react";
@@ -260,21 +262,21 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
           <div className="menu-add">
             <p>메뉴 등록</p>
             <div>
-              <InputCP
+              <FoodInputCP
                 title="메뉴 이름"
                 value={formData.menuName || ""}
                 onChangeHandler={(e) => handleInputChange("menuName", e.target.value)}
                 essential="true"
               />
-              <InputCP
+              <FoodInputCP
                 title="가격"
                 value={formData.menuPrice || ""}
                 onChangeHandler={(e) => handleInputChange("menuPrice", e.target.value)}
                 essential="true"
                 ex="숫자만 입력"
               />
-              <InputCP title="설명" value={formData.menuInfo} onChangeHandler={(e) => handleInputChange("menuInfo", e.target.value)} />
-              <InputCP
+              <FoodInputCP title="설명" value={formData.menuInfo} onChangeHandler={(e) => handleInputChange("menuInfo", e.target.value)} />
+              <FoodInputCP
                 title="표시 순서"
                 value={formData.menuNum}
                 onChangeHandler={(e) => handleInputChange("menuNum", e.target.value)}
@@ -286,12 +288,12 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
               {/* 수정모드, 등록모드 버튼 구분 */}
               {!menuModify && (
                 <div onClick={handleAddMenu}>
-                  <ButtonCP>등록</ButtonCP>
+                  <FoodButtonCP>등록</FoodButtonCP>
                 </div>
               )}
               {menuModify && (
                 <div onClick={() => handleEditMenu(editMenuNum)}>
-                  <ButtonCP>수정</ButtonCP>
+                  <FoodButtonCP>수정</FoodButtonCP>
                 </div>
               )}
             </div>
