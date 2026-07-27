@@ -52,12 +52,14 @@ const FoodSelectContent = React.forwardRef(({ className, children, position = "p
       )}
       position={position}
       {...props}>
-      <SelectScrollUpButton />
+      {/* 여기서부터 수정되었습니다 */}
+      <FoodSelectScrollUpButton />
       <SelectPrimitive.Viewport
         className={cn("p-1", position === "popper" && "h-[var(--radix-Foodselect-trigger-height)] w-full min-w-[var(--radix-Foodselect-trigger-width)]")}>
         {children}
       </SelectPrimitive.Viewport>
-      <SelectScrollDownButton />
+      <FoodSelectScrollDownButton />
+      {/* 여기까지 수정되었습니다 */}
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
 ));

@@ -144,7 +144,7 @@ const FoodRegisterPage = () => {
     }
 
     // 8. 사업자 등록번호
-    const operatorNum = document.querySelector('Foodinput[placeholder="000-00-00000"]')?.value || "";
+    const operatorNum = document.querySelector('input[placeholder="000-00-00000"]')?.value || "";
     if (!/^\d{3}-\d{2}-\d{5}$/.test(operatorNum)) {
       operatorNumErrorRef.current.style.visibility = "visible";
       errorMsgs.push("사업자 등록번호는 000-00-00000 형식이어야 합니다.");

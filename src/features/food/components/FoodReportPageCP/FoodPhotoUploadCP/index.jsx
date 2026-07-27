@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { FoodCard, FoodCardContent, FoodCardHeader, FoodCardTitle, FoodCardDescription, FoodBadge, FoodButtonCP } from "@/features/food/components";
+import { FoodCard, FoodCardContent, FoodCardHeader, FoodCardTitle, FoodCardDescription, FoodBadge, FoodButtonCP, FoodInput } from "@/features/food/components";
 import { Camera, Upload, X } from "lucide-react";
-// Foodinput import가 누락되어 있다면 상황에 맞게 추가해주세요.
-// import { Foodinput } from "@/components/Foodui/Foodinput";
 
 const FoodPhotoUploadCP = ({ formData, setFormData }) => {
   const [dragActive, setDragActive] = useState(false);
@@ -97,7 +95,7 @@ const FoodPhotoUploadCP = ({ formData, setFormData }) => {
             </p>
             {!isUploadDisabled && <p className="mb-4 text-sm text-gray-5">JPG, PNG 파일 (최대 10MB, 5장까지)</p>}
 
-            <Foodinput
+            <FoodInput
               type="file"
               multiple
               accept="image/*"
