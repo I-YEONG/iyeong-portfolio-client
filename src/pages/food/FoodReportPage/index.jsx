@@ -172,7 +172,7 @@ const FoodReportPage = () => {
             <FoodCardHeader className="bg-white">
               <FoodCardTitle className="relative flex items-center space-x-2 text-brown-10">
                 <div className="p-2 rounded-lg bg-brown-main">
-                  <Star className="w-5 h-5 text-white" />
+                  <Star color="#a47764" className="w-5 h-5 text-white" />
                 </div>
                 <span>푸드트럭 제보 안내</span>
               </FoodCardTitle>
@@ -182,19 +182,19 @@ const FoodReportPage = () => {
               <div className="grid gap-4 text-sm md:grid-cols-3">
                 <div className="flex items-center p-3 space-x-2 border rounded-lg bg-brown-1 border-brown-2">
                   <div className="bg-brown-main p-1.5 rounded-full">
-                    <AlertCircle className="w-4 h-4 text-white" />
+                    <AlertCircle color="#a47764" className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-medium text-brown-8">정확한 정보 입력</span>
                 </div>
                 <div className="flex items-center p-3 space-x-2 border rounded-lg bg-brown-1 border-brown-2">
                   <div className="bg-brown-main p-1.5 rounded-full">
-                    <Camera className="w-4 h-4 text-white" />
+                    <Camera color="#a47764" className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-medium text-brown-8">사진 첨부 권장</span>
                 </div>
                 <div className="flex items-center p-3 space-x-2 border rounded-lg bg-brown-1 border-brown-2">
                   <div className="bg-brown-main p-1.5 rounded-full">
-                    <CheckCircle className="w-4 h-4 text-white" />
+                    <CheckCircle color="#a47764" className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-medium text-brown-8">1-2일 내 검토</span>
                 </div>
@@ -232,7 +232,7 @@ const FoodReportPage = () => {
             {/* 주의사항 */}
             <div className="flex flex-col gap-2 p-4 border border-yellow-200 border-solid rounded-md bg-yellow-50">
               <div className="flex items-center gap-2">
-                <AlertCircle className="w-5 text-brown-main" />
+                <AlertCircle color="#a47764" className="w-5 text-brown-main" />
                 <h2 className="text-base font-medium text-brown-main">제보 시 주의사항</h2>
               </div>
               <div className="flex flex-col gap-1 pl-2 text-xs text-brown-main">
