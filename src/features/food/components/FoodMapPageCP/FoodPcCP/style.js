@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 
 export const foodPcCpButtonStyle = (isPc) =>
   css({
-    width: "0vw",
-    height: "100vh",
+    width: "0%",
+    height: "100%",
     position: "absolute",
     zIndex: 999,
 
@@ -15,7 +15,7 @@ export const foodPcCpButtonStyle = (isPc) =>
       boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
       transition: "all 0.15s ease-in-out",
       cursor: "pointer",
-      left: "calc(100vw - 45px - 1rem)",
+      left: "calc(100% - 45px - 1rem)",
       position: "absolute",
     },
     "& > div.gps": {
@@ -40,8 +40,8 @@ export const foodPcCpMainStyle = (isPc) =>
   css({
     // 사이드 메뉴 영역
     "& > .sideMenu": {
-      width: isPc ? "26vw" : "100vw", // isPc 활용 예시 (필요에 따라 수정)
-      height: "100vh",
+      width: isPc ? "26%" : "100%", // isPc 활용 예시 (필요에 따라 수정)
+      height: "100%",
       maxWidth: "460px",
       position: "absolute",
       overflow: "hidden",
@@ -116,13 +116,13 @@ export const foodPcCpMainStyle = (isPc) =>
 // 컴포넌트에서 imgUrl을 인자로 전달받도록 세팅
 export const foodPcCpDetailsStyle = (isPc, imgUrl) =>
   css({
-    width: isPc ? "23vw" : "100vw", // isPc 활용 예시
+    width: isPc ? "23%" : "100%", // isPc 활용 예시
     maxWidth: "360px",
-    height: "100vh",
+    height: "100%",
     position: "absolute",
     backgroundColor: "var(--food-gray-0)",
     top: 0,
-    left: isPc ? "calc(min(26vw, 460px))" : "0",
+    left: isPc ? "calc(min(26%, 460px))" : "0",
     zIndex: 998,
     padding: "2rem 1.8rem",
     overflowY: "scroll",

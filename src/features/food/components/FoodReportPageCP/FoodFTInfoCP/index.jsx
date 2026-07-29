@@ -217,7 +217,7 @@ const FoodFTInfoCP = forwardRef(({ formData, setFormData, handleInputChange, err
             <p>
               메뉴 리스트<span className="essential">*</span>
             </p>
-            <div className={formData.menu.length === 0 ? "foodFlexCenter" : "flexCol"}>
+            <div className={formData.menu.length === 0 ? "foodFlexCenter" : "foodFlexCol"}>
               {formData.menu.length === 0 && <p>메뉴를 등록하세요</p>}
               {/* menuList를 num 오름차순으로 정렬하여 출력 */}
               {formData.menu

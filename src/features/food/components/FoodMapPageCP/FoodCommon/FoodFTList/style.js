@@ -11,7 +11,6 @@ export const foodFTListMainStyle = () =>
       marginBottom: "0.5rem",
 
       "& > span:nth-of-type(1)": {
-        padding: "0.4rem 0",
         fontWeight: 600,
         fontSize: "1.2rem",
       },

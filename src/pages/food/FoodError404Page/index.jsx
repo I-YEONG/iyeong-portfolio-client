@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 const FoodError404Page = () => {
   const nav = useNavigate();
   return (
-    <section className="flexCenter" style={{ height: "100%", width: "100%", backgroundColor: "white" }}>
-      <div className="flexCol" style={{ alignItems: "center", gap: "1rem" }}>
+    <section className="foodFlexCenter" style={{ height: "100%", width: "100%", backgroundColor: "white" }}>
+      <div className="foodFlexCol" style={{ alignItems: "center", gap: "1rem" }}>
         <FontAwesomeIcon icon={faBan} style={{ fontSize: "6rem", color: "rgb(238, 81, 81)" }} />
         <h1 style={{ fontSize: "3rem", fontWeight: "700" }}>404 ERROR</h1>
         <h3 style={{ fontSize: "1rem", color: "gray" }}>존재하지 않는 페이지 입니다.</h3>

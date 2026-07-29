@@ -459,7 +459,7 @@ const FoodMyFTCP = ({ myTruckList = [] }) => {
               <p>
                 메뉴 리스트<span className="essential">*</span>
               </p>
-              <div className={menuList.length === 0 ? "foodFlexCenter" : "flexCol"}>
+              <div className={menuList.length === 0 ? "foodFlexCenter" : "foodFlexCol"}>
                 {menuList.length === 0 && <p>메뉴를 등록하세요</p>}
                 {menuList
                   .slice()

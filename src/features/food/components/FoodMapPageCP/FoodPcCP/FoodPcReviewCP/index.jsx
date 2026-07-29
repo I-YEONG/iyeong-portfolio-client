@@ -51,28 +51,30 @@ const FoodPcReviewCP = ({ isLogin, offReviewClick, details }) => {
       return alert("리뷰 내용을 입력해주세요.");
     }
 
-    const data = {
-      truckId: details.truckId,
-      content: reviewText,
+    // 1) 새로 작성된 리뷰 객체 생성 (PC / 모바일 호환을 위해 userName, nickName 모두 포함)
+    const newReview = {
+      userName: "방문자",
+      nickName: "방문자님",
       rating: Number(Number(rating).toFixed(1)),
+      content: reviewText,
+      createdAt: new Date().toISOString(),
     };
 
-    axios
-      .post(`${import.meta.env.VITE_API_URL}/api/review`, data, { withCredentials: true })
-      .then((res) => {
-        if (res.data.message) {
-          alert(res.data.message);
-          setReviewText("");
-          setRating(5);
-        } else {
-          alert("리뷰 작성에 실패했습니다. 다시 시도해주세요.");
-        }
-      })
-      .catch((err) => {
-        console.error("리뷰 작성 중 오류 발생:", err);
-        alert("리뷰 작성에 실패했습니다. 다시 시도해주세요.");
-      });
-  }, [reviewText, rating, isLogin, details.truckId, setReviewText]);
+    // 2) details.review 배열 앞에 새 리뷰 추가 (DOM에 즉시 반영)
+    if (details && details.review) {
+      details.review.unshift(newReview);
+    } else if (details) {
+      details.review = [newReview];
+    }
+
+    // 3) 정상 처리 UI 피드백
+    alert("리뷰가 성공적으로 등록되었습니다.");
+    setReviewText("");
+    setRating(5);
+    if (offReviewClick) {
+      offReviewClick(); // 리뷰 창 닫기
+    }
+  }, [reviewText, rating, isLogin, details, setReviewText, offReviewClick]);
 
   return (
     <div css={foodPcReviewCPMainStyle(isPc)} className="foodFlexCenter">

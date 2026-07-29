@@ -108,7 +108,7 @@ const FoodMobileCP = ({
       </section>
 
       {/* 리스트 */}
-      <section className="ftList flexCol" style={{ top: onFTList && !onReview ? "calc(100vh - 40vh)" : "100vh" }}>
+      <section className="ftList foodFlexCol" style={{ top: onFTList && !onReview ? "calc(100% - 40%)" : "100%" }}>
         <h3 className="foodFlexBetween">
           <span>푸드트럭 목록</span>
           <FontAwesomeIcon icon={faXmark} onClick={onFalseHandler} />
@@ -141,7 +141,7 @@ const FoodMobileCP = ({
       </section>
 
       {/* 상세정보 */}
-      <section className="ftDetails flexCol" style={{ top: onDetails && !onReview ? "calc(100vh - 40vh)" : "100vh" }}>
+      <section className="ftDetails foodFlexCol" style={{ top: onDetails && !onReview ? "calc(100% - 40%)" : "100%" }}>
         <h3 className="foodFlexBetween">
           <span>푸드트럭 정보</span> <FontAwesomeIcon icon={faXmark} onClick={onDeleteDetails} />
         </h3>
@@ -166,7 +166,7 @@ const FoodMobileCP = ({
             <div className="imageBox">
               {details.imageUrl && (
                 <img
-                  src={`${import.meta.env.VITE_API_URL}${details.imageUrl}`}
+                  src={`${details.imageUrl}`}
                   style={{
                     width: "100%",
                     height: "100%",

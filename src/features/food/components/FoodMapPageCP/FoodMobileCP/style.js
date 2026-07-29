@@ -6,17 +6,17 @@ import { css } from "@emotion/react";
 export const foodMobileCPMainStyle = (isPc, imgUrl) =>
   css({
     position: "absolute",
-    width: isPc ? "100%" : "0", // 예시: PC 화면일 때의 너비 처리
-    height: "100vh",
+    width: "100%", // 예시: PC 화면일 때의 너비 처리
+    height: "100%",
 
     "& > .ftList, & > .ftDetails": {
       zIndex: 999,
-      width: isPc ? "400px" : "100vw", // 예시: PC일 때는 고정너비, 모바일은 100vw
+      width: isPc ? "400px" : "100%", // 예시: PC일 때는 고정너비, 모바일은 100%
       backgroundColor: "var(--food-gray-0)",
       padding: "2rem",
       borderRadius: "1rem 1rem 0 0",
       boxShadow: "0 -2px 6px rgba(0, 0, 0, 0.1)",
-      height: "40vh",
+      height: "40%",
       position: "absolute",
       transition: "all 0.2s ease-in-out",
     },
@@ -186,8 +186,8 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
 
 export const foodMobileCPButtonStyle = (isPc) =>
   css({
-    width: isPc ? "100%" : "0vw",
-    height: "100vh",
+    width: isPc ? "100%" : "0%",
+    height: "100%",
     position: "absolute",
     zIndex: 998,
 
@@ -205,25 +205,25 @@ export const foodMobileCPButtonStyle = (isPc) =>
 
     "& > div.gps": {
       color: "var(--food-brown-dark)",
-      left: "calc(100vw - 1rem - 40px)",
+      left: "calc(100% - 1rem - 40px)",
       top: "1rem",
     },
 
     "& > div.home": {
       color: "var(--food-brown)",
-      left: "calc(100vw - 1.6rem - 80px)",
+      left: "calc(100% - 1.6rem - 80px)",
       top: "1rem",
     },
 
     "& > div.relay": {
       color: "var(--food-brown-light)",
-      left: "calc(100vw - 2.2rem - 120px)",
+      left: "calc(100% - 2.2rem - 120px)",
       top: "1rem",
     },
 
     "& > div.menu": {
       color: "var(--food-brown-light)",
-      left: "calc(100vw - 1rem - 40px) !important",
+      left: "calc(100% - 1rem - 40px) !important",
       bottom: "1rem !important",
     },
 

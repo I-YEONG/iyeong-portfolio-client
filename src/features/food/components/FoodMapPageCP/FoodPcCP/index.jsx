@@ -57,7 +57,7 @@ const FoodPcCP = ({
   };
 
   // 배경 이미지용 URL 생성
-  const currentImgUrl = details?.imageUrl ? `${import.meta.env.VITE_API_URL}${details.imageUrl}` : null;
+  const currentImgUrl = details?.imageUrl ? `${details?.imageUrl}` : null;
 
   return (
     <section css={foodPcCpMainStyle(isPc)}>
@@ -78,7 +78,7 @@ const FoodPcCP = ({
       </section>
 
       {/* 사이드 메뉴 */}
-      <section className="sideMenu flexCol">
+      <section className="sideMenu foodFlexCol">
         <h3>분류</h3>
         <div>
           {/* 필터 */}

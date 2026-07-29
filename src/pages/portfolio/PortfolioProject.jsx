@@ -43,6 +43,7 @@ import {
   FoodRegisterPage,
   FoodReportPage,
   FoodFaqPage,
+  FoodMapPage,
 } from "@/pages";
 import { useEffect, useState } from "react";
 import { FixMobile } from "@/components";
@@ -198,6 +199,7 @@ const PortfolioProject = () => {
                 <Route path="/register" element={<FoodRegisterPage />} />
                 <Route path="/report" element={<FoodReportPage />} />
                 <Route path="/faq" element={<FoodFaqPage />} />
+                <Route path="/map" element={<FoodMapPage />} />
 
                 <Route path="*" element={<FoodError404Page />} />
               </Routes>

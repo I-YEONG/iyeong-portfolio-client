@@ -18,7 +18,7 @@ const FoodFTList = ({ data, isLogin }) => {
   // 영업 상태 판단 함수
   const getBusinessStatus = () => {
     // 휴무일인 경우 (기존 !isHolidayToday 에서 로직 수정)
-    if (isHolidayToday) {
+    if (!isHolidayToday) {
       return { status: "휴무", color: "#999" };
     }
 
@@ -72,10 +72,12 @@ const FoodFTList = ({ data, isLogin }) => {
       <p className="intro">{data.intro}</p>
       {/* 데이터 구조상 data.schedule[today]가 존재하지 않을 수 있으므로 안전한 접근 필요 */}
       <p>{data.schedule[today]?.userAddress}</p>
-      <p className="foodFlexBetween">
-        <span>
-          {data.schedule[today]?.start}시 ~ {data.schedule[today]?.end}시
-        </span>
+      <p className="foodFlexBetween" css={{ justifyContent: !isHolidayToday ? "end" : "space-between" }}>
+        {isHolidayToday && (
+          <span>
+            {data.schedule[today]?.start}시 ~ {data.schedule[today]?.end}시
+          </span>
+        )}
 
         <span>
           {isLogin && data.like && (
