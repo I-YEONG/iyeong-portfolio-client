@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 export const foodMyPageInfoCPStyle = (isPc) =>
   css({
     width: "100%",
+    backgroundColor: "white",
     height: "100%",
     padding: isPc ? "4rem 8rem" : "6rem 2rem",
     overflowY: "scroll",

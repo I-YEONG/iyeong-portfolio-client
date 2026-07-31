@@ -86,8 +86,8 @@ const FoodMobileCP = ({
   };
 
   return (
-    <section css={foodMobileCPMainStyle(isPc, details?.imageUrl ? `${import.meta.env.VITE_API_URL}${details.imageUrl}` : "")}>
-      <section css={foodMobileCPButtonStyle(isPc)}>
+    <section css={foodMobileCPMainStyle(isPc, details?.imageUrl)}>
+      <section className="mapInterface" css={foodMobileCPButtonStyle(isPc)}>
         {/* GPS */}
         <div className="gps foodFlexCenter" onClick={currentLocationButton}>
           <FontAwesomeIcon icon={faLocationCrosshairs} />
@@ -108,7 +108,7 @@ const FoodMobileCP = ({
       </section>
 
       {/* 리스트 */}
-      <section className="ftList foodFlexCol" style={{ top: onFTList && !onReview ? "calc(100% - 40%)" : "100%" }}>
+      <section className="ftList foodFlexCol" style={{ top: onFTList && !onReview ? "calc(100% - 40%)" : "60%" }}>
         <h3 className="foodFlexBetween">
           <span>푸드트럭 목록</span>
           <FontAwesomeIcon icon={faXmark} onClick={onFalseHandler} />

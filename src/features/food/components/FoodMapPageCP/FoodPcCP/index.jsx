@@ -79,7 +79,16 @@ const FoodPcCP = ({
 
       {/* 사이드 메뉴 */}
       <section className="sideMenu foodFlexCol">
-        <h3>분류</h3>
+        <h3 className="foodFlexBetween">
+          분류{" "}
+          <FontAwesomeIcon
+            onClick={() => {
+              nav("/project/foodmap");
+            }}
+            icon={faHouse}
+            className="cursor-pointer"
+          />
+        </h3>
         <div>
           {/* 필터 */}
           <select id="category-filter" name="categoryFilter" className="filter" onChange={onChangeFilter} value={filter}>

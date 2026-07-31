@@ -153,6 +153,9 @@ const FoodMapPage = () => {
           return item;
         }),
       );
+
+      // ✅ [추가] 로그인 상태에서 정상적으로 알림이 등록될 때 사용자 알림 추가
+      alert("알림이 등록되었습니다.");
     },
     [isLogin],
   );
@@ -178,6 +181,9 @@ const FoodMapPage = () => {
           return item;
         }),
       );
+
+      // ✅ [추가] 로그인 상태에서 정상적으로 알림이 취소될 때 사용자 알림 추가
+      alert("알림이 취소되었습니다.");
     },
     [isLogin],
   );
@@ -249,7 +255,10 @@ const FoodMapPage = () => {
               });
 
               window.kakao.maps.event.addListener(marker, "click", function () {
-                onChangeMapGPS({ lat, lng });
+                // ✅ [수정] 모바일 환경에서는 임의로 지도의 중심 좌표를 이동시키지 않음
+                if (isPc) {
+                  onChangeMapGPS({ lat, lng });
+                }
                 setDetails({
                   name: item.name,
                   category: item.category,
@@ -278,7 +287,7 @@ const FoodMapPage = () => {
         });
       });
     },
-    [onChangeMapGPS],
+    [onChangeMapGPS, isPc],
   );
 
   // ✅ [수정] 백엔드 API로부터 받은 'data'를 기반으로 필터링 처리
@@ -419,9 +428,12 @@ const FoodMapPage = () => {
         imageUrl: data.imageUrl,
       });
       setOnDetails(true);
-      onChangeMapGPS({ lat: data.coords.lat, lng: data.coords.lng });
+      // ✅ [수정] 모바일에서는 지도의 중앙 좌표를 임의로 조절하지 않음
+      if (isPc) {
+        onChangeMapGPS({ lat: data.coords.lat, lng: data.coords.lng });
+      }
     },
-    [onChangeMapGPS],
+    [onChangeMapGPS, isPc],
   );
 
   return (

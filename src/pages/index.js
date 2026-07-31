@@ -49,4 +49,5 @@ export { default as FoodRegisterPage } from "./food/FoodRegisterPage";
 export { default as FoodReportPage } from "./food/FoodReportPage";
 export { default as FoodFaqPage } from "./food/FoodFaqPage";
 export { default as FoodMapPage } from "./food/FoodMapPage";
+export { default as FoodMyPage } from "./food/FoodMyPage";
 export { default as FoodError404Page } from "./food/FoodError404Page";

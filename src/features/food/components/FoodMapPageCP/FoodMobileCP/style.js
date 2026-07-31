@@ -186,7 +186,7 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
 
 export const foodMobileCPButtonStyle = (isPc) =>
   css({
-    width: isPc ? "100%" : "0%",
+    width: "100%",
     height: "100%",
     position: "absolute",
     zIndex: 998,
