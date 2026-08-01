@@ -11,6 +11,8 @@ const FoodMyLikeCP = ({ likeList = [] }) => {
   const { isLogin } = useAuth();
   const { isPc } = useDeviceMode(); // 미디어 쿼리 상태 가져오기
 
+  console.log(likeList);
+
   // 좋아요 삭제
   const onDeleteLike = useCallback(
     (ftId) => {
@@ -88,7 +90,7 @@ const FoodMyLikeCP = ({ likeList = [] }) => {
       <ul>
         {likeList && likeList.length > 0 ? (
           likeList.map((ft, index) => {
-            return <FoodMyLikeLiCP key={index} ftId={ft.truckId} onDeleteLike={onDeleteLike} onDeleteSms={onDeleteSms} onAddSms={onAddSms} />;
+            return <FoodMyLikeLiCP key={index} ft={ft} ftId={ft.truckId} onDeleteLike={onDeleteLike} onDeleteSms={onDeleteSms} onAddSms={onAddSms} />;
           })
         ) : (
           <li>찜한 푸드트럭이 없습니다.</li>

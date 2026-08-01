@@ -11,11 +11,14 @@ import { FoodMyFTCP, FoodMyLikeCP, FoodMyPageInfoCP } from "@/features/food/comp
 import FoodMyReviewCP from "@/features/food/components/FoodMyPageCP/FoodMyReviewCP";
 import { useGetFoodQuery } from "@/features/food/hooks/useGetFoodQuery";
 import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const FoodMyPage = () => {
   const [paging, setPaging] = useState(0);
   const [onMenu, setOnMenu] = useState(true);
   const { isLogin, login, logout } = useAuth();
+
+  const nav = useNavigate();
 
   // useDeviceMode를 사용해 isPc 변수 추출
   const { isPc } = useDeviceMode();
@@ -25,10 +28,10 @@ const FoodMyPage = () => {
   const [smsList, setSmsList] = useState([]);
 
   const { data: userData } = useGetFoodQuery(`/me`, {
-    // enabled: !!selectedUniv,
+    // enabled:!! selectedUniv,
   });
 
-  // 이 데이터를 받아서 아래 두 state로 나누면 될듯
+  // 이 데이터를 받아서 아래 두 state로 나누면 될 듯
   // setLikeList
   // setSmsList
   const {
@@ -36,16 +39,16 @@ const FoodMyPage = () => {
     isLoading: smsLikeDataLoading,
     isError: smsLikeDataError,
   } = useGetFoodQuery(`/me/mine`, {
-    // enabled: !!selectedUniv,
+    // enabled:!! selectedUniv,
   });
   const { data: myTruckList } = useGetFoodQuery(`/me/ft`, {
-    // enabled: !!selectedUniv,
+    // enabled:!! selectedUniv,
   });
 
   useEffect(() => {
     if (isLogin) return;
 
-    alert("로그인이 필요합니다.\n로그인으로 전환됩니다.");
+    alert("로그인이 필요합니다.\n 로그인으로 전환됩니다.");
     login();
   }, [isLogin, login]);
 
@@ -99,7 +102,8 @@ const FoodMyPage = () => {
               <li
                 style={{ fontWeight: paging === 2 ? "600" : "500" }}
                 onClick={() => {
-                  setPaging(2);
+                  // setPaging(2);
+                  alert("데이터를 불러오지 못하였습니다.");
                   setOnMenu(false);
                 }}>
                 알림/찜 목록
@@ -108,7 +112,8 @@ const FoodMyPage = () => {
               <li
                 style={{ fontWeight: paging === 3 ? "600" : "500" }}
                 onClick={() => {
-                  setPaging(3);
+                  // setPaging(3);
+                  alert("데이터를 불러오지 못하였습니다.");
                   setOnMenu(false);
                 }}>
                 리뷰 목록
@@ -121,7 +126,12 @@ const FoodMyPage = () => {
                 HOME
               </li>
               {/* 로그아웃 */}
-              <li className="logoutButton" onClick={() => logout()}>
+              <li
+                className="logoutButton"
+                onClick={() => {
+                  logout();
+                  nav("/project/foodmap");
+                }}>
                 로그아웃
               </li>
             </ul>
@@ -129,8 +139,8 @@ const FoodMyPage = () => {
           <section className="mainSection">
             {paging === 0 && <FoodMyPageInfoCP userData={userData} />}
             {paging === 1 && <FoodMyFTCP myTruckList={myTruckList} />}
-            {paging === 2 && <FoodMyLikeCP likeList={likeList} smsList={smsList} />}
-            {paging === 3 && <FoodMyReviewCP />}
+            {/* {paging === 2 && <FoodMyLikeCP likeList={likeList} smsList={smsList} />}
+            {paging === 3 && <FoodMyReviewCP />} */}
           </section>
         </section>
       )}
