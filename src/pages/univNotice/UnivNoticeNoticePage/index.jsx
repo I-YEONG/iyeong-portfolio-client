@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks/useAuth";
 import UnivNoticeHeader from "@/layouts/univNotice/UnivNoticeHeader";
 import { UnivNoticeNoticeListLiCP, UnivNoticeNoticeListLiMobileCP } from "@/features/univNotice/components";
 import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNoticeQuery";
-import "@/styles/univNotice.global.css";
+
 import "./style.css";
 
 const UnivNoticeNoticePage = () => {

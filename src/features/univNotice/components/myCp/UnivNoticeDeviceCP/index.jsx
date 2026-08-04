@@ -1,6 +1,5 @@
 import UnivNoticeToggleCP from "../../_common/UnivNoticeToggleCP";
 import "./style.css";
-import "@/styles/univNotice.global.css";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

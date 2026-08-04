@@ -1,5 +1,4 @@
 import "./index.css";
-import "@/styles/domo.global.css";
 
 const DomoPcFooter = () => {
   return (

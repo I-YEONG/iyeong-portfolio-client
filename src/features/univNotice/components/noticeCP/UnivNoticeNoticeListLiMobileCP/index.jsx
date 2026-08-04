@@ -3,7 +3,6 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import DownloadIcon from "@mui/icons-material/Download";
 import { faBell, faFile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeNoticeListLiMobileCP = ({ data, url }) => {
   // 날짜 포맷팅: YYYY. MM. DD

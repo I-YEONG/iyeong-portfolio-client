@@ -41,7 +41,7 @@ const titleLayoutCss = () =>
       lineHeight: "1.4",
 
       [mq("mobile")]: {
-        ...theme.fonts.testXLg_B,
+        ...theme.fonts.textXLg_B,
       },
     },
 

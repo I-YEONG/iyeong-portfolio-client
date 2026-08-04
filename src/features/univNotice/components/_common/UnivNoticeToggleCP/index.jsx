@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 const UnivNoticeToggleCP = ({ univnoticeTitle = "", value = true, onClickFun }) => {
   const [toggleValue, setToggleValue] = useState(value);
   const isInitialMount = useRef(true);

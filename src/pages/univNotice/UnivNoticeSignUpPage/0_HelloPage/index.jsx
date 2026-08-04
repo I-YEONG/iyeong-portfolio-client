@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { UnivNoticeButtonCP } from "@/features/univNotice/components";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeHelloPage = () => {
   const nav = useNavigate();

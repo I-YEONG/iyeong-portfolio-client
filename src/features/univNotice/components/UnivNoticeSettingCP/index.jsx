@@ -2,7 +2,7 @@ import { useState } from "react";
 import UnivNoticeInputCP from "@/features/univNotice/components/_common/UnivNoticeInputCP";
 import { useInput } from "@/hooks/useInput";
 import UnivNoticeKeywordCP from "./UnivNoticeKeywordCP";
-import "@/styles/univNotice.global.css";
+
 import "./style.css";
 import UnivNoticeButtonCP from "@/features/univNotice/components/_common/UnivNoticeButtonCP";
 

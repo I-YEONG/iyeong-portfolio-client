@@ -1,5 +1,4 @@
 import "./styles/boxButton.css";
-import "@/styles/domo.global.css";
 
 /**
  *

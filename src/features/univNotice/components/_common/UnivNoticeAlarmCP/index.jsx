@@ -1,6 +1,5 @@
 import SmsIcon from "@mui/icons-material/Sms";
 import { useNavigate } from "react-router-dom";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeAlarmCP = (onClickAlarm) => {
   const nav = useNavigate();

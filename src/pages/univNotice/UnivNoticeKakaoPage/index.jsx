@@ -1,4 +1,3 @@
-import "@/styles/univNotice.global.css";
 import "./style.css";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 

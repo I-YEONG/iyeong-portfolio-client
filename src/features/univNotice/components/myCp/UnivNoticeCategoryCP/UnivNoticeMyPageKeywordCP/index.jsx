@@ -1,4 +1,3 @@
-import "@/styles/univNotice.global.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const UnivNoticeMyPageKeywordCP = ({ kw, keyword_id, onDelete }) => {

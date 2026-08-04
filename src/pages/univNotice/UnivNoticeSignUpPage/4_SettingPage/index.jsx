@@ -3,7 +3,7 @@ import "./style.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UnivNoticeSettingCP } from "@/features/univNotice/components";
-import "@/styles/univNotice.global.css";
+
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 
 const UnivNoticeSettingPage = () => {

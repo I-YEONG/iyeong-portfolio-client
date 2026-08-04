@@ -1,5 +1,5 @@
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 import { useCallback, useEffect, useState } from "react";
 
 import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNoticeQuery";

@@ -1,5 +1,4 @@
 import { Select, MenuItem } from "@mui/material";
-import "@/styles/domo.global.css";
 
 const DomoMobileSort = ({ value, onChange }) => {
   return (

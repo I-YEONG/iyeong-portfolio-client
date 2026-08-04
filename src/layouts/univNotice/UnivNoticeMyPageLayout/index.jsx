@@ -1,5 +1,5 @@
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import "@/styles/univNotice.global.css";
+
 import UnivNoticeMyPageHeader from "./UnivNoticeHeader";
 const UnivNoticeMyPageLayout = ({ children }) => {
   const { isPc, isMobile } = useDeviceMode();

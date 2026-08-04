@@ -1,7 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&family=Noto+Sans+KR:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
 :root {
   /* 색상 팔레트 var()로 사용 */
   --univ-main-color: #474a50;
@@ -28,41 +24,41 @@
   --black: #000000;
 }
 
-.univnoticeFlexWidthCenter {
+.univnotice .univnoticeFlexWidthCenter {
   display: flex;
   justify-content: center;
 }
 
-.univnoticeFlexHeightCenter {
+.univnotice .univnoticeFlexHeightCenter {
   display: flex;
   align-items: center;
 }
 
-.univnoticeFlexCenter {
+.univnotice .univnoticeFlexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.univnoticeFlexBetween {
+.univnotice .univnoticeFlexBetween {
   display: flex;
   justify-content: space-between;
 }
 
-.univnoticeFlexBetweenCol {
+.univnotice .univnoticeFlexBetweenCol {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
 }
 
-.univnoticeFlexCol {
+.univnotice .univnoticeFlexCol {
   display: flex;
   flex-direction: column;
   gap: 26px;
 }
 
 /* 공통 스타일2 */
-.univnoticeCenterBox {
+.univnotice .univnoticeCenterBox {
   width: 100%;
   min-height: 50vh;
   max-width: 400px;
@@ -77,41 +73,41 @@
 }
 
 @media screen and (max-width: 768px) {
-  .univnoticeCenterBox {
+  .univnotice .univnoticeCenterBox {
     width: 90%;
     margin: 0 auto;
     gap: 1rem;
   }
 
-  .univnoticeCenterBox > .bottomItem {
+  .univnotice .univnoticeCenterBox > .bottomItem {
     margin-top: 2rem !important;
   }
 }
 
-.univnoticeCenterBox > .bottomItem {
+.univnotice .univnoticeCenterBox > .bottomItem {
   margin-top: auto;
 }
 
-.univnoticeCenterBox > * {
+.univnotice .univnoticeCenterBox > * {
   width: 100%;
 }
 
-.univnoticeTitleBox {
+.univnotice .univnoticeTitleBox {
   width: 100%;
 }
 
-.univnoticeTitle {
+.univnotice .univnoticeTitle {
   font-size: clamp(28px, 2.5vw, 1.875rem);
   line-height: 1.4;
   font-weight: 500;
   text-align: center;
 }
 
-.title > span.bold {
+.univnotice .title > span.bold {
   font-weight: 800;
 }
 
-.subTitle {
+.univnotice .subTitle {
   font-size: clamp(0.875rem, 2.5vw, 1rem);
   font-weight: 400;
   line-height: 1.3;
@@ -120,7 +116,7 @@
   text-align: center;
 }
 
-.univnoticeCenterBox > .univnoticeTitleBox + .flexCol {
+.univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol {
   max-height: 48vh;
   overflow-y: auto;
   padding-right: 4px; /* 스크롤바 공간 확보 */
@@ -128,7 +124,7 @@
 
 /* Firefox 전용: 표준 속성 */
 @supports (scrollbar-width: thin) and (not (selector(::-webkit-scrollbar))) {
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
@@ -136,28 +132,28 @@
 
 /* Blink/WebKit 전용: 화살표 제거 */
 @supports selector(::-webkit-scrollbar) {
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar {
     width: 4px;
     background: transparent;
   }
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-thumb {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-track {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-track {
     background: transparent;
   }
 
   /* 화살표 버튼 숨김 */
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button {
     display: none;
     width: 0;
     height: 0;
   }
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button:single-button {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button:single-button {
     display: none;
   }
-  .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button:double-button {
+  .univnotice .univnoticeCenterBox > .univnoticeTitleBox + .flexCol::-webkit-scrollbar-button:double-button {
     display: none;
   }
 }

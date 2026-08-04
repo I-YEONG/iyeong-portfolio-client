@@ -1,6 +1,7 @@
 import { css, keyframes } from "@emotion/react";
 import { theme } from "@/styles/theme";
 import { mq } from "@/styles/mq";
+import portfolioEx from "@/assets/portfolio/banner/portfolio-ex.png";
 // import { transform } from "typescript";
 
 const driftLeft = keyframes`
@@ -115,7 +116,7 @@ const bannerContentBase = {
     lineHeight: 1.3,
 
     [mq("mobile")]: {
-      ...theme.fonts.textLg_B,
+      ...theme.fonts.textXLg_B,
     },
   },
 
@@ -180,7 +181,9 @@ export const banner1Css = () => ({
   },
 
   ".banner-1 .banner-bg": {
-    backgroundColor: "#EDEDED",
+    backgroundImage: `url(${portfolioEx})`,
+    filter: "blur(3px)", // 5px 부분을 조절해서 블러 강도를 맞추세요.
+    transform: "scale(1.009)", // 블러 테두리가 안 보이도록 1.1배 정도 확대!
   },
 });
 
@@ -315,16 +318,16 @@ export const banner3Css = () => ({
 const responsiveCss = () => ({
   [mq("tablet")]: {
     ".banner-1": {
-      height: "172vh",
+      height: "112vh",
     },
     ".banner-stage": {
-      height: "158vh",
+      height: "118vh",
     },
     ".banner-2": {
-      height: "198vh",
+      height: "148vh",
     },
     ".banner-3": {
-      height: "290vh",
+      height: "270vh",
     },
     ".slide-up-panel": {
       width: "94%",

@@ -1,4 +1,3 @@
-import "@/styles/careerhi.global.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder, faHouse, faPaste } from "@fortawesome/free-regular-svg-icons";

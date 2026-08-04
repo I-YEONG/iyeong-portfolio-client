@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { useAuth } from "@/hooks/useAuth";
 import UnivNoticeMyPageLayout from "@/layouts/univNotice/UnivNoticeMyPageLayout";

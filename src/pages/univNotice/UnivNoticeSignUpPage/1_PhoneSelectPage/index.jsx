@@ -1,6 +1,6 @@
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 import { useNavigate } from "react-router-dom";
 import { UnivNoticeButtonCP } from "@/features/univNotice/components";
 import { useDeviceMode } from "@/hooks/useDeviceMode";

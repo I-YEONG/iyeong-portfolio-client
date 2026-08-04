@@ -1,5 +1,5 @@
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 /**
  *
  * @param {string} value 초기 값 (기본값: "")

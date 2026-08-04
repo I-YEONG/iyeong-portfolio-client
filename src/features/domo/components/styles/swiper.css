@@ -1,9 +1,9 @@
-.slide-main {
+.domo .slide-main {
   margin: 0 auto;
   margin-top: 56px;
 }
 
-.swiper-slide {
+.domo .swiper-slide {
   height: 636px;
   display: flex;
   align-items: center;
@@ -14,37 +14,37 @@
   background-position: center;
 }
 
-.swiper-slide {
+.domo .swiper-slide {
   cursor: pointer;
 }
 
-.slide-1 {
+.domo .slide-1 {
   background-image: url("https://hiqyqzmyoxafmrrspntv.supabase.co/storage/v1/object/public/iyeong-portfolio-file-bucket/domo/banner/busan.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.slide-2 {
+.domo .slide-2 {
   background-image: url("https://hiqyqzmyoxafmrrspntv.supabase.co/storage/v1/object/public/iyeong-portfolio-file-bucket/domo/banner/ddp.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.slide-3 {
+.domo .slide-3 {
   background-image: url("https://hiqyqzmyoxafmrrspntv.supabase.co/storage/v1/object/public/iyeong-portfolio-file-bucket/domo/banner/chuncheon.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.slide-content {
+.domo .slide-content {
   padding: 20px;
   border-radius: 10px;
 }
 
-.slide-content h2 {
+.domo .slide-content h2 {
   font-size: 64px;
   font-weight: bold;
   font-family: "pre-semibold";
@@ -52,7 +52,7 @@
   line-height: 1.4;
 }
 
-.slide-content button {
+.domo .slide-content button {
   background-color: #ffe17d;
   color: #2c2f33;
   border: none;
@@ -65,23 +65,23 @@
   transition: background-color 0.3s ease;
 }
 
-.slide-content button:hover {
+.domo .slide-content button:hover {
   background-color: #f39c12;
 }
 
 /* Customizing Swiper Navigation/Pagination to match the image */
-:root {
+.domo :root {
   --swiper-navigation-color: rgba(255, 255, 255, 0.5);
   --swiper-pagination-color: rgba(255, 255, 255, 0.5);
 }
 
 @media (max-width: 768px) {
-  .slide-main {
+  .domo .slide-main {
     margin: 0 auto;
     margin-top: 10px;
   }
 
-  .slide-main .slide-content h2 {
+  .domo .slide-main .slide-content h2 {
     font-size: 22px;
     padding-bottom: 32px;
   }

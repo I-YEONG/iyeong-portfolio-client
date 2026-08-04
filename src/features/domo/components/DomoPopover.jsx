@@ -1,6 +1,6 @@
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { useEffect, useRef } from "react";
-import "@/styles/domo.global.css";
+
 import "./styles/Popover.css";
 import { css } from "@emotion/react";
 

@@ -1,6 +1,5 @@
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import "./style.css";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeHomeAppPage = () => {
   return (
