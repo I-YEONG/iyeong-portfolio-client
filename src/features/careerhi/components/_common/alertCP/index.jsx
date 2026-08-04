@@ -1,6 +1,5 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "@/styles/careerhi.global.css";
 
 /**
  * AlertCP 컴포넌트

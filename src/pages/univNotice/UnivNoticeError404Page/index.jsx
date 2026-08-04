@@ -1,7 +1,6 @@
 import { UnivNoticeMainLayout } from "@/layouts";
 import "./style.css";
 import { useEffect, useState } from "react";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeError404Page = () => {
   const [seconds, setSeconds] = useState(5);

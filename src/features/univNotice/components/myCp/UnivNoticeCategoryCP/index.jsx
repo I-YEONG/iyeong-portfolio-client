@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 import "./style.css";
-import "@/styles/univNotice.global.css";
 
 import UnivNoticeToggleCP from "../../_common/UnivNoticeToggleCP";
 import UnivNoticeMyPageKeywordCP from "./UnivNoticeMyPageKeywordCP";

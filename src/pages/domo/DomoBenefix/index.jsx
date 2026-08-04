@@ -1,7 +1,7 @@
 import { useCallback, useState, lazy, Suspense, useEffect } from "react";
 const DomoFilter = lazy(() => import("@/features/domo/components/DomoFilter.jsx"));
 // import "./style.css";
-import "@/styles/domo.global.css";
+
 import { DomoMobileSearchModal, DomoMobileSort, DomoPagination, DomoCustomSwiper } from "@/features/domo/components";
 import { DomoMainLayout } from "@/layouts";
 import { useDeviceMode } from "@/hooks/useDeviceMode";

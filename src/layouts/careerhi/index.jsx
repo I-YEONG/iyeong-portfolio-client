@@ -2,7 +2,6 @@ import { useAtomValue } from "jotai";
 import HeaderMobile from "./Header_Mobile";
 import HeaderPc from "./Header_PC";
 import { isPcModeAtom } from "@/atoms/deviceAtoms";
-import "@/styles/careerhi.global.css";
 
 const MainLayout = ({ children, mobile_block = false, page = "main" }) => {
   const isPc = useAtomValue(isPcModeAtom);

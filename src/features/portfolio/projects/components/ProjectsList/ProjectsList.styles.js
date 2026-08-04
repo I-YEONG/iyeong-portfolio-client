@@ -41,6 +41,7 @@ export const projectsListCss = css({
 
   "& .project-row": {
     display: "flex",
+    alignItems: "stretch",
 
     [mq("mobile")]: {
       flexDirection: "column",

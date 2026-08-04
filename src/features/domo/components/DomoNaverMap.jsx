@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { domoNaverMapStyle } from "./styles/naverMap.js"; // 스타일 파일 임포트
-import "@/styles/domo.global.css";
 
 const DomoNaverMap = ({ recommendations, center }) => {
   const mapRef = useRef(null);

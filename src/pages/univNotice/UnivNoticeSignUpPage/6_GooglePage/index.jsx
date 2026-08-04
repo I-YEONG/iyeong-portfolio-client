@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
-import "@/styles/univNotice.global.css";
+
 import { UnivNoticeButtonCP } from "@/features/univNotice/components";
 
 const UnivNoticeGooglePage = () => {

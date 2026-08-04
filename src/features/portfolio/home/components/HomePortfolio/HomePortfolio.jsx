@@ -12,6 +12,7 @@ import HomePage_1 from "@/assets/portfolio/banner/homePage-1.svg?react";
 import HomePage_2 from "@/assets/portfolio/banner/homePage-2.svg?react";
 import iphone_pc from "@/assets/portfolio/banner/pc_phone.png";
 import careerhi from "@/assets/portfolio/banner/careerhi.png";
+
 import { theme } from "@/styles/theme";
 import { useMedia } from "@/hooks/useMedia";
 
@@ -221,7 +222,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 중요한 공지를 놓쳐서 '나를 위한 맞춤형 알림'이 간절했던 제 경험을 담아
-                <br className="not-mobile" />
+                <br />
                 필요한 공지를 절대 놓치지 않게 돕는, 앱 기반 푸시 알림 서비스를 개발했습니다.
               </div>
               <div className="reveal-item icon-box">
@@ -256,7 +257,7 @@ const HomePortfolio = () => {
               </div>
               <div className="reveal-item caption">
                 나의 포트폴리오와 역량이 상위 몇 퍼센트인지 확인하며
-                <br className="not-mobile" />
+                <br />
                 '진짜 필요한 기술'에 집중할 수 있도록 돕습니다.
               </div>
               <div className="reveal-item icon-box">

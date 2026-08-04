@@ -2,7 +2,6 @@ import React from "react";
 import "./styles/recsSaveScreenshot.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad, faMugHot, faUtensils } from "@fortawesome/free-solid-svg-icons";
-import "@/styles/domo.global.css";
 
 const DomoRecsSaveScreenshot = React.forwardRef(({ recommendations }, ref) => {
   return (

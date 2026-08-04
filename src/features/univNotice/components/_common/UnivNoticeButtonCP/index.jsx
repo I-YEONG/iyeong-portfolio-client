@@ -1,5 +1,5 @@
 import "./style.css";
-import "@/styles/univNotice.global.css";
+
 /**
  * 공통 버튼 컴포넌트
  * @param {React.ReactNode} children 버튼 내부에 들어갈 내용

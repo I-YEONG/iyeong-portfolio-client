@@ -1,5 +1,4 @@
 import "./styles/input.css";
-import "@/styles/domo.global.css";
 
 /**
  * InputCP - 텍스트 입력 폼 컴포넌트

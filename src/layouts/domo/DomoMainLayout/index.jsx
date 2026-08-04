@@ -1,4 +1,3 @@
-import "@/styles/domo.global.css";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { DomoMobileFooter, DomoMobileHeader, DomoPcFooter, DomoPcHeader } from "@/layouts";
 

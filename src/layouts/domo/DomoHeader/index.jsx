@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 // import "./index.css";
-import "@/styles/domo.global.css";
 
 const DomoHeader = () => {
   return (

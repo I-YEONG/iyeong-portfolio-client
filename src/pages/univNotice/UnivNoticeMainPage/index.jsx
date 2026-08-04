@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import UnivNoticeMainLayout from "@/layouts/univNotice/index.jsx";
 import "./style.css";
 // import CircularProgress from "@mui/material/CircularProgress";
-import "@/styles/univNotice.global.css";
+
 import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 

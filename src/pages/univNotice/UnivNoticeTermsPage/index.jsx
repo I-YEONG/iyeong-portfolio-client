@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import "./style.css";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeTermsPage = () => {
   const nav = useNavigate();

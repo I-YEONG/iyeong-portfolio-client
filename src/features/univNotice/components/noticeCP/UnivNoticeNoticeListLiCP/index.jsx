@@ -1,6 +1,5 @@
 import { faBell, faFile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeNoticeListLiCP = ({ data, url }) => {
   // 날짜 포맷팅: YYYY. MM. DD
