@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import "@/styles/univNotice.global.css";
+
 const UnivNoticeLogoCP = () => {
   const nav = useNavigate();
   const { isMobile } = useDeviceMode();

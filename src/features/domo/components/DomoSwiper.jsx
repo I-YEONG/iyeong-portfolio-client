@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "@/styles/domo.global.css";
 
 import "swiper/css";
 import "swiper/css/navigation";

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
-import "@/styles/univNotice.global.css";
+
 import { UnivNoticeButtonCP, UnivNoticeButtonToggleCP } from "@/features/univNotice/components";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNoticeQuery";

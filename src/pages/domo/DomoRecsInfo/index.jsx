@@ -7,7 +7,6 @@ import { DomoMobileHeader, DomoPcHeader } from "@/layouts";
 import { DomoBoxButton, DomoInput, DomoRecsLoading } from "@/features/domo/components";
 import { domoRecsInfoStyle } from "./style";
 import { domoRecsPageStyle } from "../DomoRecs/style";
-import "@/styles/domo.global.css";
 
 const DomoRecsInfo = () => {
   // 주소

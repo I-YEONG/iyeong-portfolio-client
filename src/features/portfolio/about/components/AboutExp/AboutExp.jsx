@@ -84,9 +84,9 @@ const AboutExp = () => {
         <div css={aboutExpCss}>
           <div className="row header">
             <div className="title">활동 명</div>
-            <div className="type">구분</div>
+            {isPc && <div className="type">구분</div>}
             <div className="detail">설명</div>
-            <div className="period">기간</div>
+            {isPc && <div className="period">기간</div>}
             <div className="note">비고</div>
           </div>
           {isExpLoading && (
@@ -98,15 +98,19 @@ const AboutExp = () => {
             sortedExp.map((item) => (
               <div className="row" key={item.id}>
                 <div className="title">{item.title}</div>
-                <div className="type">
-                  {item?.types?.map((type, idx) => (
-                    <TypeItem type={type} key={idx} />
-                  ))}
-                </div>
+                {isPc && (
+                  <div className="type">
+                    {item?.types?.map((type, idx) => (
+                      <TypeItem type={type} key={idx} />
+                    ))}
+                  </div>
+                )}
                 <div className="detail">{item.detail}</div>
-                <div className="period" style={{ textAlign: item.endDate !== "2099-12-30" ? "center" : "left" }}>
-                  {formatDate(item.startDate)} {item.endDate !== "2099-12-30" ? " - " + formatDate(item.endDate) : " ~ 진행중"}
-                </div>
+                {isPc && (
+                  <div className="period" style={{ textAlign: item.endDate !== "2099-12-30" ? "center" : "left" }}>
+                    {formatDate(item.startDate)} {item.endDate !== "2099-12-30" ? " - " + formatDate(item.endDate) : " ~ 진행중"}
+                  </div>
+                )}
                 <div className="note">{item.note}</div>
               </div>
             ))}

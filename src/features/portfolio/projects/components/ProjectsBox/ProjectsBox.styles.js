@@ -10,7 +10,7 @@ const shimmer = keyframes`
 export const projectsBoxCss = css({
   width: "100%",
   minHeight: "320px",
-  height: "100%",
+  // height: "100%",
   flex: "1 1 0",
   ...theme.flex.colStart,
   borderRight: `1px solid ${theme.colors.lightLine}`,
@@ -51,6 +51,7 @@ export const projectsBoxCss = css({
   // 콘텐츠
   "& .content-box": {
     ...theme.flex.colBetween,
+    flex: 1,
     height: "100%",
     border: "none",
     gap: "8px",
@@ -75,12 +76,13 @@ export const projectsBoxCss = css({
     "& .description": {
       ...theme.fonts.captionXl,
       color: theme.colors.black600,
-      flex: "1 1 auto",
+      // flex: "1 1 auto",
     },
 
     // 링크
     "& .goto": {
       ...theme.flex.rowStart,
+      marginTop: "auto",
       gap: "8px",
       ...theme.fonts.captionXl_B,
       color: theme.colors.black600,

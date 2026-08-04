@@ -6,7 +6,6 @@ import { domoRecsPageStyle } from "./style";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { DomoMobileHeader, DomoPcHeader } from "@/layouts";
 import { DomoBoxButton, DomoModal } from "@/features/domo/components";
-import "@/styles/domo.global.css";
 
 const DomoRecs = () => {
   // 1. 기본적으로 gps는 허용하지 않음 (false)

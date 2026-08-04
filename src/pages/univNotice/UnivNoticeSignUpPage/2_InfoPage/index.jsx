@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import "./style.css";
 import { useEffect } from "react";
-import "@/styles/univNotice.global.css";
+
 import { useNavigate } from "react-router-dom";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import { UnivNoticeButtonCP, UnivNoticeSelectCP } from "@/features/univNotice/components";

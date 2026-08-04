@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./styles/mobileSearchModal.js";
-import "@/styles/domo.global.css";
+
 import { regions } from "./DomoFilter";
 import { ChevronRight } from "lucide-react";
 import { useDeviceMode } from "@/hooks/useDeviceMode";

@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import "./styles/recsLoading.css";
-import "@/styles/domo.global.css";
 
 const DomoRecsLoading = () => {
   return (

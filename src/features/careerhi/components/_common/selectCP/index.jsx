@@ -1,7 +1,7 @@
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
-import "@/styles/careerhi.global.css";
+
 import { useState } from "react";
 
 const SelectCP = ({ value, setValue, selectList, placeholder = "", disabled = false }) => {

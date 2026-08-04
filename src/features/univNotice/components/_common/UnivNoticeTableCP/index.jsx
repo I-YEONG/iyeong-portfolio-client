@@ -8,7 +8,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
-import "@/styles/univNotice.global.css";
+
 const UnivNoticeTableCP = ({
   columns = [],
   rows = [],

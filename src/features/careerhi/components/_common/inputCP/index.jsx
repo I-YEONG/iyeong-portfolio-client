@@ -1,4 +1,3 @@
-import "@/styles/careerhi.global.css";
 /**
  * 공통 인풋 컴포넌트
  * @param {Object} props

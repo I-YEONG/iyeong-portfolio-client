@@ -42,3 +42,12 @@ export { default as DomoRecs } from "./domo/DomoRecs";
 export { default as DomoRecsInfo } from "./domo/DomoRecsInfo";
 export { default as DomoRecsResult } from "./domo/DomoRecsResult";
 export { default as DomoRecsSave } from "./domo/DomoRecsSave";
+
+// FOOD
+export { default as FoodMainPage } from "./food/FoodMainPage";
+export { default as FoodRegisterPage } from "./food/FoodRegisterPage";
+export { default as FoodReportPage } from "./food/FoodReportPage";
+export { default as FoodFaqPage } from "./food/FoodFaqPage";
+export { default as FoodMapPage } from "./food/FoodMapPage";
+export { default as FoodMyPage } from "./food/FoodMyPage";
+export { default as FoodError404Page } from "./food/FoodError404Page";

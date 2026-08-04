@@ -3,7 +3,6 @@ import "./style.css";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { UnivNoticeButtonCP } from "@/features/univNotice/components";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
-import "@/styles/univNotice.global.css";
 
 const UnivNoticeEndPage = () => {
   const nav = useNavigate();

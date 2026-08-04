@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import "@/styles/careerhi.global.css";
 
 /**
  * 파일 업로드 공통 컴포넌트

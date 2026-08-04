@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MainLayout from "@/layouts/careerhi";
 import MainContentLayout from "@/layouts/careerhi/MainLayout";
 import logo_3d from "@/assets/careerhi/image/3d_logo.png";
-import "@/styles/careerhi.global.css";
+
 import "./style.css";
 import { useAuth } from "@/hooks/useAuth";
 import { useDeviceMode } from "@/hooks/useDeviceMode";

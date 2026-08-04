@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
 
 import "swiper/css";
-import "@/styles/domo.global.css";
+
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { DomoMainLayout } from "@/layouts";
 import DomoCustomSwiper from "@/features/domo/components/DomoSwiper";

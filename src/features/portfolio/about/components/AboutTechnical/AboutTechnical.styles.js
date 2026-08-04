@@ -88,4 +88,13 @@ export const aboutTechnicalCss = css({
       ...theme.fonts.textLg_B,
     },
   },
+
+  "& .swiper-button-prev,& .swiper-button-next": {
+    width: "auto",
+    color: theme.colors.darkBG,
+    position: "relative",
+    top: "26px",
+    left: "auto",
+    bottom: "auto",
+  },
 });

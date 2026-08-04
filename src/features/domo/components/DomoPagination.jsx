@@ -1,5 +1,4 @@
 import "./styles/pagination.css";
-import "@/styles/domo.global.css";
 
 const DomoPagination = ({ pageCount, onPageChange, currentPage }) => {
   if (!pageCount || pageCount < 2) {

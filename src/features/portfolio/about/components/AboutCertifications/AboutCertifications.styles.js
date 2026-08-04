@@ -66,7 +66,7 @@ export const aboutCertificationsCss = css({
         },
 
         "& > .title": {
-          ...theme.fonts.testXLg_B,
+          ...theme.fonts.textXLg_B,
           [mq("mobile")]: {
             ...theme.fonts.textLg_B,
           },

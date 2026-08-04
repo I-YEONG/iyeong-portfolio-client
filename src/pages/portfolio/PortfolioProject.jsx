@@ -38,6 +38,13 @@ import {
   DomoRecsInfo,
   DomoRecsResult,
   DomoRecsSave,
+  FoodMainPage,
+  FoodError404Page,
+  FoodRegisterPage,
+  FoodReportPage,
+  FoodFaqPage,
+  FoodMapPage,
+  FoodMyPage,
 } from "@/pages";
 import { useEffect, useState } from "react";
 import { FixMobile } from "@/components";
@@ -101,6 +108,7 @@ const PortfolioProject = () => {
       "& .project-view-box": {
         width: "100vw",
         overflow: "hidden",
+        position: "relative",
       },
     },
   });
@@ -116,8 +124,8 @@ const PortfolioProject = () => {
         isOffMenu={isOffMenu}
         isOnMenu={isOnMenu}
       />
-      {/* <div css={style}> */}
-      <div css={{ ...theme.flex.between, width: "100%", height: "calc(100vh - 62px)", overflow: "hidden" }}>
+      <div css={style}>
+        {/* <div css={{ ...theme.flex.between, width: "100%", height: "calc(100vh - 62px)", overflow: "hidden" }}> */}
         {/* 왼쪽 박스 */}
         <ProjectSideBox />
 
@@ -125,57 +133,79 @@ const PortfolioProject = () => {
         <ProjectView isPc={isPc}>
           {/* 커리어하이 프로젝트 라우터 */}
           {projectName === "careerhi" && (
-            <Routes>
-              {/* 기본 주소: /careerhi/ */}
-              <Route path="/" element={<CareerHiMainPage />} />
-              <Route path="/roadmap/list" element={<CareerHiListPage />} />
-              <Route path="/roadmap/create" element={<CareerHiCreatePage />} />
-              <Route path="/roadmap/result" element={<CareerHiResultPage />} />
-              <Route path="*" element={<CareerHiError404Page />} />
-            </Routes>
+            <div className="careerhi">
+              <Routes>
+                {/* 기본 주소: /careerhi/ */}
+                <Route path="/" element={<CareerHiMainPage />} />
+                <Route path="/roadmap/list" element={<CareerHiListPage />} />
+                <Route path="/roadmap/create" element={<CareerHiCreatePage />} />
+                <Route path="/roadmap/result" element={<CareerHiResultPage />} />
+                <Route path="*" element={<CareerHiError404Page />} />
+              </Routes>
+            </div>
           )}
 
-          {/* 살펴 프로젝트 라우터 */}
+          {/* univnotice 프로젝트 라우터 */}
           {projectName === "univnotice" && (
-            <Routes className="univnotice">
-              <Route path="/" element={<UnivNoticeMainPage />} />
+            <div className="univnotice">
+              <Routes>
+                <Route path="/" element={<UnivNoticeMainPage />} />
 
-              <Route path="/signup/0" element={<UnivNoticeHelloPage />} />
-              <Route path="/signup/1" element={<UnivNoticePhoneSelectPage />} />
-              <Route path="/signup/2" element={<UnivNoticeInfoPage />} />
-              <Route path="/signup/3" element={<UnivNoticeCategoryPage />} />
-              <Route path="/signup/4/:setting_id" element={<UnivNoticeSettingPage />} />
-              <Route path="/signup/5" element={<UnivNoticePhonePage />} />
-              <Route path="/signup/6" element={<UnivNoticeGooglePage />} />
-              <Route path="/signup/7" element={<UnivNoticeIssuancePage />} />
-              <Route path="/signup/8" element={<UnivNoticeEndPage />} />
-              <Route path="/login/append" element={<UnivNoticeDeviceAppendPage />} />
+                <Route path="/signup/0" element={<UnivNoticeHelloPage />} />
+                <Route path="/signup/1" element={<UnivNoticePhoneSelectPage />} />
+                <Route path="/signup/2" element={<UnivNoticeInfoPage />} />
+                <Route path="/signup/3" element={<UnivNoticeCategoryPage />} />
+                <Route path="/signup/4/:setting_id" element={<UnivNoticeSettingPage />} />
+                <Route path="/signup/5" element={<UnivNoticePhonePage />} />
+                <Route path="/signup/6" element={<UnivNoticeGooglePage />} />
+                <Route path="/signup/7" element={<UnivNoticeIssuancePage />} />
+                <Route path="/signup/8" element={<UnivNoticeEndPage />} />
+                <Route path="/login/append" element={<UnivNoticeDeviceAppendPage />} />
 
-              <Route path="/mypage/info" element={<UnivNoticeMyInfoPage />} />
-              <Route path="/mypage/device" element={<UnivNoticeMyDevicePage />} />
-              <Route path="/mypage/setting" element={<UnivNoticeMySettingPage />} />
+                <Route path="/mypage/info" element={<UnivNoticeMyInfoPage />} />
+                <Route path="/mypage/device" element={<UnivNoticeMyDevicePage />} />
+                <Route path="/mypage/setting" element={<UnivNoticeMySettingPage />} />
 
-              <Route path="/notice" element={<UnivNoticeNoticePage />} />
-              <Route path="/withdraw" element={<UnivNoticeUserDeletePage />} />
-              <Route path="/terms" element={<UnivNoticeTermsPage />} />
-              <Route path="/kakao" element={<UnivNoticeKakaoPage />} />
+                <Route path="/notice" element={<UnivNoticeNoticePage />} />
+                <Route path="/withdraw" element={<UnivNoticeUserDeletePage />} />
+                <Route path="/terms" element={<UnivNoticeTermsPage />} />
+                <Route path="/kakao" element={<UnivNoticeKakaoPage />} />
 
-              <Route path="/ios" element={<UnivNoticeHomeAppPage />} />
-              <Route path="*" element={<UnivNoticeError404Page />} />
-            </Routes>
+                <Route path="/ios" element={<UnivNoticeHomeAppPage />} />
+                <Route path="*" element={<UnivNoticeError404Page />} />
+              </Routes>
+            </div>
           )}
+
           {/* 살펴 프로젝트 라우터 */}
           {projectName === "domo" && (
-            <Routes>
-              <Route path="/" element={<DomoHomePage />} />
-              <Route path="/benefix" element={<DomoBenefix />} />
-              <Route path="/recs" element={<DomoRecs />} />
-              <Route path="/recs/info" element={<DomoRecsInfo />} />
-              <Route path="/recs/result" element={<DomoRecsResult />} />
-              <Route path="/recs/save" element={<DomoRecsSave />} />
+            <div className="domo">
+              <Routes>
+                <Route path="/" element={<DomoHomePage />} />
+                <Route path="/benefix" element={<DomoBenefix />} />
+                <Route path="/recs" element={<DomoRecs />} />
+                <Route path="/recs/info" element={<DomoRecsInfo />} />
+                <Route path="/recs/result" element={<DomoRecsResult />} />
+                <Route path="/recs/save" element={<DomoRecsSave />} />
 
-              <Route path="*" element={<DomoNotFoundPage />} />
-            </Routes>
+                <Route path="*" element={<DomoNotFoundPage />} />
+              </Routes>
+            </div>
+          )}
+
+          {projectName === "foodmap" && (
+            <div className="food">
+              <Routes>
+                <Route path="/" element={<FoodMainPage />} />
+                <Route path="/register" element={<FoodRegisterPage />} />
+                <Route path="/report" element={<FoodReportPage />} />
+                <Route path="/faq" element={<FoodFaqPage />} />
+                <Route path="/map" element={<FoodMapPage />} />
+                <Route path="/my-page" element={<FoodMyPage />} />
+
+                <Route path="*" element={<FoodError404Page />} />
+              </Routes>
+            </div>
           )}
         </ProjectView>
       </div>

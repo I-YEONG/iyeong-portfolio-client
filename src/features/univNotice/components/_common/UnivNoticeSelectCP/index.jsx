@@ -1,4 +1,3 @@
-import "@/styles/univNotice.global.css";
 import "./style.css";
 
 const UnivNoticeSelectCP = ({ dataList = [], value = "", univnoticeTitle = "", onChangeFunc }) => {

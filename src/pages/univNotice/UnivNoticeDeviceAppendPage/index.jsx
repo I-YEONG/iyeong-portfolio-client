@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "@/styles/univNotice.global.css";
+
 import "./style.css";
 import { useCallback, useEffect } from "react";
 import { useInput } from "@/hooks/useInput";

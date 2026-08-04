@@ -5,7 +5,7 @@ import { useInput } from "@/hooks/useInput";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import { UnivNoticeInputCP, UnivNoticeButtonCP } from "@/features/univNotice/components";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
-import "@/styles/univNotice.global.css";
+
 import { useAuth } from "@/hooks/useAuth";
 
 const UnivNoticePhonePage = () => {

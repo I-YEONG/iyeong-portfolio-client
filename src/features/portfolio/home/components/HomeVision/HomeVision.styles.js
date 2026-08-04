@@ -46,7 +46,7 @@ export const homeVisionCss = () =>
         },
 
         "& .title-box": {
-          ...theme.fonts.testXLg_B,
+          ...theme.fonts.textXLg_B,
           display: "flex",
           gap: "16px",
           alignItems: "center",

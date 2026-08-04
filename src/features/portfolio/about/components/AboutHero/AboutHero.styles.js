@@ -78,7 +78,7 @@ export const aboutHeroCss = css({
       },
 
       "& .title": {
-        ...theme.fonts.testXLg_B,
+        ...theme.fonts.textXLg_B,
       },
 
       "& .state": {

@@ -85,6 +85,7 @@ const AboutTechnical = () => {
                 cssObj={{
                   border: `1px solid ${theme.colors.darkBG}`,
                   padding: "6px 16px",
+                  color: theme.colors.darkBG,
                   "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.03)" },
                 }}>
                 prevPage
