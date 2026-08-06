@@ -45,5 +45,10 @@ const tagsCss = (tag) =>
                   color: theme.colors.deepGreen,
                   backgroundColor: theme.colors.deepGreenBG,
                 }
-              : {}),
+              : tag === "OPS"
+                ? {
+                    color: theme.colors.deepGreen,
+                    backgroundColor: theme.colors.deepGreenBG,
+                  }
+                : {}),
   });
