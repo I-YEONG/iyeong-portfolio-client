@@ -46,7 +46,7 @@ export const projectsBoxCss = css({
       objectFit: "cover",
       display: "block",
       transition: "opacity 0.2s ease",
-      objectPosition: "center", // 자를 때 이미지의 중앙을 기준으로 함
+      objectPosition: "left top",
     },
   },
 
