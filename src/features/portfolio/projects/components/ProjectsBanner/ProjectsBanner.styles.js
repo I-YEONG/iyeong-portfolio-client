@@ -98,7 +98,11 @@ export const projectsBannerCss = css({
     flexDirection: "column",
 
     "& .img-box": {
+      width: "100%",
       maxWidth: "100%",
+      flex: "0 0 auto",
+      aspectRatio: "16/9",
+      height: "auto",
     },
   },
 });

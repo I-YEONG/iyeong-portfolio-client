@@ -105,7 +105,7 @@ export const projectDetailHeroCss = () =>
 
 export const projectDetailHeroInfoDomainCss = (domain) =>
   css({
-    color: domain === "null" ? theme.colors.orange : theme.colors.green,
+    color: domain === "null" || domain === "NULL" ? theme.colors.orange : theme.colors.green,
   });
 
 export const projectDetailHeroInfoStatusCss = (status) =>

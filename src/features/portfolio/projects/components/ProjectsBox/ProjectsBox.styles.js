@@ -21,6 +21,20 @@ export const projectsBoxCss = css({
 
   [mq("mobile")]: {
     borderRight: "none",
+    minHeight: "auto",
+    height: "auto",
+    flex: "none",
+
+    "& .img-box": {
+      flex: "0 0 auto",
+      aspectRatio: "16/9",
+      maxHeight: "none",
+    },
+
+    "& .content-box": {
+      flex: "none",
+      height: "auto",
+    },
   },
 
   "& .img-box": {
