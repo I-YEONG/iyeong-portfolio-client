@@ -45,6 +45,20 @@ import {
   FoodFaqPage,
   FoodMapPage,
   FoodMyPage,
+  BarumHomePage,
+  BarumMakeupListPage,
+  BarumMakeupSelectPage,
+  BarumMakeupSearchPage,
+  BarumMakeupCameraPage,
+  BarumMakeupCameraResultPage,
+  BarumMakeupCameraErrorPage,
+  BarumRoutineSelfiePage,
+  BarumRoutineLoadingPage,
+  BarumRoutineErrorPage,
+  BarumRoutineResultPage,
+  BarumRecordListPage,
+  BarumRecordResultPage,
+  BarumNotFoundPage,
 } from "@/pages";
 import { useEffect, useState } from "react";
 import { FixMobile } from "@/components";
@@ -204,6 +218,31 @@ const PortfolioProject = () => {
                 <Route path="/my-page" element={<FoodMyPage />} />
 
                 <Route path="*" element={<FoodError404Page />} />
+              </Routes>
+            </div>
+          )}
+
+          {projectName === "barum" && (
+            <div className="barum">
+              <Routes>
+                <Route path="/" element={<BarumHomePage />} />
+
+                <Route path="routine/create/selfie" element={<BarumRoutineSelfiePage />} />
+                <Route path="routine/create/loading" element={<BarumRoutineLoadingPage />} />
+                <Route path="routine/create/error" element={<BarumRoutineErrorPage />} />
+                <Route path="routine/result" element={<BarumRoutineResultPage />} />
+
+                <Route path="makeup" element={<BarumMakeupListPage />} />
+                <Route path="makeup/create/select" element={<BarumMakeupSelectPage />} />
+                <Route path="makeup/create/search" element={<BarumMakeupSearchPage />} />
+                <Route path="makeup/create/camera" element={<BarumMakeupCameraPage />} />
+                <Route path="makeup/create/camera/result" element={<BarumMakeupCameraResultPage />} />
+                <Route path="makeup/create/error" element={<BarumMakeupCameraErrorPage />} />
+
+                <Route path="record" element={<BarumRecordListPage />} />
+                <Route path="record/result" element={<BarumRecordResultPage />} />
+                <Route path="setting" element={<BarumHomePage />} />
+                <Route path="*" element={<BarumNotFoundPage />} />
               </Routes>
             </div>
           )}

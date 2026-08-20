@@ -7,7 +7,7 @@ export const globalStyles = css({
     // padding: 0,
     WebkitFontSmoothing: "antialiased",
     MozOsxFontSmoothing: "grayscale",
-    fontFamily: '"pretendard", "Gothic A1", "-apple-system", "sans-serif"',
+    fontFamily: "Pretendard, -apple-system, BlinkMacSystemFont, sans-serif",
   },
 
   html: {
