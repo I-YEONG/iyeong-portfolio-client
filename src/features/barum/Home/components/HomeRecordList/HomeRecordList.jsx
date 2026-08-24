@@ -23,7 +23,7 @@ const HomeRecordList = () => {
         </span>
       </div>
       {/* 리스트 */}
-      <RecordList listData={listData} isLoading={isListDataLoading} isError={isListDataError} skeletonCount={2} />
+      <BarumRecordList listData={listData} isLoading={isListDataLoading} isError={isListDataError} skeletonCount={2} />
     </section>
   );
 };

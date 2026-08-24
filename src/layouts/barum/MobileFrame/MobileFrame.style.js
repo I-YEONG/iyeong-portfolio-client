@@ -5,9 +5,10 @@ export const background = css({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width: "100vw",
-  minHeight: "100vh",
+  width: "100%",
+  minHeight: "100%",
   backgroundColor: theme.barum.colors.bgApp,
+  position: "relative",
 });
 
 export const mobileContainer = css({

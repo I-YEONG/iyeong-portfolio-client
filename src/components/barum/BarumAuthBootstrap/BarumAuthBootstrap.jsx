@@ -1,20 +1,8 @@
 import { useEffect } from "react";
-import { getAnonymousToken } from "@/utils/barum/supabase";
 
 const BarumAuthBootstrap = () => {
   useEffect(() => {
-    if (import.meta.env.VITE_USE_MOCKUP === "true") {
-      console.log("🧪 목업 모드: 앱 초기 Supabase 익명 인증을 건너뜁니다.");
-      return;
-    }
-
-    getAnonymousToken()
-      .then(({ userId }) => {
-        console.log(`✅ 익명 세션 준비 완료`);
-      })
-      .catch((err) => {
-        console.error("❌ 앱 초기 익명 세션 생성 실패:", err);
-      });
+    return undefined;
   }, []);
 
   return null;

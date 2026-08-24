@@ -14,7 +14,7 @@ export const notFoundCss = css({
   borderTop: `1px solid ${theme.barum.colors.lightLine}`,
 
   [mq("mobile")]: {
-    height: "100vh",
+    height: "100%",
   },
 });
 
@@ -31,7 +31,7 @@ export const cardCss = css({
   ...theme.barum.flex.colCenter,
 
   [mq("mobile")]: {
-    height: "calc(100vh - 64px - 64px)",
+    height: "calc(100% - 64px - 64px)",
     padding: "36px 24px",
   },
 });

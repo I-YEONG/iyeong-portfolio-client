@@ -1,13 +1,7 @@
-import { portfolioApi as api } from "@/api";
-
 export const getMakeupUploadUrl = async ({ purpose = "OCR" } = {}) => {
-  try {
-    const response = await api.post("/uploads", { purpose });
-    return response.data || {};
-  } catch (error) {
-    throw {
-      code: error?.response?.data?.code || (error?.response?.status === 401 ? "UNAUTHORIZED" : "EXTERNAL_API_ERROR"),
-      message: error?.response?.data?.message || "업로드 URL 발급에 실패했습니다.",
-    };
-  }
+  return {
+    bucket: purpose === "OCR" ? "labels" : "selfies",
+    storagePath: "mock-user/2026-08-14.jpg",
+    expiresIn: 300,
+  };
 };

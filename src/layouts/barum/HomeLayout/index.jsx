@@ -11,7 +11,6 @@ const HomeLayout = ({ children, buttons }) => {
     overflowY: "hidden",
     gap: "18px",
     ...theme.barum.flex.colBetween,
-    backgroundColor: theme.barum.colors.bg,
 
     "& .button-box": {
       ...theme.barum.flex.colEnd,

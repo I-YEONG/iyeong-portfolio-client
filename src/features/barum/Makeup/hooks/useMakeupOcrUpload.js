@@ -1,6 +1,4 @@
 import { useMutation } from "@tanstack/react-query";
-import { getMakeupUploadUrl } from "@/features/barum/Makeup/api/getUploadUrl";
-import { uploadImageToUrl } from "@/features/barum/Makeup/api/uploadImageToUrl";
 import { recognizeMakeupOcr } from "@/features/barum/Makeup/api/recognizeMakeupOcr";
 
 export const useMakeupOcrUpload = () => {
@@ -10,14 +8,7 @@ export const useMakeupOcrUpload = () => {
         throw { code: "VALIDATION_ERROR", message: "업로드할 이미지가 없습니다." };
       }
 
-      if (import.meta.env.VITE_USE_MOCKUP === "true") {
-        return recognizeMakeupOcr({ storagePath: "mock-user/2026-08-14.jpg", alias });
-      }
-
-      const { uploadUrl, storagePath } = await getMakeupUploadUrl({ purpose: "OCR" });
-      await uploadImageToUrl({ uploadUrl, file });
-
-      return recognizeMakeupOcr({ storagePath, alias });
+      return recognizeMakeupOcr({ storagePath: "mock-user/2026-08-14.jpg", alias });
     },
   });
 };

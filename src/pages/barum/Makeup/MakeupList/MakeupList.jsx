@@ -28,7 +28,9 @@ const MakeupList = () => {
   const nav = useNavigate();
 
   const deleteStyle = css({
-    padding: "8px",
+    width: "36.8px",
+    height: "36.8px",
+    ...theme.barum.flex.center,
     borderRadius: "999px",
     backgroundColor: deleteMode ? theme.barum.colors.warn : theme.barum.colors.warnSource,
     color: theme.barum.colors.warnBg,

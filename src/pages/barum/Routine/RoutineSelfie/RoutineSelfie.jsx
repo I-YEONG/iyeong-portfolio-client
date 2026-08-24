@@ -56,7 +56,7 @@ const RoutineSelfie = () => {
             storagePath: imagePath,
             isUploaded: true,
           }));
-          nav(`/routine/create/loading?img_path=${encodeURIComponent(imagePath)}`);
+          nav(`/project/barum/routine/create/loading?img_path=${encodeURIComponent(imagePath)}`);
         },
         onError: () => {
           setIsUploading(false);

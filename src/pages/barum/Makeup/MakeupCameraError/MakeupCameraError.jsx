@@ -70,13 +70,13 @@ const MakeupCameraError = () => {
           </p>
         </div>
         <div className="button-box" css={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {errorType === "OCR_NO_TEXT" && <BarumBarButton clickFun={() => nav("makeup/create/camera")}>다시 촬영</BarumBarButton>}
+          {errorType === "OCR_NO_TEXT" && <BarumBarButton clickFun={() => nav("/project/barum/makeup/create/camera")}>다시 촬영</BarumBarButton>}
           {errorType === "OCR_NO_TEXT" && (
-            <BarumBarButton colorTheme="white" clickFun={() => nav("makeup/create/search")}>
+            <BarumBarButton colorTheme="white" clickFun={() => nav("/project/barum/makeup/create/search")}>
               제품 검색해 보기
             </BarumBarButton>
           )}
-          {errorType !== "OCR_NO_TEXT" && <BarumBarButton clickFun={() => nav("../")}>돌아가기</BarumBarButton>}
+          {errorType !== "OCR_NO_TEXT" && <BarumBarButton clickFun={() => nav("/project/barum/makeup")}>돌아가기</BarumBarButton>}
         </div>
       </div>
     </BarumBasicLayout>

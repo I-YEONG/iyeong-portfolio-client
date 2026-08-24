@@ -52,6 +52,7 @@ export const makeupCameraStyle = css({
     width: "100%",
     padding: "16px 18px",
     borderRadius: "999px",
+    background: "#fff",
   },
 });
 
