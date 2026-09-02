@@ -3,7 +3,11 @@ import { theme } from "@/styles/theme";
 
 const Tags = ({ tagList }) => {
   return (
-    <div>
+    <div
+      css={{
+        display: "flex",
+        gap: "8px",
+      }}>
       {/* TAG */}
       {tagList &&
         tagList.map((tag, index) => (
@@ -45,5 +49,10 @@ const tagsCss = (tag) =>
                   color: theme.colors.deepGreen,
                   backgroundColor: theme.colors.deepGreenBG,
                 }
-              : {}),
+              : tag === "OPS"
+                ? {
+                    color: theme.colors.deepGreen,
+                    backgroundColor: theme.colors.deepGreenBG,
+                  }
+                : {}),
   });

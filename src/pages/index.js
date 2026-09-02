@@ -7,6 +7,22 @@ export { default as PortfolioProject } from "./portfolio/PortfolioProject";
 
 export { default as NotFound } from "./_common/NotFound/NotFound";
 
+// Barum
+export { default as BarumHomePage } from "./barum/Home/Home";
+export { default as BarumMakeupListPage } from "./barum/Makeup/MakeupList/MakeupList";
+export { default as BarumMakeupSelectPage } from "./barum/Makeup/MakeupSelect/MakeupSelect";
+export { default as BarumMakeupSearchPage } from "./barum/Makeup/MakeupSearch/MakeupSearch";
+export { default as BarumMakeupCameraPage } from "./barum/Makeup/MakeupCamera/MakeupCamera";
+export { default as BarumMakeupCameraResultPage } from "./barum/Makeup/MakeupCameraResult/MakeupCameraResult";
+export { default as BarumMakeupCameraErrorPage } from "./barum/Makeup/MakeupCameraError/MakeupCameraError";
+export { default as BarumRoutineSelfiePage } from "./barum/Routine/RoutineSelfie/RoutineSelfie";
+export { default as BarumRoutineLoadingPage } from "./barum/Routine/RoutineLoading/RoutineLoading";
+export { default as BarumRoutineErrorPage } from "./barum/Routine/RoutineError/RoutineError";
+export { default as BarumRoutineResultPage } from "./barum/Routine/RoutineResult/RoutineResult";
+export { default as BarumRecordListPage } from "./barum/Record/RecordList/RecordList";
+export { default as BarumRecordResultPage } from "./barum/Record/RecordResult/RecordResult";
+export { default as BarumNotFoundPage } from "./barum/NotFound/NotFound";
+
 // 커리어하이
 export { default as CareerHiMainPage } from "./careerhi/CareerHiMainPage";
 export { default as CareerHiListPage } from "./careerhi/CareerHiMyRoadmapPages/CareerHiListPage";

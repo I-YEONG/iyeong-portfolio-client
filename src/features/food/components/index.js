@@ -33,7 +33,7 @@ export { FoodBadge } from "./Foodui/Foodbadge.jsx";
 export { badgeVariants } from "./Foodui/Foodbadge.jsx";
 export { FoodCheckbox } from "./Foodui/Foodcheckbox.jsx";
 export { FoodCard, FoodCardHeader, FoodCardFooter, FoodCardTitle, FoodCardDescription, FoodCardContent } from "./Foodui/Foodcard.jsx";
-export { FoodInput } from "./Foodui/FoodInput.jsx";
+export { FoodInput } from "./Foodui/Foodinput.jsx";
 export { FoodLabel } from "./Foodui/Foodlabel.jsx";
 export { FoodTextarea } from "./Foodui/Foodtextarea.jsx";
 export { FoodTabs, FoodTabsList, FoodTabsTrigger, FoodTabsContent } from "./Foodui/Foodtabs.jsx";

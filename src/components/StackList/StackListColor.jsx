@@ -16,11 +16,13 @@ import SPRINGBOOT from "@/assets/portfolio/skill/BG/skill-icons_spring-dark.svg?
 import POSTMAN from "@/assets/portfolio/skill/BG/skill-icons_postman.svg?react";
 import POSTGRES from "@/assets/portfolio/skill/BG/skill-icons_postgresql-dark.svg?react";
 import MYSQL from "@/assets/portfolio/skill/BG/skill-icons_mysql-dark.svg?react";
+import SUPABASE from "@/assets/portfolio/skill/BG/skill-icons_supabase-dark.svg?react";
 
 // etc
 import DOCKER from "@/assets/portfolio/skill/BG/skill-icons_docker.svg?react";
 import VERCEL from "@/assets/portfolio/skill/BG/skill-icons_vercel-dark.svg?react";
 import AWS from "@/assets/portfolio/skill/BG/skill-icons_aws-dark.svg?react";
+import ORACLE from "@/assets/portfolio/skill/BG/selfhst_oracle.svg?react";
 
 const ICONS = {
   REACT,
@@ -35,6 +37,8 @@ const ICONS = {
   DOCKER,
   VERCEL,
   AWS,
+  ORACLE,
+  SUPABASE,
 };
 
 const ORDER_WEIGHT = {
@@ -49,10 +53,12 @@ const ORDER_WEIGHT = {
   POSTMAN: 12,
   POSTGRES: 13,
   MYSQL: 14,
+  SUPABASE: 15,
   // deploy/infra
   DOCKER: 20,
   VERCEL: 21,
   AWS: 22,
+  ORACLE: 23,
 };
 
 const StackListColor = ({ list = [] }) => {

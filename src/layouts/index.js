@@ -14,3 +14,5 @@ export { default as DomoPcFooter } from "./domo/DomoPcFooter";
 export { default as DomoPcHeader } from "./domo/DomoPcHeader";
 
 export { default as FoodMainLayOut } from "./food/FoodMainLayOut";
+
+export { BarumMobileFrame, BarumHomeLayout, BarumBasicLayout } from "./barum";
