@@ -21,14 +21,29 @@ export const projectsBoxCss = css({
 
   [mq("mobile")]: {
     borderRight: "none",
+    minHeight: "auto",
+    height: "auto",
+    flex: "none",
+
+    "& .img-box": {
+      flex: "0 0 auto",
+      aspectRatio: "16/9",
+      maxHeight: "none",
+    },
+
+    "& .content-box": {
+      flex: "none",
+      height: "auto",
+    },
   },
 
   "& .img-box": {
     position: "relative",
     width: "100%",
-    aspectRatio: "16/9", // 또는 "2/1" 등 원하는 비율
-    maxHeight: "480px", // 필요시 최대 높이 제한
+    aspectRatio: "16/9",
+    maxHeight: "480px",
     borderBottom: `1px solid ${theme.colors.lightLine}`,
+    overflow: "hidden", // 이미지가 영역 밖으로 삐져나가는 것을 방지
 
     "& .img-skeleton": {
       position: "absolute",
@@ -45,6 +60,7 @@ export const projectsBoxCss = css({
       objectFit: "cover",
       display: "block",
       transition: "opacity 0.2s ease",
+      objectPosition: "left top",
     },
   },
 

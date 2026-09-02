@@ -48,6 +48,21 @@ export const projectsListCss = css({
     },
   },
 
+  "& .empty-project-box": {
+    width: "100%",
+    minHeight: "320px",
+    flex: "1 1 0",
+    borderRight: `1px solid ${theme.colors.lightLine}`,
+
+    "&:last-child": {
+      borderRight: "none",
+    },
+
+    [mq("mobile")]: {
+      display: "none",
+    },
+  },
+
   "& .skeleton-block, & .skeleton-line": {
     backgroundImage: `linear-gradient(90deg, ${theme.colors.lightLine} 0%, ${theme.colors.black100} 50%, ${theme.colors.lightLine} 100%)`,
     backgroundSize: "200% 100%",

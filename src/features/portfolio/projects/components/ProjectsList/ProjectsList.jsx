@@ -33,7 +33,13 @@ const ProjectsList = () => {
   const projectRows = [];
 
   for (let i = 0; i < restProjects.length; i += 3) {
-    projectRows.push(restProjects.slice(i, i + 3));
+    const row = restProjects.slice(i, i + 3);
+
+    while (row.length < 3) {
+      row.push(null);
+    }
+
+    projectRows.push(row);
   }
 
   return (
@@ -86,9 +92,13 @@ const ProjectsList = () => {
           <div key={`row-${index}`}>
             <section className="content-box">
               <div className="content-center project-row">
-                {row.map((project) => (
-                  <ProjectsBox key={project.id} data={project} />
-                ))}
+                {row.map((project, projectIndex) =>
+                  project ? (
+                    <ProjectsBox key={project.id} data={project} />
+                  ) : (
+                    <div key={`empty-project-${projectIndex}`} className="empty-project-box" aria-hidden="true" />
+                  ),
+                )}
               </div>
             </section>
             {index < projectRows.length - 1 && (

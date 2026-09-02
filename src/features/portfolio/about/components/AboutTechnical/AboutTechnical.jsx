@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { theme } from "@/styles/theme";
 import { useMemo, useRef, useState } from "react";
-// import { stackMockupData } from "@/mockup/stackMockupData";
+// import { stackMockupData } from "@/mockup/barum/stackMockupData";
 import AboutTechnicalItemBox from "../AboutTechnicalItemBox/AboutTechnicalItemBox";
 import { useMedia } from "@/hooks/useMedia";
 import { useStackQuery } from "../../hooks/useStack";

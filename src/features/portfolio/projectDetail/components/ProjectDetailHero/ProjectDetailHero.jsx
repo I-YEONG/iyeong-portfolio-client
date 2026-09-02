@@ -114,7 +114,7 @@ const ProjectDetailHero = ({ data }) => {
                   {/* 도메인 */}
                   <div className="domain-box">
                     <p>도메인</p>
-                    <p css={projectDetailHeroInfoDomainCss(data.domain)}>{data.domain === "null" ? "도메인 없음" : data.domain}</p>
+                    <p css={projectDetailHeroInfoDomainCss(data.domain)}>{data.domain === "null" || data.domain === "NULL" ? "도메인 없음" : data.domain}</p>
                   </div>
                   {/* 상태 */}
                   <div className="status-box">
