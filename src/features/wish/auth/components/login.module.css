@@ -1,0 +1,119 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(336px, calc(100vw - 32px));
+  max-height: calc(100cqh - 32px);
+  overflow-y: auto;
+  border: 0;
+  border-radius: 8px;
+  padding: 24px;
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+.dialog::backdrop {
+  background: #0008;
+  backdrop-filter: blur(3px);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    var(--color-black) 12%,
+    var(--color-main-02) 51%,
+    var(--color-main-01) 100%
+  );
+}
+
+/* Figma 387:947의 보라색 단색 노이즈를 배경 위, 별 장식 아래에 배치한다. */
+.background::before {
+  position: absolute;
+  inset: 0;
+  background: url('../assets/background-noise.svg') repeat;
+  background-size: 200px 200px;
+  opacity: 0.25;
+  content: '';
+}
+
+.artwork {
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+}
+
+.comet {
+  position: absolute;
+  top: 28%;
+  left: -40%;
+  width: 114.34%;
+  aspect-ratio: 449.356 / 504.31;
+  overflow: hidden;
+  transform: rotate(-16.3deg);
+  transition: transform 2000ms ease-out;
+}
+
+.comet[data-phase='waiting'] {
+  transform: translate(-110%, -60%) rotate(-16.3deg);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comet,
+  .comet[data-phase='waiting'] {
+    transform: rotate(-16.3deg);
+    transition: none;
+  }
+}
+
+.comet img {
+  position: absolute;
+  top: -61.11%;
+  left: -35.37%;
+  width: 166.69%;
+  height: 222.67%;
+  max-width: none;
+}
+
+.stars,
+.constellation3,
+.leftShade,
+.rightShade {
+  position: absolute;
+}
+
+.stars {
+  inset: 12.36% -2.95% 1.92% 2.14%;
+  width: 100.81%;
+  height: 85.72%;
+}
+.constellation3 {
+  top: 52.93%;
+  left: 3.05%;
+  width: 49.06%;
+  height: 30.37%;
+}
+.leftShade,
+.rightShade {
+  top: 0;
+  width: 23.41%;
+  height: 124.3%;
+}
+.leftShade {
+  left: 0;
+}
+.rightShade {
+  right: 0;
+  transform: scaleX(-1);
+}
+.topShade {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 36.7%;
+  background: linear-gradient(#000, #0000);
+}

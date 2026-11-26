@@ -1,0 +1,630 @@
+.layout {
+  position: relative;
+  isolation: isolate;
+  min-height: 100cqh;
+}
+
+.landing {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: max(700px, 100cqh);
+  padding-top: max(59px, calc(7cqh - 1px), env(safe-area-inset-top));
+  padding-bottom: max(21px, env(safe-area-inset-bottom));
+  overflow: clip;
+  container-type: inline-size;
+  font-family: var(--font-display);
+}
+
+.coveredLanding {
+  position: fixed;
+  inset-block-start: 0;
+  width: min(100%, var(--container-mobile));
+}
+
+.organizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  min-height: 44px;
+  cursor: pointer;
+}
+.organizer img {
+  width: 84.5%;
+  height: auto;
+}
+.anniversary {
+  margin-top: 36px;
+  color: #adaeff;
+  font-size: clamp(12px, 3.56cqw, 17px);
+  font-weight: 300;
+  line-height: 30px;
+  text-align: center;
+  text-shadow: 0 0 4px #00eaff;
+}
+.anniversary span {
+  font-size: clamp(17px, 5.09cqw, 24px);
+}
+.brand {
+  width: 90.59%;
+  margin-top: 28px;
+  aspect-ratio: 356 / 256;
+}
+.brand img {
+  width: 100%;
+  height: 100%;
+}
+.date {
+  margin-top: 14px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  text-shadow: 0 0 4px #00eaff;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 31px;
+  margin-top: auto;
+  padding-top: 50px;
+}
+.entryButton {
+  width: 210px;
+  min-height: 55px;
+  border: 1px solid #ffffff38;
+  border-top-color: #ffffff80;
+  border-radius: 1000px;
+  background: linear-gradient(120deg, #ffffff03, #ffffff26);
+  box-shadow: inset 0 1px 12px #ffffff0a;
+  font-size: 20px;
+  text-shadow: 0 0 4px var(--color-purple);
+  cursor: pointer;
+}
+.guest {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  padding-inline: 20px;
+  font-size: 16px;
+  text-shadow: 0 0 4px var(--color-purple);
+}
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 24px;
+  color: var(--color-purple);
+  font-size: 12px;
+  font-weight: 500;
+}
+.terms a {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.sessionNotice {
+  position: absolute;
+  inset: 8px 16px auto;
+  z-index: 1;
+}
+.backdrop {
+  position: fixed;
+  inset-block: 0;
+  left: 50%;
+  z-index: 1;
+  width: min(100%, var(--container-mobile));
+  transform: translateX(-50%);
+  background: #00000026;
+  backdrop-filter: blur(5px);
+}
+
+.authFrame {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100cqh;
+  padding: max(41px, env(safe-area-inset-top)) max(16px, 7.25%)
+    max(24px, env(safe-area-inset-bottom));
+  font-family: var(--font-display);
+}
+.authCard {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  background: var(--color-white);
+}
+.loginCard {
+  animation: modal-open 300ms ease-out both;
+}
+.closing .loginCard {
+  animation: modal-close 220ms ease-in both;
+}
+@keyframes modal-open {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes modal-close {
+  to {
+    opacity: 0;
+    transform: translateY(7px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loginCard,
+  .closing .loginCard {
+    animation: none;
+  }
+}
+@media (max-height: 700px) {
+  .landing {
+    padding-top: max(24px, env(safe-area-inset-top));
+  }
+  .anniversary {
+    margin-top: 18px;
+  }
+  .brand {
+    margin-top: 20px;
+  }
+  .actions {
+    padding-top: 32px;
+  }
+  .authFrame {
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+.authBoundary {
+  width: 100%;
+  max-width: 400px;
+  min-width: 0;
+}
+.signupFrame {
+  align-items: flex-start;
+  padding-top: max(170px, env(safe-area-inset-top));
+}
+.loginFrame {
+  align-items: flex-start;
+  padding-top: max(41px, calc((100cqh - 591px) / 2 + 8.5px), env(safe-area-inset-top));
+}
+.authLogo {
+  display: block;
+  width: 107px;
+  height: 77px;
+  margin-inline: auto;
+  /* 글로우는 SVG 필터에서 뺐다. 내부 필터는 비트맵으로 구워져 iOS에서 깨진다. */
+  filter: drop-shadow(0 0 4px rgb(45 125 200));
+}
+.signupCard {
+  padding: 19px 17px 29px;
+  color: var(--color-purple);
+}
+.signupHeading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 22px;
+  margin-top: 20px;
+  color: var(--color-gray-04);
+}
+.signupHeading > span {
+  flex: 1;
+  min-width: 8px;
+  height: 1px;
+  background: var(--color-gray-01);
+}
+.signupHeading h1 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+}
+.signupHeading h1:focus {
+  outline: none;
+}
+.signupForm {
+  position: relative;
+  margin-top: 34px;
+}
+.signupFields {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 20px;
+}
+.signupField {
+  min-width: 0;
+}
+.signupFieldRow {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: start;
+  gap: 11px;
+}
+.signupFieldRow > label {
+  display: flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  text-align: center;
+}
+.signupFieldControl {
+  position: relative;
+  min-width: 0;
+}
+.signupInput {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  border: 1px solid var(--color-gray-01);
+  border-radius: 4px;
+  background: var(--color-white);
+  padding-inline: 16px;
+  color: var(--color-purple);
+  font-size: 14px;
+  line-height: 22px;
+}
+.signupInput::placeholder {
+  color: var(--color-gray-02);
+}
+select.signupInput {
+  appearance: none;
+  padding-right: 38px;
+}
+select.signupInput[data-empty='true'] {
+  color: var(--color-gray-02);
+}
+.selectChevron,
+.gradeChevron {
+  position: absolute;
+  top: 13px;
+  right: 12px;
+  color: var(--color-gray-01);
+  pointer-events: none;
+}
+.signupInput:disabled {
+  cursor: not-allowed;
+}
+.signupInput[data-valid='true'],
+.signupInput[data-valid='true']::placeholder {
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+.signupInput[aria-invalid='true'],
+.signupInput[aria-invalid='true']::placeholder {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+.signupHint {
+  margin-top: 6px;
+  color: var(--color-gray-04);
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.signupProgress {
+  display: flex;
+  height: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 18px;
+}
+.signupProgress > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gray-01);
+}
+.signupProgress > span[data-active='true'] {
+  width: 8px;
+  height: 8px;
+  background: var(--color-gray-02);
+}
+.signupActions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  padding-inline: 5px;
+}
+.previousButton,
+.nextButton,
+.profileNext {
+  position: relative;
+  display: flex;
+  width: 120px;
+  min-width: 0;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-blue);
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.previousButton {
+  background: var(--color-gray-02);
+}
+.nextButton:disabled,
+.profileNext:disabled {
+  background: var(--color-gray-02);
+  cursor: not-allowed;
+}
+.previousButton:disabled {
+  cursor: not-allowed;
+}
+.previousButton > svg,
+.nextButton > svg,
+.profileNext > svg {
+  position: absolute;
+}
+.previousButton > svg {
+  left: 18px;
+}
+.nextButton > svg {
+  right: 18px;
+}
+.profileNext {
+  width: 100%;
+  max-width: 257px;
+  margin: 20px auto 0;
+  font-size: 16px;
+}
+.profileNext > svg {
+  right: max(18px, calc(50% - 62px));
+}
+.signupCard[data-step='account'] .signupProgress {
+  margin-top: 23px;
+}
+.signupCard[data-step='account'] .signupFieldRow > label {
+  font-size: 15px;
+}
+.signupCard[data-step='optional'] {
+  padding-bottom: 21px;
+}
+.signupCard[data-step='optional'] .signupProgress {
+  margin-top: 18px;
+}
+.signupCard[data-step='optional'] .signupActions {
+  margin-top: 13px;
+}
+.optionalGuidance {
+  margin-top: 17px;
+  color: var(--color-gray-04);
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+}
+.codeControl {
+  position: relative;
+}
+.codeInput {
+  padding-right: 66px;
+}
+.emailSend {
+  position: absolute;
+  inset: 9px 9px 9px auto;
+  min-width: 47px;
+  border-radius: 2px;
+  background: var(--color-blue);
+  padding-inline: 8px;
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.emailSend[data-sent='true'] {
+  background: var(--color-gray-04);
+}
+.emailSend:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+.codeHint {
+  position: absolute;
+  top: 52px;
+  width: 100%;
+  color: var(--color-gray-04);
+  font-size: 11px;
+  line-height: 16px;
+  white-space: nowrap;
+}
+.gradeControl {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-gray-01);
+  border-radius: 4px;
+  padding: 7px;
+}
+.gradeControl[data-invalid='true'] {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+.gradeControl > select {
+  flex: 1;
+  min-width: 0;
+  height: 34px;
+  padding-left: 8px;
+  padding-right: 24px;
+  background: var(--color-white);
+  font-size: 14px;
+  appearance: none;
+}
+.gradeChevron {
+  right: 119px;
+}
+.gradeControl > div {
+  display: flex;
+  gap: 8px;
+}
+.gradeControl button {
+  min-width: 47px;
+  height: 34px;
+  border-radius: 2px;
+  background: var(--color-gray-04);
+  padding-inline: 8px;
+  color: var(--color-white);
+  font-size: 14px;
+  cursor: pointer;
+}
+.gradeControl button[aria-pressed='true'] {
+  background: var(--color-blue);
+}
+.departmentExpanded {
+  display: none;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+  color: var(--color-gray-04);
+  font-size: 12px;
+  line-height: 18px;
+}
+.departmentNote {
+  margin-top: 6px;
+  color: var(--color-gray-04);
+  font-size: 12px;
+  line-height: 18px;
+}
+.schoolProfileHint {
+  position: absolute;
+  inset: -28px 0 auto;
+  color: var(--color-gray-04);
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.authFeedback {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--color-white);
+  text-align: center;
+}
+.feedbackEntry {
+  min-width: 0;
+}
+.feedbackMessage {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+.feedbackMessage > svg {
+  flex: 0 0 19px;
+  margin-top: 3px;
+}
+.feedbackMessage > span {
+  min-width: 0;
+}
+.feedbackEntry[data-feedback-tone='error'] .feedbackMessage {
+  filter: drop-shadow(0 0 3px var(--color-red));
+  text-shadow: 0 0 5px var(--color-red);
+}
+.feedbackEntry[data-feedback-tone='success'] .feedbackMessage {
+  text-shadow:
+    0 0 4px var(--color-green),
+    0 0 6px var(--color-green);
+}
+.feedbackAction {
+  min-height: 44px;
+  padding: 8px 12px;
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 22px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.feedbackAction:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+@container (max-width: 380px) {
+  .departmentExpanded {
+    display: block;
+  }
+  .signupFieldRow {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .signupFieldRow > label {
+    font-size: 14px;
+  }
+  .signupInput {
+    padding-inline: 10px;
+    font-size: 13px;
+  }
+  .codeInput {
+    padding-right: 62px;
+  }
+  .codeHint {
+    font-size: 10px;
+  }
+  .gradeControl {
+    gap: 4px;
+    padding: 5px;
+  }
+  .gradeControl > select {
+    padding-left: 2px;
+    font-size: 12px;
+  }
+  .gradeChevron {
+    right: 85px;
+  }
+  .gradeControl > div {
+    gap: 4px;
+  }
+  .gradeControl button {
+    min-width: 36px;
+    padding-inline: 4px;
+    font-size: 12px;
+  }
+  .previousButton > svg {
+    left: 13px;
+  }
+  .nextButton > svg {
+    right: 13px;
+  }
+}
+@media (max-height: 700px) {
+  .signupFrame,
+  .loginFrame {
+    padding-top: max(24px, env(safe-area-inset-top));
+  }
+}

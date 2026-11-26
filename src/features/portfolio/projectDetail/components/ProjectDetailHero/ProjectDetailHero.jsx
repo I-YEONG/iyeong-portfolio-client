@@ -1,4 +1,4 @@
-import { Button, Loading } from "@/components";
+import { Button, Loading, StackList } from "@/components";
 import { theme } from "@/styles/theme";
 import useFormatDate from "@/hooks/useFormatDate";
 import Tags from "@/components/Tags/Tags";
@@ -37,6 +37,7 @@ const ProjectDetailHero = ({ data }) => {
               <p className="path">Home / Projects /</p>
               <p className="title">{data.name}</p>
               <p className="description">{data.description}</p>
+              {data.stacks?.length > 0 && <StackList list={data.stacks} />}
               <div className="button-box">
                 <div
                   onClick={() => {
@@ -44,7 +45,7 @@ const ProjectDetailHero = ({ data }) => {
                       alert("구현이 안 되어 있는 페이지입니다.");
                       return;
                     }
-                    nav(`/project/${data.url}`);
+                    nav(`/project/${data.url.replace(/^\/+/, "")}`);
                   }}
                   className="cursor-reactive is-green">
                   <Button buttonType="goto" cssObj={data?.url ? isUrlCss : isNotUrlCss}>
@@ -53,25 +54,27 @@ const ProjectDetailHero = ({ data }) => {
                 </div>
 
                 {data.pdfUrl !== null && data.pdfUrl !== "null" && (
-                  <a href={data.pdfUrl} role="button">
+                  <a href={data.pdfUrl} role="button" target="_blank" rel="noreferrer">
                     <Button buttonType="pdf" cssObj={data.pdfUrl !== null && data.pdfUrl !== "null" ? isPdf : isNotPdf}>
                       PDF 다운로드
                     </Button>
                   </a>
                 )}
-                <a href={data.gitUrl} target="_blank" rel="noreferrer">
-                  <Button
-                    buttonType="git"
-                    cssObj={{
-                      width: "fit-content",
-                      padding: "16px",
-                      gap: "0px",
-                      backgroundColor: theme.colors.darkBG,
-                      color: "white",
-                      border: `1px solid ${theme.colors.darkBG}`,
-                    }}
-                  />
-                </a>
+                {data.gitUrl && !["null", "empty"].includes(data.gitUrl.trim().toLowerCase()) && (
+                  <a href={data.gitUrl} target="_blank" rel="noreferrer">
+                    <Button
+                      buttonType="git"
+                      cssObj={{
+                        width: "fit-content",
+                        padding: "16px",
+                        gap: "0px",
+                        backgroundColor: theme.colors.darkBG,
+                        color: "white",
+                        border: `1px solid ${theme.colors.darkBG}`,
+                      }}
+                    />
+                  </a>
+                )}
                 <a href={import.meta.env.VITE_GITHUB_URL} target="_blank" rel="noreferrer">
                   <Button
                     buttonType="git"

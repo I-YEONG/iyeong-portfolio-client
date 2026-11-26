@@ -65,6 +65,7 @@ import { FixMobile } from "@/components";
 import { BarumMobileFrame } from "@/layouts";
 import UnivNoticeTermsPage from "../univNotice/UnivNoticeTermsPage";
 import UnivNoticeKakaoPage from "../univNotice/UnivNoticeKakaoPage";
+import WishApp from "../wish/WishApp";
 import MoyangRoutes from "@/pages/moyang/MoyangRoutes";
 
 const PortfolioProject = () => {
@@ -147,6 +148,7 @@ const PortfolioProject = () => {
 
         {/* 시뮬레이션 박스 (레이아웃 역할) */}
         <ProjectView isPc={isPc}>
+          {projectName === "wish" && <WishApp isPc={isPc} />}
           {projectName === "moyang" && <MoyangRoutes isPc={isPc} />}
           {/* 커리어하이 프로젝트 라우터 */}
           {projectName === "careerhi" && (
