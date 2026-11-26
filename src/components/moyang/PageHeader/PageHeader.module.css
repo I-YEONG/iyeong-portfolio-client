@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 64px;
+  padding: 0 12px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: var(--moyang-font-size-section);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  margin-inline-start: auto;
+}
+
+.navigation {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.navigation:focus-visible {
+  outline: 2px solid var(--moyang-color-black);
+}

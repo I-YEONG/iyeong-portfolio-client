@@ -1,0 +1,452 @@
+{
+  "listAll": {
+    "method": "GET",
+    "path": "/api/meetings",
+    "response": {
+      "success": true,
+      "data": {
+        "recommendedMeetingId": 203,
+        "meetings": [
+          {
+            "meetingId": 201,
+            "type": "SCHEDULED",
+            "title": "진로 앞에서 잠시 쉬어가기",
+            "summary": "진로에 대한 마음을 그림으로 표현하고 편하게 나눠요.",
+            "category": "STUDY_CAREER",
+            "startAt": "2026-11-30T20:00:00+09:00",
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "RECRUITING",
+            "joined": true
+          },
+          {
+            "meetingId": 202,
+            "type": "LIVE",
+            "title": "관계 속 편안한 거리",
+            "summary": "사람들과 지내며 느낀 마음을 각자의 속도로 나눠요.",
+            "category": "RELATION_FAMILY",
+            "startAt": null,
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "IN_PROGRESS",
+            "joined": true
+          },
+          {
+            "meetingId": 203,
+            "type": "SCHEDULED",
+            "title": "일상에 작은 쉼표",
+            "summary": "바쁜 일상에서 나에게 필요한 쉼을 그려봐요.",
+            "category": "DAILY_FUTURE",
+            "startAt": "2026-12-01T19:30:00+09:00",
+            "capacity": 6,
+            "participantCount": 2,
+            "status": "RECRUITING",
+            "joined": false
+          }
+        ]
+      }
+    }
+  },
+  "listLive": {
+    "method": "GET",
+    "path": "/api/meetings",
+    "query": {
+      "type": "LIVE"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "recommendedMeetingId": 202,
+        "meetings": [
+          {
+            "meetingId": 202,
+            "type": "LIVE",
+            "title": "관계 속 편안한 거리",
+            "summary": "사람들과 지내며 느낀 마음을 각자의 속도로 나눠요.",
+            "category": "RELATION_FAMILY",
+            "startAt": null,
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "IN_PROGRESS",
+            "joined": true
+          }
+        ]
+      }
+    }
+  },
+  "listScheduled": {
+    "method": "GET",
+    "path": "/api/meetings",
+    "query": {
+      "type": "SCHEDULED"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "recommendedMeetingId": 203,
+        "meetings": [
+          {
+            "meetingId": 201,
+            "type": "SCHEDULED",
+            "title": "진로 앞에서 잠시 쉬어가기",
+            "summary": "진로에 대한 마음을 그림으로 표현하고 편하게 나눠요.",
+            "category": "STUDY_CAREER",
+            "startAt": "2026-11-30T20:00:00+09:00",
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "RECRUITING",
+            "joined": true
+          },
+          {
+            "meetingId": 203,
+            "type": "SCHEDULED",
+            "title": "일상에 작은 쉼표",
+            "summary": "바쁜 일상에서 나에게 필요한 쉼을 그려봐요.",
+            "category": "DAILY_FUTURE",
+            "startAt": "2026-12-01T19:30:00+09:00",
+            "capacity": 6,
+            "participantCount": 2,
+            "status": "RECRUITING",
+            "joined": false
+          }
+        ]
+      }
+    }
+  },
+  "listByCategory": {
+    "method": "GET",
+    "path": "/api/meetings",
+    "query": {
+      "type": "SCHEDULED",
+      "category": "STUDY_CAREER"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "recommendedMeetingId": 201,
+        "meetings": [
+          {
+            "meetingId": 201,
+            "type": "SCHEDULED",
+            "title": "진로 앞에서 잠시 쉬어가기",
+            "summary": "진로에 대한 마음을 그림으로 표현하고 편하게 나눠요.",
+            "category": "STUDY_CAREER",
+            "startAt": "2026-11-30T20:00:00+09:00",
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "RECRUITING",
+            "joined": true
+          }
+        ]
+      }
+    }
+  },
+  "myMeetings": {
+    "method": "GET",
+    "path": "/api/meetings/me",
+    "response": {
+      "success": true,
+      "data": {
+        "meetings": [
+          {
+            "meetingId": 201,
+            "type": "SCHEDULED",
+            "title": "진로 앞에서 잠시 쉬어가기",
+            "summary": "진로에 대한 마음을 그림으로 표현하고 편하게 나눠요.",
+            "category": "STUDY_CAREER",
+            "startAt": "2026-11-30T20:00:00+09:00",
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "RECRUITING",
+            "isHost": true,
+            "myMeetingNickname": "구름양"
+          },
+          {
+            "meetingId": 202,
+            "type": "LIVE",
+            "title": "관계 속 편안한 거리",
+            "summary": "사람들과 지내며 느낀 마음을 각자의 속도로 나눠요.",
+            "category": "RELATION_FAMILY",
+            "startAt": null,
+            "capacity": 4,
+            "participantCount": 2,
+            "status": "IN_PROGRESS",
+            "isHost": false,
+            "myMeetingNickname": "구름양"
+          }
+        ]
+      }
+    }
+  },
+  "detail": {
+    "method": "GET",
+    "path": "/api/meetings/201",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 201,
+        "type": "SCHEDULED",
+        "title": "진로 앞에서 잠시 쉬어가기",
+        "category": "STUDY_CAREER",
+        "startAt": "2026-11-30T20:00:00+09:00",
+        "capacity": 4,
+        "participantCount": 2,
+        "status": "RECRUITING",
+        "joined": true,
+        "description": "진로를 고민하며 느끼는 마음을 그림으로 표현하고 편하게 나눠요.",
+        "tags": [
+          "진로",
+          "휴식"
+        ],
+        "topic": null,
+        "endAt": null,
+        "minParticipants": 2,
+        "myMeetingNickname": "구름양",
+        "steps": [
+          "인사하기",
+          "그림 그리기",
+          "그림 나누기",
+          "마무리하기"
+        ],
+        "recommendedFor": [
+          "진로를 고민하는 사람",
+          "편하게 이야기를 나누고 싶은 사람"
+        ],
+        "hostUserId": 1,
+        "isHost": true,
+        "canStart": false,
+        "canSkip": false,
+        "enterOpenAt": "2026-11-30T19:55:00+09:00",
+        "cancelRefundUntil": "2026-11-30T19:55:00+09:00",
+        "cancelReason": null,
+        "phase": null
+      }
+    }
+  },
+  "create": {
+    "method": "POST",
+    "path": "/api/meetings",
+    "request": {
+      "type": "SCHEDULED",
+      "title": "퇴근 후 나를 위한 시간",
+      "description": "하루를 돌아보며 각자의 쉼을 그려요.",
+      "category": "DAILY_FUTURE",
+      "startAt": "2026-12-03T20:00:00+09:00",
+      "capacity": 4,
+      "meetingNickname": "구름양"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 204,
+        "status": "RECRUITING",
+        "participantCount": 1,
+        "sheepUsed": 1,
+        "sheepBalance": 4
+      }
+    }
+  },
+  "join": {
+    "method": "POST",
+    "path": "/api/meetings/203/participants",
+    "request": {
+      "meetingNickname": "구름양"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 203,
+        "participantCount": 3,
+        "capacity": 6,
+        "status": "RECRUITING",
+        "meetingNickname": "구름양",
+        "sheepUsed": 1,
+        "sheepBalance": 4
+      }
+    }
+  },
+  "enter": {
+    "method": "POST",
+    "path": "/api/meetings/201/enter",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 201,
+        "status": "OPEN",
+        "phase": "INTRO",
+        "enteredCount": 1,
+        "startAt": "2026-11-30T20:00:00+09:00"
+      }
+    }
+  },
+  "start": {
+    "method": "POST",
+    "path": "/api/meetings/205/start",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 205,
+        "status": "IN_PROGRESS",
+        "phase": "INTRO",
+        "participantCount": 2
+      }
+    }
+  },
+  "nextPhase": {
+    "method": "POST",
+    "path": "/api/meetings/202/phase/next",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 202,
+        "phase": "DRAWING",
+        "topic": "관계 속 나의 자리"
+      }
+    }
+  },
+  "pollMessages": {
+    "method": "GET",
+    "path": "/api/meetings/202/messages",
+    "query": {
+      "afterId": 0
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "status": "IN_PROGRESS",
+        "phase": "INTRO",
+        "currentStep": 1,
+        "topic": "관계 속 나의 자리",
+        "submittedDrawingCount": 0,
+        "participantCount": 2,
+        "endAgreedCount": 0,
+        "endAgreed": false,
+        "endAt": null,
+        "deleteAt": null,
+        "messages": [
+          {
+            "messageId": 1,
+            "type": "SYSTEM",
+            "senderNickname": null,
+            "content": "모임이 시작되었어요.",
+            "imageUrl": null,
+            "mine": false,
+            "createdAt": "2026-11-26T19:02:00+09:00"
+          },
+          {
+            "messageId": 2,
+            "type": "TEXT",
+            "senderNickname": "구름양",
+            "content": "안녕하세요. 편하게 이야기 나눠요.",
+            "imageUrl": null,
+            "mine": true,
+            "createdAt": "2026-11-26T19:03:00+09:00"
+          },
+          {
+            "messageId": 3,
+            "type": "TEXT",
+            "senderNickname": "산책양",
+            "content": "안녕하세요. 요즘 혼자 있는 시간이 조금 낯설어요.",
+            "imageUrl": null,
+            "mine": false,
+            "createdAt": "2026-11-26T19:04:00+09:00"
+          }
+        ]
+      }
+    }
+  },
+  "sendText": {
+    "method": "POST",
+    "path": "/api/meetings/202/messages",
+    "request": {
+      "type": "TEXT",
+      "content": "저도 제 마음을 천천히 살펴보고 싶어요."
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "messageId": 4,
+        "createdAt": "2026-11-26T19:05:00+09:00"
+      }
+    }
+  },
+  "sendDrawing": {
+    "method": "POST",
+    "path": "/api/meetings/202/messages",
+    "request": {
+      "type": "DRAWING",
+      "drawingId": 101
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "messageId": 5,
+        "createdAt": "2026-11-26T19:15:00+09:00"
+      }
+    }
+  },
+  "end": {
+    "method": "POST",
+    "path": "/api/meetings/202/end",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 202,
+        "endAgreedCount": 2,
+        "participantCount": 2,
+        "status": "ENDED"
+      }
+    }
+  },
+  "leave": {
+    "method": "DELETE",
+    "path": "/api/meetings/203/participants/me",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 203,
+        "participantCount": 2,
+        "refunded": true,
+        "sheepRefunded": 1,
+        "sheepBalance": 5
+      }
+    }
+  },
+  "cancel": {
+    "method": "DELETE",
+    "path": "/api/meetings/201",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 201,
+        "status": "CANCELED",
+        "refundedParticipantCount": 1,
+        "hostRefunded": true,
+        "sheepBalance": 6
+      }
+    }
+  },
+  "reflection": {
+    "method": "GET",
+    "path": "/api/meetings/206/reflection",
+    "response": {
+      "success": true,
+      "data": {
+        "meetingId": 206,
+        "recordId": 106,
+        "drawing": {
+          "drawingId": 106,
+          "imageUrl": "/api/drawings/106/image",
+          "topicTitle": "천천히 걷는 길",
+          "note": "나무 사이로 이어지는 길과 벤치를 그렸어요."
+        },
+        "card": {
+          "whatISaid": "익숙한 일상이 바뀌어서 허전했어요.",
+          "thoughts": "천천히 적응해도 괜찮다고 느꼈어요.",
+          "todaysStory": "함께 이야기를 나누며 각자의 속도를 존중했어요."
+        },
+        "fallback": false
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.button {
+  width: 100%;
+  min-height: 36px;
+  padding: var(--moyang-control-padding-block) 16px;
+  border: 0;
+  border-radius: 12px;
+  font: inherit;
+  font-size: var(--moyang-font-size-choice);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.green {
+  background: var(--moyang-color-primary);
+  color: var(--moyang-color-white);
+}
+
+.gray {
+  background: var(--moyang-color-surface-gray);
+  color: var(--moyang-color-black);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--moyang-color-black);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

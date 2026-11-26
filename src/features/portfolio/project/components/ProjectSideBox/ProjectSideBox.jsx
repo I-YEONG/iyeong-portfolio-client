@@ -1,19 +1,16 @@
 import Tags from "@/components/Tags/Tags";
 import { useCommentQuery } from "../../hooks/useComment";
 import useFormatDate from "@/hooks/useFormatDate";
-import { matchPath, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { projectSideBoxCss } from "./ProjectSideBox.styles";
+import { getCommentsForPath } from "./commentMatching";
 
 const ProjectSideBox = () => {
   const { projectName, "*": restPath } = useParams();
   const { data } = useCommentQuery(projectName);
-  const filterPath = "/" + (restPath || "");
-  const hasExactPath = data?.comments?.some((comment) => comment.detailUrl === filterPath);
-  const commentList = data?.comments
-    ?.slice()
-    .filter((comment) => comment.detailUrl === "*" || comment.detailUrl === filterPath || (!hasExactPath && comment.detailUrl && matchPath({ path: comment.detailUrl, end: true }, filterPath)))
-    .sort((a, b) => a.sort - b.sort);
+  const filterPath = `/${restPath || ""}`;
+  const commentList = data?.comments && getCommentsForPath(data.comments, filterPath);
 
   const formatDate = useFormatDate();
 
