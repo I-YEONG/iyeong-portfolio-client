@@ -46,7 +46,7 @@ export function LettersScreen() {
         <BirthdayMessageList />
       </div>
 
-      <button type="button" aria-label="축하 편지 쓰기" onClick={openLetterWriter} className="fixed bottom-[calc(112px+env(safe-area-inset-bottom))] z-10 grid size-[88px] place-items-center" style={{ right: 'max(20px, calc((100vw - var(--container-mobile)) / 2 + 20px))' }}>
+      <button type="button" aria-label="축하 편지 쓰기" onClick={openLetterWriter} className="fixed bottom-[calc(112px+env(safe-area-inset-bottom))] z-10 grid size-[88px] place-items-center" style={{ right: '20px' }}>
         <img src={letterButton} alt=""/>
       </button>
 

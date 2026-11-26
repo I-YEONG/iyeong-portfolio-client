@@ -37,6 +37,7 @@ const ProjectDetailHero = ({ data }) => {
               <p className="path">Home / Projects /</p>
               <p className="title">{data.name}</p>
               <p className="description">{data.description}</p>
+              {data.stacks?.length > 0 && <StackList list={data.stacks} />}
               <div className="button-box">
                 <div
                   onClick={() => {
