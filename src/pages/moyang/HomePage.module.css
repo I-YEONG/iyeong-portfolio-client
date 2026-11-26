@@ -1,0 +1,23 @@
+.page {
+  padding: 24px;
+}
+
+.personalProgram {
+  margin-bottom: 24px;
+}
+
+.example {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.example p {
+  margin: 0;
+}
+
+.sheepProfiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
