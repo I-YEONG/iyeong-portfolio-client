@@ -13,7 +13,7 @@ export const DrawingConversationPage = () => {
     const scope = useMockStorageScope();
     const params = new URLSearchParams(location.search);
     const handoff = location.state;
-    const preview = import.meta.env.DEV &&
+    const preview = Boolean(handoff?.demoDrawing) || import.meta.env.DEV &&
         (params.has('preview') || params.has('mock') || Boolean(handoff?.programActivity?.mock));
     if (hasMoyangApi && !preview) {
         return <ServerConversationPage key={`${scope}:${location.key}`} scope={scope}/>;

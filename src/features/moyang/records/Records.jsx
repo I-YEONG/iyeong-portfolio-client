@@ -181,7 +181,7 @@ export const Records = () => {
           </div>
         </header>
         <main className={showInlineDetail ? styles.inlineContent : styles.content}>
-          {tab === 'calendar' ? (selectedRecord ? (<RecordDetailContent key={selectedRecord.recordId} recordId={String(selectedRecord.recordId)} preview={preview} record={selectedRecord} onClose={() => {
+          {tab === 'calendar' ? (selectedRecord ? (<RecordDetailContent key={selectedRecord.recordId} recordId={String(selectedRecord.recordId)} preview={preview || String(selectedRecord.recordId).startsWith('mock-')} record={selectedRecord} onClose={() => {
                 if (selectedItems.length > 1)
                     setSelectedRecordId(null);
                 else

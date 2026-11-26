@@ -55,6 +55,7 @@ const ScopedRecordDetailContent = ({ recordId, preview, record, onClose, }) => {
                 recordId: saved.recordId ?? saved.drawingId,
                 recordDate: saved.recordDate,
                 title: saved.title,
+                imageUrl: saved.imageUrl ?? record?.imageUrl ?? null,
                 ...saved.card,
             }),
             ...(fixture && {
@@ -195,7 +196,7 @@ export const RecordDetail = () => {
     const { recordId = '' } = useParams();
     const { state } = useLocation();
     const navigate = useNavigate();
-    const preview = false;
+    const preview = recordId.startsWith('mock-');
     const { from, record } = state ?? {};
     const goBack = () => {
         if ((from === 'home' || from === 'recent') && window.history.state?.idx > 0) {

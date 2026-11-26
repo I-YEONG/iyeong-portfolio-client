@@ -131,7 +131,7 @@ export const DrawingDetails = ({ flow } = {}) => {
             });
             if (!active.current || storageScope !== getMockStorageScope())
                 return;
-            let drawingId = currentUpload?.drawingId ?? 0;
+            let drawingId = currentUpload?.drawingId ?? Date.now();
             let recordId = currentRecordId;
             if (!isPreview && !currentUpload && data?.topic && data.inputType && photo instanceof Blob) {
                 const token = isMoyangLoggedIn();
@@ -190,6 +190,7 @@ export const DrawingDetails = ({ flow } = {}) => {
             navigate(`/project/moyang/drawing/conversation`, {
                 state: {
                     ...detailsState,
+                    demoDrawing: isPreview,
                     ...(photo instanceof Blob && {
                         photo: undefined,
                         previewPhoto: undefined,

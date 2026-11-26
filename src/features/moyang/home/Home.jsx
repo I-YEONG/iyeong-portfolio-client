@@ -40,11 +40,14 @@ const useHomeData = (preview) => {
     const meetings = meetingsQuery.isError ? { status: 'error', data: null }
         : meetingsQuery.isPending ? loading()
             : { status: 'ready', data: { meetings: items, count: items.length, nextMeeting } };
-    // 등록된 mock_path가 없는 데이터는 조회하거나 빈 결과로 단정하지 않는다.
-    const unavailable = { status: 'unavailable', data: null };
-    const sheep = unavailable;
-    const record = unavailable;
-    const shape = unavailable;
+    const sheepQuery = useGetMoyangQuery('/api/sheep', { enabled: !preview, retry: false });
+    const recordQuery = useGetMoyangQuery('/api/records?size=1', { enabled: !preview, retry: false });
+    const shapeQuery = useGetMoyangQuery('/api/shapes/me', { enabled: !preview, retry: false });
+    const loadable = (query, select = (value) => value) => query.isError ? { status: 'error', data: null }
+        : query.isPending ? loading() : { status: 'ready', data: select(query.data) };
+    const sheep = loadable(sheepQuery);
+    const record = loadable(recordQuery, (data) => data?.items?.[0] ?? null);
+    const shape = loadable(shapeQuery);
     return preview
         ? {
             user: { status: 'ready', data: { nickname: readMockUser().nickname } },
@@ -54,7 +57,7 @@ const useHomeData = (preview) => {
             shape: { status: 'ready', data: null },
             retry: () => {},
         }
-        : { user, sheep, record, meetings, shape, retry: () => { userQuery.refetch(); meetingsQuery.refetch(); } };
+        : { user, sheep, record, meetings, shape, retry: () => { userQuery.refetch(); meetingsQuery.refetch(); sheepQuery.refetch(); recordQuery.refetch(); shapeQuery.refetch(); } };
 };
 /** 인증이 필요한 같은 서버의 그림은 공통 클라이언트로 받아 표시한다. */
 const RecordImage = ({ url, preview }) => {

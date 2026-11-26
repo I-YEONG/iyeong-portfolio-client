@@ -1,5 +1,6 @@
 import { findSavedReflection, getMockRecordId, getReflectionStorageKey, hasSavedReflection, readReflectionStore, withReflectionLock, } from '@/features/moyang/lib/mock-reflections';
 import { writeMockStorage } from '@/features/moyang/lib/mock-storage';
+import { completeDemoActivity } from '@/features/moyang/lib/demo-session';
 import { exampleDrawing, getReplyText } from '@/features/moyang/drawing-conversation/conversationMock';
 import { getToday } from '@/features/moyang/personal-program/programSchedule';
 import { applyProgramActivityCompletion, canCompleteProgramActivity, getProgramStorageKey, readPrograms, } from '@/features/moyang/personal-program/programMock';
@@ -97,7 +98,7 @@ export const loadDrawingResult = async ({ drawing, conversation, recordId = getM
         },
     };
 };
-export const saveDrawingResult = async ({ drawing: { drawingId, title }, card, recordId = getMockRecordId(drawingId) }, { preview, previewWallet, fail, signal, activity, }) => {
+export const saveDrawingResult = async ({ drawing: { drawingId, title, previewPhoto, imageUrl }, card, recordId = getMockRecordId(drawingId) }, { preview, previewWallet, fail, signal, activity, }) => {
     const accountKey = getReflectionStorageKey(previewWallet);
     const programKey = getProgramStorageKey(activity?.mock);
     const assertAccount = () => {
@@ -114,6 +115,12 @@ export const saveDrawingResult = async ({ drawing: { drawingId, title }, card, r
     assertAccount();
     if (fail)
         throw new Error('Mock record save failed');
+    const savedImage = previewPhoto ? await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(new Blob([previewPhoto.bytes], { type: previewPhoto.type }));
+    }) : imageUrl;
     if (!activity) {
         const store = readStore();
         if (hasSavedReflection(store, recordId, drawingId)) {
@@ -139,7 +146,7 @@ export const saveDrawingResult = async ({ drawing: { drawingId, title }, card, r
                 assertAccount();
                 const completionDate = activity.date === record.recordDate ? record.recordDate : today;
                 if (record.recordDate > activity.date ||
-                    !applyProgramActivityCompletion(activity, activity.mock, completionDate, programKey))
+                    !(activity.mock ? applyProgramActivityCompletion(activity, activity.mock, completionDate, programKey) : completeDemoActivity(activity)))
                     return { status: 'activity-unavailable' };
                 return null;
             }
@@ -153,7 +160,7 @@ export const saveDrawingResult = async ({ drawing: { drawingId, title }, card, r
         if (hasSavedReflection(store, recordId, drawingId)) {
             return activity ? { status: 'activity-unavailable' } : { status: 'already-saved' };
         }
-        if (activity && !canCompleteProgramActivity(activity, activity.mock, programKey)) {
+        if (activity?.mock && !canCompleteProgramActivity(activity, activity.mock, programKey)) {
             return { status: 'activity-unavailable' };
         }
         const sheepEarned = records.some((record) => record.recordDate === today) ? 0 : 1;
@@ -163,6 +170,7 @@ export const saveDrawingResult = async ({ drawing: { drawingId, title }, card, r
             recordDate: today,
             ...(sheepEarned === 1 && { sheepReward: 1 }),
             title,
+            ...(savedImage && { imageUrl: savedImage }),
             card,
             ...(activity && { activityKey: `${getActivityKey(activity)}:${activity.date}` }),
         };

@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef } from 'react';
+import { useLayoutEffect, useId, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../Button/Button';
@@ -18,14 +18,37 @@ import styles from './Modal.module.css';
 export const Modal = ({ isOpen, onClose, title, ariaLabel, children, actions }) => {
     const dialogRef = useRef(null);
     const titleId = useId();
-    useEffect(() => {
+    useLayoutEffect(() => {
         const dialog = dialogRef.current;
         if (!dialog)
             return;
-        if (isOpen && !dialog.open)
-            dialog.showModal();
-        if (!isOpen && dialog.open)
-            dialog.close();
+        if (!isOpen) {
+            if (dialog.open)
+                dialog.close();
+            return;
+        }
+        const frame = dialog.closest('[data-moyang-frame]');
+        const position = () => {
+            if (!frame) return;
+            const rect = frame.getBoundingClientRect();
+            dialog.style.setProperty('--moyang-modal-x', `${rect.left + rect.width / 2}px`);
+            dialog.style.setProperty('--moyang-modal-y', `${rect.top + rect.height / 2}px`);
+            dialog.style.setProperty('--moyang-modal-max-width', `${Math.max(0, rect.width - 32)}px`);
+            dialog.style.setProperty('--moyang-modal-max-height', `${Math.max(0, rect.height - 32)}px`);
+            dialog.style.setProperty('--moyang-modal-clip', `${Math.max(0, rect.top)}px ${Math.max(0, window.innerWidth - rect.right)}px ${Math.max(0, window.innerHeight - rect.bottom)}px ${Math.max(0, rect.left)}px`);
+            dialog.style.setProperty('--moyang-modal-radius', getComputedStyle(frame).borderTopLeftRadius);
+        };
+        position();
+        if (!dialog.open) dialog.showModal();
+        const observer = frame && new ResizeObserver(position);
+        if (frame) observer.observe(frame);
+        window.addEventListener('resize', position);
+        window.addEventListener('scroll', position, true);
+        return () => {
+            observer?.disconnect();
+            window.removeEventListener('resize', position);
+            window.removeEventListener('scroll', position, true);
+        };
     }, [isOpen]);
     return (<dialog ref={dialogRef} className={styles.modal} aria-labelledby={title ? titleId : undefined} aria-label={title ? undefined : ariaLabel || '모달'} onCancel={(event) => {
             event.preventDefault();

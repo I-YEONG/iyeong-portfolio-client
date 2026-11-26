@@ -13,7 +13,7 @@ export const RootLayout = () => {
         contentRef.current?.scrollTo(0, 0);
     }, [pathname]);
     return (<div className={styles.backdrop}>
-      <main className={styles.frame} ref={contentRef}>
+      <main className={styles.frame} ref={contentRef} data-moyang-frame>
         <Outlet />
       </main>
     </div>);
