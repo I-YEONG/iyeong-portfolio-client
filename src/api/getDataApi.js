@@ -6,7 +6,7 @@ import { portfolioApi } from "@/api";
  * @returns JSON 데이터
  */
 export const getDataApi = async (project, path) => {
-  const { data } = await portfolioApi.get(`/api/projects/${project}/mocks?path=${path}`);
+  const { data } = await portfolioApi.get(`/api/projects/${project}/mocks`, { params: { path } });
   console.log("getDataApi", data);
 
   if (!data || !data.data || !data.success) {

@@ -1,0 +1,39 @@
+.messageRow {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.reportable > div {
+  max-width: calc(100% - 64px);
+}
+
+.reportButton {
+  flex: none;
+  min-width: 64px;
+  min-height: 44px;
+  padding: 0 6px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .75);
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 200ms ease;
+}
+
+.reportButton:focus-visible {
+  outline: 2px solid white;
+  outline-offset: -2px;
+}
+
+@media (hover: hover) {
+  .reportButton { opacity: 0; pointer-events: none; }
+  .messageRow:hover .reportButton,
+  .messageRow:focus-within .reportButton { opacity: 1; pointer-events: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reportButton { transition: none; }
+}

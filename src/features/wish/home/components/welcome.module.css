@@ -1,0 +1,171 @@
+.dialog {
+  --welcome-accent: #2d7dc8;
+
+  position: fixed;
+  inset: 0;
+  width: min(100%, 480px);
+  max-width: 100%;
+  height: 100cqh;
+  max-height: 100cqh;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  border: 0;
+  background: transparent;
+  color: #2a315b;
+  font-family: var(--font-display);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 10%);
+  backdrop-filter: blur(5px);
+}
+
+.paid {
+  --welcome-accent: #5e4fff;
+}
+
+.scene {
+  width: min(100%, 393px);
+  margin: 0 auto;
+  padding-top: max(16px, calc((100cqh - 852px) / 2 + 179.2px));
+  padding-bottom: max(32px, env(safe-area-inset-bottom));
+  container-type: inline-size;
+}
+
+.letter {
+  position: relative;
+  min-height: 433.033px;
+  padding: 46.06cqw 8.65% 42px 33.08%;
+}
+
+.envelope {
+  position: absolute;
+  top: 5px;
+  left: -5.79%;
+  width: 110.186%;
+  max-width: none;
+  height: 100%;
+  pointer-events: none;
+  transform: rotate(-1.347deg);
+  /* 원본 PNG의 투명 실루엣에만 Figma의 파란 광채를 적용한다. */
+  filter: drop-shadow(0 0 13.1px #0088ff);
+}
+
+.logo {
+  position: absolute;
+  top: 21.45cqw;
+  left: 50.76%;
+  width: 31.05%;
+  height: 22.14cqw;
+  transform: rotate(4deg);
+  /* 글로우는 SVG 필터에서 뺐다. 내부 필터는 비트맵으로 구워져 iOS에서 깨진다. */
+  filter: drop-shadow(0 0 1.018cqw rgb(25 93 204));
+}
+
+.copy {
+  position: relative;
+  top: 4px;
+  left: 5px;
+  transform: rotate(4deg);
+  transform-origin: center top;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.salutation {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.salutation:focus {
+  outline: none;
+}
+
+.accent {
+  color: var(--welcome-accent);
+}
+
+.introduction,
+.message {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.introduction {
+  margin: 21px 0 0;
+}
+
+.introduction strong {
+  font-weight: 600;
+}
+
+.message {
+  margin: 13px 0 0;
+}
+
+.wish {
+  margin: 18px 0 0;
+  color: var(--welcome-accent);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.paid .wish {
+  background: linear-gradient(90deg, #0088ff, #5e4fff);
+  background-clip: text;
+  color: transparent;
+}
+
+.starTop,
+.starBottom {
+  position: absolute;
+  pointer-events: none;
+}
+
+.starTop {
+  top: 11.8cqw;
+  right: -3.6%;
+  width: 17.8%;
+  height: 17.3cqw;
+  transform: rotate(-12.58deg);
+}
+
+.starBottom {
+  bottom: 39px;
+  left: 18.57%;
+  width: 20.3%;
+  height: 19.6cqw;
+  transform: rotate(-15deg);
+}
+
+.enter {
+  position: relative;
+  display: block;
+  width: 203px;
+  min-height: 47px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 56px;
+  background: #2d7dc8;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  cursor: pointer;
+}
+
+.paid .enter {
+  background: linear-gradient(90deg, #465fff, #2d7dc8);
+}
+
+.enter:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 4px;
+}

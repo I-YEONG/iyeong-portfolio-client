@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<circle cx="16" cy="16" r="16" fill="#2D7DC8"/>
+<g transform="translate(5.25 6.25)">
+<g id="Group">
+<path id="Vector" d="M0.75 0.75H20.75V4.75L20.051 5.17C19.507 5.49638 18.8846 5.66878 18.2502 5.66878C17.6159 5.66878 16.9935 5.49638 16.4495 5.17L15.75 4.75L15.051 5.17C14.507 5.49638 13.8846 5.66878 13.2502 5.66878C12.6159 5.66878 11.9935 5.49638 11.4495 5.17L10.75 4.75L10.051 5.17C9.50704 5.49638 8.88461 5.66878 8.25025 5.66878C7.61589 5.66878 6.99346 5.49638 6.4495 5.17L5.75 4.75L5.0505 5.17C4.5066 5.49628 3.88426 5.66863 3.25 5.66863C2.61574 5.66863 1.9934 5.49628 1.4495 5.17L0.75 4.75V0.75Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M3.25 6.24999V10.75M18.25 6.24999V10.75M1.75 10.75H19.75V19.75H1.75V10.75Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

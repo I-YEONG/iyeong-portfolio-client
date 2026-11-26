@@ -652,6 +652,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/hahmlet@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "@fontsource-variable/hahmlet@npm:5.3.0"
+  checksum: 10c0/f16b814e67f451f68f25fcd817f3e61850518ee0ced95ded406729524999f745bc8a3301076c8979cec333e88aec956b60e2e8b5bf25bd8d85cb9413f1ace80c
+  languageName: node
+  linkType: hard
+
 "@fortawesome/fontawesome-common-types@npm:7.3.0":
   version: 7.3.0
   resolution: "@fortawesome/fontawesome-common-types@npm:7.3.0"
@@ -1880,6 +1887,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tabler/icons-react@npm:^3.46.0":
+  version: 3.53.0
+  resolution: "@tabler/icons-react@npm:3.53.0"
+  dependencies:
+    "@tabler/icons": "npm:3.53.0"
+  peerDependencies:
+    react: ">= 16"
+  checksum: 10c0/c0779816dfc5a819249d4f42295b5832f34a525cdbe625aae5c5387ffa6b1d9f39a77bdf0efa1edcc0af9fbec5d11d33d3272b9ddb0adf5a8a5d5e283887a357
+  languageName: node
+  linkType: hard
+
+"@tabler/icons@npm:3.53.0":
+  version: 3.53.0
+  resolution: "@tabler/icons@npm:3.53.0"
+  checksum: 10c0/8caf11a62354a6ba39ad2fd2262f9ddce70e4b7a82d7aaf55620020ce83c2a3a952ed604d8bdca16064982268376fc70f839444d65563320e4bdec33dcec9247
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/node@npm:4.3.2":
   version: 4.3.2
   resolution: "@tailwindcss/node@npm:4.3.2"
@@ -2434,6 +2459,7 @@ __metadata:
     "@emotion/react": "npm:^11.14.0"
     "@emotion/styled": "npm:^11.14.1"
     "@eslint/js": "npm:^9.39.4"
+    "@fontsource-variable/hahmlet": "npm:^5.3.0"
     "@fortawesome/fontawesome-free": "npm:^7.3.1"
     "@fortawesome/fontawesome-svg-core": "npm:^7.2.0"
     "@fortawesome/free-brands-svg-icons": "npm:^7.2.0"
@@ -2449,6 +2475,7 @@ __metadata:
     "@radix-ui/react-slot": "npm:^1.3.0"
     "@radix-ui/react-tabs": "npm:^1.1.17"
     "@supabase/supabase-js": "npm:^2.112.3"
+    "@tabler/icons-react": "npm:^3.46.0"
     "@tailwindcss/postcss": "npm:^4.3.1"
     "@tailwindcss/vite": "npm:^4.3.1"
     "@tanstack/react-query": "npm:^5.95.2"
@@ -2473,6 +2500,8 @@ __metadata:
     lucide: "npm:^1.23.0"
     lucide-react: "npm:^1.23.0"
     postcss: "npm:^8.5.15"
+    profanity-guard: "npm:1.1.17"
+    qrcode.react: "npm:4.2.0"
     re-resizable: "npm:^6.11.2"
     react: "npm:^19.2.4"
     react-apexcharts: "npm:^2.1.1"
@@ -2495,6 +2524,7 @@ __metadata:
     use-count-up: "npm:^3.0.1"
     vite: "npm:^8.0.1"
     vite-plugin-svgr: "npm:^5.2.0"
+    zustand: "npm:^5.0.15"
   languageName: unknown
   linkType: soft
 
@@ -3963,6 +3993,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"profanity-guard@npm:1.1.17":
+  version: 1.1.17
+  resolution: "profanity-guard@npm:1.1.17"
+  checksum: 10c0/b347c13b4f9ef8ccfa59de61e3916d15d34c8b7a083a888762020628f728164399a1b6134842d866d4bd5fec2148256c1a1f75a2fd2f1bcdba370e96ac6aa58f
+  languageName: node
+  linkType: hard
+
 "prop-types@npm:^15, prop-types@npm:^15.6.1, prop-types@npm:^15.6.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
@@ -3985,6 +4022,15 @@ __metadata:
   version: 2.3.1
   resolution: "punycode@npm:2.3.1"
   checksum: 10c0/14f76a8206bc3464f794fb2e3d3cc665ae416c01893ad7a02b23766eb07159144ee612ad67af5e84fa4479ccfe67678c4feb126b0485651b302babf66f04f9e9
+  languageName: node
+  linkType: hard
+
+"qrcode.react@npm:4.2.0":
+  version: 4.2.0
+  resolution: "qrcode.react@npm:4.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/68c691d130e5fda2f57cee505ed7aea840e7d02033100687b764601f9595e1116e34c13876628a93e1a5c2b85e4efc27d30b2fda72e2050c02f3e1c4e998d248
   languageName: node
   linkType: hard
 
@@ -4865,5 +4911,26 @@ __metadata:
   version: 4.4.3
   resolution: "zod@npm:4.4.3"
   checksum: 10c0/7ea31b558e88f9faf44f31dd185e2e1cbf51fed3081787fb96cc2534749b50c0acfc6da7f0922a7353ed092dd358c7d50c28ea96c94d04af64191bd33152eca3
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^5.0.15":
+  version: 5.1.0
+  resolution: "zustand@npm:5.1.0"
+  peerDependencies:
+    "@types/react": ">=18.0.0"
+    immer: ">=9.0.6"
+    react: ">=18.0.0"
+    use-sync-external-store: ">=1.2.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    immer:
+      optional: true
+    react:
+      optional: true
+    use-sync-external-store:
+      optional: true
+  checksum: 10c0/cde7f90e7eb1b8340046aafae12e73b027cb6ef05bdc7e5bc124c6928af50eacbbdaf09ad3c50123de309d4edadbb57dade5b979c089e5a9910ccaecb78405b0
   languageName: node
   linkType: hard
