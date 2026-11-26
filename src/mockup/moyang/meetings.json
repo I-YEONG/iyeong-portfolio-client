@@ -1,0 +1,49 @@
+[
+  {
+    "id": "m01",
+    "title": "진로 앞에서 잠시 쉬어가기",
+    "description": "요즘 진로에 대한 마음을 그림으로 표현하고 편하게 나눠요.",
+    "concern": "STUDY_CAREER",
+    "kind": "scheduled",
+    "startAt": 1796036400000,
+    "participants": 2,
+    "capacity": 4,
+    "status": "waiting",
+    "hostUserId": "u01",
+    "participantUserIds": [
+      "u01",
+      "u03"
+    ]
+  },
+  {
+    "id": "m02",
+    "title": "관계 속 편안한 거리",
+    "description": "사람들과 지내며 느낀 마음을 각자의 속도로 이야기해요.",
+    "concern": "RELATION_FAMILY",
+    "kind": "live",
+    "participants": 2,
+    "capacity": 4,
+    "status": "in-progress",
+    "hostUserId": "u02",
+    "participantUserIds": [
+      "u02",
+      "u06"
+    ]
+  },
+  {
+    "id": "m03",
+    "title": "일상에 작은 쉼표",
+    "description": "바쁜 일상에서 나에게 필요한 쉼을 그려봐요.",
+    "concern": "DAILY_FUTURE",
+    "kind": "scheduled",
+    "startAt": 1796121000000,
+    "participants": 2,
+    "capacity": 6,
+    "status": "waiting",
+    "hostUserId": "u04",
+    "participantUserIds": [
+      "u04",
+      "u05"
+    ]
+  }
+]

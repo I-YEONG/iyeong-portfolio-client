@@ -65,6 +65,7 @@ import { FixMobile } from "@/components";
 import { BarumMobileFrame } from "@/layouts";
 import UnivNoticeTermsPage from "../univNotice/UnivNoticeTermsPage";
 import UnivNoticeKakaoPage from "../univNotice/UnivNoticeKakaoPage";
+import MoyangRoutes from "@/pages/moyang/MoyangRoutes";
 
 const PortfolioProject = () => {
   // 이제 restPath는 내부 Routes가 알아서 처리하므로 projectName만 가져옵니다.
@@ -146,6 +147,7 @@ const PortfolioProject = () => {
 
         {/* 시뮬레이션 박스 (레이아웃 역할) */}
         <ProjectView isPc={isPc}>
+          {projectName === "moyang" && <MoyangRoutes isPc={isPc} />}
           {/* 커리어하이 프로젝트 라우터 */}
           {projectName === "careerhi" && (
             <div className="careerhi">

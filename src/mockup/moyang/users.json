@@ -1,0 +1,152 @@
+[
+  {
+    "id": "u01",
+    "nickname": "구름양",
+    "onboarding": {
+      "birthYear": 2002,
+      "gender": "FEMALE",
+      "artExperience": "LITTLE",
+      "themeCode": "STUDY_CAREER",
+      "themeText": null,
+      "lifeStatus": "STUDENT",
+      "lifeStatusText": null,
+      "emotions": [
+        "ANXIOUS",
+        "STUCK"
+      ],
+      "emotionText": null,
+      "extraStory": "졸업을 앞두고 진로를 정하지 못해 마음이 조급해요."
+    }
+  },
+  {
+    "id": "u02",
+    "nickname": "숲길양",
+    "onboarding": {
+      "birthYear": 1995,
+      "gender": "MALE",
+      "artExperience": "OCCASIONAL",
+      "themeCode": "RELATION_FAMILY",
+      "themeText": null,
+      "lifeStatus": "WORKER",
+      "lifeStatusText": null,
+      "emotions": [
+        "LONELY",
+        "COMPLEX"
+      ],
+      "emotionText": null,
+      "extraStory": "회사와 집에서 제 마음을 편하게 말하기가 어려워요."
+    }
+  },
+  {
+    "id": "u03",
+    "nickname": "노을양",
+    "onboarding": {
+      "birthYear": 1998,
+      "gender": "FEMALE",
+      "artExperience": "NONE",
+      "themeCode": "MONEY",
+      "themeText": null,
+      "lifeStatus": "JOB_SEEKER",
+      "lifeStatusText": null,
+      "emotions": [
+        "ANXIOUS",
+        "TIRED"
+      ],
+      "emotionText": null,
+      "extraStory": "구직 기간이 길어지면서 생활비가 걱정돼요."
+    }
+  },
+  {
+    "id": "u04",
+    "nickname": "파도양",
+    "onboarding": {
+      "birthYear": 1991,
+      "gender": "OTHER",
+      "artExperience": "REGULAR",
+      "themeCode": "DAILY_FUTURE",
+      "themeText": null,
+      "lifeStatus": "FREELANCER",
+      "lifeStatusText": null,
+      "emotions": [
+        "TIRED",
+        "COMPLEX"
+      ],
+      "emotionText": null,
+      "extraStory": "일정이 들쑥날쑥해 쉬는 시간을 정하기가 어려워요."
+    }
+  },
+  {
+    "id": "u05",
+    "nickname": "햇살양",
+    "onboarding": {
+      "birthYear": 1987,
+      "gender": "FEMALE",
+      "artExperience": "LITTLE",
+      "themeCode": "SELF_HEALTH",
+      "themeText": null,
+      "lifeStatus": "CAREGIVER",
+      "lifeStatusText": null,
+      "emotions": [
+        "TIRED"
+      ],
+      "emotionText": null,
+      "extraStory": "가족을 돌보면서 제 컨디션도 챙기고 싶어요."
+    }
+  },
+  {
+    "id": "u06",
+    "nickname": "산책양",
+    "onboarding": {
+      "birthYear": 2000,
+      "gender": "MALE",
+      "artExperience": "OCCASIONAL",
+      "themeCode": "LOVE",
+      "themeText": null,
+      "lifeStatus": "GRAD_STUDENT",
+      "lifeStatusText": null,
+      "emotions": [
+        "LONELY",
+        "STUCK"
+      ],
+      "emotionText": null,
+      "extraStory": "헤어진 뒤 달라진 일상에 천천히 적응하고 있어요."
+    }
+  },
+  {
+    "id": "u07",
+    "nickname": "물결양",
+    "onboarding": {
+      "birthYear": 1993,
+      "gender": null,
+      "artExperience": "NONE",
+      "themeCode": "UNSURE",
+      "themeText": null,
+      "lifeStatus": "ON_LEAVE",
+      "lifeStatusText": null,
+      "emotions": [
+        "UNSURE"
+      ],
+      "emotionText": null,
+      "extraStory": null
+    }
+  },
+  {
+    "id": "u08",
+    "nickname": "다람양",
+    "onboarding": {
+      "birthYear": 1989,
+      "gender": "OTHER",
+      "artExperience": "PRO",
+      "themeCode": "DIRECT",
+      "themeText": "이사 후 새로운 환경 적응",
+      "lifeStatus": "ETC",
+      "lifeStatusText": "지역 문화센터 강사",
+      "emotions": [
+        "DIRECT",
+        "ANXIOUS"
+      ],
+      "emotionText": "낯설고 기대되는 마음",
+      "extraStory": "새 동네에 이사해 새로운 사람들과 잘 지낼 수 있을지 궁금해요."
+    }
+  }
+]

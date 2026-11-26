@@ -15,7 +15,9 @@ export const imageModalCss = css({
 
   "& .dialog": {
     position: "relative",
-    width: "min(1200px, 92vw)",
+    width: "fit-content",
+    maxWidth: "min(1200px, 92vw)",
+    boxSizing: "border-box",
     maxHeight: "88vh",
     borderRadius: "16px",
     overflow: "hidden",
@@ -29,7 +31,7 @@ export const imageModalCss = css({
   },
 
   "& .image-wrap": {
-    width: "100%",
+    width: "auto",
     maxHeight: "70vh",
     overflow: "auto",
     flex: "1 1 auto",
@@ -39,18 +41,20 @@ export const imageModalCss = css({
   },
 
   "& img": {
-    width: "100%",
+    width: "auto",
     height: "auto",
+    maxHeight: "70vh",
     objectFit: "contain",
     display: "block",
     backgroundColor: theme.colors.darkBG,
     transition: "width 0.25s ease",
     cursor: "zoom-in",
-    maxWidth: "100%",
+    maxWidth: "min(1160px, calc(92vw - 40px))",
   },
 
   "& img.is-zoomed": {
     width: "160%",
+    maxHeight: "none",
     cursor: "zoom-out",
     maxWidth: "none",
   },
