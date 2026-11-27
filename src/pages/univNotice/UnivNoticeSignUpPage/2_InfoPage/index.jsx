@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import "./style.css";
-import { useEffect } from "react";
+
 
 import { useNavigate } from "react-router-dom";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
@@ -12,7 +12,9 @@ const UnivNoticeInfoPage = () => {
   const nav = useNavigate();
   const { isPc } = useDeviceMode();
 
-  const { data: univList, isLoading: isUnivListLoading, isError: isUnivListError } = useGetUnivNoticeQuery("/school");
+  const {
+  data: univList
+} = useGetUnivNoticeQuery("/school");
 
   // 학번
   // const [student_id, onChangeStudent_id, setStudent_id] = useInput("");
@@ -24,10 +26,9 @@ const UnivNoticeInfoPage = () => {
   const [selectedDepartment, setSelectedDepartment] = useState(null);
 
   const {
-    data: departmentList,
-    isLoading: isDepartmentListLoading,
-    isError: isDepartmentListError,
-  } = useGetUnivNoticeQuery(`/department/${selectedUniv}`, {
+  data: departmentList,
+  isLoading: isDepartmentListLoading
+} = useGetUnivNoticeQuery(`/department/${selectedUniv}`, {
     enabled: !!selectedUniv,
   });
 

@@ -19,7 +19,6 @@ const UnivNoticeNoticeListLiCP = ({ data, url }) => {
   if (data.published_at) {
     const now = new Date();
     const pubDate = new Date(data.published_at);
-    const diff = now - pubDate;
     // 오늘 또는 어제
     if (pubDate.getDate() === now.getDate() && pubDate.getMonth() === now.getMonth() && pubDate.getFullYear() === now.getFullYear()) {
       showNew = true;

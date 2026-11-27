@@ -1,7 +1,6 @@
-import { forwardRef } from "react";
 import { FoodCard, FoodCardHeader, FoodCardTitle, FoodCardContent, FoodLabel, FoodInput, FoodCardDescription } from "@/features/food/components";
 
-const FoodReporterInfoCP = forwardRef(({ formData, handleInputChange, errors }, refs) => {
+const FoodReporterInfoCP = ({ formData, handleInputChange, errors }) => {
   /** 전화번호는 숫자만 입력되도록 처리 */
   const handlePhoneInput = (e) => {
     const value = e.target.value.replace(/[^0-9]/g, "");
@@ -60,6 +59,6 @@ const FoodReporterInfoCP = forwardRef(({ formData, handleInputChange, errors }, 
       </FoodCardContent>
     </FoodCard>
   );
-});
+};
 
 export default FoodReporterInfoCP;

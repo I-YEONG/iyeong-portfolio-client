@@ -51,7 +51,10 @@ const formatDate = (value) => {
 
 const AboutExp = () => {
   const { isPc } = useMedia();
-  const { data: exp, isLoading: isExpLoading, isError: isExpError } = useExpQuery();
+  const {
+  data: exp,
+  isLoading: isExpLoading
+} = useExpQuery();
 
   const sortedExp = useMemo(() => {
     if (!Array.isArray(exp)) {

@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+
 import "./style.css";
 
 import UnivNoticeToggleCP from "../../_common/UnivNoticeToggleCP";

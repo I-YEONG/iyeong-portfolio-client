@@ -15,72 +15,6 @@ const SEOUL_STATION = {
   lng: 126.972317,
 };
 
-// 주소 -> 좌표 변환 (Promise)
-const addressToCoords = (address) => {
-  return new Promise((resolve, reject) => {
-    if (!window.kakao || !window.kakao.maps || !window.kakao.maps.services) return reject("Kakao map not loaded");
-    const geocoder = new window.kakao.maps.services.Geocoder();
-    geocoder.addressSearch(address, function (result, status) {
-      if (status === window.kakao.maps.services.Status.OK && result.length > 0) {
-        resolve({ lat: parseFloat(result[0].y), lng: parseFloat(result[0].x) });
-      } else {
-        reject("주소 변환 실패: " + address);
-      }
-    });
-  });
-};
-
-// 좌표 -> 주소 변환 (Promise)
-const coordsToAddress = (lat, lng) => {
-  return new Promise((resolve, reject) => {
-    if (!window.kakao || !window.kakao.maps || !window.kakao.maps.services) return reject("Kakao map not loaded");
-    const geocoder = new window.kakao.maps.services.Geocoder();
-    geocoder.coord2Address(lng, lat, function (result, status) {
-      if (status === window.kakao.maps.services.Status.OK && result.length > 0) {
-        resolve(result[0].address.address_name);
-      } else {
-        reject("좌표 변환 실패: " + lat + "," + lng);
-      }
-    });
-  });
-};
-
-// schedule 배열을 주소->좌표 변환하여 lat/lng 필드 추가 (비동기)
-const enrichScheduleWithCoords = async (scheduleArr) => {
-  const newArr = await Promise.all(
-    scheduleArr.map(async (item) => {
-      if (item.mapAddress && (!item.lat || !item.lng)) {
-        try {
-          const coords = await addressToCoords(item.mapAddress);
-          return { ...item, lat: coords.lat, lng: coords.lng };
-        } catch {
-          return item;
-        }
-      }
-      return item;
-    }),
-  );
-  return newArr;
-};
-
-// schedule 배열을 좌표->주소 변환하여 mapAddress 필드 추가 (비동기)
-const enrichScheduleWithAddress = async (scheduleArr) => {
-  const newArr = await Promise.all(
-    scheduleArr.map(async (item) => {
-      if (item.lat && item.lng && !item.mapAddress) {
-        try {
-          const address = await coordsToAddress(item.lat, item.lng);
-          return { ...item, mapAddress: address };
-        } catch {
-          return item;
-        }
-      }
-      return item;
-    }),
-  );
-  return newArr;
-};
-
 const FoodMapPage = () => {
   const { isPc } = useDeviceMode(); // isPc를 삼항연산자 및 분기 처리에 사용
   // ✅ [수정] 기본 중심 좌표를 서울역 좌표로 변경
@@ -91,12 +25,14 @@ const FoodMapPage = () => {
   const [ftData, setFtData] = useState();
   const mapRef = useRef(null);
   const mapTypeControlRef = useRef(null);
-  const [filter, onChangeFilter, setFilter] = useInput("");
+  const [filter, onChangeFilter] = useInput("");
   const [details, setDetails] = useState([]);
   const [onDetails, setOnDetails] = useState(false);
 
   // ✅ [핵심] 백엔드에서 20개 더미데이터(data)를 받아옴
-  const { data, isLoading, isError } = useGetFoodQuery(`/map`, {
+  const {
+  data
+} = useGetFoodQuery(`/map`, {
     // enabled: !!selectedUniv,
   });
 
@@ -448,6 +384,7 @@ const FoodMapPage = () => {
           onClickRelay={onClickRelay}
           onDeleteDetails={onDeleteDetails}
           onSetDetails={onSetDetails}
+          onReviewAdded={(review) => setDetails((prev) => ({ ...prev, review: [review, ...(prev.review || [])] }))}
           details={details}
           onDetails={onDetails}
           onDeleteLike={onDeleteLike}
@@ -466,6 +403,7 @@ const FoodMapPage = () => {
           onClickRelay={onClickRelay}
           onDeleteDetails={onDeleteDetails}
           onSetDetails={onSetDetails}
+          onReviewAdded={(review) => setDetails((prev) => ({ ...prev, review: [review, ...(prev.review || [])] }))}
           details={details}
           onDetails={onDetails}
           onDeleteLike={onDeleteLike}

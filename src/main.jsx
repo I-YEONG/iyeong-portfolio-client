@@ -49,7 +49,7 @@ export function LenisProvider({ children }) {
     try {
       // eslint-disable-next-line no-undef
       window.lenis = lenis;
-    } catch (e) {
+    } catch  {
       // ignore
     }
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./styles/mobileSearchModal.js";
@@ -10,35 +10,13 @@ import { domoMobileSearchStyle } from "./styles/mobileSearchModal.js";
 
 const DomoMobileSearchModal = ({ isOpen, onClose, onChangeDisplayValue, displayValue }) => {
   const [searchValue, setSearchValue] = useState(displayValue || "");
-  const [filteredRegions, setFilteredRegions] = useState([]);
   const { isPc } = useDeviceMode();
 
-  // 검색창이 열릴 때마다 displayValue로 초기화
-  useEffect(() => {
-    if (isOpen) {
-      setSearchValue(displayValue || "");
-      // 모든 지역 데이터를 평면화하여 초기 목록 생성
-      const allRegions = regions.flatMap((province) => province.subregions.map((region) => `${province.name} ${region}`));
-      setFilteredRegions(allRegions);
-    }
-  }, [isOpen, displayValue]);
-
-  // 검색어에 따른 지역 필터링
-  useEffect(() => {
-    if (searchValue.trim() === "") {
-      // 검색어가 없으면 모든 지역 표시
-      const allRegions = regions.flatMap((province) => province.subregions.map((region) => `${province.name} ${region}`));
-      setFilteredRegions(allRegions);
-    } else {
-      // 검색어가 있으면 필터링
-      const filtered = regions.flatMap((province) =>
-        province.subregions
-          .filter((region) => province.name.includes(searchValue) || region.includes(searchValue))
-          .map((region) => `${province.name} ${region}`),
-      );
-      setFilteredRegions(filtered);
-    }
-  }, [searchValue]);
+  const filteredRegions = regions.flatMap((province) =>
+    province.subregions
+      .filter((region) => !searchValue.trim() || province.name.includes(searchValue) || region.includes(searchValue))
+      .map((region) => `${province.name} ${region}`),
+  );
 
   // 검색 실행 함수
   const handleSearch = () => {

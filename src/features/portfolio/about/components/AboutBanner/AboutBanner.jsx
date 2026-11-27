@@ -1,12 +1,9 @@
 // 스타일
 import { Button } from "@/components";
 import { aboutBannerCss } from "./AboutBanner.styles";
-import { useMedia } from "@/hooks/useMedia";
 import { theme } from "@/styles/theme";
 
 const AboutBanner = () => {
-  const { isPc } = useMedia();
-
   const email = import.meta.env.VITE_EMAIL;
   const githubUrl = import.meta.env.VITE_GITHUB_URL;
 

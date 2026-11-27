@@ -24,8 +24,8 @@ const UnivNoticeUserDeletePage = () => {
     }
   }, [isAuthLoading, isLogin, login]);
 
-  const [student_id, onChangeStudent_id, setStudent_id] = useInput("");
-  const [phone, onChangePhone, setPhone] = useInput("");
+  const [student_id, onChangeStudent_id] = useInput("");
+  const [phone, onChangePhone] = useInput("");
   const [certification_code, onChangeCertification_code, setCertification_code] = useInput("");
 
   const [isCertification, setIsCertification] = useState(false);

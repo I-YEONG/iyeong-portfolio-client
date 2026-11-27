@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-export const foodPcCpButtonStyle = (isPc) =>
+export const foodPcCpButtonStyle = () =>
   css({
     width: "0%",
     height: "100%",

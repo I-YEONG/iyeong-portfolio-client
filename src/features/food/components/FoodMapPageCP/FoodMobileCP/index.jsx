@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faBell as faBellRegular } from "@fortawesome/free-regular-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 import { FoodFTList, FoodPcReviewCP } from "@/features/food/components";
@@ -30,6 +30,7 @@ const FoodMobileCP = ({
   onClickRelay,
   onDeleteDetails,
   onSetDetails,
+  onReviewAdded,
   details,
   onDetails,
   onDeleteLike,
@@ -49,13 +50,15 @@ const FoodMobileCP = ({
   // 0: 기본정보, 1: 메뉴, 2: 영업정보, 3: 리뷰
   const [detailsPage, setDetailsPage] = useState(0);
 
-  useEffect(() => {
-    if (!details) return;
-    else if (details) setDetailsPage(0);
-
-    setOnFTList(false);
-    setIsOnDetails(true);
-  }, [onDetails, details]);
+  const [previousSelection, setPreviousSelection] = useState({ details, onDetails });
+  if (details !== previousSelection.details || onDetails !== previousSelection.onDetails) {
+    setPreviousSelection({ details, onDetails });
+    if (details) {
+      setDetailsPage(0);
+      setOnFTList(false);
+      setIsOnDetails(true);
+    }
+  }
 
   const onFTListTrueHandler = () => {
     setIsOnDetails(false);
@@ -104,7 +107,7 @@ const FoodMobileCP = ({
           <FontAwesomeIcon icon={faBars} />
         </div>
 
-        {onReview && <FoodPcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} />}
+        {onReview && <FoodPcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} onReviewAdded={onReviewAdded} />}
       </section>
 
       {/* 리스트 */}

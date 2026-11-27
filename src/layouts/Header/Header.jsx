@@ -23,7 +23,7 @@ const Header = ({ themeCode = "light" }) => {
   const [scrolled, setScrolled] = useState(() => {
     try {
       return window?.scrollY > 80;
-    } catch (e) {
+    } catch  {
       return false;
     }
   });

@@ -127,7 +127,7 @@ export const foodContactCardStyle = (isPc) =>
     },
   });
 
-export const foodContactInfoItemStyle = (isPc) =>
+export const foodContactInfoItemStyle = () =>
   css({
     display: "flex",
     alignItems: "center",
@@ -151,7 +151,7 @@ export const foodContactInfoItemStyle = (isPc) =>
     },
   });
 
-export const foodQuickLinkSectionStyle = (isPc) =>
+export const foodQuickLinkSectionStyle = () =>
   css({
     display: "flex",
     flexDirection: "column",

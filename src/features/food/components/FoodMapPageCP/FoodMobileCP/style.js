@@ -184,7 +184,7 @@ export const foodMobileCPMainStyle = (isPc, imgUrl) =>
     },
   });
 
-export const foodMobileCPButtonStyle = (isPc) =>
+export const foodMobileCPButtonStyle = () =>
   css({
     width: "100%",
     height: "100%",

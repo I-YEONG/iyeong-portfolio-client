@@ -1,24 +1,13 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import "./style.css";
 
 const UnivNoticeToggleCP = ({ univnoticeTitle = "", value = true, onClickFun }) => {
   const [toggleValue, setToggleValue] = useState(value);
-  const isInitialMount = useRef(true);
-
-  // value prop이 변경될 때 내부 상태 업데이트
-  useEffect(() => {
+  const [previousValue, setPreviousValue] = useState(value);
+  if (value !== previousValue) {
+    setPreviousValue(value);
     setToggleValue(value);
-  }, [value]);
-
-  useEffect(() => {
-    // 초기 마운트 시에는 실행하지 않음
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
-
-    onClickFun(toggleValue);
-  }, [toggleValue]); // onClickFun 의존성 제거
+  }
 
   return (
     <div className="toggleCP">
@@ -26,7 +15,9 @@ const UnivNoticeToggleCP = ({ univnoticeTitle = "", value = true, onClickFun }) 
       <div>
         <div
           onClick={() => {
-            setToggleValue((prev) => !prev);
+            const nextValue = !toggleValue;
+            setToggleValue(nextValue);
+            onClickFun(nextValue);
           }}
           className={`toggleCp-container ${toggleValue ? "active" : ""}`}>
           <div className={`toggleCp-circle`}></div>

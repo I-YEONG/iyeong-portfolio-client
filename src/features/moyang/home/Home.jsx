@@ -30,12 +30,17 @@ const previewMeetings = {
 };
 /** 홈에서 사용하는 각 API를 독립적으로 조회해 부분 실패를 구분한다. */
 const useHomeData = (preview) => {
+    const [now, setNow] = useState(() => Date.now());
+    useEffect(() => {
+        const timer = setInterval(() => setNow(Date.now()), 60_000);
+        return () => clearInterval(timer);
+    }, []);
     const userQuery = useGetMoyangQuery('/api/users/me', { enabled: !preview, retry: false });
     const user = userQuery.isError ? { status: 'error', data: null }
         : userQuery.isPending ? loading() : { status: 'ready', data: userQuery.data };
     const meetingsQuery = useGetMoyangQuery('/api/meetings/me', { enabled: !preview, retry: false });
     const items = meetingsQuery.data?.meetings ?? [];
-    const nextMeeting = items.filter((item) => item.startAt && Date.parse(item.startAt) > Date.now())
+    const nextMeeting = items.filter((item) => item.startAt && Date.parse(item.startAt) > now)
         .sort((a, b) => Date.parse(a.startAt) - Date.parse(b.startAt))[0];
     const meetings = meetingsQuery.isError ? { status: 'error', data: null }
         : meetingsQuery.isPending ? loading()

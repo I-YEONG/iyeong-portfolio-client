@@ -26,7 +26,10 @@ const HomeOverview = () => {
   const { isPc } = useMedia();
   const nav = useNavigate();
 
-  const { data: overview, isLoading: isOverviewLoading, isError: isOverviewError } = useOverviewQuery();
+  const {
+  data: overview,
+  isLoading: isOverviewLoading
+} = useOverviewQuery();
 
   return (
     <FullCenterLayout

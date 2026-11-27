@@ -3,7 +3,7 @@ import { aboutTechnicalItemBoxCss, aboutTechnicalItemCss } from "./AboutTechnica
 import { theme } from "@/styles/theme";
 
 const AboutTechnicalItemBox = ({ data = [], title, color }) => {
-  const [pagination, setPagination] = useState(data.length > 5 ? true : false);
+  const [pagination] = useState(data.length > 5 ? true : false);
 
   console.log(data.length, pagination);
 

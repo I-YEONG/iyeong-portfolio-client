@@ -9,7 +9,10 @@ import { useMedia } from "@/hooks/useMedia";
 const AboutCertifications = () => {
   const { isPc } = useMedia();
 
-  const { data: cert, isLoading: isCertLoading, isError: isCertError } = useCertificationsQuery();
+  const {
+  data: cert,
+  isLoading: isCertLoading
+} = useCertificationsQuery();
 
   // 개발 후 api로 수정
   // const stack = stackMockupData;

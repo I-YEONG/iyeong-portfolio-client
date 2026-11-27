@@ -121,7 +121,6 @@ export const regions = [
 const DomoFilter = ({ display, onChangeDisplayValue, onChangeFilter, onChangeMobileToggle }) => {
   const [regionOpen, setRegionOpen] = useState(false);
   const [selectedProvince, setSelectedProvince] = useState(null);
-  const [displayValue, setDisplayValue] = useState(display);
   const dropdownRef = useRef(null);
   const { isPc } = useDeviceMode();
 
@@ -138,7 +137,6 @@ const DomoFilter = ({ display, onChangeDisplayValue, onChangeFilter, onChangeMob
 
   const handleRegionSelect = (region) => {
     const newValue = `${selectedProvince.name} ${region}`;
-    setDisplayValue(newValue);
     onChangeDisplayValue(newValue);
     setRegionOpen(false);
     setSelectedProvince(null);
@@ -147,13 +145,12 @@ const DomoFilter = ({ display, onChangeDisplayValue, onChangeFilter, onChangeMob
   // 텍스트 직접 입력 시 처리 (실시간 적용 대신 검색 버튼 클릭 시 적용 원하면 제외 가능)
   const handleInputChange = (e) => {
     const value = e.target.value;
-    setDisplayValue(value);
     onChangeDisplayValue(value); // 입력할 때마다 필터링 적용
   };
 
   // 명시적 검색 버튼 클릭
   const handleSearchClick = () => {
-    onChangeDisplayValue(displayValue);
+    onChangeDisplayValue(display);
   };
 
   useEffect(() => {
@@ -169,11 +166,6 @@ const DomoFilter = ({ display, onChangeDisplayValue, onChangeFilter, onChangeMob
     };
   }, [dropdownRef]);
 
-  // props로 넘어온 display 값이 외부에서 바뀌면 동기화
-  useEffect(() => {
-    setDisplayValue(display);
-  }, [display]);
-
   return (
     <div className="filter-container" css={domoFilterStyle(isPc)}>
       <div className="filter-left">
@@ -185,7 +177,7 @@ const DomoFilter = ({ display, onChangeDisplayValue, onChangeFilter, onChangeMob
           <TextField
             placeholder="지역명을 검색하세요"
             className="filter-search-input"
-            value={displayValue}
+            value={display}
             onClick={() => setRegionOpen(true)}
             onChange={handleInputChange} // 직접 타이핑 시 상태 업데이트
             InputProps={{
