@@ -50,10 +50,10 @@ const FoodMobileCP = ({
   // 0: 기본정보, 1: 메뉴, 2: 영업정보, 3: 리뷰
   const [detailsPage, setDetailsPage] = useState(0);
 
-  const [previousSelection, setPreviousSelection] = useState({ details, onDetails });
-  if (details !== previousSelection.details || onDetails !== previousSelection.onDetails) {
-    setPreviousSelection({ details, onDetails });
-    if (details) {
+  const [previousSelection, setPreviousSelection] = useState({ truckId: details?.truckId, onDetails });
+  if (details?.truckId !== previousSelection.truckId || onDetails !== previousSelection.onDetails) {
+    setPreviousSelection({ truckId: details?.truckId, onDetails });
+    if (onDetails) {
       setDetailsPage(0);
       setOnFTList(false);
       setIsOnDetails(true);

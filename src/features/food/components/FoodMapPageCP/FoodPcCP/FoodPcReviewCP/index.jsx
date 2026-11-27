@@ -61,7 +61,7 @@ const FoodPcReviewCP = ({ isLogin, offReviewClick, details, onReviewAdded }) => 
     };
 
     // 2) 상위 상태를 갱신해 새 리뷰를 화면에 반영
-    onReviewAdded(newReview);
+    onReviewAdded(newReview, details.truckId);
 
     // 3) 정상 처리 UI 피드백
     alert("리뷰가 성공적으로 등록되었습니다.");
@@ -70,7 +70,7 @@ const FoodPcReviewCP = ({ isLogin, offReviewClick, details, onReviewAdded }) => 
     if (offReviewClick) {
       offReviewClick(); // 리뷰 창 닫기
     }
-  }, [reviewText, rating, isLogin, onReviewAdded, setReviewText, offReviewClick]);
+  }, [reviewText, rating, isLogin, details.truckId, onReviewAdded, setReviewText, offReviewClick]);
 
   return (
     <div css={foodPcReviewCPMainStyle(isPc)} className="foodFlexCenter">

@@ -28,6 +28,17 @@ const FoodMapPage = () => {
   const [filter, onChangeFilter] = useInput("");
   const [details, setDetails] = useState([]);
   const [onDetails, setOnDetails] = useState(false);
+  const localReviews = useRef(new Map());
+
+  const getReviews = useCallback((truck) => [
+    ...(localReviews.current.get(truck.truckId) || []),
+    ...(truck.review || []),
+  ], []);
+
+  const onReviewAdded = useCallback((review, truckId) => {
+    localReviews.current.set(truckId, [review, ...(localReviews.current.get(truckId) || [])]);
+    setDetails((prev) => prev.truckId === truckId ? { ...prev, review: [review, ...(prev.review || [])] } : prev);
+  }, []);
 
   // ✅ [핵심] 백엔드에서 20개 더미데이터(data)를 받아옴
   const {
@@ -201,7 +212,7 @@ const FoodMapPage = () => {
                   intro: item.intro,
                   schedule: item.schedule,
                   menu: item.menu,
-                  review: item.review,
+                  review: getReviews(item),
                   truckId: item.truckId,
                   like: item.like,
                   imageUrl: item.imageUrl,
@@ -223,7 +234,7 @@ const FoodMapPage = () => {
         });
       });
     },
-    [onChangeMapGPS, isPc],
+    [onChangeMapGPS, isPc, getReviews],
   );
 
   // ✅ [수정] 백엔드 API로부터 받은 'data'를 기반으로 필터링 처리
@@ -358,7 +369,7 @@ const FoodMapPage = () => {
         intro: data.intro,
         schedule: data.schedule,
         menu: data.menu,
-        review: data.review,
+        review: getReviews(data),
         truckId: data.truckId,
         like: data.like,
         imageUrl: data.imageUrl,
@@ -369,7 +380,7 @@ const FoodMapPage = () => {
         onChangeMapGPS({ lat: data.coords.lat, lng: data.coords.lng });
       }
     },
-    [onChangeMapGPS, isPc],
+    [onChangeMapGPS, isPc, getReviews],
   );
 
   return (
@@ -384,7 +395,7 @@ const FoodMapPage = () => {
           onClickRelay={onClickRelay}
           onDeleteDetails={onDeleteDetails}
           onSetDetails={onSetDetails}
-          onReviewAdded={(review) => setDetails((prev) => ({ ...prev, review: [review, ...(prev.review || [])] }))}
+          onReviewAdded={onReviewAdded}
           details={details}
           onDetails={onDetails}
           onDeleteLike={onDeleteLike}
@@ -403,7 +414,7 @@ const FoodMapPage = () => {
           onClickRelay={onClickRelay}
           onDeleteDetails={onDeleteDetails}
           onSetDetails={onSetDetails}
-          onReviewAdded={(review) => setDetails((prev) => ({ ...prev, review: [review, ...(prev.review || [])] }))}
+          onReviewAdded={onReviewAdded}
           details={details}
           onDetails={onDetails}
           onDeleteLike={onDeleteLike}

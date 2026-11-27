@@ -72,11 +72,6 @@ export const projectDetailHeroCss = () =>
           ...theme.fonts.textLg,
         },
 
-        "& .icon": {
-          width: "32px",
-          height: "32px",
-        },
-
         "& .button-box": {
           ...theme.flex.rowStart,
           gap: "12px",
