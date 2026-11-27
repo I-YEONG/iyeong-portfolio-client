@@ -27,11 +27,14 @@ const DomoBenefix = () => {
   const [sortType, setSortType] = useState("benefix");
   const [mobileSearchToggle, setMobileSearchToggle] = useState(false);
 
-  const { data, isLoading, isError } = useGetDomoQuery(`/benefix`, {});
+  const {
+  data,
+  isLoading
+} = useGetDomoQuery(`/benefix`, {});
 
   // 혜택 데이터 가져오기 함수 (append 가능)
   const loadBenefits = useCallback(
-    async (search = "", sort = "benefit", page = 1, append = false) => {
+    async (page = 1, append = false) => {
       if (data && data.data) {
         console.log(data.data);
         const newItems = data.data.items || [];
@@ -46,13 +49,13 @@ const DomoBenefix = () => {
   // 컴포넌트 마운트 시 초기 데이터 로드
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    loadBenefits("", sortType, 1, false);
+    loadBenefits(1, false);
     setMobileApiPage(1);
   }, [loadBenefits, sortType]);
 
   const handlePageClick = (event) => {
     const page = event.selected + 1; // 컴포넌트는 0부터, API는 1부터
-    loadBenefits(displayValue, sortType, page, false);
+    loadBenefits(page, false);
   };
 
   const onChangeDisplayValue = useCallback(
@@ -67,7 +70,7 @@ const DomoBenefix = () => {
   const onChangeFilter = (value) => {
     setSortType(value);
     // 정렬 변경 시 첫 페이지부터 다시 로드
-    loadBenefits(displayValue, value, 1, false);
+    loadBenefits(1, false);
     setMobileApiPage(1);
     setMobileDisplayCount(5);
   };
@@ -90,7 +93,7 @@ const DomoBenefix = () => {
     // 더 불러올 페이지가 있으면 다음 페이지 로드 후 증가
     if (mobileApiPage < totalPages && !isLoading) {
       const nextPage = mobileApiPage + 1;
-      await loadBenefits(displayValue, sortType, nextPage, true);
+      await loadBenefits(nextPage, true);
       setMobileApiPage(nextPage);
       setMobileDisplayCount((prev) => prev + 5);
       return;

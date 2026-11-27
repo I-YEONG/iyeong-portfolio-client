@@ -1,0 +1,58 @@
+{
+  "getMe": {
+    "method": "GET",
+    "path": "/api/users/me",
+    "response": {
+      "success": true,
+      "data": {
+        "userId": 1,
+        "nickname": "구름양",
+        "onboardingCompleted": true,
+        "sheepColor": "PURPLE",
+        "onboarding": {
+          "birthYear": 2002,
+          "gender": "FEMALE",
+          "artExperience": "LITTLE",
+          "themeCode": "STUDY_CAREER",
+          "themeText": null,
+          "lifeStatus": "STUDENT",
+          "lifeStatusText": null,
+          "emotions": [
+            "ANXIOUS",
+            "STUCK"
+          ],
+          "emotionText": null,
+          "extraStory": "졸업을 앞두고 진로를 정하지 못해 마음이 조급해요."
+        }
+      }
+    }
+  },
+  "updateNickname": {
+    "method": "PATCH",
+    "path": "/api/users/me/nickname",
+    "request": {
+      "nickname": "하늘양"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "userId": 1,
+        "nickname": "하늘양"
+      }
+    }
+  },
+  "updateSheepColor": {
+    "method": "PATCH",
+    "path": "/api/users/me/sheep-color",
+    "request": {
+      "sheepColor": "BLUE"
+    },
+    "response": {
+      "success": true,
+      "data": {
+        "userId": 1,
+        "sheepColor": "BLUE"
+      }
+    }
+  }
+}

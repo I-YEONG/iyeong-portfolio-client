@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from "react";
 import { foodMyPageMainStyle } from "./style";
-import axios from "axios";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faStar, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -23,24 +23,10 @@ const FoodMyPage = () => {
   // useDeviceMode를 사용해 isPc 변수 추출
   const { isPc } = useDeviceMode();
 
-  // 찜/알림, 내 트럭 상태 추가
-  const [likeList, setLikeList] = useState([]);
-  const [smsList, setSmsList] = useState([]);
-
   const { data: userData } = useGetFoodQuery(`/me`, {
     // enabled:!! selectedUniv,
   });
 
-  // 이 데이터를 받아서 아래 두 state로 나누면 될 듯
-  // setLikeList
-  // setSmsList
-  const {
-    data: smsLikeData,
-    isLoading: smsLikeDataLoading,
-    isError: smsLikeDataError,
-  } = useGetFoodQuery(`/me/mine`, {
-    // enabled:!! selectedUniv,
-  });
   const { data: myTruckList } = useGetFoodQuery(`/me/ft`, {
     // enabled:!! selectedUniv,
   });
@@ -51,13 +37,6 @@ const FoodMyPage = () => {
     alert("로그인이 필요합니다.\n 로그인으로 전환됩니다.");
     login();
   }, [isLogin, login]);
-
-  useEffect(() => {
-    if (smsLikeDataLoading) return;
-
-    setLikeList(smsLikeData.likes || []);
-    setSmsList(smsLikeData.sms || []);
-  }, [smsLikeData, smsLikeDataLoading, smsLikeDataError]);
 
   useEffect(() => {
     localStorage.setItem("mypage-paging", paging);

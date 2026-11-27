@@ -1,0 +1,89 @@
+[
+  {
+    "version": 1,
+    "meetingId": "m02",
+    "topic": "관계 속 편안한 거리",
+    "participants": [
+      {
+        "id": "u02",
+        "nickname": "숲길양",
+        "color": "purple",
+        "enteredAt": 1795687200000
+      },
+      {
+        "id": "u06",
+        "nickname": "산책양",
+        "color": "white",
+        "enteredAt": 1795687260000
+      }
+    ],
+    "moderatorId": "u02",
+    "phase": "SHARING",
+    "endedAt": null,
+    "endAgreedIds": [],
+    "messages": [
+      {
+        "messageId": 1,
+        "createdAt": 1795687320000,
+        "type": "SYSTEM",
+        "event": "STARTED",
+        "phase": "INTRO"
+      },
+      {
+        "messageId": 2,
+        "createdAt": 1795687380000,
+        "type": "TEXT",
+        "requestId": "req-01",
+        "participantId": "u02",
+        "content": "안녕하세요. 편하게 각자의 이야기를 나눠봐요."
+      },
+      {
+        "messageId": 3,
+        "createdAt": 1795687440000,
+        "type": "TEXT",
+        "requestId": "req-02",
+        "participantId": "u06",
+        "content": "안녕하세요. 저는 요즘 혼자 있는 시간이 조금 낯설어요."
+      },
+      {
+        "messageId": 4,
+        "createdAt": 1795687500000,
+        "type": "SYSTEM",
+        "event": "PHASE_CHANGED",
+        "phase": "DRAWING"
+      },
+      {
+        "messageId": 5,
+        "createdAt": 1795688100000,
+        "type": "SYSTEM",
+        "event": "PHASE_CHANGED",
+        "phase": "SHARING"
+      },
+      {
+        "messageId": 6,
+        "createdAt": 1795688160000,
+        "type": "DRAWING",
+        "requestId": "req-03",
+        "participantId": "u02",
+        "drawing": {
+          "id": "shared-01",
+          "title": "마주 앉은 의자",
+          "description": "마음을 나눌 수 있는 적당한 거리를 그렸어요.",
+          "imageUrl": "meeting-sample:drawing"
+        }
+      },
+      {
+        "messageId": 7,
+        "createdAt": 1795688220000,
+        "type": "TEXT",
+        "requestId": "req-04",
+        "participantId": "u06",
+        "content": "의자 사이의 공간이 편안하게 느껴져요."
+      }
+    ],
+    "draft": {
+      "text": "",
+      "drawing": null
+    }
+  }
+]

@@ -4,12 +4,12 @@ import { foodPcReviewCPMainStyle } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as faStarSolid, faStarHalf, faPlus, faMinus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import axios from "axios";
+
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { useInput } from "@/hooks/useInput";
 import { FoodButtonCP, FoodTextAreaInputCP } from "@/features/food/components";
 
-const FoodPcReviewCP = ({ isLogin, offReviewClick, details }) => {
+const FoodPcReviewCP = ({ isLogin, offReviewClick, details, onReviewAdded }) => {
   const [reviewText, onChangeReviewText, setReviewText] = useInput("");
   const [rating, setRating] = useState(5);
 
@@ -60,12 +60,8 @@ const FoodPcReviewCP = ({ isLogin, offReviewClick, details }) => {
       createdAt: new Date().toISOString(),
     };
 
-    // 2) details.review 배열 앞에 새 리뷰 추가 (DOM에 즉시 반영)
-    if (details && details.review) {
-      details.review.unshift(newReview);
-    } else if (details) {
-      details.review = [newReview];
-    }
+    // 2) 상위 상태를 갱신해 새 리뷰를 화면에 반영
+    onReviewAdded(newReview, details.truckId);
 
     // 3) 정상 처리 UI 피드백
     alert("리뷰가 성공적으로 등록되었습니다.");
@@ -74,7 +70,7 @@ const FoodPcReviewCP = ({ isLogin, offReviewClick, details }) => {
     if (offReviewClick) {
       offReviewClick(); // 리뷰 창 닫기
     }
-  }, [reviewText, rating, isLogin, details, setReviewText, offReviewClick]);
+  }, [reviewText, rating, isLogin, details.truckId, onReviewAdded, setReviewText, offReviewClick]);
 
   return (
     <div css={foodPcReviewCPMainStyle(isPc)} className="foodFlexCenter">

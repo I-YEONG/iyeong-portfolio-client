@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDeviceMode } from "@/hooks/useDeviceMode";
 import { useAuth } from "@/hooks/useAuth";
 import UnivNoticeHeader from "@/layouts/univNotice/UnivNoticeHeader";
@@ -9,7 +8,6 @@ import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNot
 import "./style.css";
 
 const UnivNoticeNoticePage = () => {
-  const nav = useNavigate();
   const [paging, setPaging] = useState(0);
   const [alarmOnly, setAlarmOnly] = useState(false);
 

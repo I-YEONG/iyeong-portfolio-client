@@ -21,7 +21,9 @@ const AboutTechnical = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
-  const { data: stack, isLoading: isStackLoading, isError: isStackError } = useStackQuery();
+  const {
+  data: stack
+} = useStackQuery();
 
   // 개발 후 api로 수정
   // const stack = stackMockupData;

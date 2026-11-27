@@ -11,7 +11,7 @@ const FoodMyPageInfoCP = ({ userData }) => {
   // 기본 정보
   const [nickName, onChangeNickName, setNickName] = useInput();
   const [nickNameError, setNickNameError] = useState(false);
-  const [phone, onChangePhone, setPhone] = useInput();
+  const [phone,, setPhone] = useInput();
 
   const [password, onChangePassword, setPassword] = useInput("");
   const [confirmPassword, onChangeConfirmPassword, setConfirmPassword] = useInput("");

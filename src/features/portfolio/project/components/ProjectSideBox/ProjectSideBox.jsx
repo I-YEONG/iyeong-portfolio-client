@@ -4,17 +4,14 @@ import useFormatDate from "@/hooks/useFormatDate";
 import { useParams } from "react-router-dom";
 
 import { projectSideBoxCss } from "./ProjectSideBox.styles";
+import { getCommentsForPath } from "./commentMatching";
 
 const ProjectSideBox = () => {
   const { projectName, "*": restPath } = useParams();
   const { data } = useCommentQuery(projectName);
-  const filterPath = "/" + restPath || "/";
-  const commentList = data?.comments
-    ?.slice()
-    .filter((comment) => comment.detailUrl === filterPath || comment.detailUrl === "*")
-    .sort((a, b) => a.sort - b.sort);
+  const filterPath = `/${restPath || ""}`;
+  const commentList = data?.comments && getCommentsForPath(data.comments, filterPath);
 
-  console.log(filterPath);
   const formatDate = useFormatDate();
 
   return (

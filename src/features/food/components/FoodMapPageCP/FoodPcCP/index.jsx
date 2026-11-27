@@ -22,6 +22,7 @@ const FoodPcCP = ({
   onClickRelay,
   onDeleteDetails,
   onSetDetails,
+  onReviewAdded,
   details,
   onDetails,
   onDeleteLike,
@@ -33,6 +34,11 @@ const FoodPcCP = ({
   const nav = useNavigate();
   const today = (new Date().getDay() + 6) % 7; // 0:월~6:일
   const [onReview, setOnReview] = useState(false);
+  const [previousDetails, setPreviousDetails] = useState(details);
+  if (details !== previousDetails) {
+    setPreviousDetails(details);
+    setOnReview(false);
+  }
 
   // useDeviceMode를 통한 isPc 상태 가져오기
   const { isPc } = useDeviceMode();
@@ -49,7 +55,6 @@ const FoodPcCP = ({
     if (detailsElement) {
       detailsElement.scrollTop = 0; // 내부 스크롤을 맨 위로 이동
     }
-    setOnReview(false);
   }, [details]);
 
   const offReviewClick = () => {
@@ -74,7 +79,7 @@ const FoodPcCP = ({
         <div className="relay foodFlexCenter" onClick={onClickRelay}>
           <FontAwesomeIcon icon={faArrowRotateRight} />
         </div>
-        {onReview && <FoodPcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} />}
+        {onReview && <FoodPcReviewCP offReviewClick={offReviewClick} isLogin={isLogin} details={details} onReviewAdded={onReviewAdded} />}
       </section>
 
       {/* 사이드 메뉴 */}

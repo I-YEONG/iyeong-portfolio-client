@@ -10,7 +10,9 @@ import { useGetUnivNoticeQuery } from "@/features/univNotice/hooks/useGetUnivNot
 const UnivNoticeCategoryPage = () => {
   const userInfo = JSON.parse(localStorage.getItem("signupInfo"));
 
-  const { data: categoryList, isLoading: isUnivListLoading, isError: isUnivListError } = useGetUnivNoticeQuery("/category/1");
+  const {
+  data: categoryList
+} = useGetUnivNoticeQuery("/category/1");
 
   const nav = useNavigate();
   const { isPc } = useDeviceMode();

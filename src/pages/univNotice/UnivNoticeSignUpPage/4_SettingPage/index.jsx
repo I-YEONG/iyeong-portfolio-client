@@ -1,6 +1,6 @@
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UnivNoticeSettingCP } from "@/features/univNotice/components";
 

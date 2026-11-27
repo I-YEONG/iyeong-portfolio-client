@@ -17,20 +17,20 @@ export default function useScrollToTop() {
         try {
           window.lenis.scrollTo(0, { immediate: true });
           return;
-        } catch (e) {
+        } catch  {
           // fallback to plain call if options not supported
           window.lenis.scrollTo(0);
           return;
         }
       }
-    } catch (e) {
+    } catch  {
       // ignore and fallback to native
     }
 
     // Use instant native scroll to avoid intermediate header state changes
     try {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    } catch (e) {
+    } catch  {
       window.scrollTo(0, 0);
     }
   }, [pathname]);

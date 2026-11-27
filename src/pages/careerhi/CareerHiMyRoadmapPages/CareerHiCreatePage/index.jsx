@@ -30,8 +30,8 @@ const CareerHiCreatePage = () => {
   const { refetch } = useGetCareerHiQuery("/roadmap/create", { enabled: false });
 
   // 수정모드
-  const [isEdit, setIsEdit] = useState(false);
-  const [isEditData, setIsEditData] = useState(null);
+  const [, setIsEdit] = useState(false);
+  const [, setIsEditData] = useState(null);
   // 이름
   const [name, onChangeName, setName] = useInput("");
   const [nameError, setNameError] = useState(false);

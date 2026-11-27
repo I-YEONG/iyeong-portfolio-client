@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import "./style.css";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useInput } from "@/hooks/useInput";
 import UnivNoticeLogoLayout from "@/layouts/univNotice/UnivNoticeLogoLayout";
 import { UnivNoticeButtonCP, UnivNoticeInputCP } from "@/features/univNotice/components";
@@ -12,7 +12,7 @@ const UnivNoticeDeviceAppendPage = () => {
   const { isPc, setMobileMode } = useDeviceMode();
   const { login } = useAuth();
   const nav = useNavigate();
-  const [code, onChangeCode, setCode] = useInput("A85PY");
+  const [code, onChangeCode] = useInput("A85PY");
 
   const onClickRegister = () => {
     // const onClickRegister = useCallback(

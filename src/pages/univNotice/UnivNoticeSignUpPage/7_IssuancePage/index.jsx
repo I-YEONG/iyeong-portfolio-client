@@ -8,8 +8,7 @@ const UnivNoticeIssuancePage = () => {
   const { isPc, setPcMode } = useDeviceMode();
   const nav = useNavigate();
 
-  const [code, setCode] = useState("A85PY");
-  const [intervalId, setIntervalId] = useState(null);
+  const [code] = useState("A85PY");
 
   // const getCode = async () => {
   //   try {

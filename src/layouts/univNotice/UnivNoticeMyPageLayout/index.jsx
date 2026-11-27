@@ -2,7 +2,9 @@ import { useDeviceMode } from "@/hooks/useDeviceMode";
 
 import UnivNoticeMyPageHeader from "./UnivNoticeHeader";
 const UnivNoticeMyPageLayout = ({ children }) => {
-  const { isPc, isMobile } = useDeviceMode();
+  const {
+  isMobile
+} = useDeviceMode();
 
   return (
     <section style={{ width: "100%", height: "100%", paddingTop: !isMobile ? 0 : "18px" }}>

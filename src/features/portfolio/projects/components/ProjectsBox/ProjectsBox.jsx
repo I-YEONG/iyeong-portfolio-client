@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { theme } from "@/styles/theme";
 import { projectsBoxCss } from "./ProjectsBox.styles";
 import useFormatDate from "@/hooks/useFormatDate";
@@ -9,16 +9,13 @@ import GOTO from "@/assets/portfolio/icon/goto.svg?react";
 // "2099-12-30"
 const ProjectsBox = ({ data }) => {
   const mainImg = data?.images?.find((img) => img.isMain);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [loadedImage, setLoadedImage] = useState(null);
+  const isImageLoaded = !!mainImg?.imageUrl && loadedImage === mainImg.imageUrl;
 
   const formatDate = useFormatDate();
 
-  useEffect(() => {
-    setIsImageLoaded(false);
-  }, [mainImg?.imageUrl]);
-
   const handleImageLoad = () => {
-    setIsImageLoaded(true);
+    setLoadedImage(mainImg?.imageUrl);
   };
 
   return (

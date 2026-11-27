@@ -402,7 +402,6 @@ const FoodRegisterPage = () => {
       console.log("FoodRegisterPage - 파일 크기:", selectedFile.size);
       console.log("FoodRegisterPage - 파일 타입:", selectedFile.type);
     }
-    setFile(selectedFile);
   };
 
   return (

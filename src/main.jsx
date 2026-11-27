@@ -1,6 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider as JotaiProvider } from "jotai";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
@@ -32,6 +32,8 @@ const queryClient = new QueryClient({
   },
 });
 
+const router = createBrowserRouter([{ path: "*", element: <LenisProvider><App /></LenisProvider> }]);
+
 export function LenisProvider({ children }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -47,7 +49,7 @@ export function LenisProvider({ children }) {
     try {
       // eslint-disable-next-line no-undef
       window.lenis = lenis;
-    } catch (e) {
+    } catch  {
       // ignore
     }
 
@@ -112,11 +114,7 @@ createRoot(document.getElementById("root")).render(
     <JotaiProvider>
       <ThemeProvider theme={muiTheme}>
         <Global styles={globalStyles} />
-        <BrowserRouter>
-          <LenisProvider>
-            <App />
-          </LenisProvider>
-        </BrowserRouter>
+        <RouterProvider router={router} />
       </ThemeProvider>
     </JotaiProvider>
   </QueryClientProvider>,

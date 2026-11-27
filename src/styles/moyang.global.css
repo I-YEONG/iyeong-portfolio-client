@@ -1,0 +1,196 @@
+@font-face {
+  font-family: 'MoyangGeuriunYeeun';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2609271945@griun-yeeun-rg/griun-yeeun-rg/Griun_Yeeun-Rg.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2')
+    format('woff2');
+  font-weight: 100;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2')
+    format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2')
+    format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2')
+    format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2')
+    format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2')
+    format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2')
+    format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MoyangPretendard';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2')
+    format('woff2');
+  font-weight: 900;
+  font-display: swap;
+}
+
+.moyang {
+  /* Figma 프론트 참고사항: 색상과 텍스트 크기 */
+  --moyang-color-primary: #599468;
+  --moyang-color-surface-green: #eef2ef;
+  --moyang-color-surface-gray: #f5f5f5;
+  --moyang-color-gray-light: #d9d9d9;
+  --moyang-color-gray: #9d9d9d;
+  --moyang-color-black: #000;
+  --moyang-color-white: #fff;
+
+  --moyang-shadow-footer: 0 -4px 12px rgb(0 0 0 / 3%);
+
+  --moyang-control-padding-block: 10px;
+  --moyang-control-padding-inline: 16px;
+
+  --moyang-desktop-frame-width: min(390px, calc(100cqw - 64px));
+  --moyang-desktop-frame-height: min(844px, calc(100cqh - 64px));
+
+  --moyang-font-size-page-title: 36px;
+  --moyang-font-size-question: 22px;
+  --moyang-font-size-heading: 20px;
+  --moyang-font-size-section: 18px;
+  --moyang-font-size-choice: 16px;
+  --moyang-font-size-body: 14px;
+  --moyang-font-size-caption: 12px;
+}
+
+.moyang *  {
+  box-sizing: border-box;
+  font-family: inherit;
+  scrollbar-color: var(--moyang-color-gray-light) transparent;
+  scrollbar-width: thin;
+}
+
+.moyang *::-webkit-scrollbar  {
+  width: 4px;
+  height: 4px;
+}
+
+.moyang *::-webkit-scrollbar-thumb  {
+  border-radius: 999px;
+  background: var(--moyang-color-gray-light);
+}
+
+.moyang *::-webkit-scrollbar-track  {
+  background: transparent;
+}
+
+.moyang *::-webkit-scrollbar-button  {
+  display: none;
+}
+
+.moyang {
+  margin: 0;
+  font-family: MoyangPretendard, system-ui, sans-serif;
+  color: var(--moyang-color-black);
+}
+
+/* 텍스트 위계: 필요한 요소에 클래스를 선택적으로 적용 */
+.moyang .moyang-text-page-title,
+.moyang .moyang-text-question,
+.moyang .moyang-text-heading,
+.moyang .moyang-text-section,
+.moyang .moyang-text-choice,
+.moyang .moyang-text-button,
+.moyang .moyang-text-body,
+.moyang .moyang-text-caption,
+.moyang .moyang-text-caption-medium {
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+.moyang .moyang-text-page-title {
+  font-size: var(--moyang-font-size-page-title);
+  font-weight: 700;
+}
+
+.moyang .moyang-text-question {
+  font-size: var(--moyang-font-size-question);
+  font-weight: 500;
+}
+
+.moyang .moyang-text-heading {
+  font-size: var(--moyang-font-size-heading);
+  font-weight: 600;
+}
+
+.moyang .moyang-text-section {
+  font-size: var(--moyang-font-size-section);
+  font-weight: 600;
+}
+
+.moyang .moyang-text-choice {
+  font-size: var(--moyang-font-size-choice);
+  font-weight: 500;
+}
+
+.moyang .moyang-text-button {
+  font-size: var(--moyang-font-size-choice);
+  font-weight: 700;
+}
+
+.moyang .moyang-text-body {
+  font-size: var(--moyang-font-size-body);
+  font-weight: 400;
+}
+
+.moyang .moyang-text-caption {
+  font-size: var(--moyang-font-size-caption);
+  font-weight: 400;
+}
+
+.moyang .moyang-text-caption-medium {
+  font-size: var(--moyang-font-size-caption);
+  font-weight: 500;
+}
