@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useAuthSession } from '../hooks/useAuthSession';
 import { useLogin } from '../hooks/useLogin';
-import { validateLogin } from '../loginValidation';
 import { AccountReactivationDialog } from './AccountReactivationDialog';
 import { AuthSessionNotice } from './AuthSessionNotice';
 import { AuthFeedback } from './AuthFeedback';
@@ -33,13 +32,6 @@ export function LoginForm({ signal, feedbackTarget, }) {
         event.preventDefault();
         if (isDisabled)
             return;
-        const errors = validateLogin(values);
-        setFieldErrors(errors);
-        if (errors.loginId || errors.password) {
-            ;
-            (errors.loginId ? idInput : passwordInput).current?.focus();
-            return;
-        }
         void sendLogin();
     }
     const inputClassName = 'h-[50px] w-full min-w-0 rounded border border-gray-01 bg-white px-3 text-sm text-black placeholder:text-gray-01 disabled:bg-gray-01/20 aria-invalid:border-red aria-invalid:text-red';
@@ -67,7 +59,7 @@ export function LoginForm({ signal, feedbackTarget, }) {
           <label className="sr-only" htmlFor="login-id">
             아이디
           </label>
-          <input ref={idInput} id="login-id" name="username" type="text" autoComplete="username" autoCapitalize="none" spellCheck={false} required maxLength={100} value={values.loginId} onChange={(event) => updateField('loginId', event.target.value)} placeholder="아이디를 입력하세요." disabled={isDisabled} aria-invalid={Boolean(fieldErrors.loginId)} aria-describedby={[
+          <input ref={idInput} id="login-id" name="username" type="text" autoComplete="username" autoCapitalize="none" spellCheck={false} maxLength={100} value={values.loginId} onChange={(event) => updateField('loginId', event.target.value)} placeholder="아이디를 입력하세요." disabled={isDisabled} aria-invalid={Boolean(fieldErrors.loginId)} aria-describedby={[
             fieldErrors.loginId ? 'login-id-error' : '',
             login.error ? 'login-request-error' : '',
         ]
@@ -78,7 +70,7 @@ export function LoginForm({ signal, feedbackTarget, }) {
           <label className="sr-only" htmlFor="login-password">
             비밀번호
           </label>
-          <input ref={passwordInput} id="login-password" name="password" type="password" autoComplete="current-password" required maxLength={128} value={values.password} onChange={(event) => updateField('password', event.target.value)} placeholder="비밀번호를 입력하세요." disabled={isDisabled} aria-invalid={Boolean(fieldErrors.password)} aria-describedby={[
+          <input ref={passwordInput} id="login-password" name="password" type="password" autoComplete="current-password" maxLength={128} value={values.password} onChange={(event) => updateField('password', event.target.value)} placeholder="비밀번호를 입력하세요." disabled={isDisabled} aria-invalid={Boolean(fieldErrors.password)} aria-describedby={[
             fieldErrors.password ? 'login-password-error' : '',
             login.error ? 'login-request-error' : '',
         ]
