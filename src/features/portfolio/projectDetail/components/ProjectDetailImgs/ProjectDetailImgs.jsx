@@ -12,6 +12,16 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { useMedia } from "@/hooks/useMedia";
 import { useSetAtom } from "jotai";
 import { imageModalOpenAtom, imageModalUrlAtom } from "@/atoms/imageModalAtoms";
+import { useState } from "react";
+import { skeletonBlock } from "../skeletonBlock";
+
+function GalleryImage({ src }) {
+  const [loaded, setLoaded] = useState(false);
+  return <>
+    {!loaded && <div css={skeletonBlock} role="status" aria-label="이미지를 불러오는 중입니다" style={{ width: 220, height: "100%" }} />}
+    <img src={src} alt="프로젝트 화면" className="image-item" onLoad={() => setLoaded(true)} onError={() => setLoaded(true)} style={{ display: loaded ? "block" : "none" }} />
+  </>;
+}
 
 const ProjectDetailImgs = ({ data }) => {
   const imageList = data?.images?.filter((img) => !img.isMain && !img.isDetail)?.sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
@@ -49,7 +59,7 @@ const ProjectDetailImgs = ({ data }) => {
                     setUrl(item.imageUrl);
                     openModal(true);
                   }}>
-                  <img src={item.imageUrl} className="image-item" />
+                  <GalleryImage key={item.imageUrl} src={item.imageUrl} />
                 </SwiperSlide>
               ))}
             </Swiper>
