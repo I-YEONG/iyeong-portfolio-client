@@ -1,4 +1,4 @@
-import DownloadIcon from "@/assets/portfolio/icon/download.svg?react";
+// import DownloadIcon from "@/assets/portfolio/icon/download.svg?react";
 import GitIcon from "@/assets/portfolio/skill/github.svg?react";
 
 // 스타일
@@ -15,8 +15,9 @@ const Footer = () => {
       <section className="sub-title">
         <div>
           <p>
-            <span className="point">함께</span>
-            <span>다음 결과를 만들어 가고 싶습니다 :&gt;</span>
+            <span>새로운 제안은 언제나 </span>
+            <span className="point">환영</span>
+            <span>합니다 :&gt;</span>
           </p>
           {isTablet && <div className="line"></div>}
           {isTablet && <a href={`mailto:${email}`}>메일 발송하기</a>}
@@ -27,9 +28,10 @@ const Footer = () => {
         <div className="row">
           <div className="title">IYEONG; Protfolio</div>
           <div className="row">
+            {/* 이력서 다운로드 임시 숨김
             <a download href="/">
               <DownloadIcon style={{ width: 18, height: 18 }} />
-            </a>
+            </a> */}
             <a href={githubUrl} target="_blank" rel="noreferrer">
               <GitIcon style={{ width: 18, height: 18 }} />
             </a>
