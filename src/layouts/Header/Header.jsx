@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import LogoIcon from "@/assets/portfolio/icon/logo.svg?react";
-import DownloadIcon from "@/assets/portfolio/icon/download.svg?react";
+// import DownloadIcon from "@/assets/portfolio/icon/download.svg?react";
 import GitIcon from "@/assets/portfolio/skill/github.svg?react";
 
 import { useEffect, useState } from "react";
@@ -61,10 +61,10 @@ const Header = ({ themeCode = "light" }) => {
         {/* ICON */}
         {isTablet && (
           <div css={iconCss}>
-            {/* FIXME: 이력서 or 기술이력서 PDF 다운로드 */}
+            {/* 이력서 다운로드 임시 숨김
             <a download href="/">
               <DownloadIcon style={{ width: 18, height: 18 }} />
-            </a>
+            </a> */}
             <a href={githubUrl} target="_blank" rel="noreferrer">
               <GitIcon style={{ width: 18, height: 18 }} />
             </a>
